@@ -7,6 +7,7 @@ namespace Shellrent\Sdk\Tests\Unit\Auth;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\ConnectException;
 use GuzzleHttp\Psr7\Request;
+use GuzzleHttp\Psr7\Response;
 use PHPUnit\Framework\TestCase;
 use Shellrent\Sdk\Auth\ClientCredentials;
 use Shellrent\Sdk\Auth\TokenException;
@@ -150,6 +151,20 @@ final class TokenProviderTest extends TestCase
             self::assertSame(429, $e->getCode());
             self::assertSame('rate_limited', $e->getError());
             self::assertSame('Too many requests.', $e->getErrorDescription());
+        }
+    }
+
+    public function testShowsTheStartOfAnErrorThatIsNotOAuth2(): void
+    {
+        $handler = new FakeHandler(new Response(401, ['Content-Type' => 'text/html'], '<html><title>Access denied</title></html>'));
+
+        try {
+            $this->tokenProvider($handler)->getToken();
+            self::fail('TokenException expected');
+        } catch (TokenException $e) {
+            self::assertSame(401, $e->getCode());
+            self::assertNull($e->getError());
+            self::assertStringEndsWith('answered HTTP 401: <html><title>Access denied</title></html>', $e->getMessage());
         }
     }
 

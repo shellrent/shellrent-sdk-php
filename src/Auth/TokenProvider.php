@@ -6,6 +6,7 @@ namespace Shellrent\Sdk\Auth;
 
 use GuzzleHttp\ClientInterface;
 use GuzzleHttp\Exception\GuzzleException;
+use GuzzleHttp\Psr7\Message;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
 use Psr\Http\Message\ResponseInterface;
@@ -168,6 +169,9 @@ final class TokenProvider
             $message .= ': ' . $error . ($description !== null ? ' (' . $description . ')' : '');
         } elseif ($response->getStatusCode() === 200) {
             $message .= ' without a valid access token';
+        } elseif (($summary = Message::bodySummary($response)) !== null) {
+            // Not an OAuth2 error, for example a page of a proxy: show the start of it.
+            $message .= ': ' . $summary;
         }
 
         return new TokenException($message, $error, $description, $response->getStatusCode());
