@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.1.0] - 2026-09-30
+
 ### Added
 
 - API classes and models for the Shellrent API 3.0.0, generated with OpenAPI Generator 7.25.0 from the
@@ -23,4 +25,5 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Requires `guzzlehttp/guzzle` 7.15.2 and `guzzlehttp/psr7` 2.13 or later: earlier versions have published
   security advisories.
 
-[Unreleased]: https://github.com/shellrent/shellrent-sdk-php/commits/main
+[Unreleased]: https://github.com/shellrent/shellrent-sdk-php/compare/v0.1.0...HEAD
+[0.1.0]: https://github.com/shellrent/shellrent-sdk-php/releases/tag/v0.1.0
