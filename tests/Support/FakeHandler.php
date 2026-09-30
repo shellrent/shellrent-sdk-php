@@ -54,11 +54,24 @@ final class FakeHandler
     }
 
     /**
+     * Error of the API, which has "data" and "meta" set to null.
+     *
      * @param array<string, string> $headers
      */
     public static function error(int $status, string $message, array $headers = []): Response
     {
-        return self::json($status, ['error' => $status, 'message' => $message, 'data' => [], 'meta' => []], $headers);
+        return self::json($status, ['error' => $status, 'message' => $message, 'data' => null, 'meta' => null], $headers);
+    }
+
+    /**
+     * 429 of the token endpoint, an OAuth2 error like the others.
+     */
+    public static function tokenRateLimited(string $retryAfter = '1'): Response
+    {
+        return self::json(429, [
+            'error' => 'rate_limited',
+            'error_description' => 'Too many requests.',
+        ], ['Retry-After' => $retryAfter]);
     }
 
     /**

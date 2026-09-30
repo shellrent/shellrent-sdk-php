@@ -23,8 +23,8 @@
         "ext-json": "*",
         "ext-mbstring": "*",
         "composer-runtime-api": "^2",
-        "guzzlehttp/guzzle": "^7.3",
-        "guzzlehttp/psr7": "^1.7 || ^2.0",
+        "guzzlehttp/guzzle": "^7.15.2",
+        "guzzlehttp/psr7": "^2.13",
         "psr/simple-cache": "^1 || ^2 || ^3"
     },
     "require-dev": {

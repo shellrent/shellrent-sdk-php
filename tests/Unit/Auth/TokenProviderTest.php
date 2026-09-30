@@ -141,6 +141,18 @@ final class TokenProviderTest extends TestCase
         }
     }
 
+    public function testTurnsTheRateLimitErrorIntoTokenException(): void
+    {
+        try {
+            $this->tokenProvider(new FakeHandler(FakeHandler::tokenRateLimited()))->getToken();
+            self::fail('TokenException expected');
+        } catch (TokenException $e) {
+            self::assertSame(429, $e->getCode());
+            self::assertSame('rate_limited', $e->getError());
+            self::assertSame('Too many requests.', $e->getErrorDescription());
+        }
+    }
+
     public function testTurnsAResponseWithoutTokenIntoTokenException(): void
     {
         $this->expectException(TokenException::class);

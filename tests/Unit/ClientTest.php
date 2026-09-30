@@ -60,7 +60,26 @@ final class ClientTest extends TestCase
             $error = $e->getResponseObject();
             self::assertInstanceOf(ApiError::class, $error);
             self::assertSame('Purchase not found', $error->getMessage());
+            self::assertNull($error->getData());
         }
+    }
+
+    public function testReadsTheBodyOfA429AsApiError(): void
+    {
+        $tooManyRequests = FakeHandler::error(429, 'Too Many Requests', ['Retry-After' => '1']);
+        $handler = new FakeHandler(FakeHandler::token(), $tooManyRequests, $tooManyRequests, $tooManyRequests);
+
+        try {
+            $this->client($handler)->purchases()->getPurchase(123);
+            self::fail('ApiException expected');
+        } catch (ApiException $e) {
+            self::assertSame(429, $e->getCode());
+            self::assertSame(['1'], $e->getResponseHeaders()['Retry-After']);
+            $error = $e->getResponseObject();
+            self::assertInstanceOf(ApiError::class, $error);
+            self::assertSame('Too Many Requests', $error->getMessage());
+        }
+        self::assertCount(4, $handler->requests);
     }
 
     private function client(FakeHandler $handler): Client

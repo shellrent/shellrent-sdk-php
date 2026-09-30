@@ -143,10 +143,11 @@ try {
 
 - `ApiException` is thrown for every response outside 2xx and for network errors (code 0).
 - `TokenException` is thrown when the token endpoint does not issue a token; `getError()` and
-  `getErrorDescription()` return the OAuth2 `error` and `error_description`.
+  `getErrorDescription()` return the OAuth2 `error` and `error_description` (`rate_limited` for a 429).
 - The API accepts 60 requests a minute per client. Requests rejected with 429 Too Many Requests are
   retried up to twice, after the time given by `Retry-After` (up to 60 seconds). If they are rejected
-  again, `ApiException` has code 429 and `getResponseHeaders()['Retry-After'][0]` says when to retry.
+  again, `ApiException` has code 429, `getResponseObject()` returns the `ApiError` and
+  `getResponseHeaders()['Retry-After'][0]` says when to retry.
 
 ## API reference
 

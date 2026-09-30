@@ -22,7 +22,7 @@ final class TokenException extends \RuntimeException
     }
 
     /**
-     * OAuth2 error code, such as "invalid_client" or "invalid_scope".
+     * OAuth2 error code, such as "invalid_client", "invalid_scope" or "rate_limited".
      */
     public function getError(): ?string
     {

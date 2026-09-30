@@ -165,7 +165,7 @@ final class HttpClientFactoryTest extends TestCase
     public function testRetriesTheTokenRequestToo(): void
     {
         $handler = new FakeHandler(
-            FakeHandler::json(429, ['error' => 'too_many_requests'], ['Retry-After' => '2']),
+            FakeHandler::tokenRateLimited('2'),
             FakeHandler::token('token-1'),
             FakeHandler::health(),
         );
@@ -178,14 +178,17 @@ final class HttpClientFactoryTest extends TestCase
 
     public function testRetryCanBeDisabled(): void
     {
-        $handler = new FakeHandler(
-            FakeHandler::json(429, ['error' => 'too_many_requests'], ['Retry-After' => '2']),
-        );
+        $handler = new FakeHandler(FakeHandler::tokenRateLimited('2'));
 
-        $this->expectException(TokenException::class);
-        $this->expectExceptionCode(429);
-
-        $this->client($handler, ['retry' => false])->request('GET', self::URL);
+        try {
+            $this->client($handler, ['retry' => false])->request('GET', self::URL);
+            self::fail('TokenException expected');
+        } catch (TokenException $e) {
+            self::assertSame(429, $e->getCode());
+            self::assertSame('rate_limited', $e->getError());
+            self::assertSame('Too many requests.', $e->getErrorDescription());
+        }
+        self::assertCount(1, $handler->requests);
     }
 
     /**

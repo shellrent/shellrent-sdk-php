@@ -21,12 +21,17 @@ jobs:
       - run: composer validate --strict
 
   tests:
-    name: PHPUnit (PHP ${{ matrix.php }})
+    name: PHPUnit (PHP ${{ matrix.php }}, ${{ matrix.dependencies }} dependencies)
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
       matrix:
         php: ['8.1', '8.2', '8.3', '8.4', '8.5']
+        dependencies: [highest]
+        include:
+          # The minimum versions allowed by composer.json.
+          - php: '8.1'
+            dependencies: lowest
     steps:
       - uses: actions/checkout@v7
       - uses: shivammathur/setup-php@v2
@@ -36,7 +41,7 @@ jobs:
           coverage: none
       - uses: ramsey/composer-install@v4
         with:
-          dependency-versions: highest
+          dependency-versions: ${{ matrix.dependencies }}
       - run: vendor/bin/phpunit
         env:
           # The integration test is skipped unless these secrets are set.
