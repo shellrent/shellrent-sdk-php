@@ -1,0 +1,26 @@
+# OpenAPI Generator configuration, used by bin/generate (`generate -c openapi-generator.yaml`).
+# Generator options: `config-help -g php`.
+generatorName: php
+inputSpec: spec/openapi.yaml
+outputDir: .
+templateDir: templates
+
+invokerPackage: Shellrent\Sdk
+composerPackageName: shellrent/sdk
+srcBasePath: src
+hideGenerationTimestamp: true
+
+# Default User-Agent of Configuration; Client::create() adds the package version.
+httpUserAgent: shellrent-sdk-php
+
+openapiNormalizer:
+  # OrderPayRequest uses oneOf only to list alternative required fields:
+  # drop it and generate a plain model with all the properties.
+  REMOVE_ANYOF_ONEOF_AND_KEEP_PROPERTIES_ONLY: true
+
+files:
+  # Client accessors ($client->purchases(), ...), one per API class.
+  ApiAccessors.mustache:
+    templateType: SupportingFiles
+    folder: src
+    destinationFilename: ApiAccessors.php

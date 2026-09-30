@@ -1,0 +1,16 @@
+* text=auto eol=lf
+
+# Keep the installed package down to the library (Composer uses git archive for dist packages).
+/.gitattributes export-ignore
+/.github export-ignore
+/.gitignore export-ignore
+/.openapi-generator export-ignore
+/.openapi-generator-ignore export-ignore
+/bin export-ignore
+/CLAUDE.md export-ignore
+/docs export-ignore
+/openapi-generator.yaml export-ignore
+/phpunit.xml.dist export-ignore
+/spec export-ignore
+/templates export-ignore
+/tests export-ignore
