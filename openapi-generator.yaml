@@ -1,0 +1,26 @@
+# OpenAPI Generator configuration, used by bin/generate (`generate -c openapi-generator.yaml`).
+# Generator options: `config-help -g php`.
+generatorName: php
+inputSpec: spec/openapi.yaml
+outputDir: .
+templateDir: templates
+
+invokerPackage: Shellrent\Sdk
+composerPackageName: shellrent/sdk
+srcBasePath: src
+hideGenerationTimestamp: true
+
+# Default User-Agent of Configuration; Client::create() adds the package version.
+httpUserAgent: shellrent-sdk-php
+
+openapiNormalizer:
+  # With OpenAPI 3.1 the properties merged from the $ref of an allOf lose their nullability:
+  # make the $ref the parent class (ServiceServer extends Service) so that they are inherited.
+  REF_AS_PARENT_IN_ALLOF: true
+
+files:
+  # Client accessors ($client->purchases(), ...), one per API class.
+  ApiAccessors.mustache:
+    templateType: SupportingFiles
+    folder: src
+    destinationFilename: ApiAccessors.php

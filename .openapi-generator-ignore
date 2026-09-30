@@ -1,0 +1,13 @@
+# Files the generator must not write (patterns as in .gitignore).
+
+# Maintained by hand
+README.md
+composer.json
+.gitignore
+phpunit.xml.dist
+
+# Not used
+git_push.sh
+.travis.yml
+.php-cs-fixer.dist.php
+test/**

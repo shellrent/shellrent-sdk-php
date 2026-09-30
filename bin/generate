@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+# Regenerates the SDK from spec/openapi.yaml with OpenAPI Generator, run through Docker.
+# Configuration: openapi-generator.yaml. Files the generator must not touch: .openapi-generator-ignore.
+set -euo pipefail
+
+GENERATOR_IMAGE="openapitools/openapi-generator-cli:v7.25.0"
+
+cd "$(dirname "$0")/.."
+
+if ! command -v docker >/dev/null 2>&1; then
+    echo "bin/generate: docker is required" >&2
+    exit 1
+fi
+
+# Remove the files written by the previous run, so that operations and models
+# removed from the spec do not linger in the repository.
+if [[ -f .openapi-generator/FILES ]]; then
+    while IFS= read -r file; do
+        case "$file" in
+            "" | .openapi-generator-ignore) continue ;;
+            /* | *..*) echo "bin/generate: unexpected path in .openapi-generator/FILES: $file" >&2; exit 1 ;;
+        esac
+        rm -f -- "$file"
+    done < .openapi-generator/FILES
+fi
+
+docker run --rm \
+    --user "$(id -u):$(id -g)" \
+    --volume "$PWD:/local" \
+    --workdir /local \
+    "$GENERATOR_IMAGE" generate --config openapi-generator.yaml

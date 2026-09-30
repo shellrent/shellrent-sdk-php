@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="vendor/phpunit/phpunit/phpunit.xsd"
+         bootstrap="vendor/autoload.php"
+         cacheDirectory=".phpunit.cache"
+         colors="true"
+         displayDetailsOnTestsThatTriggerDeprecations="true"
+         failOnDeprecation="true"
+         failOnNotice="true"
+         failOnRisky="true"
+         failOnWarning="true">
+    <testsuites>
+        <testsuite name="unit">
+            <directory>tests/Unit</directory>
+        </testsuite>
+        <!-- Runs against the real API only when SHELLRENT_CLIENT_ID and SHELLRENT_CLIENT_SECRET are set. -->
+        <testsuite name="integration">
+            <directory>tests/Integration</directory>
+        </testsuite>
+    </testsuites>
+    <source>
+        <include>
+            <directory>src/Auth</directory>
+            <directory>src/Http</directory>
+            <file>src/Client.php</file>
+        </include>
+    </source>
+</phpunit>
