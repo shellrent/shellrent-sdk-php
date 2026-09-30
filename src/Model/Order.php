@@ -386,6 +386,57 @@ class Order implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
+        if ($this->container['order_id'] === null) {
+            $invalidProperties[] = "'order_id' can't be null";
+        }
+        if ($this->container['type'] === null) {
+            $invalidProperties[] = "'type' can't be null";
+        }
+        if ($this->container['status'] === null) {
+            $invalidProperties[] = "'status' can't be null";
+        }
+        if ($this->container['payment_status'] === null) {
+            $invalidProperties[] = "'payment_status' can't be null";
+        }
+        if ($this->container['invoice_status'] === null) {
+            $invalidProperties[] = "'invoice_status' can't be null";
+        }
+        if ($this->container['invoice'] === null && !$this->isNullableSetToNull('invoice')) {
+            $invalidProperties[] = "'invoice' is required";
+        }
+        if ($this->container['billing'] === null) {
+            $invalidProperties[] = "'billing' can't be null";
+        }
+        if ($this->container['intent_type'] === null) {
+            $invalidProperties[] = "'intent_type' can't be null";
+        }
+        if ($this->container['date_payed'] === null && !$this->isNullableSetToNull('date_payed')) {
+            $invalidProperties[] = "'date_payed' is required";
+        }
+        if ($this->container['date_confirmed'] === null && !$this->isNullableSetToNull('date_confirmed')) {
+            $invalidProperties[] = "'date_confirmed' is required";
+        }
+        if ($this->container['payed'] === null) {
+            $invalidProperties[] = "'payed' can't be null";
+        }
+        if ($this->container['total_amount'] === null) {
+            $invalidProperties[] = "'total_amount' can't be null";
+        }
+        if ($this->container['payment_amount'] === null) {
+            $invalidProperties[] = "'payment_amount' can't be null";
+        }
+        if ($this->container['origin'] === null) {
+            $invalidProperties[] = "'origin' can't be null";
+        }
+        if ($this->container['promotions'] === null) {
+            $invalidProperties[] = "'promotions' can't be null";
+        }
+        if ($this->container['rows_count'] === null) {
+            $invalidProperties[] = "'rows_count' can't be null";
+        }
+        if ($this->container['date_created'] === null) {
+            $invalidProperties[] = "'date_created' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -404,7 +455,7 @@ class Order implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets order_id
      *
-     * @return int|null
+     * @return int
      */
     public function getOrderId()
     {
@@ -414,7 +465,7 @@ class Order implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets order_id
      *
-     * @param int|null $order_id order_id
+     * @param int $order_id order_id
      *
      * @return self
      */
@@ -431,7 +482,7 @@ class Order implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets type
      *
-     * @return string|null
+     * @return string
      */
     public function getType()
     {
@@ -441,7 +492,7 @@ class Order implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets type
      *
-     * @param string|null $type type
+     * @param string $type type
      *
      * @return self
      */
@@ -458,7 +509,7 @@ class Order implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets status
      *
-     * @return \Shellrent\Sdk\Model\OrderStatus|null
+     * @return \Shellrent\Sdk\Model\OrderStatus
      */
     public function getStatus()
     {
@@ -468,7 +519,7 @@ class Order implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets status
      *
-     * @param \Shellrent\Sdk\Model\OrderStatus|null $status status
+     * @param \Shellrent\Sdk\Model\OrderStatus $status status
      *
      * @return self
      */
@@ -485,7 +536,7 @@ class Order implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets payment_status
      *
-     * @return \Shellrent\Sdk\Model\OrderPaymentStatus|null
+     * @return \Shellrent\Sdk\Model\OrderPaymentStatus
      */
     public function getPaymentStatus()
     {
@@ -495,7 +546,7 @@ class Order implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets payment_status
      *
-     * @param \Shellrent\Sdk\Model\OrderPaymentStatus|null $payment_status payment_status
+     * @param \Shellrent\Sdk\Model\OrderPaymentStatus $payment_status payment_status
      *
      * @return self
      */
@@ -512,7 +563,7 @@ class Order implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets invoice_status
      *
-     * @return \Shellrent\Sdk\Model\OrderInvoiceStatus|null
+     * @return \Shellrent\Sdk\Model\OrderInvoiceStatus
      */
     public function getInvoiceStatus()
     {
@@ -522,7 +573,7 @@ class Order implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets invoice_status
      *
-     * @param \Shellrent\Sdk\Model\OrderInvoiceStatus|null $invoice_status invoice_status
+     * @param \Shellrent\Sdk\Model\OrderInvoiceStatus $invoice_status invoice_status
      *
      * @return self
      */
@@ -573,7 +624,7 @@ class Order implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets billing
      *
-     * @return \Shellrent\Sdk\Model\AccountBilling|null
+     * @return \Shellrent\Sdk\Model\AccountBilling
      */
     public function getBilling()
     {
@@ -583,7 +634,7 @@ class Order implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets billing
      *
-     * @param \Shellrent\Sdk\Model\AccountBilling|null $billing billing
+     * @param \Shellrent\Sdk\Model\AccountBilling $billing billing
      *
      * @return self
      */
@@ -600,7 +651,7 @@ class Order implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets intent_type
      *
-     * @return string|null
+     * @return string
      */
     public function getIntentType()
     {
@@ -610,7 +661,7 @@ class Order implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets intent_type
      *
-     * @param string|null $intent_type intent_type
+     * @param string $intent_type intent_type
      *
      * @return self
      */
@@ -695,7 +746,7 @@ class Order implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets payed
      *
-     * @return bool|null
+     * @return bool
      */
     public function getPayed()
     {
@@ -705,7 +756,7 @@ class Order implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets payed
      *
-     * @param bool|null $payed payed
+     * @param bool $payed payed
      *
      * @return self
      */
@@ -722,7 +773,7 @@ class Order implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets total_amount
      *
-     * @return \Shellrent\Sdk\Model\Amount|null
+     * @return \Shellrent\Sdk\Model\Amount
      */
     public function getTotalAmount()
     {
@@ -732,7 +783,7 @@ class Order implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets total_amount
      *
-     * @param \Shellrent\Sdk\Model\Amount|null $total_amount total_amount
+     * @param \Shellrent\Sdk\Model\Amount $total_amount total_amount
      *
      * @return self
      */
@@ -749,7 +800,7 @@ class Order implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets payment_amount
      *
-     * @return \Shellrent\Sdk\Model\Amount|null
+     * @return \Shellrent\Sdk\Model\Amount
      */
     public function getPaymentAmount()
     {
@@ -759,7 +810,7 @@ class Order implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets payment_amount
      *
-     * @param \Shellrent\Sdk\Model\Amount|null $payment_amount payment_amount
+     * @param \Shellrent\Sdk\Model\Amount $payment_amount payment_amount
      *
      * @return self
      */
@@ -776,7 +827,7 @@ class Order implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets origin
      *
-     * @return string|null
+     * @return string
      */
     public function getOrigin()
     {
@@ -786,7 +837,7 @@ class Order implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets origin
      *
-     * @param string|null $origin origin
+     * @param string $origin origin
      *
      * @return self
      */
@@ -803,7 +854,7 @@ class Order implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets promotions
      *
-     * @return \Shellrent\Sdk\Model\Promotion[]|null
+     * @return \Shellrent\Sdk\Model\Promotion[]
      */
     public function getPromotions()
     {
@@ -813,7 +864,7 @@ class Order implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets promotions
      *
-     * @param \Shellrent\Sdk\Model\Promotion[]|null $promotions promotions
+     * @param \Shellrent\Sdk\Model\Promotion[] $promotions promotions
      *
      * @return self
      */
@@ -830,7 +881,7 @@ class Order implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets rows_count
      *
-     * @return int|null
+     * @return int
      */
     public function getRowsCount()
     {
@@ -840,7 +891,7 @@ class Order implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets rows_count
      *
-     * @param int|null $rows_count rows_count
+     * @param int $rows_count rows_count
      *
      * @return self
      */
@@ -857,7 +908,7 @@ class Order implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets date_created
      *
-     * @return \DateTime|null
+     * @return \DateTime
      */
     public function getDateCreated()
     {
@@ -867,7 +918,7 @@ class Order implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets date_created
      *
-     * @param \DateTime|null $date_created date_created
+     * @param \DateTime $date_created date_created
      *
      * @return self
      */

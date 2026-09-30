@@ -168,7 +168,7 @@ class Purchase implements ModelInterface, ArrayAccess, \JsonSerializable
         'activation_price' => false,
         'renew_price' => true,
         'restore_price' => true,
-        'date_activation' => false,
+        'date_activation' => true,
         'date_activation_start' => true,
         'date_expiry' => true,
         'date_dismission' => true,
@@ -540,6 +540,123 @@ class Purchase implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
+        if ($this->container['purchase_id'] === null) {
+            $invalidProperties[] = "'purchase_id' can't be null";
+        }
+        if ($this->container['account'] === null && !$this->isNullableSetToNull('account')) {
+            $invalidProperties[] = "'account' is required";
+        }
+        if ($this->container['service'] === null) {
+            $invalidProperties[] = "'service' can't be null";
+        }
+        if ($this->container['billing'] === null) {
+            $invalidProperties[] = "'billing' can't be null";
+        }
+        if ($this->container['recurrence'] === null) {
+            $invalidProperties[] = "'recurrence' can't be null";
+        }
+        if ($this->container['recurrence_default'] === null) {
+            $invalidProperties[] = "'recurrence_default' can't be null";
+        }
+        if ($this->container['purchase_id_primary'] === null && !$this->isNullableSetToNull('purchase_id_primary')) {
+            $invalidProperties[] = "'purchase_id_primary' is required";
+        }
+        if ($this->container['purchase_status'] === null) {
+            $invalidProperties[] = "'purchase_status' can't be null";
+        }
+        if ($this->container['purchase_provisioning_status'] === null) {
+            $invalidProperties[] = "'purchase_provisioning_status' can't be null";
+        }
+        if ($this->container['purchase_name'] === null) {
+            $invalidProperties[] = "'purchase_name' can't be null";
+        }
+        if ($this->container['activation_quantity'] === null) {
+            $invalidProperties[] = "'activation_quantity' can't be null";
+        }
+        if ($this->container['quantity'] === null) {
+            $invalidProperties[] = "'quantity' can't be null";
+        }
+        if ($this->container['activation_price'] === null) {
+            $invalidProperties[] = "'activation_price' can't be null";
+        }
+        if ($this->container['renew_price'] === null && !$this->isNullableSetToNull('renew_price')) {
+            $invalidProperties[] = "'renew_price' is required";
+        }
+        if ($this->container['restore_price'] === null && !$this->isNullableSetToNull('restore_price')) {
+            $invalidProperties[] = "'restore_price' is required";
+        }
+        if ($this->container['date_activation'] === null && !$this->isNullableSetToNull('date_activation')) {
+            $invalidProperties[] = "'date_activation' is required";
+        }
+        if ($this->container['date_activation_start'] === null && !$this->isNullableSetToNull('date_activation_start')) {
+            $invalidProperties[] = "'date_activation_start' is required";
+        }
+        if ($this->container['date_expiry'] === null && !$this->isNullableSetToNull('date_expiry')) {
+            $invalidProperties[] = "'date_expiry' is required";
+        }
+        if ($this->container['date_dismission'] === null && !$this->isNullableSetToNull('date_dismission')) {
+            $invalidProperties[] = "'date_dismission' is required";
+        }
+        if ($this->container['do_not_renew'] === null) {
+            $invalidProperties[] = "'do_not_renew' can't be null";
+        }
+        if ($this->container['suspended'] === null) {
+            $invalidProperties[] = "'suspended' can't be null";
+        }
+        if ($this->container['comment'] === null) {
+            $invalidProperties[] = "'comment' can't be null";
+        }
+        if ($this->container['billing_data'] === null) {
+            $invalidProperties[] = "'billing_data' can't be null";
+        }
+        if ($this->container['tasks'] === null) {
+            $invalidProperties[] = "'tasks' can't be null";
+        }
+        if ($this->container['purchase_additionals'] === null) {
+            $invalidProperties[] = "'purchase_additionals' can't be null";
+        }
+        if ($this->container['domain_id'] === null && !$this->isNullableSetToNull('domain_id')) {
+            $invalidProperties[] = "'domain_id' is required";
+        }
+        if ($this->container['server_id'] === null && !$this->isNullableSetToNull('server_id')) {
+            $invalidProperties[] = "'server_id' is required";
+        }
+        if ($this->container['ssl_certificate_id'] === null && !$this->isNullableSetToNull('ssl_certificate_id')) {
+            $invalidProperties[] = "'ssl_certificate_id' is required";
+        }
+        if ($this->container['pec_id'] === null && !$this->isNullableSetToNull('pec_id')) {
+            $invalidProperties[] = "'pec_id' is required";
+        }
+        if ($this->container['pec_domain_id'] === null && !$this->isNullableSetToNull('pec_domain_id')) {
+            $invalidProperties[] = "'pec_domain_id' is required";
+        }
+        if ($this->container['hosting_id'] === null && !$this->isNullableSetToNull('hosting_id')) {
+            $invalidProperties[] = "'hosting_id' is required";
+        }
+        if ($this->container['monitoring_id'] === null && !$this->isNullableSetToNull('monitoring_id')) {
+            $invalidProperties[] = "'monitoring_id' is required";
+        }
+        if ($this->container['license_id'] === null && !$this->isNullableSetToNull('license_id')) {
+            $invalidProperties[] = "'license_id' is required";
+        }
+        if ($this->container['microsoft365_id'] === null && !$this->isNullableSetToNull('microsoft365_id')) {
+            $invalidProperties[] = "'microsoft365_id' is required";
+        }
+        if ($this->container['securemail_id'] === null && !$this->isNullableSetToNull('securemail_id')) {
+            $invalidProperties[] = "'securemail_id' is required";
+        }
+        if ($this->container['cloud_storage_id'] === null && !$this->isNullableSetToNull('cloud_storage_id')) {
+            $invalidProperties[] = "'cloud_storage_id' is required";
+        }
+        if ($this->container['object_storage_id'] === null && !$this->isNullableSetToNull('object_storage_id')) {
+            $invalidProperties[] = "'object_storage_id' is required";
+        }
+        if ($this->container['veeam_baas_id'] === null && !$this->isNullableSetToNull('veeam_baas_id')) {
+            $invalidProperties[] = "'veeam_baas_id' is required";
+        }
+        if ($this->container['date_created'] === null) {
+            $invalidProperties[] = "'date_created' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -558,7 +675,7 @@ class Purchase implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets purchase_id
      *
-     * @return int|null
+     * @return int
      */
     public function getPurchaseId()
     {
@@ -568,7 +685,7 @@ class Purchase implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets purchase_id
      *
-     * @param int|null $purchase_id ID of purchase
+     * @param int $purchase_id ID of purchase
      *
      * @return self
      */
@@ -619,7 +736,7 @@ class Purchase implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets service
      *
-     * @return \Shellrent\Sdk\Model\Service|null
+     * @return \Shellrent\Sdk\Model\Service
      */
     public function getService()
     {
@@ -629,7 +746,7 @@ class Purchase implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets service
      *
-     * @param \Shellrent\Sdk\Model\Service|null $service service
+     * @param \Shellrent\Sdk\Model\Service $service Service information of the purchase
      *
      * @return self
      */
@@ -646,7 +763,7 @@ class Purchase implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets billing
      *
-     * @return \Shellrent\Sdk\Model\AccountBilling|null
+     * @return \Shellrent\Sdk\Model\AccountBilling
      */
     public function getBilling()
     {
@@ -656,7 +773,7 @@ class Purchase implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets billing
      *
-     * @param \Shellrent\Sdk\Model\AccountBilling|null $billing billing
+     * @param \Shellrent\Sdk\Model\AccountBilling $billing Billing information of the owner of the purchase.
      *
      * @return self
      */
@@ -673,7 +790,7 @@ class Purchase implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets recurrence
      *
-     * @return \Shellrent\Sdk\Model\Recurrence|null
+     * @return \Shellrent\Sdk\Model\Recurrence
      */
     public function getRecurrence()
     {
@@ -683,7 +800,7 @@ class Purchase implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets recurrence
      *
-     * @param \Shellrent\Sdk\Model\Recurrence|null $recurrence recurrence
+     * @param \Shellrent\Sdk\Model\Recurrence $recurrence Recurrence frequency information.
      *
      * @return self
      */
@@ -700,7 +817,7 @@ class Purchase implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets recurrence_default
      *
-     * @return \Shellrent\Sdk\Model\Recurrence|null
+     * @return \Shellrent\Sdk\Model\Recurrence
      */
     public function getRecurrenceDefault()
     {
@@ -710,7 +827,7 @@ class Purchase implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets recurrence_default
      *
-     * @param \Shellrent\Sdk\Model\Recurrence|null $recurrence_default recurrence_default
+     * @param \Shellrent\Sdk\Model\Recurrence $recurrence_default Recurrence applied to the prices of the purchase, ie. \"EUR 100,00/month\".
      *
      * @return self
      */
@@ -761,7 +878,7 @@ class Purchase implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets purchase_status
      *
-     * @return \Shellrent\Sdk\Model\PurchaseStatus|null
+     * @return \Shellrent\Sdk\Model\PurchaseStatus
      */
     public function getPurchaseStatus()
     {
@@ -771,7 +888,7 @@ class Purchase implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets purchase_status
      *
-     * @param \Shellrent\Sdk\Model\PurchaseStatus|null $purchase_status purchase_status
+     * @param \Shellrent\Sdk\Model\PurchaseStatus $purchase_status Status of the purchase.
      *
      * @return self
      */
@@ -788,7 +905,7 @@ class Purchase implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets purchase_provisioning_status
      *
-     * @return \Shellrent\Sdk\Model\PurchaseProvisioningStatus|null
+     * @return \Shellrent\Sdk\Model\PurchaseProvisioningStatus
      */
     public function getPurchaseProvisioningStatus()
     {
@@ -798,7 +915,7 @@ class Purchase implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets purchase_provisioning_status
      *
-     * @param \Shellrent\Sdk\Model\PurchaseProvisioningStatus|null $purchase_provisioning_status purchase_provisioning_status
+     * @param \Shellrent\Sdk\Model\PurchaseProvisioningStatus $purchase_provisioning_status Current provisioning status of purchase (changes during activation, renews, etc.).
      *
      * @return self
      */
@@ -815,7 +932,7 @@ class Purchase implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets purchase_name
      *
-     * @return \Shellrent\Sdk\Model\PurchaseName|null
+     * @return \Shellrent\Sdk\Model\PurchaseName
      */
     public function getPurchaseName()
     {
@@ -825,7 +942,7 @@ class Purchase implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets purchase_name
      *
-     * @param \Shellrent\Sdk\Model\PurchaseName|null $purchase_name purchase_name
+     * @param \Shellrent\Sdk\Model\PurchaseName $purchase_name Name of the purchase.
      *
      * @return self
      */
@@ -842,7 +959,7 @@ class Purchase implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets activation_quantity
      *
-     * @return int|null
+     * @return int
      */
     public function getActivationQuantity()
     {
@@ -852,7 +969,7 @@ class Purchase implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets activation_quantity
      *
-     * @param int|null $activation_quantity Quantity (instances) purchased.
+     * @param int $activation_quantity Quantity (instances) purchased.
      *
      * @return self
      */
@@ -869,7 +986,7 @@ class Purchase implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets quantity
      *
-     * @return int|null
+     * @return int
      */
     public function getQuantity()
     {
@@ -879,7 +996,7 @@ class Purchase implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets quantity
      *
-     * @param int|null $quantity Current purchase quantity (instances).
+     * @param int $quantity Current purchase quantity (instances).
      *
      * @return self
      */
@@ -896,7 +1013,7 @@ class Purchase implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets activation_price
      *
-     * @return \Shellrent\Sdk\Model\Amount|null
+     * @return \Shellrent\Sdk\Model\Amount
      */
     public function getActivationPrice()
     {
@@ -906,7 +1023,7 @@ class Purchase implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets activation_price
      *
-     * @param \Shellrent\Sdk\Model\Amount|null $activation_price activation_price
+     * @param \Shellrent\Sdk\Model\Amount $activation_price Purchase price.
      *
      * @return self
      */
@@ -1008,7 +1125,14 @@ class Purchase implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setDateActivation($date_activation)
     {
         if (is_null($date_activation)) {
-            throw new \InvalidArgumentException('non-nullable date_activation cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'date_activation');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('date_activation', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['date_activation'] = $date_activation;
 
@@ -1120,7 +1244,7 @@ class Purchase implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets do_not_renew
      *
-     * @return bool|null
+     * @return bool
      */
     public function getDoNotRenew()
     {
@@ -1130,7 +1254,7 @@ class Purchase implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets do_not_renew
      *
-     * @param bool|null $do_not_renew Tells if purchase has to be renewed.
+     * @param bool $do_not_renew Tells if purchase has to be renewed.
      *
      * @return self
      */
@@ -1147,7 +1271,7 @@ class Purchase implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets suspended
      *
-     * @return bool|null
+     * @return bool
      */
     public function getSuspended()
     {
@@ -1157,7 +1281,7 @@ class Purchase implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets suspended
      *
-     * @param bool|null $suspended Tells if purchase is currently suspended.
+     * @param bool $suspended Tells if purchase is currently suspended.
      *
      * @return self
      */
@@ -1174,7 +1298,7 @@ class Purchase implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets comment
      *
-     * @return string|null
+     * @return string
      */
     public function getComment()
     {
@@ -1184,7 +1308,7 @@ class Purchase implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets comment
      *
-     * @param string|null $comment User comment (will be included in invoice description).
+     * @param string $comment User comment (will be included in invoice description).
      *
      * @return self
      */
@@ -1201,7 +1325,7 @@ class Purchase implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets billing_data
      *
-     * @return \Shellrent\Sdk\Model\BillingData|null
+     * @return \Shellrent\Sdk\Model\BillingData
      */
     public function getBillingData()
     {
@@ -1211,7 +1335,7 @@ class Purchase implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets billing_data
      *
-     * @param \Shellrent\Sdk\Model\BillingData|null $billing_data billing_data
+     * @param \Shellrent\Sdk\Model\BillingData $billing_data Billing data (ODA, CIG, CUP...).
      *
      * @return self
      */
@@ -1228,7 +1352,7 @@ class Purchase implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets tasks
      *
-     * @return \Shellrent\Sdk\Model\Task[]|null
+     * @return \Shellrent\Sdk\Model\Task[]
      */
     public function getTasks()
     {
@@ -1238,7 +1362,7 @@ class Purchase implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets tasks
      *
-     * @param \Shellrent\Sdk\Model\Task[]|null $tasks Tasks currently running on the purchase.
+     * @param \Shellrent\Sdk\Model\Task[] $tasks Tasks currently running on the purchase.
      *
      * @return self
      */
@@ -1255,7 +1379,7 @@ class Purchase implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets purchase_additionals
      *
-     * @return int[]|null
+     * @return int[]
      */
     public function getPurchaseAdditionals()
     {
@@ -1265,7 +1389,7 @@ class Purchase implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets purchase_additionals
      *
-     * @param int[]|null $purchase_additionals Collection of IDs of active additional purchases for this purchase.
+     * @param int[] $purchase_additionals Collection of IDs of active additional purchases for this purchase.
      *
      * @return self
      */
@@ -1724,7 +1848,7 @@ class Purchase implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets date_created
      *
-     * @return \DateTime|null
+     * @return \DateTime
      */
     public function getDateCreated()
     {
@@ -1734,7 +1858,7 @@ class Purchase implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets date_created
      *
-     * @param \DateTime|null $date_created Datetime when the purchase was first created.
+     * @param \DateTime $date_created Datetime when the purchase was first created.
      *
      * @return self
      */

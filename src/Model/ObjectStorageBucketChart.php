@@ -295,6 +295,18 @@ class ObjectStorageBucketChart implements ModelInterface, ArrayAccess, \JsonSeri
     {
         $invalidProperties = [];
 
+        if ($this->container['object_storage_id'] === null) {
+            $invalidProperties[] = "'object_storage_id' can't be null";
+        }
+        if ($this->container['bucket_id'] === null) {
+            $invalidProperties[] = "'bucket_id' can't be null";
+        }
+        if ($this->container['interval'] === null) {
+            $invalidProperties[] = "'interval' can't be null";
+        }
+        if ($this->container['points'] === null) {
+            $invalidProperties[] = "'points' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -313,7 +325,7 @@ class ObjectStorageBucketChart implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Gets object_storage_id
      *
-     * @return int|null
+     * @return int
      */
     public function getObjectStorageId()
     {
@@ -323,7 +335,7 @@ class ObjectStorageBucketChart implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets object_storage_id
      *
-     * @param int|null $object_storage_id object_storage_id
+     * @param int $object_storage_id object_storage_id
      *
      * @return self
      */
@@ -340,7 +352,7 @@ class ObjectStorageBucketChart implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Gets bucket_id
      *
-     * @return int|null
+     * @return int
      */
     public function getBucketId()
     {
@@ -350,7 +362,7 @@ class ObjectStorageBucketChart implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets bucket_id
      *
-     * @param int|null $bucket_id bucket_id
+     * @param int $bucket_id bucket_id
      *
      * @return self
      */
@@ -367,7 +379,7 @@ class ObjectStorageBucketChart implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Gets interval
      *
-     * @return string|null
+     * @return string
      */
     public function getInterval()
     {
@@ -377,7 +389,7 @@ class ObjectStorageBucketChart implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets interval
      *
-     * @param string|null $interval interval
+     * @param string $interval interval
      *
      * @return self
      */
@@ -394,7 +406,7 @@ class ObjectStorageBucketChart implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Gets points
      *
-     * @return \Shellrent\Sdk\Model\ObjectStorageBucketChartPointsInner[]|null
+     * @return \Shellrent\Sdk\Model\ObjectStorageBucketChartPointsInner[]
      */
     public function getPoints()
     {
@@ -404,7 +416,7 @@ class ObjectStorageBucketChart implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets points
      *
-     * @param \Shellrent\Sdk\Model\ObjectStorageBucketChartPointsInner[]|null $points points
+     * @param \Shellrent\Sdk\Model\ObjectStorageBucketChartPointsInner[] $points points
      *
      * @return self
      */

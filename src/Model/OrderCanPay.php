@@ -295,6 +295,12 @@ class OrderCanPay implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
+        if ($this->container['order_id'] === null) {
+            $invalidProperties[] = "'order_id' can't be null";
+        }
+        if ($this->container['can_pay'] === null) {
+            $invalidProperties[] = "'can_pay' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -313,7 +319,7 @@ class OrderCanPay implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets order_id
      *
-     * @return int|null
+     * @return int
      */
     public function getOrderId()
     {
@@ -323,7 +329,7 @@ class OrderCanPay implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets order_id
      *
-     * @param int|null $order_id order_id
+     * @param int $order_id order_id
      *
      * @return self
      */
@@ -394,7 +400,7 @@ class OrderCanPay implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets can_pay
      *
-     * @return bool|null
+     * @return bool
      */
     public function getCanPay()
     {
@@ -404,7 +410,7 @@ class OrderCanPay implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets can_pay
      *
-     * @param bool|null $can_pay can_pay
+     * @param bool $can_pay can_pay
      *
      * @return self
      */

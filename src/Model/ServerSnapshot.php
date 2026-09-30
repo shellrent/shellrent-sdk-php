@@ -316,6 +316,27 @@ class ServerSnapshot implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
+        if ($this->container['snapshot_id'] === null) {
+            $invalidProperties[] = "'snapshot_id' can't be null";
+        }
+        if ($this->container['server_id'] === null) {
+            $invalidProperties[] = "'server_id' can't be null";
+        }
+        if ($this->container['snapshot_name'] === null && !$this->isNullableSetToNull('snapshot_name')) {
+            $invalidProperties[] = "'snapshot_name' is required";
+        }
+        if ($this->container['snapshot_reference'] === null && !$this->isNullableSetToNull('snapshot_reference')) {
+            $invalidProperties[] = "'snapshot_reference' is required";
+        }
+        if ($this->container['active'] === null) {
+            $invalidProperties[] = "'active' can't be null";
+        }
+        if ($this->container['date_expiry'] === null && !$this->isNullableSetToNull('date_expiry')) {
+            $invalidProperties[] = "'date_expiry' is required";
+        }
+        if ($this->container['date_created'] === null && !$this->isNullableSetToNull('date_created')) {
+            $invalidProperties[] = "'date_created' is required";
+        }
         return $invalidProperties;
     }
 
@@ -334,7 +355,7 @@ class ServerSnapshot implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets snapshot_id
      *
-     * @return int|null
+     * @return int
      */
     public function getSnapshotId()
     {
@@ -344,7 +365,7 @@ class ServerSnapshot implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets snapshot_id
      *
-     * @param int|null $snapshot_id snapshot_id
+     * @param int $snapshot_id snapshot_id
      *
      * @return self
      */
@@ -361,7 +382,7 @@ class ServerSnapshot implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets server_id
      *
-     * @return int|null
+     * @return int
      */
     public function getServerId()
     {
@@ -371,7 +392,7 @@ class ServerSnapshot implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets server_id
      *
-     * @param int|null $server_id server_id
+     * @param int $server_id server_id
      *
      * @return self
      */
@@ -456,7 +477,7 @@ class ServerSnapshot implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets active
      *
-     * @return bool|null
+     * @return bool
      */
     public function getActive()
     {
@@ -466,7 +487,7 @@ class ServerSnapshot implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets active
      *
-     * @param bool|null $active active
+     * @param bool $active active
      *
      * @return self
      */

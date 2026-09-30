@@ -330,6 +330,33 @@ class CreditnoteRow implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
+        if ($this->container['creditnote_row_id'] === null) {
+            $invalidProperties[] = "'creditnote_row_id' can't be null";
+        }
+        if ($this->container['creditnote_id'] === null) {
+            $invalidProperties[] = "'creditnote_id' can't be null";
+        }
+        if ($this->container['invoice_row_id'] === null) {
+            $invalidProperties[] = "'invoice_row_id' can't be null";
+        }
+        if ($this->container['reason'] === null && !$this->isNullableSetToNull('reason')) {
+            $invalidProperties[] = "'reason' is required";
+        }
+        if ($this->container['description'] === null) {
+            $invalidProperties[] = "'description' can't be null";
+        }
+        if ($this->container['amount'] === null) {
+            $invalidProperties[] = "'amount' can't be null";
+        }
+        if ($this->container['billing_data'] === null) {
+            $invalidProperties[] = "'billing_data' can't be null";
+        }
+        if ($this->container['date_start'] === null && !$this->isNullableSetToNull('date_start')) {
+            $invalidProperties[] = "'date_start' is required";
+        }
+        if ($this->container['date_end'] === null && !$this->isNullableSetToNull('date_end')) {
+            $invalidProperties[] = "'date_end' is required";
+        }
         return $invalidProperties;
     }
 
@@ -348,7 +375,7 @@ class CreditnoteRow implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets creditnote_row_id
      *
-     * @return int|null
+     * @return int
      */
     public function getCreditnoteRowId()
     {
@@ -358,7 +385,7 @@ class CreditnoteRow implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets creditnote_row_id
      *
-     * @param int|null $creditnote_row_id creditnote_row_id
+     * @param int $creditnote_row_id creditnote_row_id
      *
      * @return self
      */
@@ -375,7 +402,7 @@ class CreditnoteRow implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets creditnote_id
      *
-     * @return int|null
+     * @return int
      */
     public function getCreditnoteId()
     {
@@ -385,7 +412,7 @@ class CreditnoteRow implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets creditnote_id
      *
-     * @param int|null $creditnote_id creditnote_id
+     * @param int $creditnote_id creditnote_id
      *
      * @return self
      */
@@ -402,7 +429,7 @@ class CreditnoteRow implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets invoice_row_id
      *
-     * @return int|null
+     * @return int
      */
     public function getInvoiceRowId()
     {
@@ -412,7 +439,7 @@ class CreditnoteRow implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets invoice_row_id
      *
-     * @param int|null $invoice_row_id invoice_row_id
+     * @param int $invoice_row_id invoice_row_id
      *
      * @return self
      */
@@ -463,7 +490,7 @@ class CreditnoteRow implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets description
      *
-     * @return string|null
+     * @return string
      */
     public function getDescription()
     {
@@ -473,7 +500,7 @@ class CreditnoteRow implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets description
      *
-     * @param string|null $description description
+     * @param string $description description
      *
      * @return self
      */
@@ -490,7 +517,7 @@ class CreditnoteRow implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets amount
      *
-     * @return \Shellrent\Sdk\Model\Amount|null
+     * @return \Shellrent\Sdk\Model\Amount
      */
     public function getAmount()
     {
@@ -500,7 +527,7 @@ class CreditnoteRow implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets amount
      *
-     * @param \Shellrent\Sdk\Model\Amount|null $amount amount
+     * @param \Shellrent\Sdk\Model\Amount $amount amount
      *
      * @return self
      */
@@ -517,7 +544,7 @@ class CreditnoteRow implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets billing_data
      *
-     * @return \Shellrent\Sdk\Model\BillingData|null
+     * @return \Shellrent\Sdk\Model\BillingData
      */
     public function getBillingData()
     {
@@ -527,7 +554,7 @@ class CreditnoteRow implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets billing_data
      *
-     * @param \Shellrent\Sdk\Model\BillingData|null $billing_data billing_data
+     * @param \Shellrent\Sdk\Model\BillingData $billing_data billing_data
      *
      * @return self
      */

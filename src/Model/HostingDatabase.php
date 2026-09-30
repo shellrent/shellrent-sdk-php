@@ -316,6 +316,27 @@ class HostingDatabase implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
+        if ($this->container['database_id'] === null) {
+            $invalidProperties[] = "'database_id' can't be null";
+        }
+        if ($this->container['name'] === null) {
+            $invalidProperties[] = "'name' can't be null";
+        }
+        if ($this->container['type'] === null) {
+            $invalidProperties[] = "'type' can't be null";
+        }
+        if ($this->container['credential_id'] === null && !$this->isNullableSetToNull('credential_id')) {
+            $invalidProperties[] = "'credential_id' is required";
+        }
+        if ($this->container['username'] === null && !$this->isNullableSetToNull('username')) {
+            $invalidProperties[] = "'username' is required";
+        }
+        if ($this->container['supplier_code'] === null && !$this->isNullableSetToNull('supplier_code')) {
+            $invalidProperties[] = "'supplier_code' is required";
+        }
+        if ($this->container['table_count'] === null && !$this->isNullableSetToNull('table_count')) {
+            $invalidProperties[] = "'table_count' is required";
+        }
         return $invalidProperties;
     }
 
@@ -334,7 +355,7 @@ class HostingDatabase implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets database_id
      *
-     * @return string|null
+     * @return string
      */
     public function getDatabaseId()
     {
@@ -344,7 +365,7 @@ class HostingDatabase implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets database_id
      *
-     * @param string|null $database_id database_id
+     * @param string $database_id database_id
      *
      * @return self
      */
@@ -361,7 +382,7 @@ class HostingDatabase implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets name
      *
-     * @return string|null
+     * @return string
      */
     public function getName()
     {
@@ -371,7 +392,7 @@ class HostingDatabase implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets name
      *
-     * @param string|null $name name
+     * @param string $name name
      *
      * @return self
      */
@@ -388,7 +409,7 @@ class HostingDatabase implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets type
      *
-     * @return string|null
+     * @return string
      */
     public function getType()
     {
@@ -398,7 +419,7 @@ class HostingDatabase implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets type
      *
-     * @param string|null $type type
+     * @param string $type type
      *
      * @return self
      */

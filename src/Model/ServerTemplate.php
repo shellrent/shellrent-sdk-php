@@ -316,6 +316,27 @@ class ServerTemplate implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
+        if ($this->container['template_code'] === null) {
+            $invalidProperties[] = "'template_code' can't be null";
+        }
+        if ($this->container['template_name'] === null) {
+            $invalidProperties[] = "'template_name' can't be null";
+        }
+        if ($this->container['template_name_alternative'] === null && !$this->isNullableSetToNull('template_name_alternative')) {
+            $invalidProperties[] = "'template_name_alternative' is required";
+        }
+        if ($this->container['min_ram'] === null && !$this->isNullableSetToNull('min_ram')) {
+            $invalidProperties[] = "'min_ram' is required";
+        }
+        if ($this->container['min_cpu'] === null && !$this->isNullableSetToNull('min_cpu')) {
+            $invalidProperties[] = "'min_cpu' is required";
+        }
+        if ($this->container['min_disk'] === null && !$this->isNullableSetToNull('min_disk')) {
+            $invalidProperties[] = "'min_disk' is required";
+        }
+        if ($this->container['operative_systems'] === null) {
+            $invalidProperties[] = "'operative_systems' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -334,7 +355,7 @@ class ServerTemplate implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets template_code
      *
-     * @return string|null
+     * @return string
      */
     public function getTemplateCode()
     {
@@ -344,7 +365,7 @@ class ServerTemplate implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets template_code
      *
-     * @param string|null $template_code template_code
+     * @param string $template_code template_code
      *
      * @return self
      */
@@ -361,7 +382,7 @@ class ServerTemplate implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets template_name
      *
-     * @return string|null
+     * @return string
      */
     public function getTemplateName()
     {
@@ -371,7 +392,7 @@ class ServerTemplate implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets template_name
      *
-     * @param string|null $template_name template_name
+     * @param string $template_name template_name
      *
      * @return self
      */
@@ -524,7 +545,7 @@ class ServerTemplate implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets operative_systems
      *
-     * @return \Shellrent\Sdk\Model\ServerOs[]|null
+     * @return \Shellrent\Sdk\Model\ServerOs[]
      */
     public function getOperativeSystems()
     {
@@ -534,7 +555,7 @@ class ServerTemplate implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets operative_systems
      *
-     * @param \Shellrent\Sdk\Model\ServerOs[]|null $operative_systems Compatible operative systems
+     * @param \Shellrent\Sdk\Model\ServerOs[] $operative_systems Compatible operative systems
      *
      * @return self
      */

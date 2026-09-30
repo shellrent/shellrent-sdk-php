@@ -365,6 +365,48 @@ class Account implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
+        if ($this->container['account_id'] === null) {
+            $invalidProperties[] = "'account_id' can't be null";
+        }
+        if ($this->container['username'] === null) {
+            $invalidProperties[] = "'username' can't be null";
+        }
+        if ($this->container['username_alias'] === null && !$this->isNullableSetToNull('username_alias')) {
+            $invalidProperties[] = "'username_alias' is required";
+        }
+        if ($this->container['account_name'] === null) {
+            $invalidProperties[] = "'account_name' can't be null";
+        }
+        if ($this->container['name'] === null && !$this->isNullableSetToNull('name')) {
+            $invalidProperties[] = "'name' is required";
+        }
+        if ($this->container['surname'] === null && !$this->isNullableSetToNull('surname')) {
+            $invalidProperties[] = "'surname' is required";
+        }
+        if ($this->container['email'] === null && !$this->isNullableSetToNull('email')) {
+            $invalidProperties[] = "'email' is required";
+        }
+        if ($this->container['phone'] === null && !$this->isNullableSetToNull('phone')) {
+            $invalidProperties[] = "'phone' is required";
+        }
+        if ($this->container['address'] === null && !$this->isNullableSetToNull('address')) {
+            $invalidProperties[] = "'address' is required";
+        }
+        if ($this->container['city'] === null && !$this->isNullableSetToNull('city')) {
+            $invalidProperties[] = "'city' is required";
+        }
+        if ($this->container['state'] === null && !$this->isNullableSetToNull('state')) {
+            $invalidProperties[] = "'state' is required";
+        }
+        if ($this->container['postal_code'] === null && !$this->isNullableSetToNull('postal_code')) {
+            $invalidProperties[] = "'postal_code' is required";
+        }
+        if ($this->container['country'] === null) {
+            $invalidProperties[] = "'country' can't be null";
+        }
+        if ($this->container['date_created'] === null) {
+            $invalidProperties[] = "'date_created' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -383,7 +425,7 @@ class Account implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets account_id
      *
-     * @return int|null
+     * @return int
      */
     public function getAccountId()
     {
@@ -393,7 +435,7 @@ class Account implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets account_id
      *
-     * @param int|null $account_id account_id
+     * @param int $account_id account_id
      *
      * @return self
      */
@@ -410,7 +452,7 @@ class Account implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets username
      *
-     * @return string|null
+     * @return string
      */
     public function getUsername()
     {
@@ -420,7 +462,7 @@ class Account implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets username
      *
-     * @param string|null $username username
+     * @param string $username username
      *
      * @return self
      */
@@ -471,7 +513,7 @@ class Account implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets account_name
      *
-     * @return string|null
+     * @return string
      */
     public function getAccountName()
     {
@@ -481,7 +523,7 @@ class Account implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets account_name
      *
-     * @param string|null $account_name account_name
+     * @param string $account_name account_name
      *
      * @return self
      */
@@ -770,7 +812,7 @@ class Account implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets country
      *
-     * @return \Shellrent\Sdk\Model\Country|null
+     * @return \Shellrent\Sdk\Model\Country
      */
     public function getCountry()
     {
@@ -780,7 +822,7 @@ class Account implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets country
      *
-     * @param \Shellrent\Sdk\Model\Country|null $country country
+     * @param \Shellrent\Sdk\Model\Country $country country
      *
      * @return self
      */
@@ -797,7 +839,7 @@ class Account implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets date_created
      *
-     * @return \DateTime|null
+     * @return \DateTime
      */
     public function getDateCreated()
     {
@@ -807,7 +849,7 @@ class Account implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets date_created
      *
-     * @param \DateTime|null $date_created date_created
+     * @param \DateTime $date_created date_created
      *
      * @return self
      */

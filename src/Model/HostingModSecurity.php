@@ -316,6 +316,27 @@ class HostingModSecurity implements ModelInterface, ArrayAccess, \JsonSerializab
     {
         $invalidProperties = [];
 
+        if ($this->container['hosting_id'] === null) {
+            $invalidProperties[] = "'hosting_id' can't be null";
+        }
+        if ($this->container['is_available'] === null) {
+            $invalidProperties[] = "'is_available' can't be null";
+        }
+        if ($this->container['is_active'] === null) {
+            $invalidProperties[] = "'is_active' can't be null";
+        }
+        if ($this->container['firewall_compatible'] === null) {
+            $invalidProperties[] = "'firewall_compatible' can't be null";
+        }
+        if ($this->container['full_strict'] === null && !$this->isNullableSetToNull('full_strict')) {
+            $invalidProperties[] = "'full_strict' is required";
+        }
+        if ($this->container['custom_rules'] === null && !$this->isNullableSetToNull('custom_rules')) {
+            $invalidProperties[] = "'custom_rules' is required";
+        }
+        if ($this->container['custom_set'] === null && !$this->isNullableSetToNull('custom_set')) {
+            $invalidProperties[] = "'custom_set' is required";
+        }
         return $invalidProperties;
     }
 
@@ -334,7 +355,7 @@ class HostingModSecurity implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Gets hosting_id
      *
-     * @return int|null
+     * @return int
      */
     public function getHostingId()
     {
@@ -344,7 +365,7 @@ class HostingModSecurity implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets hosting_id
      *
-     * @param int|null $hosting_id hosting_id
+     * @param int $hosting_id hosting_id
      *
      * @return self
      */
@@ -361,7 +382,7 @@ class HostingModSecurity implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Gets is_available
      *
-     * @return bool|null
+     * @return bool
      */
     public function getIsAvailable()
     {
@@ -371,7 +392,7 @@ class HostingModSecurity implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets is_available
      *
-     * @param bool|null $is_available is_available
+     * @param bool $is_available is_available
      *
      * @return self
      */
@@ -388,7 +409,7 @@ class HostingModSecurity implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Gets is_active
      *
-     * @return bool|null
+     * @return bool
      */
     public function getIsActive()
     {
@@ -398,7 +419,7 @@ class HostingModSecurity implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets is_active
      *
-     * @param bool|null $is_active is_active
+     * @param bool $is_active is_active
      *
      * @return self
      */
@@ -415,7 +436,7 @@ class HostingModSecurity implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Gets firewall_compatible
      *
-     * @return bool|null
+     * @return bool
      */
     public function getFirewallCompatible()
     {
@@ -425,7 +446,7 @@ class HostingModSecurity implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets firewall_compatible
      *
-     * @param bool|null $firewall_compatible firewall_compatible
+     * @param bool $firewall_compatible firewall_compatible
      *
      * @return self
      */

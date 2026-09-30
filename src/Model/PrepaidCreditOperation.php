@@ -316,6 +316,24 @@ class PrepaidCreditOperation implements ModelInterface, ArrayAccess, \JsonSerial
     {
         $invalidProperties = [];
 
+        if ($this->container['operation_id'] === null) {
+            $invalidProperties[] = "'operation_id' can't be null";
+        }
+        if ($this->container['operation_id_related'] === null && !$this->isNullableSetToNull('operation_id_related')) {
+            $invalidProperties[] = "'operation_id_related' is required";
+        }
+        if ($this->container['prepaid_credit_topup'] === null) {
+            $invalidProperties[] = "'prepaid_credit_topup' can't be null";
+        }
+        if ($this->container['operation_type'] === null) {
+            $invalidProperties[] = "'operation_type' can't be null";
+        }
+        if ($this->container['amount'] === null) {
+            $invalidProperties[] = "'amount' can't be null";
+        }
+        if ($this->container['date_created'] === null) {
+            $invalidProperties[] = "'date_created' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -334,7 +352,7 @@ class PrepaidCreditOperation implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets operation_id
      *
-     * @return int|null
+     * @return int
      */
     public function getOperationId()
     {
@@ -344,7 +362,7 @@ class PrepaidCreditOperation implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets operation_id
      *
-     * @param int|null $operation_id operation_id
+     * @param int $operation_id operation_id
      *
      * @return self
      */
@@ -395,7 +413,7 @@ class PrepaidCreditOperation implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets prepaid_credit_topup
      *
-     * @return \Shellrent\Sdk\Model\PrepaidCreditTopup|null
+     * @return \Shellrent\Sdk\Model\PrepaidCreditTopup
      */
     public function getPrepaidCreditTopup()
     {
@@ -405,7 +423,7 @@ class PrepaidCreditOperation implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets prepaid_credit_topup
      *
-     * @param \Shellrent\Sdk\Model\PrepaidCreditTopup|null $prepaid_credit_topup prepaid_credit_topup
+     * @param \Shellrent\Sdk\Model\PrepaidCreditTopup $prepaid_credit_topup prepaid_credit_topup
      *
      * @return self
      */
@@ -422,7 +440,7 @@ class PrepaidCreditOperation implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets operation_type
      *
-     * @return \Shellrent\Sdk\Model\PrepaidCreditOperationType|null
+     * @return \Shellrent\Sdk\Model\PrepaidCreditOperationType
      */
     public function getOperationType()
     {
@@ -432,7 +450,7 @@ class PrepaidCreditOperation implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets operation_type
      *
-     * @param \Shellrent\Sdk\Model\PrepaidCreditOperationType|null $operation_type operation_type
+     * @param \Shellrent\Sdk\Model\PrepaidCreditOperationType $operation_type operation_type
      *
      * @return self
      */
@@ -476,7 +494,7 @@ class PrepaidCreditOperation implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets amount
      *
-     * @return \Shellrent\Sdk\Model\AmountSimple|null
+     * @return \Shellrent\Sdk\Model\AmountSimple
      */
     public function getAmount()
     {
@@ -486,7 +504,7 @@ class PrepaidCreditOperation implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets amount
      *
-     * @param \Shellrent\Sdk\Model\AmountSimple|null $amount amount
+     * @param \Shellrent\Sdk\Model\AmountSimple $amount amount
      *
      * @return self
      */
@@ -503,7 +521,7 @@ class PrepaidCreditOperation implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets date_created
      *
-     * @return \DateTime|null
+     * @return \DateTime
      */
     public function getDateCreated()
     {
@@ -513,7 +531,7 @@ class PrepaidCreditOperation implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets date_created
      *
-     * @param \DateTime|null $date_created date_created
+     * @param \DateTime $date_created date_created
      *
      * @return self
      */

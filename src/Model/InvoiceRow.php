@@ -106,8 +106,8 @@ class InvoiceRow implements ModelInterface, ArrayAccess, \JsonSerializable
         'invoice_row_id' => false,
         'invoice_id' => false,
         'invoice_id_deposit' => true,
-        'service' => false,
-        'purchase' => false,
+        'service' => true,
+        'purchase' => true,
         'description' => false,
         'unit_description' => true,
         'unit_quantity' => true,
@@ -365,6 +365,48 @@ class InvoiceRow implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
+        if ($this->container['invoice_row_id'] === null) {
+            $invalidProperties[] = "'invoice_row_id' can't be null";
+        }
+        if ($this->container['invoice_id'] === null) {
+            $invalidProperties[] = "'invoice_id' can't be null";
+        }
+        if ($this->container['invoice_id_deposit'] === null && !$this->isNullableSetToNull('invoice_id_deposit')) {
+            $invalidProperties[] = "'invoice_id_deposit' is required";
+        }
+        if ($this->container['service'] === null && !$this->isNullableSetToNull('service')) {
+            $invalidProperties[] = "'service' is required";
+        }
+        if ($this->container['purchase'] === null && !$this->isNullableSetToNull('purchase')) {
+            $invalidProperties[] = "'purchase' is required";
+        }
+        if ($this->container['description'] === null) {
+            $invalidProperties[] = "'description' can't be null";
+        }
+        if ($this->container['unit_description'] === null && !$this->isNullableSetToNull('unit_description')) {
+            $invalidProperties[] = "'unit_description' is required";
+        }
+        if ($this->container['unit_quantity'] === null && !$this->isNullableSetToNull('unit_quantity')) {
+            $invalidProperties[] = "'unit_quantity' is required";
+        }
+        if ($this->container['unit_amount'] === null) {
+            $invalidProperties[] = "'unit_amount' can't be null";
+        }
+        if ($this->container['amount'] === null) {
+            $invalidProperties[] = "'amount' can't be null";
+        }
+        if ($this->container['billing_data'] === null) {
+            $invalidProperties[] = "'billing_data' can't be null";
+        }
+        if ($this->container['is_recurring'] === null) {
+            $invalidProperties[] = "'is_recurring' can't be null";
+        }
+        if ($this->container['date_start'] === null && !$this->isNullableSetToNull('date_start')) {
+            $invalidProperties[] = "'date_start' is required";
+        }
+        if ($this->container['date_end'] === null && !$this->isNullableSetToNull('date_end')) {
+            $invalidProperties[] = "'date_end' is required";
+        }
         return $invalidProperties;
     }
 
@@ -383,7 +425,7 @@ class InvoiceRow implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets invoice_row_id
      *
-     * @return int|null
+     * @return int
      */
     public function getInvoiceRowId()
     {
@@ -393,7 +435,7 @@ class InvoiceRow implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets invoice_row_id
      *
-     * @param int|null $invoice_row_id invoice_row_id
+     * @param int $invoice_row_id invoice_row_id
      *
      * @return self
      */
@@ -410,7 +452,7 @@ class InvoiceRow implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets invoice_id
      *
-     * @return int|null
+     * @return int
      */
     public function getInvoiceId()
     {
@@ -420,7 +462,7 @@ class InvoiceRow implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets invoice_id
      *
-     * @param int|null $invoice_id invoice_id
+     * @param int $invoice_id invoice_id
      *
      * @return self
      */
@@ -488,7 +530,14 @@ class InvoiceRow implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setService($service)
     {
         if (is_null($service)) {
-            throw new \InvalidArgumentException('non-nullable service cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'service');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('service', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['service'] = $service;
 
@@ -515,7 +564,14 @@ class InvoiceRow implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setPurchase($purchase)
     {
         if (is_null($purchase)) {
-            throw new \InvalidArgumentException('non-nullable purchase cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'purchase');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('purchase', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['purchase'] = $purchase;
 
@@ -525,7 +581,7 @@ class InvoiceRow implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets description
      *
-     * @return string|null
+     * @return string
      */
     public function getDescription()
     {
@@ -535,7 +591,7 @@ class InvoiceRow implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets description
      *
-     * @param string|null $description description
+     * @param string $description description
      *
      * @return self
      */
@@ -620,7 +676,7 @@ class InvoiceRow implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets unit_amount
      *
-     * @return \Shellrent\Sdk\Model\Amount|null
+     * @return \Shellrent\Sdk\Model\Amount
      */
     public function getUnitAmount()
     {
@@ -630,7 +686,7 @@ class InvoiceRow implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets unit_amount
      *
-     * @param \Shellrent\Sdk\Model\Amount|null $unit_amount unit_amount
+     * @param \Shellrent\Sdk\Model\Amount $unit_amount unit_amount
      *
      * @return self
      */
@@ -647,7 +703,7 @@ class InvoiceRow implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets amount
      *
-     * @return \Shellrent\Sdk\Model\Amount|null
+     * @return \Shellrent\Sdk\Model\Amount
      */
     public function getAmount()
     {
@@ -657,7 +713,7 @@ class InvoiceRow implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets amount
      *
-     * @param \Shellrent\Sdk\Model\Amount|null $amount amount
+     * @param \Shellrent\Sdk\Model\Amount $amount amount
      *
      * @return self
      */
@@ -674,7 +730,7 @@ class InvoiceRow implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets billing_data
      *
-     * @return \Shellrent\Sdk\Model\BillingData|null
+     * @return \Shellrent\Sdk\Model\BillingData
      */
     public function getBillingData()
     {
@@ -684,7 +740,7 @@ class InvoiceRow implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets billing_data
      *
-     * @param \Shellrent\Sdk\Model\BillingData|null $billing_data billing_data
+     * @param \Shellrent\Sdk\Model\BillingData $billing_data billing_data
      *
      * @return self
      */
@@ -701,7 +757,7 @@ class InvoiceRow implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets is_recurring
      *
-     * @return bool|null
+     * @return bool
      */
     public function getIsRecurring()
     {
@@ -711,7 +767,7 @@ class InvoiceRow implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets is_recurring
      *
-     * @param bool|null $is_recurring is_recurring
+     * @param bool $is_recurring is_recurring
      *
      * @return self
      */

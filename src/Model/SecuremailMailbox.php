@@ -309,6 +309,24 @@ class SecuremailMailbox implements ModelInterface, ArrayAccess, \JsonSerializabl
     {
         $invalidProperties = [];
 
+        if ($this->container['mailbox_id'] === null) {
+            $invalidProperties[] = "'mailbox_id' can't be null";
+        }
+        if ($this->container['email_address'] === null && !$this->isNullableSetToNull('email_address')) {
+            $invalidProperties[] = "'email_address' is required";
+        }
+        if ($this->container['status'] === null && !$this->isNullableSetToNull('status')) {
+            $invalidProperties[] = "'status' is required";
+        }
+        if ($this->container['is_primary'] === null) {
+            $invalidProperties[] = "'is_primary' can't be null";
+        }
+        if ($this->container['valid_recipient_id'] === null && !$this->isNullableSetToNull('valid_recipient_id')) {
+            $invalidProperties[] = "'valid_recipient_id' is required";
+        }
+        if ($this->container['aliases_count'] === null) {
+            $invalidProperties[] = "'aliases_count' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -327,7 +345,7 @@ class SecuremailMailbox implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Gets mailbox_id
      *
-     * @return int|null
+     * @return int
      */
     public function getMailboxId()
     {
@@ -337,7 +355,7 @@ class SecuremailMailbox implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets mailbox_id
      *
-     * @param int|null $mailbox_id mailbox_id
+     * @param int $mailbox_id mailbox_id
      *
      * @return self
      */
@@ -422,7 +440,7 @@ class SecuremailMailbox implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Gets is_primary
      *
-     * @return bool|null
+     * @return bool
      */
     public function getIsPrimary()
     {
@@ -432,7 +450,7 @@ class SecuremailMailbox implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets is_primary
      *
-     * @param bool|null $is_primary is_primary
+     * @param bool $is_primary is_primary
      *
      * @return self
      */
@@ -483,7 +501,7 @@ class SecuremailMailbox implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Gets aliases_count
      *
-     * @return int|null
+     * @return int
      */
     public function getAliasesCount()
     {
@@ -493,7 +511,7 @@ class SecuremailMailbox implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets aliases_count
      *
-     * @param int|null $aliases_count aliases_count
+     * @param int $aliases_count aliases_count
      *
      * @return self
      */

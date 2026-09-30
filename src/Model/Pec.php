@@ -386,6 +386,57 @@ class Pec implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
+        if ($this->container['pec_id'] === null) {
+            $invalidProperties[] = "'pec_id' can't be null";
+        }
+        if ($this->container['purchase_id'] === null && !$this->isNullableSetToNull('purchase_id')) {
+            $invalidProperties[] = "'purchase_id' is required";
+        }
+        if ($this->container['purchase_name'] === null && !$this->isNullableSetToNull('purchase_name')) {
+            $invalidProperties[] = "'purchase_name' is required";
+        }
+        if ($this->container['purchase_status_code'] === null && !$this->isNullableSetToNull('purchase_status_code')) {
+            $invalidProperties[] = "'purchase_status_code' is required";
+        }
+        if ($this->container['box_name'] === null && !$this->isNullableSetToNull('box_name')) {
+            $invalidProperties[] = "'box_name' is required";
+        }
+        if ($this->container['full_box_name'] === null && !$this->isNullableSetToNull('full_box_name')) {
+            $invalidProperties[] = "'full_box_name' is required";
+        }
+        if ($this->container['domain'] === null && !$this->isNullableSetToNull('domain')) {
+            $invalidProperties[] = "'domain' is required";
+        }
+        if ($this->container['report_email'] === null && !$this->isNullableSetToNull('report_email')) {
+            $invalidProperties[] = "'report_email' is required";
+        }
+        if ($this->container['report_sms'] === null && !$this->isNullableSetToNull('report_sms')) {
+            $invalidProperties[] = "'report_sms' is required";
+        }
+        if ($this->container['password_recovery_email'] === null && !$this->isNullableSetToNull('password_recovery_email')) {
+            $invalidProperties[] = "'password_recovery_email' is required";
+        }
+        if ($this->container['inbox_usage'] === null && !$this->isNullableSetToNull('inbox_usage')) {
+            $invalidProperties[] = "'inbox_usage' is required";
+        }
+        if ($this->container['archive_usage'] === null && !$this->isNullableSetToNull('archive_usage')) {
+            $invalidProperties[] = "'archive_usage' is required";
+        }
+        if ($this->container['extra_inbox'] === null && !$this->isNullableSetToNull('extra_inbox')) {
+            $invalidProperties[] = "'extra_inbox' is required";
+        }
+        if ($this->container['extra_archive'] === null && !$this->isNullableSetToNull('extra_archive')) {
+            $invalidProperties[] = "'extra_archive' is required";
+        }
+        if ($this->container['transfer_in'] === null) {
+            $invalidProperties[] = "'transfer_in' can't be null";
+        }
+        if ($this->container['owner_not_assignable'] === null) {
+            $invalidProperties[] = "'owner_not_assignable' can't be null";
+        }
+        if ($this->container['password_wrong'] === null) {
+            $invalidProperties[] = "'password_wrong' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -404,7 +455,7 @@ class Pec implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets pec_id
      *
-     * @return int|null
+     * @return int
      */
     public function getPecId()
     {
@@ -414,7 +465,7 @@ class Pec implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets pec_id
      *
-     * @param int|null $pec_id pec_id
+     * @param int $pec_id pec_id
      *
      * @return self
      */
@@ -873,7 +924,7 @@ class Pec implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets transfer_in
      *
-     * @return bool|null
+     * @return bool
      */
     public function getTransferIn()
     {
@@ -883,7 +934,7 @@ class Pec implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets transfer_in
      *
-     * @param bool|null $transfer_in transfer_in
+     * @param bool $transfer_in transfer_in
      *
      * @return self
      */
@@ -900,7 +951,7 @@ class Pec implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets owner_not_assignable
      *
-     * @return bool|null
+     * @return bool
      */
     public function getOwnerNotAssignable()
     {
@@ -910,7 +961,7 @@ class Pec implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets owner_not_assignable
      *
-     * @param bool|null $owner_not_assignable owner_not_assignable
+     * @param bool $owner_not_assignable owner_not_assignable
      *
      * @return self
      */
@@ -927,7 +978,7 @@ class Pec implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets password_wrong
      *
-     * @return bool|null
+     * @return bool
      */
     public function getPasswordWrong()
     {
@@ -937,7 +988,7 @@ class Pec implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets password_wrong
      *
-     * @param bool|null $password_wrong password_wrong
+     * @param bool $password_wrong password_wrong
      *
      * @return self
      */

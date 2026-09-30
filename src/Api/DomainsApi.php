@@ -204,7 +204,7 @@ class DomainsApi
      *
      * @throws \Shellrent\Sdk\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Shellrent\Sdk\Model\TaskResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError
+     * @return \Shellrent\Sdk\Model\TaskResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError
      */
     public function activateDomainDnssec($domain_id, string $contentType = self::contentTypes['activateDomainDnssec'][0])
     {
@@ -222,7 +222,7 @@ class DomainsApi
      *
      * @throws \Shellrent\Sdk\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Shellrent\Sdk\Model\TaskResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Shellrent\Sdk\Model\TaskResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError, HTTP status code, HTTP response headers (array of strings)
      */
     public function activateDomainDnssecWithHttpInfo($domain_id, string $contentType = self::contentTypes['activateDomainDnssec'][0])
     {
@@ -277,6 +277,12 @@ class DomainsApi
                         $response,
                     );
                 case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $request,
+                        $response,
+                    );
+                case 429:
                     return $this->handleResponseWithDataType(
                         '\Shellrent\Sdk\Model\ApiError',
                         $request,
@@ -339,6 +345,14 @@ class DomainsApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\Shellrent\Sdk\Model\ApiError',
@@ -536,7 +550,7 @@ class DomainsApi
      *
      * @throws \Shellrent\Sdk\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Shellrent\Sdk\Model\EmptyResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError
+     * @return \Shellrent\Sdk\Model\EmptyResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError
      */
     public function applyDomainContactChanges($domain_id, string $contentType = self::contentTypes['applyDomainContactChanges'][0])
     {
@@ -554,7 +568,7 @@ class DomainsApi
      *
      * @throws \Shellrent\Sdk\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Shellrent\Sdk\Model\EmptyResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Shellrent\Sdk\Model\EmptyResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError, HTTP status code, HTTP response headers (array of strings)
      */
     public function applyDomainContactChangesWithHttpInfo($domain_id, string $contentType = self::contentTypes['applyDomainContactChanges'][0])
     {
@@ -609,6 +623,12 @@ class DomainsApi
                         $response,
                     );
                 case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $request,
+                        $response,
+                    );
+                case 429:
                     return $this->handleResponseWithDataType(
                         '\Shellrent\Sdk\Model\ApiError',
                         $request,
@@ -671,6 +691,14 @@ class DomainsApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\Shellrent\Sdk\Model\ApiError',
@@ -868,7 +896,7 @@ class DomainsApi
      *
      * @throws \Shellrent\Sdk\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Shellrent\Sdk\Model\DomainDnssecCanActivateResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError
+     * @return \Shellrent\Sdk\Model\DomainDnssecCanActivateResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError
      */
     public function canActivateDomainDnssec($domain_id, string $contentType = self::contentTypes['canActivateDomainDnssec'][0])
     {
@@ -886,7 +914,7 @@ class DomainsApi
      *
      * @throws \Shellrent\Sdk\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Shellrent\Sdk\Model\DomainDnssecCanActivateResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Shellrent\Sdk\Model\DomainDnssecCanActivateResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError, HTTP status code, HTTP response headers (array of strings)
      */
     public function canActivateDomainDnssecWithHttpInfo($domain_id, string $contentType = self::contentTypes['canActivateDomainDnssec'][0])
     {
@@ -941,6 +969,12 @@ class DomainsApi
                         $response,
                     );
                 case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $request,
+                        $response,
+                    );
+                case 429:
                     return $this->handleResponseWithDataType(
                         '\Shellrent\Sdk\Model\ApiError',
                         $request,
@@ -1003,6 +1037,14 @@ class DomainsApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\Shellrent\Sdk\Model\ApiError',
@@ -1200,7 +1242,7 @@ class DomainsApi
      *
      * @throws \Shellrent\Sdk\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Shellrent\Sdk\Model\DomainCanChangeNameserversResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError
+     * @return \Shellrent\Sdk\Model\DomainCanChangeNameserversResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError
      */
     public function canChangeDomainNameservers($domain_id, string $contentType = self::contentTypes['canChangeDomainNameservers'][0])
     {
@@ -1218,7 +1260,7 @@ class DomainsApi
      *
      * @throws \Shellrent\Sdk\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Shellrent\Sdk\Model\DomainCanChangeNameserversResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Shellrent\Sdk\Model\DomainCanChangeNameserversResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError, HTTP status code, HTTP response headers (array of strings)
      */
     public function canChangeDomainNameserversWithHttpInfo($domain_id, string $contentType = self::contentTypes['canChangeDomainNameservers'][0])
     {
@@ -1273,6 +1315,12 @@ class DomainsApi
                         $response,
                     );
                 case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $request,
+                        $response,
+                    );
+                case 429:
                     return $this->handleResponseWithDataType(
                         '\Shellrent\Sdk\Model\ApiError',
                         $request,
@@ -1335,6 +1383,14 @@ class DomainsApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\Shellrent\Sdk\Model\ApiError',
@@ -1532,7 +1588,7 @@ class DomainsApi
      *
      * @throws \Shellrent\Sdk\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Shellrent\Sdk\Model\DomainDnssecCanDeactivateResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError
+     * @return \Shellrent\Sdk\Model\DomainDnssecCanDeactivateResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError
      */
     public function canDeactivateDomainDnssec($domain_id, string $contentType = self::contentTypes['canDeactivateDomainDnssec'][0])
     {
@@ -1550,7 +1606,7 @@ class DomainsApi
      *
      * @throws \Shellrent\Sdk\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Shellrent\Sdk\Model\DomainDnssecCanDeactivateResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Shellrent\Sdk\Model\DomainDnssecCanDeactivateResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError, HTTP status code, HTTP response headers (array of strings)
      */
     public function canDeactivateDomainDnssecWithHttpInfo($domain_id, string $contentType = self::contentTypes['canDeactivateDomainDnssec'][0])
     {
@@ -1605,6 +1661,12 @@ class DomainsApi
                         $response,
                     );
                 case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $request,
+                        $response,
+                    );
+                case 429:
                     return $this->handleResponseWithDataType(
                         '\Shellrent\Sdk\Model\ApiError',
                         $request,
@@ -1667,6 +1729,14 @@ class DomainsApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\Shellrent\Sdk\Model\ApiError',
@@ -1864,7 +1934,7 @@ class DomainsApi
      *
      * @throws \Shellrent\Sdk\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Shellrent\Sdk\Model\DomainAvailabilityResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError
+     * @return \Shellrent\Sdk\Model\DomainAvailabilityResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError
      */
     public function checkDomainAvailability($domain_full_name = null, string $contentType = self::contentTypes['checkDomainAvailability'][0])
     {
@@ -1882,7 +1952,7 @@ class DomainsApi
      *
      * @throws \Shellrent\Sdk\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Shellrent\Sdk\Model\DomainAvailabilityResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Shellrent\Sdk\Model\DomainAvailabilityResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError, HTTP status code, HTTP response headers (array of strings)
      */
     public function checkDomainAvailabilityWithHttpInfo($domain_full_name = null, string $contentType = self::contentTypes['checkDomainAvailability'][0])
     {
@@ -1937,6 +2007,12 @@ class DomainsApi
                         $response,
                     );
                 case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $request,
+                        $response,
+                    );
+                case 429:
                     return $this->handleResponseWithDataType(
                         '\Shellrent\Sdk\Model\ApiError',
                         $request,
@@ -1999,6 +2075,14 @@ class DomainsApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\Shellrent\Sdk\Model\ApiError',
@@ -2192,7 +2276,7 @@ class DomainsApi
      *
      * @throws \Shellrent\Sdk\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Shellrent\Sdk\Model\DnsRecordResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError
+     * @return \Shellrent\Sdk\Model\DnsRecordResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError
      */
     public function createDomainDnsRecord($domain_id, $domain_dns_record_request, string $contentType = self::contentTypes['createDomainDnsRecord'][0])
     {
@@ -2211,7 +2295,7 @@ class DomainsApi
      *
      * @throws \Shellrent\Sdk\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Shellrent\Sdk\Model\DnsRecordResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Shellrent\Sdk\Model\DnsRecordResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError, HTTP status code, HTTP response headers (array of strings)
      */
     public function createDomainDnsRecordWithHttpInfo($domain_id, $domain_dns_record_request, string $contentType = self::contentTypes['createDomainDnsRecord'][0])
     {
@@ -2266,6 +2350,12 @@ class DomainsApi
                         $response,
                     );
                 case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $request,
+                        $response,
+                    );
+                case 429:
                     return $this->handleResponseWithDataType(
                         '\Shellrent\Sdk\Model\ApiError',
                         $request,
@@ -2328,6 +2418,14 @@ class DomainsApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\Shellrent\Sdk\Model\ApiError',
@@ -2546,7 +2644,7 @@ class DomainsApi
      *
      * @throws \Shellrent\Sdk\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Shellrent\Sdk\Model\TaskResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError
+     * @return \Shellrent\Sdk\Model\TaskResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError
      */
     public function deactivateDomainDnssec($domain_id, string $contentType = self::contentTypes['deactivateDomainDnssec'][0])
     {
@@ -2564,7 +2662,7 @@ class DomainsApi
      *
      * @throws \Shellrent\Sdk\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Shellrent\Sdk\Model\TaskResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Shellrent\Sdk\Model\TaskResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError, HTTP status code, HTTP response headers (array of strings)
      */
     public function deactivateDomainDnssecWithHttpInfo($domain_id, string $contentType = self::contentTypes['deactivateDomainDnssec'][0])
     {
@@ -2619,6 +2717,12 @@ class DomainsApi
                         $response,
                     );
                 case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $request,
+                        $response,
+                    );
+                case 429:
                     return $this->handleResponseWithDataType(
                         '\Shellrent\Sdk\Model\ApiError',
                         $request,
@@ -2681,6 +2785,14 @@ class DomainsApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\Shellrent\Sdk\Model\ApiError',
@@ -2879,7 +2991,7 @@ class DomainsApi
      *
      * @throws \Shellrent\Sdk\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Shellrent\Sdk\Model\EmptyResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError
+     * @return \Shellrent\Sdk\Model\EmptyResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError
      */
     public function deleteDomainDnsRecord($domain_id, $record_id, string $contentType = self::contentTypes['deleteDomainDnsRecord'][0])
     {
@@ -2898,7 +3010,7 @@ class DomainsApi
      *
      * @throws \Shellrent\Sdk\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Shellrent\Sdk\Model\EmptyResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Shellrent\Sdk\Model\EmptyResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError, HTTP status code, HTTP response headers (array of strings)
      */
     public function deleteDomainDnsRecordWithHttpInfo($domain_id, $record_id, string $contentType = self::contentTypes['deleteDomainDnsRecord'][0])
     {
@@ -2953,6 +3065,12 @@ class DomainsApi
                         $response,
                     );
                 case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $request,
+                        $response,
+                    );
+                case 429:
                     return $this->handleResponseWithDataType(
                         '\Shellrent\Sdk\Model\ApiError',
                         $request,
@@ -3015,6 +3133,14 @@ class DomainsApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\Shellrent\Sdk\Model\ApiError',
@@ -3230,7 +3356,7 @@ class DomainsApi
      *
      * @throws \Shellrent\Sdk\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Shellrent\Sdk\Model\DomainResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError
+     * @return \Shellrent\Sdk\Model\DomainResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError
      */
     public function getDomain($domain_id, string $contentType = self::contentTypes['getDomain'][0])
     {
@@ -3248,7 +3374,7 @@ class DomainsApi
      *
      * @throws \Shellrent\Sdk\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Shellrent\Sdk\Model\DomainResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Shellrent\Sdk\Model\DomainResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError, HTTP status code, HTTP response headers (array of strings)
      */
     public function getDomainWithHttpInfo($domain_id, string $contentType = self::contentTypes['getDomain'][0])
     {
@@ -3303,6 +3429,12 @@ class DomainsApi
                         $response,
                     );
                 case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $request,
+                        $response,
+                    );
+                case 429:
                     return $this->handleResponseWithDataType(
                         '\Shellrent\Sdk\Model\ApiError',
                         $request,
@@ -3365,6 +3497,14 @@ class DomainsApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\Shellrent\Sdk\Model\ApiError',
@@ -3563,7 +3703,7 @@ class DomainsApi
      *
      * @throws \Shellrent\Sdk\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Shellrent\Sdk\Model\DomainContactResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError
+     * @return \Shellrent\Sdk\Model\DomainContactResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError
      */
     public function getDomainContact($domain_id, $domain_contact_id, string $contentType = self::contentTypes['getDomainContact'][0])
     {
@@ -3582,7 +3722,7 @@ class DomainsApi
      *
      * @throws \Shellrent\Sdk\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Shellrent\Sdk\Model\DomainContactResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Shellrent\Sdk\Model\DomainContactResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError, HTTP status code, HTTP response headers (array of strings)
      */
     public function getDomainContactWithHttpInfo($domain_id, $domain_contact_id, string $contentType = self::contentTypes['getDomainContact'][0])
     {
@@ -3637,6 +3777,12 @@ class DomainsApi
                         $response,
                     );
                 case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $request,
+                        $response,
+                    );
+                case 429:
                     return $this->handleResponseWithDataType(
                         '\Shellrent\Sdk\Model\ApiError',
                         $request,
@@ -3699,6 +3845,14 @@ class DomainsApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\Shellrent\Sdk\Model\ApiError',
@@ -3915,7 +4069,7 @@ class DomainsApi
      *
      * @throws \Shellrent\Sdk\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Shellrent\Sdk\Model\DnsRecordResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError
+     * @return \Shellrent\Sdk\Model\DnsRecordResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError
      */
     public function getDomainDnsRecord($domain_id, $record_id, string $contentType = self::contentTypes['getDomainDnsRecord'][0])
     {
@@ -3934,7 +4088,7 @@ class DomainsApi
      *
      * @throws \Shellrent\Sdk\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Shellrent\Sdk\Model\DnsRecordResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Shellrent\Sdk\Model\DnsRecordResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError, HTTP status code, HTTP response headers (array of strings)
      */
     public function getDomainDnsRecordWithHttpInfo($domain_id, $record_id, string $contentType = self::contentTypes['getDomainDnsRecord'][0])
     {
@@ -3989,6 +4143,12 @@ class DomainsApi
                         $response,
                     );
                 case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $request,
+                        $response,
+                    );
+                case 429:
                     return $this->handleResponseWithDataType(
                         '\Shellrent\Sdk\Model\ApiError',
                         $request,
@@ -4051,6 +4211,14 @@ class DomainsApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\Shellrent\Sdk\Model\ApiError',
@@ -4266,7 +4434,7 @@ class DomainsApi
      *
      * @throws \Shellrent\Sdk\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Shellrent\Sdk\Model\DnsZoneResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError
+     * @return \Shellrent\Sdk\Model\DnsZoneResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError
      */
     public function getDomainDnsZone($domain_id, string $contentType = self::contentTypes['getDomainDnsZone'][0])
     {
@@ -4284,7 +4452,7 @@ class DomainsApi
      *
      * @throws \Shellrent\Sdk\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Shellrent\Sdk\Model\DnsZoneResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Shellrent\Sdk\Model\DnsZoneResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError, HTTP status code, HTTP response headers (array of strings)
      */
     public function getDomainDnsZoneWithHttpInfo($domain_id, string $contentType = self::contentTypes['getDomainDnsZone'][0])
     {
@@ -4339,6 +4507,12 @@ class DomainsApi
                         $response,
                     );
                 case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $request,
+                        $response,
+                    );
+                case 429:
                     return $this->handleResponseWithDataType(
                         '\Shellrent\Sdk\Model\ApiError',
                         $request,
@@ -4401,6 +4575,14 @@ class DomainsApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\Shellrent\Sdk\Model\ApiError',
@@ -4598,7 +4780,7 @@ class DomainsApi
      *
      * @throws \Shellrent\Sdk\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Shellrent\Sdk\Model\DomainDnssecResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError
+     * @return \Shellrent\Sdk\Model\DomainDnssecResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError
      */
     public function getDomainDnssec($domain_id, string $contentType = self::contentTypes['getDomainDnssec'][0])
     {
@@ -4616,7 +4798,7 @@ class DomainsApi
      *
      * @throws \Shellrent\Sdk\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Shellrent\Sdk\Model\DomainDnssecResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Shellrent\Sdk\Model\DomainDnssecResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError, HTTP status code, HTTP response headers (array of strings)
      */
     public function getDomainDnssecWithHttpInfo($domain_id, string $contentType = self::contentTypes['getDomainDnssec'][0])
     {
@@ -4671,6 +4853,12 @@ class DomainsApi
                         $response,
                     );
                 case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $request,
+                        $response,
+                    );
+                case 429:
                     return $this->handleResponseWithDataType(
                         '\Shellrent\Sdk\Model\ApiError',
                         $request,
@@ -4733,6 +4921,14 @@ class DomainsApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\Shellrent\Sdk\Model\ApiError',
@@ -4930,7 +5126,7 @@ class DomainsApi
      *
      * @throws \Shellrent\Sdk\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Shellrent\Sdk\Model\DomainContactListResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError
+     * @return \Shellrent\Sdk\Model\DomainContactListResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError
      */
     public function listDomainContacts($domain_id, string $contentType = self::contentTypes['listDomainContacts'][0])
     {
@@ -4948,7 +5144,7 @@ class DomainsApi
      *
      * @throws \Shellrent\Sdk\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Shellrent\Sdk\Model\DomainContactListResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Shellrent\Sdk\Model\DomainContactListResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError, HTTP status code, HTTP response headers (array of strings)
      */
     public function listDomainContactsWithHttpInfo($domain_id, string $contentType = self::contentTypes['listDomainContacts'][0])
     {
@@ -5003,6 +5199,12 @@ class DomainsApi
                         $response,
                     );
                 case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $request,
+                        $response,
+                    );
+                case 429:
                     return $this->handleResponseWithDataType(
                         '\Shellrent\Sdk\Model\ApiError',
                         $request,
@@ -5065,6 +5267,14 @@ class DomainsApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\Shellrent\Sdk\Model\ApiError',
@@ -5267,7 +5477,7 @@ class DomainsApi
      *
      * @throws \Shellrent\Sdk\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Shellrent\Sdk\Model\DnsRecordPaginatedListResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError
+     * @return \Shellrent\Sdk\Model\DnsRecordPaginatedListResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError
      */
     public function listDomainDnsRecords($domain_id, $type = null, $host = null, $destination = null, $page = 1, $per_page = 20, string $contentType = self::contentTypes['listDomainDnsRecords'][0])
     {
@@ -5290,7 +5500,7 @@ class DomainsApi
      *
      * @throws \Shellrent\Sdk\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Shellrent\Sdk\Model\DnsRecordPaginatedListResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Shellrent\Sdk\Model\DnsRecordPaginatedListResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError, HTTP status code, HTTP response headers (array of strings)
      */
     public function listDomainDnsRecordsWithHttpInfo($domain_id, $type = null, $host = null, $destination = null, $page = 1, $per_page = 20, string $contentType = self::contentTypes['listDomainDnsRecords'][0])
     {
@@ -5345,6 +5555,12 @@ class DomainsApi
                         $response,
                     );
                 case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $request,
+                        $response,
+                    );
+                case 429:
                     return $this->handleResponseWithDataType(
                         '\Shellrent\Sdk\Model\ApiError',
                         $request,
@@ -5407,6 +5623,14 @@ class DomainsApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\Shellrent\Sdk\Model\ApiError',
@@ -5674,7 +5898,7 @@ class DomainsApi
      *
      * @throws \Shellrent\Sdk\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Shellrent\Sdk\Model\DomainPaginatedListResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError
+     * @return \Shellrent\Sdk\Model\DomainPaginatedListResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError
      */
     public function listDomains($domain_full_name = null, $domain_name = null, $tld_id = null, $tld_extension = null, $page = 1, $per_page = 20, string $contentType = self::contentTypes['listDomains'][0])
     {
@@ -5697,7 +5921,7 @@ class DomainsApi
      *
      * @throws \Shellrent\Sdk\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Shellrent\Sdk\Model\DomainPaginatedListResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Shellrent\Sdk\Model\DomainPaginatedListResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError, HTTP status code, HTTP response headers (array of strings)
      */
     public function listDomainsWithHttpInfo($domain_full_name = null, $domain_name = null, $tld_id = null, $tld_extension = null, $page = 1, $per_page = 20, string $contentType = self::contentTypes['listDomains'][0])
     {
@@ -5752,6 +5976,12 @@ class DomainsApi
                         $response,
                     );
                 case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $request,
+                        $response,
+                    );
+                case 429:
                     return $this->handleResponseWithDataType(
                         '\Shellrent\Sdk\Model\ApiError',
                         $request,
@@ -5814,6 +6044,14 @@ class DomainsApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\Shellrent\Sdk\Model\ApiError',
@@ -6072,7 +6310,7 @@ class DomainsApi
      *
      * @throws \Shellrent\Sdk\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Shellrent\Sdk\Model\TaskResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError
+     * @return \Shellrent\Sdk\Model\TaskResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError
      */
     public function setDomainCloudflareNameservers($domain_id, $domain_dns_nameservers_cloudflare_request, string $contentType = self::contentTypes['setDomainCloudflareNameservers'][0])
     {
@@ -6091,7 +6329,7 @@ class DomainsApi
      *
      * @throws \Shellrent\Sdk\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Shellrent\Sdk\Model\TaskResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Shellrent\Sdk\Model\TaskResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError, HTTP status code, HTTP response headers (array of strings)
      */
     public function setDomainCloudflareNameserversWithHttpInfo($domain_id, $domain_dns_nameservers_cloudflare_request, string $contentType = self::contentTypes['setDomainCloudflareNameservers'][0])
     {
@@ -6146,6 +6384,12 @@ class DomainsApi
                         $response,
                     );
                 case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $request,
+                        $response,
+                    );
+                case 429:
                     return $this->handleResponseWithDataType(
                         '\Shellrent\Sdk\Model\ApiError',
                         $request,
@@ -6208,6 +6452,14 @@ class DomainsApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\Shellrent\Sdk\Model\ApiError',
@@ -6427,7 +6679,7 @@ class DomainsApi
      *
      * @throws \Shellrent\Sdk\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Shellrent\Sdk\Model\TaskResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError
+     * @return \Shellrent\Sdk\Model\TaskResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError
      */
     public function setDomainExternalNameservers($domain_id, $domain_dns_nameservers_change_request, string $contentType = self::contentTypes['setDomainExternalNameservers'][0])
     {
@@ -6446,7 +6698,7 @@ class DomainsApi
      *
      * @throws \Shellrent\Sdk\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Shellrent\Sdk\Model\TaskResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Shellrent\Sdk\Model\TaskResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError, HTTP status code, HTTP response headers (array of strings)
      */
     public function setDomainExternalNameserversWithHttpInfo($domain_id, $domain_dns_nameservers_change_request, string $contentType = self::contentTypes['setDomainExternalNameservers'][0])
     {
@@ -6501,6 +6753,12 @@ class DomainsApi
                         $response,
                     );
                 case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $request,
+                        $response,
+                    );
+                case 429:
                     return $this->handleResponseWithDataType(
                         '\Shellrent\Sdk\Model\ApiError',
                         $request,
@@ -6563,6 +6821,14 @@ class DomainsApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\Shellrent\Sdk\Model\ApiError',
@@ -6781,7 +7047,7 @@ class DomainsApi
      *
      * @throws \Shellrent\Sdk\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Shellrent\Sdk\Model\TaskResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError
+     * @return \Shellrent\Sdk\Model\TaskResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError
      */
     public function setDomainStandardNameservers($domain_id, string $contentType = self::contentTypes['setDomainStandardNameservers'][0])
     {
@@ -6799,7 +7065,7 @@ class DomainsApi
      *
      * @throws \Shellrent\Sdk\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Shellrent\Sdk\Model\TaskResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Shellrent\Sdk\Model\TaskResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError, HTTP status code, HTTP response headers (array of strings)
      */
     public function setDomainStandardNameserversWithHttpInfo($domain_id, string $contentType = self::contentTypes['setDomainStandardNameservers'][0])
     {
@@ -6854,6 +7120,12 @@ class DomainsApi
                         $response,
                     );
                 case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $request,
+                        $response,
+                    );
+                case 429:
                     return $this->handleResponseWithDataType(
                         '\Shellrent\Sdk\Model\ApiError',
                         $request,
@@ -6916,6 +7188,14 @@ class DomainsApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\Shellrent\Sdk\Model\ApiError',
@@ -7115,7 +7395,7 @@ class DomainsApi
      *
      * @throws \Shellrent\Sdk\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Shellrent\Sdk\Model\DomainContactResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError
+     * @return \Shellrent\Sdk\Model\DomainContactResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError
      */
     public function updateDomainContact($domain_id, $domain_contact_id, $domain_contact_request, string $contentType = self::contentTypes['updateDomainContact'][0])
     {
@@ -7135,7 +7415,7 @@ class DomainsApi
      *
      * @throws \Shellrent\Sdk\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Shellrent\Sdk\Model\DomainContactResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Shellrent\Sdk\Model\DomainContactResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError, HTTP status code, HTTP response headers (array of strings)
      */
     public function updateDomainContactWithHttpInfo($domain_id, $domain_contact_id, $domain_contact_request, string $contentType = self::contentTypes['updateDomainContact'][0])
     {
@@ -7190,6 +7470,12 @@ class DomainsApi
                         $response,
                     );
                 case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $request,
+                        $response,
+                    );
+                case 429:
                     return $this->handleResponseWithDataType(
                         '\Shellrent\Sdk\Model\ApiError',
                         $request,
@@ -7252,6 +7538,14 @@ class DomainsApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\Shellrent\Sdk\Model\ApiError',
@@ -7490,7 +7784,7 @@ class DomainsApi
      *
      * @throws \Shellrent\Sdk\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Shellrent\Sdk\Model\DnsRecordResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError
+     * @return \Shellrent\Sdk\Model\DnsRecordResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError
      */
     public function updateDomainDnsRecord($domain_id, $record_id, $domain_dns_record_change_request, string $contentType = self::contentTypes['updateDomainDnsRecord'][0])
     {
@@ -7510,7 +7804,7 @@ class DomainsApi
      *
      * @throws \Shellrent\Sdk\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Shellrent\Sdk\Model\DnsRecordResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Shellrent\Sdk\Model\DnsRecordResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError, HTTP status code, HTTP response headers (array of strings)
      */
     public function updateDomainDnsRecordWithHttpInfo($domain_id, $record_id, $domain_dns_record_change_request, string $contentType = self::contentTypes['updateDomainDnsRecord'][0])
     {
@@ -7565,6 +7859,12 @@ class DomainsApi
                         $response,
                     );
                 case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $request,
+                        $response,
+                    );
+                case 429:
                     return $this->handleResponseWithDataType(
                         '\Shellrent\Sdk\Model\ApiError',
                         $request,
@@ -7627,6 +7927,14 @@ class DomainsApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\Shellrent\Sdk\Model\ApiError',
@@ -7864,7 +8172,7 @@ class DomainsApi
      *
      * @throws \Shellrent\Sdk\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Shellrent\Sdk\Model\DnsZoneResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError
+     * @return \Shellrent\Sdk\Model\DnsZoneResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError
      */
     public function updateDomainDnsZone($domain_id, $domain_dns_zone_request, string $contentType = self::contentTypes['updateDomainDnsZone'][0])
     {
@@ -7883,7 +8191,7 @@ class DomainsApi
      *
      * @throws \Shellrent\Sdk\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Shellrent\Sdk\Model\DnsZoneResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Shellrent\Sdk\Model\DnsZoneResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError, HTTP status code, HTTP response headers (array of strings)
      */
     public function updateDomainDnsZoneWithHttpInfo($domain_id, $domain_dns_zone_request, string $contentType = self::contentTypes['updateDomainDnsZone'][0])
     {
@@ -7938,6 +8246,12 @@ class DomainsApi
                         $response,
                     );
                 case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $request,
+                        $response,
+                    );
+                case 429:
                     return $this->handleResponseWithDataType(
                         '\Shellrent\Sdk\Model\ApiError',
                         $request,
@@ -8000,6 +8314,14 @@ class DomainsApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\Shellrent\Sdk\Model\ApiError',
@@ -8219,7 +8541,7 @@ class DomainsApi
      *
      * @throws \Shellrent\Sdk\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Shellrent\Sdk\Model\TaskResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError
+     * @return \Shellrent\Sdk\Model\TaskResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError
      */
     public function updateDomainDnssec($domain_id, $domain_dnssec_request, string $contentType = self::contentTypes['updateDomainDnssec'][0])
     {
@@ -8238,7 +8560,7 @@ class DomainsApi
      *
      * @throws \Shellrent\Sdk\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Shellrent\Sdk\Model\TaskResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Shellrent\Sdk\Model\TaskResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError, HTTP status code, HTTP response headers (array of strings)
      */
     public function updateDomainDnssecWithHttpInfo($domain_id, $domain_dnssec_request, string $contentType = self::contentTypes['updateDomainDnssec'][0])
     {
@@ -8293,6 +8615,12 @@ class DomainsApi
                         $response,
                     );
                 case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $request,
+                        $response,
+                    );
+                case 429:
                     return $this->handleResponseWithDataType(
                         '\Shellrent\Sdk\Model\ApiError',
                         $request,
@@ -8355,6 +8683,14 @@ class DomainsApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\Shellrent\Sdk\Model\ApiError',

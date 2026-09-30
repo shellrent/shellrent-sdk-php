@@ -27,8 +27,6 @@
  */
 
 namespace Shellrent\Sdk\Model;
-
-use \ArrayAccess;
 use \Shellrent\Sdk\ObjectSerializer;
 
 /**
@@ -40,7 +38,7 @@ use \Shellrent\Sdk\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class ServiceServer implements ModelInterface, ArrayAccess, \JsonSerializable
+class ServiceServer extends Service
 {
     public const DISCRIMINATOR = null;
 
@@ -57,25 +55,6 @@ class ServiceServer implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $openAPITypes = [
-        'service_id' => 'int',
-        'service_category' => '\Shellrent\Sdk\Model\ServiceCategory',
-        'service_name' => 'string',
-        'recurrence' => '\Shellrent\Sdk\Model\Recurrence',
-        'recurrences_available' => '\Shellrent\Sdk\Model\Recurrence[]',
-        'tld_id' => 'int',
-        'service_code' => 'string',
-        'service_url' => 'string',
-        'activation_price' => '\Shellrent\Sdk\Model\Amount',
-        'renew_price' => '\Shellrent\Sdk\Model\Amount',
-        'restore_price' => '\Shellrent\Sdk\Model\Amount',
-        'transfer_price' => '\Shellrent\Sdk\Model\Amount',
-        'is_primary' => 'bool',
-        'is_secondary' => 'bool',
-        'is_presale' => 'bool',
-        'is_aftersale' => 'bool',
-        'is_quantifiable' => 'bool',
-        'quantity_min' => 'int',
-        'quantity_max' => 'int',
         'templates' => '\Shellrent\Sdk\Model\ServerTemplate[]'
     ];
 
@@ -87,25 +66,6 @@ class ServiceServer implements ModelInterface, ArrayAccess, \JsonSerializable
      * @psalm-var array<string, string|null>
      */
     protected static $openAPIFormats = [
-        'service_id' => null,
-        'service_category' => null,
-        'service_name' => null,
-        'recurrence' => null,
-        'recurrences_available' => null,
-        'tld_id' => null,
-        'service_code' => null,
-        'service_url' => null,
-        'activation_price' => null,
-        'renew_price' => null,
-        'restore_price' => null,
-        'transfer_price' => null,
-        'is_primary' => null,
-        'is_secondary' => null,
-        'is_presale' => null,
-        'is_aftersale' => null,
-        'is_quantifiable' => null,
-        'quantity_min' => null,
-        'quantity_max' => null,
         'templates' => null
     ];
 
@@ -115,25 +75,6 @@ class ServiceServer implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var boolean[]
      */
     protected static array $openAPINullables = [
-        'service_id' => false,
-        'service_category' => false,
-        'service_name' => false,
-        'recurrence' => false,
-        'recurrences_available' => false,
-        'tld_id' => true,
-        'service_code' => false,
-        'service_url' => false,
-        'activation_price' => false,
-        'renew_price' => true,
-        'restore_price' => true,
-        'transfer_price' => true,
-        'is_primary' => true,
-        'is_secondary' => true,
-        'is_presale' => true,
-        'is_aftersale' => true,
-        'is_quantifiable' => true,
-        'quantity_min' => true,
-        'quantity_max' => true,
         'templates' => false
     ];
 
@@ -151,7 +92,7 @@ class ServiceServer implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public static function openAPITypes()
     {
-        return self::$openAPITypes;
+        return self::$openAPITypes + parent::openAPITypes();
     }
 
     /**
@@ -161,7 +102,7 @@ class ServiceServer implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public static function openAPIFormats()
     {
-        return self::$openAPIFormats;
+        return self::$openAPIFormats + parent::openAPIFormats();
     }
 
     /**
@@ -171,7 +112,7 @@ class ServiceServer implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static function openAPINullables(): array
     {
-        return self::$openAPINullables;
+        return self::$openAPINullables + parent::openAPINullables();
     }
 
     /**
@@ -223,25 +164,6 @@ class ServiceServer implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'service_id' => 'service_id',
-        'service_category' => 'service_category',
-        'service_name' => 'service_name',
-        'recurrence' => 'recurrence',
-        'recurrences_available' => 'recurrences_available',
-        'tld_id' => 'tld_id',
-        'service_code' => 'service_code',
-        'service_url' => 'service_url',
-        'activation_price' => 'activation_price',
-        'renew_price' => 'renew_price',
-        'restore_price' => 'restore_price',
-        'transfer_price' => 'transfer_price',
-        'is_primary' => 'is_primary',
-        'is_secondary' => 'is_secondary',
-        'is_presale' => 'is_presale',
-        'is_aftersale' => 'is_aftersale',
-        'is_quantifiable' => 'is_quantifiable',
-        'quantity_min' => 'quantity_min',
-        'quantity_max' => 'quantity_max',
         'templates' => 'templates'
     ];
 
@@ -251,25 +173,6 @@ class ServiceServer implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'service_id' => 'setServiceId',
-        'service_category' => 'setServiceCategory',
-        'service_name' => 'setServiceName',
-        'recurrence' => 'setRecurrence',
-        'recurrences_available' => 'setRecurrencesAvailable',
-        'tld_id' => 'setTldId',
-        'service_code' => 'setServiceCode',
-        'service_url' => 'setServiceUrl',
-        'activation_price' => 'setActivationPrice',
-        'renew_price' => 'setRenewPrice',
-        'restore_price' => 'setRestorePrice',
-        'transfer_price' => 'setTransferPrice',
-        'is_primary' => 'setIsPrimary',
-        'is_secondary' => 'setIsSecondary',
-        'is_presale' => 'setIsPresale',
-        'is_aftersale' => 'setIsAftersale',
-        'is_quantifiable' => 'setIsQuantifiable',
-        'quantity_min' => 'setQuantityMin',
-        'quantity_max' => 'setQuantityMax',
         'templates' => 'setTemplates'
     ];
 
@@ -279,25 +182,6 @@ class ServiceServer implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'service_id' => 'getServiceId',
-        'service_category' => 'getServiceCategory',
-        'service_name' => 'getServiceName',
-        'recurrence' => 'getRecurrence',
-        'recurrences_available' => 'getRecurrencesAvailable',
-        'tld_id' => 'getTldId',
-        'service_code' => 'getServiceCode',
-        'service_url' => 'getServiceUrl',
-        'activation_price' => 'getActivationPrice',
-        'renew_price' => 'getRenewPrice',
-        'restore_price' => 'getRestorePrice',
-        'transfer_price' => 'getTransferPrice',
-        'is_primary' => 'getIsPrimary',
-        'is_secondary' => 'getIsSecondary',
-        'is_presale' => 'getIsPresale',
-        'is_aftersale' => 'getIsAftersale',
-        'is_quantifiable' => 'getIsQuantifiable',
-        'quantity_min' => 'getQuantityMin',
-        'quantity_max' => 'getQuantityMax',
         'templates' => 'getTemplates'
     ];
 
@@ -309,7 +193,7 @@ class ServiceServer implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public static function attributeMap()
     {
-        return self::$attributeMap;
+        return parent::attributeMap() + self::$attributeMap;
     }
 
     /**
@@ -319,7 +203,7 @@ class ServiceServer implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public static function setters()
     {
-        return self::$setters;
+        return parent::setters() + self::$setters;
     }
 
     /**
@@ -329,7 +213,7 @@ class ServiceServer implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public static function getters()
     {
-        return self::$getters;
+        return parent::getters() + self::$getters;
     }
 
     /**
@@ -343,12 +227,6 @@ class ServiceServer implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
 
-    /**
-     * Associative array for storing property values
-     *
-     * @var mixed[]
-     */
-    protected $container = [];
 
     /**
      * Constructor
@@ -358,25 +236,8 @@ class ServiceServer implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('service_id', $data ?? [], null);
-        $this->setIfExists('service_category', $data ?? [], null);
-        $this->setIfExists('service_name', $data ?? [], null);
-        $this->setIfExists('recurrence', $data ?? [], null);
-        $this->setIfExists('recurrences_available', $data ?? [], null);
-        $this->setIfExists('tld_id', $data ?? [], null);
-        $this->setIfExists('service_code', $data ?? [], null);
-        $this->setIfExists('service_url', $data ?? [], null);
-        $this->setIfExists('activation_price', $data ?? [], null);
-        $this->setIfExists('renew_price', $data ?? [], null);
-        $this->setIfExists('restore_price', $data ?? [], null);
-        $this->setIfExists('transfer_price', $data ?? [], null);
-        $this->setIfExists('is_primary', $data ?? [], null);
-        $this->setIfExists('is_secondary', $data ?? [], null);
-        $this->setIfExists('is_presale', $data ?? [], null);
-        $this->setIfExists('is_aftersale', $data ?? [], null);
-        $this->setIfExists('is_quantifiable', $data ?? [], null);
-        $this->setIfExists('quantity_min', $data ?? [], null);
-        $this->setIfExists('quantity_max', $data ?? [], null);
+        parent::__construct($data);
+
         $this->setIfExists('templates', $data ?? [], null);
     }
 
@@ -405,8 +266,11 @@ class ServiceServer implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function listInvalidProperties()
     {
-        $invalidProperties = [];
+        $invalidProperties = parent::listInvalidProperties();
 
+        if ($this->container['templates'] === null) {
+            $invalidProperties[] = "'templates' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -423,599 +287,9 @@ class ServiceServer implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets service_id
-     *
-     * @return int|null
-     */
-    public function getServiceId()
-    {
-        return $this->container['service_id'];
-    }
-
-    /**
-     * Sets service_id
-     *
-     * @param int|null $service_id service_id
-     *
-     * @return self
-     */
-    public function setServiceId($service_id)
-    {
-        if (is_null($service_id)) {
-            throw new \InvalidArgumentException('non-nullable service_id cannot be null');
-        }
-        $this->container['service_id'] = $service_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets service_category
-     *
-     * @return \Shellrent\Sdk\Model\ServiceCategory|null
-     */
-    public function getServiceCategory()
-    {
-        return $this->container['service_category'];
-    }
-
-    /**
-     * Sets service_category
-     *
-     * @param \Shellrent\Sdk\Model\ServiceCategory|null $service_category service_category
-     *
-     * @return self
-     */
-    public function setServiceCategory($service_category)
-    {
-        if (is_null($service_category)) {
-            throw new \InvalidArgumentException('non-nullable service_category cannot be null');
-        }
-        $this->container['service_category'] = $service_category;
-
-        return $this;
-    }
-
-    /**
-     * Gets service_name
-     *
-     * @return string|null
-     */
-    public function getServiceName()
-    {
-        return $this->container['service_name'];
-    }
-
-    /**
-     * Sets service_name
-     *
-     * @param string|null $service_name service_name
-     *
-     * @return self
-     */
-    public function setServiceName($service_name)
-    {
-        if (is_null($service_name)) {
-            throw new \InvalidArgumentException('non-nullable service_name cannot be null');
-        }
-        $this->container['service_name'] = $service_name;
-
-        return $this;
-    }
-
-    /**
-     * Gets recurrence
-     *
-     * @return \Shellrent\Sdk\Model\Recurrence|null
-     */
-    public function getRecurrence()
-    {
-        return $this->container['recurrence'];
-    }
-
-    /**
-     * Sets recurrence
-     *
-     * @param \Shellrent\Sdk\Model\Recurrence|null $recurrence recurrence
-     *
-     * @return self
-     */
-    public function setRecurrence($recurrence)
-    {
-        if (is_null($recurrence)) {
-            throw new \InvalidArgumentException('non-nullable recurrence cannot be null');
-        }
-        $this->container['recurrence'] = $recurrence;
-
-        return $this;
-    }
-
-    /**
-     * Gets recurrences_available
-     *
-     * @return \Shellrent\Sdk\Model\Recurrence[]|null
-     */
-    public function getRecurrencesAvailable()
-    {
-        return $this->container['recurrences_available'];
-    }
-
-    /**
-     * Sets recurrences_available
-     *
-     * @param \Shellrent\Sdk\Model\Recurrence[]|null $recurrences_available recurrences_available
-     *
-     * @return self
-     */
-    public function setRecurrencesAvailable($recurrences_available)
-    {
-        if (is_null($recurrences_available)) {
-            throw new \InvalidArgumentException('non-nullable recurrences_available cannot be null');
-        }
-        $this->container['recurrences_available'] = $recurrences_available;
-
-        return $this;
-    }
-
-    /**
-     * Gets tld_id
-     *
-     * @return int|null
-     */
-    public function getTldId()
-    {
-        return $this->container['tld_id'];
-    }
-
-    /**
-     * Sets tld_id
-     *
-     * @param int|null $tld_id tld_id
-     *
-     * @return self
-     */
-    public function setTldId($tld_id)
-    {
-        if (is_null($tld_id)) {
-            array_push($this->openAPINullablesSetToNull, 'tld_id');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('tld_id', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['tld_id'] = $tld_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets service_code
-     *
-     * @return string|null
-     */
-    public function getServiceCode()
-    {
-        return $this->container['service_code'];
-    }
-
-    /**
-     * Sets service_code
-     *
-     * @param string|null $service_code service_code
-     *
-     * @return self
-     */
-    public function setServiceCode($service_code)
-    {
-        if (is_null($service_code)) {
-            throw new \InvalidArgumentException('non-nullable service_code cannot be null');
-        }
-        $this->container['service_code'] = $service_code;
-
-        return $this;
-    }
-
-    /**
-     * Gets service_url
-     *
-     * @return string|null
-     */
-    public function getServiceUrl()
-    {
-        return $this->container['service_url'];
-    }
-
-    /**
-     * Sets service_url
-     *
-     * @param string|null $service_url service_url
-     *
-     * @return self
-     */
-    public function setServiceUrl($service_url)
-    {
-        if (is_null($service_url)) {
-            throw new \InvalidArgumentException('non-nullable service_url cannot be null');
-        }
-        $this->container['service_url'] = $service_url;
-
-        return $this;
-    }
-
-    /**
-     * Gets activation_price
-     *
-     * @return \Shellrent\Sdk\Model\Amount|null
-     */
-    public function getActivationPrice()
-    {
-        return $this->container['activation_price'];
-    }
-
-    /**
-     * Sets activation_price
-     *
-     * @param \Shellrent\Sdk\Model\Amount|null $activation_price activation_price
-     *
-     * @return self
-     */
-    public function setActivationPrice($activation_price)
-    {
-        if (is_null($activation_price)) {
-            throw new \InvalidArgumentException('non-nullable activation_price cannot be null');
-        }
-        $this->container['activation_price'] = $activation_price;
-
-        return $this;
-    }
-
-    /**
-     * Gets renew_price
-     *
-     * @return \Shellrent\Sdk\Model\Amount|null
-     */
-    public function getRenewPrice()
-    {
-        return $this->container['renew_price'];
-    }
-
-    /**
-     * Sets renew_price
-     *
-     * @param \Shellrent\Sdk\Model\Amount|null $renew_price renew_price
-     *
-     * @return self
-     */
-    public function setRenewPrice($renew_price)
-    {
-        if (is_null($renew_price)) {
-            array_push($this->openAPINullablesSetToNull, 'renew_price');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('renew_price', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['renew_price'] = $renew_price;
-
-        return $this;
-    }
-
-    /**
-     * Gets restore_price
-     *
-     * @return \Shellrent\Sdk\Model\Amount|null
-     */
-    public function getRestorePrice()
-    {
-        return $this->container['restore_price'];
-    }
-
-    /**
-     * Sets restore_price
-     *
-     * @param \Shellrent\Sdk\Model\Amount|null $restore_price restore_price
-     *
-     * @return self
-     */
-    public function setRestorePrice($restore_price)
-    {
-        if (is_null($restore_price)) {
-            array_push($this->openAPINullablesSetToNull, 'restore_price');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('restore_price', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['restore_price'] = $restore_price;
-
-        return $this;
-    }
-
-    /**
-     * Gets transfer_price
-     *
-     * @return \Shellrent\Sdk\Model\Amount|null
-     */
-    public function getTransferPrice()
-    {
-        return $this->container['transfer_price'];
-    }
-
-    /**
-     * Sets transfer_price
-     *
-     * @param \Shellrent\Sdk\Model\Amount|null $transfer_price transfer_price
-     *
-     * @return self
-     */
-    public function setTransferPrice($transfer_price)
-    {
-        if (is_null($transfer_price)) {
-            array_push($this->openAPINullablesSetToNull, 'transfer_price');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('transfer_price', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['transfer_price'] = $transfer_price;
-
-        return $this;
-    }
-
-    /**
-     * Gets is_primary
-     *
-     * @return bool|null
-     */
-    public function getIsPrimary()
-    {
-        return $this->container['is_primary'];
-    }
-
-    /**
-     * Sets is_primary
-     *
-     * @param bool|null $is_primary is_primary
-     *
-     * @return self
-     */
-    public function setIsPrimary($is_primary)
-    {
-        if (is_null($is_primary)) {
-            array_push($this->openAPINullablesSetToNull, 'is_primary');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('is_primary', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['is_primary'] = $is_primary;
-
-        return $this;
-    }
-
-    /**
-     * Gets is_secondary
-     *
-     * @return bool|null
-     */
-    public function getIsSecondary()
-    {
-        return $this->container['is_secondary'];
-    }
-
-    /**
-     * Sets is_secondary
-     *
-     * @param bool|null $is_secondary is_secondary
-     *
-     * @return self
-     */
-    public function setIsSecondary($is_secondary)
-    {
-        if (is_null($is_secondary)) {
-            array_push($this->openAPINullablesSetToNull, 'is_secondary');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('is_secondary', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['is_secondary'] = $is_secondary;
-
-        return $this;
-    }
-
-    /**
-     * Gets is_presale
-     *
-     * @return bool|null
-     */
-    public function getIsPresale()
-    {
-        return $this->container['is_presale'];
-    }
-
-    /**
-     * Sets is_presale
-     *
-     * @param bool|null $is_presale is_presale
-     *
-     * @return self
-     */
-    public function setIsPresale($is_presale)
-    {
-        if (is_null($is_presale)) {
-            array_push($this->openAPINullablesSetToNull, 'is_presale');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('is_presale', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['is_presale'] = $is_presale;
-
-        return $this;
-    }
-
-    /**
-     * Gets is_aftersale
-     *
-     * @return bool|null
-     */
-    public function getIsAftersale()
-    {
-        return $this->container['is_aftersale'];
-    }
-
-    /**
-     * Sets is_aftersale
-     *
-     * @param bool|null $is_aftersale is_aftersale
-     *
-     * @return self
-     */
-    public function setIsAftersale($is_aftersale)
-    {
-        if (is_null($is_aftersale)) {
-            array_push($this->openAPINullablesSetToNull, 'is_aftersale');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('is_aftersale', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['is_aftersale'] = $is_aftersale;
-
-        return $this;
-    }
-
-    /**
-     * Gets is_quantifiable
-     *
-     * @return bool|null
-     */
-    public function getIsQuantifiable()
-    {
-        return $this->container['is_quantifiable'];
-    }
-
-    /**
-     * Sets is_quantifiable
-     *
-     * @param bool|null $is_quantifiable is_quantifiable
-     *
-     * @return self
-     */
-    public function setIsQuantifiable($is_quantifiable)
-    {
-        if (is_null($is_quantifiable)) {
-            array_push($this->openAPINullablesSetToNull, 'is_quantifiable');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('is_quantifiable', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['is_quantifiable'] = $is_quantifiable;
-
-        return $this;
-    }
-
-    /**
-     * Gets quantity_min
-     *
-     * @return int|null
-     */
-    public function getQuantityMin()
-    {
-        return $this->container['quantity_min'];
-    }
-
-    /**
-     * Sets quantity_min
-     *
-     * @param int|null $quantity_min quantity_min
-     *
-     * @return self
-     */
-    public function setQuantityMin($quantity_min)
-    {
-        if (is_null($quantity_min)) {
-            array_push($this->openAPINullablesSetToNull, 'quantity_min');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('quantity_min', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['quantity_min'] = $quantity_min;
-
-        return $this;
-    }
-
-    /**
-     * Gets quantity_max
-     *
-     * @return int|null
-     */
-    public function getQuantityMax()
-    {
-        return $this->container['quantity_max'];
-    }
-
-    /**
-     * Sets quantity_max
-     *
-     * @param int|null $quantity_max quantity_max
-     *
-     * @return self
-     */
-    public function setQuantityMax($quantity_max)
-    {
-        if (is_null($quantity_max)) {
-            array_push($this->openAPINullablesSetToNull, 'quantity_max');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('quantity_max', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['quantity_max'] = $quantity_max;
-
-        return $this;
-    }
-
-    /**
      * Gets templates
      *
-     * @return \Shellrent\Sdk\Model\ServerTemplate[]|null
+     * @return \Shellrent\Sdk\Model\ServerTemplate[]
      */
     public function getTemplates()
     {
@@ -1025,7 +299,7 @@ class ServiceServer implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets templates
      *
-     * @param \Shellrent\Sdk\Model\ServerTemplate[]|null $templates templates
+     * @param \Shellrent\Sdk\Model\ServerTemplate[] $templates templates
      *
      * @return self
      */

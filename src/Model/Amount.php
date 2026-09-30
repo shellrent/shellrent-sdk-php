@@ -85,7 +85,7 @@ class Amount implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var boolean[]
      */
     protected static array $openAPINullables = [
-        'amount' => false,
+        'amount' => true,
         'currency' => false,
         'tax_rate' => true,
         'tax' => true,
@@ -302,6 +302,21 @@ class Amount implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
+        if ($this->container['amount'] === null && !$this->isNullableSetToNull('amount')) {
+            $invalidProperties[] = "'amount' is required";
+        }
+        if ($this->container['currency'] === null) {
+            $invalidProperties[] = "'currency' can't be null";
+        }
+        if ($this->container['tax_rate'] === null && !$this->isNullableSetToNull('tax_rate')) {
+            $invalidProperties[] = "'tax_rate' is required";
+        }
+        if ($this->container['tax'] === null && !$this->isNullableSetToNull('tax')) {
+            $invalidProperties[] = "'tax' is required";
+        }
+        if ($this->container['total'] === null && !$this->isNullableSetToNull('total')) {
+            $invalidProperties[] = "'total' is required";
+        }
         return $invalidProperties;
     }
 
@@ -337,7 +352,14 @@ class Amount implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setAmount($amount)
     {
         if (is_null($amount)) {
-            throw new \InvalidArgumentException('non-nullable amount cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'amount');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('amount', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['amount'] = $amount;
 
@@ -347,7 +369,7 @@ class Amount implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets currency
      *
-     * @return string|null
+     * @return string
      */
     public function getCurrency()
     {
@@ -357,7 +379,7 @@ class Amount implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets currency
      *
-     * @param string|null $currency Currency (EUR, USD, GBP, ...)
+     * @param string $currency Currency (EUR, USD, GBP, ...)
      *
      * @return self
      */

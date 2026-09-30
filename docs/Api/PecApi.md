@@ -1,32 +1,32 @@
-# Shellrent\Sdk\SSLApi
+# Shellrent\Sdk\PecApi
 
-SSL Certificates
+PEC
 
 All URIs are relative to https://api.shellrent.com, except if the operation defines another base path.
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**canReemitSslCertificate()**](SSLApi.md#canReemitSslCertificate) | **GET** /api/v3/ssl-certificates/{ssl_certificate_id}/can-reemit | Can re-emit certificate |
-| [**exportSslCertificate()**](SSLApi.md#exportSslCertificate) | **GET** /api/v3/ssl-certificates/{ssl_certificate_id}/export_format/{format} | Export SSL certificate keys |
-| [**getSslCertificate()**](SSLApi.md#getSslCertificate) | **GET** /api/v3/ssl-certificates/{ssl_certificate_id} | Get SSL certificate |
-| [**getSslCertificateKeys()**](SSLApi.md#getSslCertificateKeys) | **GET** /api/v3/ssl-certificates/{ssl_certificate_id}/keys | Get SSL certificate keys |
-| [**listSslApproverEmails()**](SSLApi.md#listSslApproverEmails) | **GET** /api/v3/ssl-certificates/approver-emails/{domain_name} | Get approver emails list |
-| [**listSslCertificateExportFormats()**](SSLApi.md#listSslCertificateExportFormats) | **GET** /api/v3/ssl-certificates/{ssl_certificate_id}/export_formats | Get export formats |
-| [**listSslCertificates()**](SSLApi.md#listSslCertificates) | **GET** /api/v3/ssl-certificates | List all SSL Certificates |
-| [**reemitSslCertificate()**](SSLApi.md#reemitSslCertificate) | **POST** /api/v3/ssl-certificates/{ssl_certificate_id}/reemit | Re-emit certificate |
-| [**updateSslCertificateCsr()**](SSLApi.md#updateSslCertificateCsr) | **PUT** /api/v3/ssl-certificates/{ssl_certificate_id}/csr | Change SSL certificate CSR |
-| [**updateSslCertificateOwner()**](SSLApi.md#updateSslCertificateOwner) | **PATCH** /api/v3/ssl-certificates/{ssl_certificate_id} | Edit SSL certificate owner |
+| [**createPecDomainOwnerChange()**](PecApi.md#createPecDomainOwnerChange) | **POST** /api/v3/pec-domains/{pec_domain_id}/owner-changes | Create PEC domain owner change |
+| [**createPecMailboxOwnerChange()**](PecApi.md#createPecMailboxOwnerChange) | **POST** /api/v3/pec-mailboxes/{pec_id}/owner-changes | Create PEC mailbox owner change |
+| [**getPecDomain()**](PecApi.md#getPecDomain) | **GET** /api/v3/pec-domains/{pec_domain_id} | Get PEC domain |
+| [**getPecDomainOwnerChange()**](PecApi.md#getPecDomainOwnerChange) | **GET** /api/v3/pec-domains/{pec_domain_id}/owner-changes/{owner_change_id} | Get PEC domain owner change |
+| [**getPecMailbox()**](PecApi.md#getPecMailbox) | **GET** /api/v3/pec-mailboxes/{pec_id} | Get PEC mailbox |
+| [**listPecDomainOwnerChanges()**](PecApi.md#listPecDomainOwnerChanges) | **GET** /api/v3/pec-domains/{pec_domain_id}/owner-changes | List PEC domain owner changes |
+| [**listPecDomains()**](PecApi.md#listPecDomains) | **GET** /api/v3/pec-domains | List PEC domains |
+| [**listPecMailboxOwnerChanges()**](PecApi.md#listPecMailboxOwnerChanges) | **GET** /api/v3/pec-mailboxes/{pec_id}/owner-changes | List PEC mailbox owner changes |
+| [**listPecMailboxes()**](PecApi.md#listPecMailboxes) | **GET** /api/v3/pec-mailboxes | List PEC mailboxes |
+| [**updatePecMailbox()**](PecApi.md#updatePecMailbox) | **PATCH** /api/v3/pec-mailboxes/{pec_id} | Update PEC mailbox |
 
 
-## `canReemitSslCertificate()`
+## `createPecDomainOwnerChange()`
 
 ```php
-canReemitSslCertificate($ssl_certificate_id): \Shellrent\Sdk\Model\SslCertificateCanReemitResponse
+createPecDomainOwnerChange($pec_domain_id, $pec_mailbox_owner_change_create_request): \Shellrent\Sdk\Model\PecOwnerChangeResponse
 ```
 
-Can re-emit certificate
+Create PEC domain owner change
 
-Know if it's possible to re-emit the SSL Certificate
+Create a new owner change request for a PEC domain
 
 ### Example
 
@@ -39,19 +39,20 @@ require_once(__DIR__ . '/vendor/autoload.php');
 $config = Shellrent\Sdk\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Shellrent\Sdk\Api\SSLApi(
+$apiInstance = new Shellrent\Sdk\Api\PecApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$ssl_certificate_id = 56; // int
+$pec_domain_id = 56; // int
+$pec_mailbox_owner_change_create_request = new \Shellrent\Sdk\Model\PecMailboxOwnerChangeCreateRequest(); // \Shellrent\Sdk\Model\PecMailboxOwnerChangeCreateRequest
 
 try {
-    $result = $apiInstance->canReemitSslCertificate($ssl_certificate_id);
+    $result = $apiInstance->createPecDomainOwnerChange($pec_domain_id, $pec_mailbox_owner_change_create_request);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling SSLApi->canReemitSslCertificate: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling PecApi->createPecDomainOwnerChange: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -59,11 +60,134 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **ssl_certificate_id** | **int**|  | |
+| **pec_domain_id** | **int**|  | |
+| **pec_mailbox_owner_change_create_request** | [**\Shellrent\Sdk\Model\PecMailboxOwnerChangeCreateRequest**](../Model/PecMailboxOwnerChangeCreateRequest.md)|  | |
 
 ### Return type
 
-[**\Shellrent\Sdk\Model\SslCertificateCanReemitResponse**](../Model/SslCertificateCanReemitResponse.md)
+[**\Shellrent\Sdk\Model\PecOwnerChangeResponse**](../Model/PecOwnerChangeResponse.md)
+
+### Authorization
+
+[oauth2](../../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `createPecMailboxOwnerChange()`
+
+```php
+createPecMailboxOwnerChange($pec_id, $pec_mailbox_owner_change_create_request): \Shellrent\Sdk\Model\PecOwnerChangeResponse
+```
+
+Create PEC mailbox owner change
+
+Create a new owner change request for a PEC mailbox
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure OAuth2 access token for authorization: oauth2
+$config = Shellrent\Sdk\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Shellrent\Sdk\Api\PecApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$pec_id = 56; // int
+$pec_mailbox_owner_change_create_request = new \Shellrent\Sdk\Model\PecMailboxOwnerChangeCreateRequest(); // \Shellrent\Sdk\Model\PecMailboxOwnerChangeCreateRequest
+
+try {
+    $result = $apiInstance->createPecMailboxOwnerChange($pec_id, $pec_mailbox_owner_change_create_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling PecApi->createPecMailboxOwnerChange: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **pec_id** | **int**|  | |
+| **pec_mailbox_owner_change_create_request** | [**\Shellrent\Sdk\Model\PecMailboxOwnerChangeCreateRequest**](../Model/PecMailboxOwnerChangeCreateRequest.md)|  | |
+
+### Return type
+
+[**\Shellrent\Sdk\Model\PecOwnerChangeResponse**](../Model/PecOwnerChangeResponse.md)
+
+### Authorization
+
+[oauth2](../../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `getPecDomain()`
+
+```php
+getPecDomain($pec_domain_id): \Shellrent\Sdk\Model\PecDomainResponse
+```
+
+Get PEC domain
+
+Get details of a PEC domain for the authenticated account
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure OAuth2 access token for authorization: oauth2
+$config = Shellrent\Sdk\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Shellrent\Sdk\Api\PecApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$pec_domain_id = 56; // int
+
+try {
+    $result = $apiInstance->getPecDomain($pec_domain_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling PecApi->getPecDomain: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **pec_domain_id** | **int**|  | |
+
+### Return type
+
+[**\Shellrent\Sdk\Model\PecDomainResponse**](../Model/PecDomainResponse.md)
 
 ### Authorization
 
@@ -78,15 +202,15 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `exportSslCertificate()`
+## `getPecDomainOwnerChange()`
 
 ```php
-exportSslCertificate($ssl_certificate_id, $format): \Shellrent\Sdk\Model\SslCertificateExportResponse
+getPecDomainOwnerChange($pec_domain_id, $owner_change_id): \Shellrent\Sdk\Model\PecOwnerChangeResponse
 ```
 
-Export SSL certificate keys
+Get PEC domain owner change
 
-Export SSL certificate keys
+Get details of a specific owner change request for a PEC domain
 
 ### Example
 
@@ -99,20 +223,20 @@ require_once(__DIR__ . '/vendor/autoload.php');
 $config = Shellrent\Sdk\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Shellrent\Sdk\Api\SSLApi(
+$apiInstance = new Shellrent\Sdk\Api\PecApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$ssl_certificate_id = 56; // int
-$format = 'format_example'; // string
+$pec_domain_id = 56; // int
+$owner_change_id = 56; // int
 
 try {
-    $result = $apiInstance->exportSslCertificate($ssl_certificate_id, $format);
+    $result = $apiInstance->getPecDomainOwnerChange($pec_domain_id, $owner_change_id);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling SSLApi->exportSslCertificate: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling PecApi->getPecDomainOwnerChange: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -120,12 +244,12 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **ssl_certificate_id** | **int**|  | |
-| **format** | **string**|  | |
+| **pec_domain_id** | **int**|  | |
+| **owner_change_id** | **int**|  | |
 
 ### Return type
 
-[**\Shellrent\Sdk\Model\SslCertificateExportResponse**](../Model/SslCertificateExportResponse.md)
+[**\Shellrent\Sdk\Model\PecOwnerChangeResponse**](../Model/PecOwnerChangeResponse.md)
 
 ### Authorization
 
@@ -140,15 +264,15 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `getSslCertificate()`
+## `getPecMailbox()`
 
 ```php
-getSslCertificate($ssl_certificate_id): \Shellrent\Sdk\Model\SslCertificateResponse
+getPecMailbox($pec_id): \Shellrent\Sdk\Model\PecResponse
 ```
 
-Get SSL certificate
+Get PEC mailbox
 
-Get details of an SSL Certificate
+Get details of a PEC mailbox for the authenticated account
 
 ### Example
 
@@ -161,19 +285,19 @@ require_once(__DIR__ . '/vendor/autoload.php');
 $config = Shellrent\Sdk\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Shellrent\Sdk\Api\SSLApi(
+$apiInstance = new Shellrent\Sdk\Api\PecApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$ssl_certificate_id = 56; // int
+$pec_id = 56; // int
 
 try {
-    $result = $apiInstance->getSslCertificate($ssl_certificate_id);
+    $result = $apiInstance->getPecMailbox($pec_id);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling SSLApi->getSslCertificate: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling PecApi->getPecMailbox: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -181,11 +305,11 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **ssl_certificate_id** | **int**|  | |
+| **pec_id** | **int**|  | |
 
 ### Return type
 
-[**\Shellrent\Sdk\Model\SslCertificateResponse**](../Model/SslCertificateResponse.md)
+[**\Shellrent\Sdk\Model\PecResponse**](../Model/PecResponse.md)
 
 ### Authorization
 
@@ -200,15 +324,15 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `getSslCertificateKeys()`
+## `listPecDomainOwnerChanges()`
 
 ```php
-getSslCertificateKeys($ssl_certificate_id): \Shellrent\Sdk\Model\SslCertificateKeysResponse
+listPecDomainOwnerChanges($pec_domain_id, $page, $per_page): \Shellrent\Sdk\Model\PecOwnerChangePaginatedListResponse
 ```
 
-Get SSL certificate keys
+List PEC domain owner changes
 
-Get the keys of an SSL Certificate
+Get a paginated list of owner change requests for a PEC domain
 
 ### Example
 
@@ -221,202 +345,21 @@ require_once(__DIR__ . '/vendor/autoload.php');
 $config = Shellrent\Sdk\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Shellrent\Sdk\Api\SSLApi(
+$apiInstance = new Shellrent\Sdk\Api\PecApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$ssl_certificate_id = 56; // int
-
-try {
-    $result = $apiInstance->getSslCertificateKeys($ssl_certificate_id);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling SSLApi->getSslCertificateKeys: ', $e->getMessage(), PHP_EOL;
-}
-```
-
-### Parameters
-
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | ------------- |
-| **ssl_certificate_id** | **int**|  | |
-
-### Return type
-
-[**\Shellrent\Sdk\Model\SslCertificateKeysResponse**](../Model/SslCertificateKeysResponse.md)
-
-### Authorization
-
-[oauth2](../../README.md#oauth2)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: `application/json`
-
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
-
-## `listSslApproverEmails()`
-
-```php
-listSslApproverEmails($domain_name): \Shellrent\Sdk\Model\SslCertificateApproverEmailsResponse
-```
-
-Get approver emails list
-
-Get a list of all acceptable approver emails for a domain name
-
-### Example
-
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-// Configure OAuth2 access token for authorization: oauth2
-$config = Shellrent\Sdk\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
-
-$apiInstance = new Shellrent\Sdk\Api\SSLApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$domain_name = 'domain_name_example'; // string
-
-try {
-    $result = $apiInstance->listSslApproverEmails($domain_name);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling SSLApi->listSslApproverEmails: ', $e->getMessage(), PHP_EOL;
-}
-```
-
-### Parameters
-
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | ------------- |
-| **domain_name** | **string**|  | |
-
-### Return type
-
-[**\Shellrent\Sdk\Model\SslCertificateApproverEmailsResponse**](../Model/SslCertificateApproverEmailsResponse.md)
-
-### Authorization
-
-[oauth2](../../README.md#oauth2)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: `application/json`
-
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
-
-## `listSslCertificateExportFormats()`
-
-```php
-listSslCertificateExportFormats($ssl_certificate_id): \Shellrent\Sdk\Model\SslCertificateExportFormatListResponse
-```
-
-Get export formats
-
-Get a list of all export formats available for SSL Certificate keys
-
-### Example
-
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-// Configure OAuth2 access token for authorization: oauth2
-$config = Shellrent\Sdk\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
-
-$apiInstance = new Shellrent\Sdk\Api\SSLApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$ssl_certificate_id = 56; // int
-
-try {
-    $result = $apiInstance->listSslCertificateExportFormats($ssl_certificate_id);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling SSLApi->listSslCertificateExportFormats: ', $e->getMessage(), PHP_EOL;
-}
-```
-
-### Parameters
-
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | ------------- |
-| **ssl_certificate_id** | **int**|  | |
-
-### Return type
-
-[**\Shellrent\Sdk\Model\SslCertificateExportFormatListResponse**](../Model/SslCertificateExportFormatListResponse.md)
-
-### Authorization
-
-[oauth2](../../README.md#oauth2)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: `application/json`
-
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
-
-## `listSslCertificates()`
-
-```php
-listSslCertificates($domain_name, $san_domain_name, $page, $per_page): \Shellrent\Sdk\Model\SslCertificatePaginatedListResponse
-```
-
-List all SSL Certificates
-
-Get a list of all SSL Certificates
-
-### Example
-
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-// Configure OAuth2 access token for authorization: oauth2
-$config = Shellrent\Sdk\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
-
-$apiInstance = new Shellrent\Sdk\Api\SSLApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$domain_name = 'domain_name_example'; // string | Certificate's main domain name
-$san_domain_name = 'san_domain_name_example'; // string | One of the SANs domain name
+$pec_domain_id = 56; // int
 $page = 1; // int
 $per_page = 20; // int
 
 try {
-    $result = $apiInstance->listSslCertificates($domain_name, $san_domain_name, $page, $per_page);
+    $result = $apiInstance->listPecDomainOwnerChanges($pec_domain_id, $page, $per_page);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling SSLApi->listSslCertificates: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling PecApi->listPecDomainOwnerChanges: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -424,14 +367,13 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **domain_name** | **string**| Certificate&#39;s main domain name | [optional] |
-| **san_domain_name** | **string**| One of the SANs domain name | [optional] |
+| **pec_domain_id** | **int**|  | |
 | **page** | **int**|  | [optional] [default to 1] |
 | **per_page** | **int**|  | [optional] [default to 20] |
 
 ### Return type
 
-[**\Shellrent\Sdk\Model\SslCertificatePaginatedListResponse**](../Model/SslCertificatePaginatedListResponse.md)
+[**\Shellrent\Sdk\Model\PecOwnerChangePaginatedListResponse**](../Model/PecOwnerChangePaginatedListResponse.md)
 
 ### Authorization
 
@@ -446,15 +388,15 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `reemitSslCertificate()`
+## `listPecDomains()`
 
 ```php
-reemitSslCertificate($ssl_certificate_id, $ssl_certificate_reemit_request): \Shellrent\Sdk\Model\TaskResponse
+listPecDomains($page, $per_page): \Shellrent\Sdk\Model\PecDomainPaginatedListResponse
 ```
 
-Re-emit certificate
+List PEC domains
 
-Ask for the SSL Certificate to be re-emitted
+Get a paginated list of PEC domains for the authenticated account
 
 ### Example
 
@@ -467,20 +409,20 @@ require_once(__DIR__ . '/vendor/autoload.php');
 $config = Shellrent\Sdk\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Shellrent\Sdk\Api\SSLApi(
+$apiInstance = new Shellrent\Sdk\Api\PecApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$ssl_certificate_id = 56; // int
-$ssl_certificate_reemit_request = new \Shellrent\Sdk\Model\SslCertificateReemitRequest(); // \Shellrent\Sdk\Model\SslCertificateReemitRequest
+$page = 1; // int
+$per_page = 20; // int
 
 try {
-    $result = $apiInstance->reemitSslCertificate($ssl_certificate_id, $ssl_certificate_reemit_request);
+    $result = $apiInstance->listPecDomains($page, $per_page);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling SSLApi->reemitSslCertificate: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling PecApi->listPecDomains: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -488,12 +430,12 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **ssl_certificate_id** | **int**|  | |
-| **ssl_certificate_reemit_request** | [**\Shellrent\Sdk\Model\SslCertificateReemitRequest**](../Model/SslCertificateReemitRequest.md)|  | |
+| **page** | **int**|  | [optional] [default to 1] |
+| **per_page** | **int**|  | [optional] [default to 20] |
 
 ### Return type
 
-[**\Shellrent\Sdk\Model\TaskResponse**](../Model/TaskResponse.md)
+[**\Shellrent\Sdk\Model\PecDomainPaginatedListResponse**](../Model/PecDomainPaginatedListResponse.md)
 
 ### Authorization
 
@@ -501,22 +443,22 @@ try {
 
 ### HTTP request headers
 
-- **Content-Type**: `application/json`
+- **Content-Type**: Not defined
 - **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `updateSslCertificateCsr()`
+## `listPecMailboxOwnerChanges()`
 
 ```php
-updateSslCertificateCsr($ssl_certificate_id, $ssl_certificate_change_csr_request): \Shellrent\Sdk\Model\SslCertificateKeyResponse
+listPecMailboxOwnerChanges($pec_id, $page, $per_page): \Shellrent\Sdk\Model\PecOwnerChangePaginatedListResponse
 ```
 
-Change SSL certificate CSR
+List PEC mailbox owner changes
 
-Change SSL certificate CSR
+Get a paginated list of owner change requests for a PEC mailbox
 
 ### Example
 
@@ -529,20 +471,21 @@ require_once(__DIR__ . '/vendor/autoload.php');
 $config = Shellrent\Sdk\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Shellrent\Sdk\Api\SSLApi(
+$apiInstance = new Shellrent\Sdk\Api\PecApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$ssl_certificate_id = 56; // int
-$ssl_certificate_change_csr_request = new \Shellrent\Sdk\Model\SslCertificateChangeCsrRequest(); // \Shellrent\Sdk\Model\SslCertificateChangeCsrRequest
+$pec_id = 56; // int
+$page = 1; // int
+$per_page = 20; // int
 
 try {
-    $result = $apiInstance->updateSslCertificateCsr($ssl_certificate_id, $ssl_certificate_change_csr_request);
+    $result = $apiInstance->listPecMailboxOwnerChanges($pec_id, $page, $per_page);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling SSLApi->updateSslCertificateCsr: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling PecApi->listPecMailboxOwnerChanges: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -550,12 +493,13 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **ssl_certificate_id** | **int**|  | |
-| **ssl_certificate_change_csr_request** | [**\Shellrent\Sdk\Model\SslCertificateChangeCsrRequest**](../Model/SslCertificateChangeCsrRequest.md)|  | |
+| **pec_id** | **int**|  | |
+| **page** | **int**|  | [optional] [default to 1] |
+| **per_page** | **int**|  | [optional] [default to 20] |
 
 ### Return type
 
-[**\Shellrent\Sdk\Model\SslCertificateKeyResponse**](../Model/SslCertificateKeyResponse.md)
+[**\Shellrent\Sdk\Model\PecOwnerChangePaginatedListResponse**](../Model/PecOwnerChangePaginatedListResponse.md)
 
 ### Authorization
 
@@ -563,22 +507,22 @@ try {
 
 ### HTTP request headers
 
-- **Content-Type**: `application/json`
+- **Content-Type**: Not defined
 - **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `updateSslCertificateOwner()`
+## `listPecMailboxes()`
 
 ```php
-updateSslCertificateOwner($ssl_certificate_id, $ssl_certificate_owner_request): \Shellrent\Sdk\Model\SslCertificateResponse
+listPecMailboxes($page, $per_page): \Shellrent\Sdk\Model\PecPaginatedListResponse
 ```
 
-Edit SSL certificate owner
+List PEC mailboxes
 
-Edit SSL certificate owner
+Get a paginated list of PEC mailboxes for the authenticated account
 
 ### Example
 
@@ -591,20 +535,20 @@ require_once(__DIR__ . '/vendor/autoload.php');
 $config = Shellrent\Sdk\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Shellrent\Sdk\Api\SSLApi(
+$apiInstance = new Shellrent\Sdk\Api\PecApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$ssl_certificate_id = 56; // int
-$ssl_certificate_owner_request = new \Shellrent\Sdk\Model\SslCertificateOwnerRequest(); // \Shellrent\Sdk\Model\SslCertificateOwnerRequest
+$page = 1; // int
+$per_page = 20; // int
 
 try {
-    $result = $apiInstance->updateSslCertificateOwner($ssl_certificate_id, $ssl_certificate_owner_request);
+    $result = $apiInstance->listPecMailboxes($page, $per_page);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling SSLApi->updateSslCertificateOwner: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling PecApi->listPecMailboxes: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -612,12 +556,74 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **ssl_certificate_id** | **int**|  | |
-| **ssl_certificate_owner_request** | [**\Shellrent\Sdk\Model\SslCertificateOwnerRequest**](../Model/SslCertificateOwnerRequest.md)|  | |
+| **page** | **int**|  | [optional] [default to 1] |
+| **per_page** | **int**|  | [optional] [default to 20] |
 
 ### Return type
 
-[**\Shellrent\Sdk\Model\SslCertificateResponse**](../Model/SslCertificateResponse.md)
+[**\Shellrent\Sdk\Model\PecPaginatedListResponse**](../Model/PecPaginatedListResponse.md)
+
+### Authorization
+
+[oauth2](../../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `updatePecMailbox()`
+
+```php
+updatePecMailbox($pec_id, $pec_mailbox_update_request): \Shellrent\Sdk\Model\PecResponse
+```
+
+Update PEC mailbox
+
+Update PEC mailbox settings for the authenticated account
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure OAuth2 access token for authorization: oauth2
+$config = Shellrent\Sdk\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Shellrent\Sdk\Api\PecApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$pec_id = 56; // int
+$pec_mailbox_update_request = new \Shellrent\Sdk\Model\PecMailboxUpdateRequest(); // \Shellrent\Sdk\Model\PecMailboxUpdateRequest
+
+try {
+    $result = $apiInstance->updatePecMailbox($pec_id, $pec_mailbox_update_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling PecApi->updatePecMailbox: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **pec_id** | **int**|  | |
+| **pec_mailbox_update_request** | [**\Shellrent\Sdk\Model\PecMailboxUpdateRequest**](../Model/PecMailboxUpdateRequest.md)|  | |
+
+### Return type
+
+[**\Shellrent\Sdk\Model\PecResponse**](../Model/PecResponse.md)
 
 ### Authorization
 

@@ -295,6 +295,18 @@ class ServerCredential implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
+        if ($this->container['type'] === null) {
+            $invalidProperties[] = "'type' can't be null";
+        }
+        if ($this->container['username'] === null && !$this->isNullableSetToNull('username')) {
+            $invalidProperties[] = "'username' is required";
+        }
+        if ($this->container['password'] === null && !$this->isNullableSetToNull('password')) {
+            $invalidProperties[] = "'password' is required";
+        }
+        if ($this->container['visible'] === null) {
+            $invalidProperties[] = "'visible' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -313,7 +325,7 @@ class ServerCredential implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets type
      *
-     * @return string|null
+     * @return string
      */
     public function getType()
     {
@@ -323,7 +335,7 @@ class ServerCredential implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets type
      *
-     * @param string|null $type type
+     * @param string $type type
      *
      * @return self
      */
@@ -408,7 +420,7 @@ class ServerCredential implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets visible
      *
-     * @return bool|null
+     * @return bool
      */
     public function getVisible()
     {
@@ -418,7 +430,7 @@ class ServerCredential implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets visible
      *
-     * @param bool|null $visible visible
+     * @param bool $visible visible
      *
      * @return self
      */

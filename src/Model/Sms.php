@@ -337,6 +337,36 @@ class Sms implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
+        if ($this->container['id'] === null) {
+            $invalidProperties[] = "'id' can't be null";
+        }
+        if ($this->container['quality'] === null) {
+            $invalidProperties[] = "'quality' can't be null";
+        }
+        if ($this->container['status'] === null) {
+            $invalidProperties[] = "'status' can't be null";
+        }
+        if ($this->container['sender'] === null && !$this->isNullableSetToNull('sender')) {
+            $invalidProperties[] = "'sender' is required";
+        }
+        if ($this->container['message'] === null && !$this->isNullableSetToNull('message')) {
+            $invalidProperties[] = "'message' is required";
+        }
+        if ($this->container['send_from'] === null && !$this->isNullableSetToNull('send_from')) {
+            $invalidProperties[] = "'send_from' is required";
+        }
+        if ($this->container['date_approved'] === null && !$this->isNullableSetToNull('date_approved')) {
+            $invalidProperties[] = "'date_approved' is required";
+        }
+        if ($this->container['stop_date'] === null && !$this->isNullableSetToNull('stop_date')) {
+            $invalidProperties[] = "'stop_date' is required";
+        }
+        if ($this->container['sms_count'] === null && !$this->isNullableSetToNull('sms_count')) {
+            $invalidProperties[] = "'sms_count' is required";
+        }
+        if ($this->container['date_created'] === null) {
+            $invalidProperties[] = "'date_created' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -355,7 +385,7 @@ class Sms implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets id
      *
-     * @return int|null
+     * @return int
      */
     public function getId()
     {
@@ -365,7 +395,7 @@ class Sms implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets id
      *
-     * @param int|null $id id
+     * @param int $id id
      *
      * @return self
      */
@@ -382,7 +412,7 @@ class Sms implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets quality
      *
-     * @return string|null
+     * @return string
      */
     public function getQuality()
     {
@@ -392,7 +422,7 @@ class Sms implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets quality
      *
-     * @param string|null $quality quality
+     * @param string $quality quality
      *
      * @return self
      */
@@ -409,7 +439,7 @@ class Sms implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets status
      *
-     * @return string|null
+     * @return string
      */
     public function getStatus()
     {
@@ -419,7 +449,7 @@ class Sms implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets status
      *
-     * @param string|null $status status
+     * @param string $status status
      *
      * @return self
      */
@@ -640,7 +670,7 @@ class Sms implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets date_created
      *
-     * @return \DateTime|null
+     * @return \DateTime
      */
     public function getDateCreated()
     {
@@ -650,7 +680,7 @@ class Sms implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets date_created
      *
-     * @param \DateTime|null $date_created date_created
+     * @param \DateTime $date_created date_created
      *
      * @return self
      */

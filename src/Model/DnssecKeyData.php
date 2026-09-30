@@ -302,6 +302,21 @@ class DnssecKeyData implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
+        if ($this->container['zone_ttl'] === null) {
+            $invalidProperties[] = "'zone_ttl' can't be null";
+        }
+        if ($this->container['flags'] === null) {
+            $invalidProperties[] = "'flags' can't be null";
+        }
+        if ($this->container['key_protocol'] === null) {
+            $invalidProperties[] = "'key_protocol' can't be null";
+        }
+        if ($this->container['key_algorithm'] === null) {
+            $invalidProperties[] = "'key_algorithm' can't be null";
+        }
+        if ($this->container['public_key'] === null) {
+            $invalidProperties[] = "'public_key' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -320,7 +335,7 @@ class DnssecKeyData implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets zone_ttl
      *
-     * @return int|null
+     * @return int
      */
     public function getZoneTtl()
     {
@@ -330,7 +345,7 @@ class DnssecKeyData implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets zone_ttl
      *
-     * @param int|null $zone_ttl zone_ttl
+     * @param int $zone_ttl zone_ttl
      *
      * @return self
      */
@@ -347,7 +362,7 @@ class DnssecKeyData implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets flags
      *
-     * @return int|null
+     * @return int
      */
     public function getFlags()
     {
@@ -357,7 +372,7 @@ class DnssecKeyData implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets flags
      *
-     * @param int|null $flags flags
+     * @param int $flags flags
      *
      * @return self
      */
@@ -374,7 +389,7 @@ class DnssecKeyData implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets key_protocol
      *
-     * @return int|null
+     * @return int
      */
     public function getKeyProtocol()
     {
@@ -384,7 +399,7 @@ class DnssecKeyData implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets key_protocol
      *
-     * @param int|null $key_protocol key_protocol
+     * @param int $key_protocol key_protocol
      *
      * @return self
      */
@@ -401,7 +416,7 @@ class DnssecKeyData implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets key_algorithm
      *
-     * @return int|null
+     * @return int
      */
     public function getKeyAlgorithm()
     {
@@ -411,7 +426,7 @@ class DnssecKeyData implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets key_algorithm
      *
-     * @param int|null $key_algorithm key_algorithm
+     * @param int $key_algorithm key_algorithm
      *
      * @return self
      */
@@ -428,7 +443,7 @@ class DnssecKeyData implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets public_key
      *
-     * @return string|null
+     * @return string
      */
     public function getPublicKey()
     {
@@ -438,7 +453,7 @@ class DnssecKeyData implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets public_key
      *
-     * @param string|null $public_key public_key
+     * @param string $public_key public_key
      *
      * @return self
      */

@@ -1,6 +1,6 @@
 <?php
 /**
- * PECApi
+ * SslApi
  * PHP version 8.1
  *
  * @category Class
@@ -43,14 +43,14 @@ use Shellrent\Sdk\HeaderSelector;
 use Shellrent\Sdk\ObjectSerializer;
 
 /**
- * PECApi Class Doc Comment
+ * SslApi Class Doc Comment
  *
  * @category Class
  * @package  Shellrent\Sdk
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
-class PECApi
+class SslApi
 {
     /**
      * @var ClientInterface
@@ -74,34 +74,34 @@ class PECApi
 
     /** @var string[] $contentTypes **/
     public const contentTypes = [
-        'createPecDomainOwnerChange' => [
+        'canReemitSslCertificate' => [
             'application/json',
         ],
-        'createPecMailboxOwnerChange' => [
+        'exportSslCertificate' => [
             'application/json',
         ],
-        'getPecDomain' => [
+        'getSslCertificate' => [
             'application/json',
         ],
-        'getPecDomainOwnerChange' => [
+        'getSslCertificateKeys' => [
             'application/json',
         ],
-        'getPecMailbox' => [
+        'listSslApproverEmails' => [
             'application/json',
         ],
-        'listPecDomainOwnerChanges' => [
+        'listSslCertificateExportFormats' => [
             'application/json',
         ],
-        'listPecDomains' => [
+        'listSslCertificates' => [
             'application/json',
         ],
-        'listPecMailboxOwnerChanges' => [
+        'reemitSslCertificate' => [
             'application/json',
         ],
-        'listPecMailboxes' => [
+        'updateSslCertificateCsr' => [
             'application/json',
         ],
-        'updatePecMailbox' => [
+        'updateSslCertificateOwner' => [
             'application/json',
         ],
     ];
@@ -153,40 +153,38 @@ class PECApi
     }
 
     /**
-     * Operation createPecDomainOwnerChange
+     * Operation canReemitSslCertificate
      *
-     * Create PEC domain owner change
+     * Can re-emit certificate
      *
-     * @param  int $pec_domain_id pec_domain_id (required)
-     * @param  \Shellrent\Sdk\Model\PecMailboxOwnerChangeCreateRequest $pec_mailbox_owner_change_create_request pec_mailbox_owner_change_create_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createPecDomainOwnerChange'] to see the possible values for this operation
+     * @param  int $ssl_certificate_id ssl_certificate_id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['canReemitSslCertificate'] to see the possible values for this operation
      *
      * @throws \Shellrent\Sdk\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Shellrent\Sdk\Model\PecOwnerChangeResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError
+     * @return \Shellrent\Sdk\Model\SslCertificateCanReemitResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError
      */
-    public function createPecDomainOwnerChange($pec_domain_id, $pec_mailbox_owner_change_create_request, string $contentType = self::contentTypes['createPecDomainOwnerChange'][0])
+    public function canReemitSslCertificate($ssl_certificate_id, string $contentType = self::contentTypes['canReemitSslCertificate'][0])
     {
-        list($response) = $this->createPecDomainOwnerChangeWithHttpInfo($pec_domain_id, $pec_mailbox_owner_change_create_request, $contentType);
+        list($response) = $this->canReemitSslCertificateWithHttpInfo($ssl_certificate_id, $contentType);
         return $response;
     }
 
     /**
-     * Operation createPecDomainOwnerChangeWithHttpInfo
+     * Operation canReemitSslCertificateWithHttpInfo
      *
-     * Create PEC domain owner change
+     * Can re-emit certificate
      *
-     * @param  int $pec_domain_id (required)
-     * @param  \Shellrent\Sdk\Model\PecMailboxOwnerChangeCreateRequest $pec_mailbox_owner_change_create_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createPecDomainOwnerChange'] to see the possible values for this operation
+     * @param  int $ssl_certificate_id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['canReemitSslCertificate'] to see the possible values for this operation
      *
      * @throws \Shellrent\Sdk\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Shellrent\Sdk\Model\PecOwnerChangeResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Shellrent\Sdk\Model\SslCertificateCanReemitResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function createPecDomainOwnerChangeWithHttpInfo($pec_domain_id, $pec_mailbox_owner_change_create_request, string $contentType = self::contentTypes['createPecDomainOwnerChange'][0])
+    public function canReemitSslCertificateWithHttpInfo($ssl_certificate_id, string $contentType = self::contentTypes['canReemitSslCertificate'][0])
     {
-        $request = $this->createPecDomainOwnerChangeRequest($pec_domain_id, $pec_mailbox_owner_change_create_request, $contentType);
+        $request = $this->canReemitSslCertificateRequest($ssl_certificate_id, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -214,7 +212,7 @@ class PECApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Shellrent\Sdk\Model\PecOwnerChangeResponse',
+                        '\Shellrent\Sdk\Model\SslCertificateCanReemitResponse',
                         $request,
                         $response,
                     );
@@ -237,6 +235,12 @@ class PECApi
                         $response,
                     );
                 case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $request,
+                        $response,
+                    );
+                case 429:
                     return $this->handleResponseWithDataType(
                         '\Shellrent\Sdk\Model\ApiError',
                         $request,
@@ -260,7 +264,7 @@ class PECApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Shellrent\Sdk\Model\PecOwnerChangeResponse',
+                '\Shellrent\Sdk\Model\SslCertificateCanReemitResponse',
                 $request,
                 $response,
             );
@@ -269,7 +273,7 @@ class PECApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Shellrent\Sdk\Model\PecOwnerChangeResponse',
+                        '\Shellrent\Sdk\Model\SslCertificateCanReemitResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -306,6 +310,14 @@ class PECApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
+                case 429:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
             }
         
 
@@ -314,20 +326,19 @@ class PECApi
     }
 
     /**
-     * Operation createPecDomainOwnerChangeAsync
+     * Operation canReemitSslCertificateAsync
      *
-     * Create PEC domain owner change
+     * Can re-emit certificate
      *
-     * @param  int $pec_domain_id (required)
-     * @param  \Shellrent\Sdk\Model\PecMailboxOwnerChangeCreateRequest $pec_mailbox_owner_change_create_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createPecDomainOwnerChange'] to see the possible values for this operation
+     * @param  int $ssl_certificate_id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['canReemitSslCertificate'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createPecDomainOwnerChangeAsync($pec_domain_id, $pec_mailbox_owner_change_create_request, string $contentType = self::contentTypes['createPecDomainOwnerChange'][0])
+    public function canReemitSslCertificateAsync($ssl_certificate_id, string $contentType = self::contentTypes['canReemitSslCertificate'][0])
     {
-        return $this->createPecDomainOwnerChangeAsyncWithHttpInfo($pec_domain_id, $pec_mailbox_owner_change_create_request, $contentType)
+        return $this->canReemitSslCertificateAsyncWithHttpInfo($ssl_certificate_id, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -336,21 +347,20 @@ class PECApi
     }
 
     /**
-     * Operation createPecDomainOwnerChangeAsyncWithHttpInfo
+     * Operation canReemitSslCertificateAsyncWithHttpInfo
      *
-     * Create PEC domain owner change
+     * Can re-emit certificate
      *
-     * @param  int $pec_domain_id (required)
-     * @param  \Shellrent\Sdk\Model\PecMailboxOwnerChangeCreateRequest $pec_mailbox_owner_change_create_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createPecDomainOwnerChange'] to see the possible values for this operation
+     * @param  int $ssl_certificate_id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['canReemitSslCertificate'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createPecDomainOwnerChangeAsyncWithHttpInfo($pec_domain_id, $pec_mailbox_owner_change_create_request, string $contentType = self::contentTypes['createPecDomainOwnerChange'][0])
+    public function canReemitSslCertificateAsyncWithHttpInfo($ssl_certificate_id, string $contentType = self::contentTypes['canReemitSslCertificate'][0])
     {
-        $returnType = '\Shellrent\Sdk\Model\PecOwnerChangeResponse';
-        $request = $this->createPecDomainOwnerChangeRequest($pec_domain_id, $pec_mailbox_owner_change_create_request, $contentType);
+        $returnType = '\Shellrent\Sdk\Model\SslCertificateCanReemitResponse';
+        $request = $this->canReemitSslCertificateRequest($ssl_certificate_id, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -389,34 +399,26 @@ class PECApi
     }
 
     /**
-     * Create request for operation 'createPecDomainOwnerChange'
+     * Create request for operation 'canReemitSslCertificate'
      *
-     * @param  int $pec_domain_id (required)
-     * @param  \Shellrent\Sdk\Model\PecMailboxOwnerChangeCreateRequest $pec_mailbox_owner_change_create_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createPecDomainOwnerChange'] to see the possible values for this operation
+     * @param  int $ssl_certificate_id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['canReemitSslCertificate'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function createPecDomainOwnerChangeRequest($pec_domain_id, $pec_mailbox_owner_change_create_request, string $contentType = self::contentTypes['createPecDomainOwnerChange'][0])
+    public function canReemitSslCertificateRequest($ssl_certificate_id, string $contentType = self::contentTypes['canReemitSslCertificate'][0])
     {
 
-        // verify the required parameter 'pec_domain_id' is set
-        if ($pec_domain_id === null || (is_array($pec_domain_id) && count($pec_domain_id) === 0)) {
+        // verify the required parameter 'ssl_certificate_id' is set
+        if ($ssl_certificate_id === null || (is_array($ssl_certificate_id) && count($ssl_certificate_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $pec_domain_id when calling createPecDomainOwnerChange'
-            );
-        }
-
-        // verify the required parameter 'pec_mailbox_owner_change_create_request' is set
-        if ($pec_mailbox_owner_change_create_request === null || (is_array($pec_mailbox_owner_change_create_request) && count($pec_mailbox_owner_change_create_request) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $pec_mailbox_owner_change_create_request when calling createPecDomainOwnerChange'
+                'Missing the required parameter $ssl_certificate_id when calling canReemitSslCertificate'
             );
         }
 
 
-        $resourcePath = '/api/v3/pec-domains/{pec_domain_id}/owner-changes';
+        $resourcePath = '/api/v3/ssl-certificates/{ssl_certificate_id}/can-reemit';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -426,10 +428,10 @@ class PECApi
 
 
         // path params
-        if ($pec_domain_id !== null) {
+        if ($ssl_certificate_id !== null) {
             $resourcePath = str_replace(
-                '{pec_domain_id}',
-                ObjectSerializer::toPathValue($pec_domain_id),
+                '{ssl_certificate_id}',
+                ObjectSerializer::toPathValue($ssl_certificate_id),
                 $resourcePath
             );
         }
@@ -442,16 +444,2510 @@ class PECApi
         );
 
         // for model (json/xml)
-        if (isset($pec_mailbox_owner_change_create_request)) {
-            if (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the body
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
                 try {
-                    $httpBody = json_encode(ObjectSerializer::sanitizeForSerialization($pec_mailbox_owner_change_create_request), JSON_THROW_ON_ERROR);
+                    $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
                 } catch (\JsonException $e) {
                     throw new \InvalidArgumentException('json_encode error: ' . $e->getMessage(), 0, $e);
                 }
             } else {
-                $httpBody = $pec_mailbox_owner_change_create_request;
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation exportSslCertificate
+     *
+     * Export SSL certificate keys
+     *
+     * @param  int $ssl_certificate_id ssl_certificate_id (required)
+     * @param  string $format format (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['exportSslCertificate'] to see the possible values for this operation
+     *
+     * @throws \Shellrent\Sdk\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Shellrent\Sdk\Model\SslCertificateExportResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError
+     */
+    public function exportSslCertificate($ssl_certificate_id, $format, string $contentType = self::contentTypes['exportSslCertificate'][0])
+    {
+        list($response) = $this->exportSslCertificateWithHttpInfo($ssl_certificate_id, $format, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation exportSslCertificateWithHttpInfo
+     *
+     * Export SSL certificate keys
+     *
+     * @param  int $ssl_certificate_id (required)
+     * @param  string $format (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['exportSslCertificate'] to see the possible values for this operation
+     *
+     * @throws \Shellrent\Sdk\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Shellrent\Sdk\Model\SslCertificateExportResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function exportSslCertificateWithHttpInfo($ssl_certificate_id, $format, string $contentType = self::contentTypes['exportSslCertificate'][0])
+    {
+        $request = $this->exportSslCertificateRequest($ssl_certificate_id, $format, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Shellrent\Sdk\Model\SslCertificateExportResponse',
+                        $request,
+                        $response,
+                    );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $request,
+                        $response,
+                    );
+                case 403:
+                    return $this->handleResponseWithDataType(
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $request,
+                        $response,
+                    );
+                case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $request,
+                        $response,
+                    );
+                case 429:
+                    return $this->handleResponseWithDataType(
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Shellrent\Sdk\Model\SslCertificateExportResponse',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Shellrent\Sdk\Model\SslCertificateExportResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 429:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation exportSslCertificateAsync
+     *
+     * Export SSL certificate keys
+     *
+     * @param  int $ssl_certificate_id (required)
+     * @param  string $format (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['exportSslCertificate'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function exportSslCertificateAsync($ssl_certificate_id, $format, string $contentType = self::contentTypes['exportSslCertificate'][0])
+    {
+        return $this->exportSslCertificateAsyncWithHttpInfo($ssl_certificate_id, $format, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation exportSslCertificateAsyncWithHttpInfo
+     *
+     * Export SSL certificate keys
+     *
+     * @param  int $ssl_certificate_id (required)
+     * @param  string $format (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['exportSslCertificate'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function exportSslCertificateAsyncWithHttpInfo($ssl_certificate_id, $format, string $contentType = self::contentTypes['exportSslCertificate'][0])
+    {
+        $returnType = '\Shellrent\Sdk\Model\SslCertificateExportResponse';
+        $request = $this->exportSslCertificateRequest($ssl_certificate_id, $format, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'exportSslCertificate'
+     *
+     * @param  int $ssl_certificate_id (required)
+     * @param  string $format (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['exportSslCertificate'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function exportSslCertificateRequest($ssl_certificate_id, $format, string $contentType = self::contentTypes['exportSslCertificate'][0])
+    {
+
+        // verify the required parameter 'ssl_certificate_id' is set
+        if ($ssl_certificate_id === null || (is_array($ssl_certificate_id) && count($ssl_certificate_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $ssl_certificate_id when calling exportSslCertificate'
+            );
+        }
+
+        // verify the required parameter 'format' is set
+        if ($format === null || (is_array($format) && count($format) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $format when calling exportSslCertificate'
+            );
+        }
+
+
+        $resourcePath = '/api/v3/ssl-certificates/{ssl_certificate_id}/export_format/{format}';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($ssl_certificate_id !== null) {
+            $resourcePath = str_replace(
+                '{ssl_certificate_id}',
+                ObjectSerializer::toPathValue($ssl_certificate_id),
+                $resourcePath
+            );
+        }
+        // path params
+        if ($format !== null) {
+            $resourcePath = str_replace(
+                '{format}',
+                ObjectSerializer::toPathValue($format),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                try {
+                    $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
+                } catch (\JsonException $e) {
+                    throw new \InvalidArgumentException('json_encode error: ' . $e->getMessage(), 0, $e);
+                }
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation getSslCertificate
+     *
+     * Get SSL certificate
+     *
+     * @param  int $ssl_certificate_id ssl_certificate_id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getSslCertificate'] to see the possible values for this operation
+     *
+     * @throws \Shellrent\Sdk\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Shellrent\Sdk\Model\SslCertificateResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError
+     */
+    public function getSslCertificate($ssl_certificate_id, string $contentType = self::contentTypes['getSslCertificate'][0])
+    {
+        list($response) = $this->getSslCertificateWithHttpInfo($ssl_certificate_id, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation getSslCertificateWithHttpInfo
+     *
+     * Get SSL certificate
+     *
+     * @param  int $ssl_certificate_id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getSslCertificate'] to see the possible values for this operation
+     *
+     * @throws \Shellrent\Sdk\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Shellrent\Sdk\Model\SslCertificateResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function getSslCertificateWithHttpInfo($ssl_certificate_id, string $contentType = self::contentTypes['getSslCertificate'][0])
+    {
+        $request = $this->getSslCertificateRequest($ssl_certificate_id, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Shellrent\Sdk\Model\SslCertificateResponse',
+                        $request,
+                        $response,
+                    );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $request,
+                        $response,
+                    );
+                case 403:
+                    return $this->handleResponseWithDataType(
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $request,
+                        $response,
+                    );
+                case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $request,
+                        $response,
+                    );
+                case 429:
+                    return $this->handleResponseWithDataType(
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Shellrent\Sdk\Model\SslCertificateResponse',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Shellrent\Sdk\Model\SslCertificateResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 429:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation getSslCertificateAsync
+     *
+     * Get SSL certificate
+     *
+     * @param  int $ssl_certificate_id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getSslCertificate'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getSslCertificateAsync($ssl_certificate_id, string $contentType = self::contentTypes['getSslCertificate'][0])
+    {
+        return $this->getSslCertificateAsyncWithHttpInfo($ssl_certificate_id, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation getSslCertificateAsyncWithHttpInfo
+     *
+     * Get SSL certificate
+     *
+     * @param  int $ssl_certificate_id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getSslCertificate'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getSslCertificateAsyncWithHttpInfo($ssl_certificate_id, string $contentType = self::contentTypes['getSslCertificate'][0])
+    {
+        $returnType = '\Shellrent\Sdk\Model\SslCertificateResponse';
+        $request = $this->getSslCertificateRequest($ssl_certificate_id, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'getSslCertificate'
+     *
+     * @param  int $ssl_certificate_id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getSslCertificate'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function getSslCertificateRequest($ssl_certificate_id, string $contentType = self::contentTypes['getSslCertificate'][0])
+    {
+
+        // verify the required parameter 'ssl_certificate_id' is set
+        if ($ssl_certificate_id === null || (is_array($ssl_certificate_id) && count($ssl_certificate_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $ssl_certificate_id when calling getSslCertificate'
+            );
+        }
+
+
+        $resourcePath = '/api/v3/ssl-certificates/{ssl_certificate_id}';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($ssl_certificate_id !== null) {
+            $resourcePath = str_replace(
+                '{ssl_certificate_id}',
+                ObjectSerializer::toPathValue($ssl_certificate_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                try {
+                    $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
+                } catch (\JsonException $e) {
+                    throw new \InvalidArgumentException('json_encode error: ' . $e->getMessage(), 0, $e);
+                }
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation getSslCertificateKeys
+     *
+     * Get SSL certificate keys
+     *
+     * @param  int $ssl_certificate_id ssl_certificate_id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getSslCertificateKeys'] to see the possible values for this operation
+     *
+     * @throws \Shellrent\Sdk\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Shellrent\Sdk\Model\SslCertificateKeysResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError
+     */
+    public function getSslCertificateKeys($ssl_certificate_id, string $contentType = self::contentTypes['getSslCertificateKeys'][0])
+    {
+        list($response) = $this->getSslCertificateKeysWithHttpInfo($ssl_certificate_id, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation getSslCertificateKeysWithHttpInfo
+     *
+     * Get SSL certificate keys
+     *
+     * @param  int $ssl_certificate_id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getSslCertificateKeys'] to see the possible values for this operation
+     *
+     * @throws \Shellrent\Sdk\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Shellrent\Sdk\Model\SslCertificateKeysResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function getSslCertificateKeysWithHttpInfo($ssl_certificate_id, string $contentType = self::contentTypes['getSslCertificateKeys'][0])
+    {
+        $request = $this->getSslCertificateKeysRequest($ssl_certificate_id, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Shellrent\Sdk\Model\SslCertificateKeysResponse',
+                        $request,
+                        $response,
+                    );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $request,
+                        $response,
+                    );
+                case 403:
+                    return $this->handleResponseWithDataType(
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $request,
+                        $response,
+                    );
+                case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $request,
+                        $response,
+                    );
+                case 429:
+                    return $this->handleResponseWithDataType(
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Shellrent\Sdk\Model\SslCertificateKeysResponse',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Shellrent\Sdk\Model\SslCertificateKeysResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 429:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation getSslCertificateKeysAsync
+     *
+     * Get SSL certificate keys
+     *
+     * @param  int $ssl_certificate_id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getSslCertificateKeys'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getSslCertificateKeysAsync($ssl_certificate_id, string $contentType = self::contentTypes['getSslCertificateKeys'][0])
+    {
+        return $this->getSslCertificateKeysAsyncWithHttpInfo($ssl_certificate_id, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation getSslCertificateKeysAsyncWithHttpInfo
+     *
+     * Get SSL certificate keys
+     *
+     * @param  int $ssl_certificate_id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getSslCertificateKeys'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getSslCertificateKeysAsyncWithHttpInfo($ssl_certificate_id, string $contentType = self::contentTypes['getSslCertificateKeys'][0])
+    {
+        $returnType = '\Shellrent\Sdk\Model\SslCertificateKeysResponse';
+        $request = $this->getSslCertificateKeysRequest($ssl_certificate_id, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'getSslCertificateKeys'
+     *
+     * @param  int $ssl_certificate_id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getSslCertificateKeys'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function getSslCertificateKeysRequest($ssl_certificate_id, string $contentType = self::contentTypes['getSslCertificateKeys'][0])
+    {
+
+        // verify the required parameter 'ssl_certificate_id' is set
+        if ($ssl_certificate_id === null || (is_array($ssl_certificate_id) && count($ssl_certificate_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $ssl_certificate_id when calling getSslCertificateKeys'
+            );
+        }
+
+
+        $resourcePath = '/api/v3/ssl-certificates/{ssl_certificate_id}/keys';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($ssl_certificate_id !== null) {
+            $resourcePath = str_replace(
+                '{ssl_certificate_id}',
+                ObjectSerializer::toPathValue($ssl_certificate_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                try {
+                    $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
+                } catch (\JsonException $e) {
+                    throw new \InvalidArgumentException('json_encode error: ' . $e->getMessage(), 0, $e);
+                }
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation listSslApproverEmails
+     *
+     * Get approver emails list
+     *
+     * @param  string $domain_name domain_name (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listSslApproverEmails'] to see the possible values for this operation
+     *
+     * @throws \Shellrent\Sdk\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Shellrent\Sdk\Model\SslCertificateApproverEmailsResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError
+     */
+    public function listSslApproverEmails($domain_name, string $contentType = self::contentTypes['listSslApproverEmails'][0])
+    {
+        list($response) = $this->listSslApproverEmailsWithHttpInfo($domain_name, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation listSslApproverEmailsWithHttpInfo
+     *
+     * Get approver emails list
+     *
+     * @param  string $domain_name (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listSslApproverEmails'] to see the possible values for this operation
+     *
+     * @throws \Shellrent\Sdk\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Shellrent\Sdk\Model\SslCertificateApproverEmailsResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function listSslApproverEmailsWithHttpInfo($domain_name, string $contentType = self::contentTypes['listSslApproverEmails'][0])
+    {
+        $request = $this->listSslApproverEmailsRequest($domain_name, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Shellrent\Sdk\Model\SslCertificateApproverEmailsResponse',
+                        $request,
+                        $response,
+                    );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $request,
+                        $response,
+                    );
+                case 403:
+                    return $this->handleResponseWithDataType(
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $request,
+                        $response,
+                    );
+                case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $request,
+                        $response,
+                    );
+                case 429:
+                    return $this->handleResponseWithDataType(
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Shellrent\Sdk\Model\SslCertificateApproverEmailsResponse',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Shellrent\Sdk\Model\SslCertificateApproverEmailsResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 429:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation listSslApproverEmailsAsync
+     *
+     * Get approver emails list
+     *
+     * @param  string $domain_name (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listSslApproverEmails'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function listSslApproverEmailsAsync($domain_name, string $contentType = self::contentTypes['listSslApproverEmails'][0])
+    {
+        return $this->listSslApproverEmailsAsyncWithHttpInfo($domain_name, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation listSslApproverEmailsAsyncWithHttpInfo
+     *
+     * Get approver emails list
+     *
+     * @param  string $domain_name (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listSslApproverEmails'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function listSslApproverEmailsAsyncWithHttpInfo($domain_name, string $contentType = self::contentTypes['listSslApproverEmails'][0])
+    {
+        $returnType = '\Shellrent\Sdk\Model\SslCertificateApproverEmailsResponse';
+        $request = $this->listSslApproverEmailsRequest($domain_name, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'listSslApproverEmails'
+     *
+     * @param  string $domain_name (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listSslApproverEmails'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function listSslApproverEmailsRequest($domain_name, string $contentType = self::contentTypes['listSslApproverEmails'][0])
+    {
+
+        // verify the required parameter 'domain_name' is set
+        if ($domain_name === null || (is_array($domain_name) && count($domain_name) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $domain_name when calling listSslApproverEmails'
+            );
+        }
+
+
+        $resourcePath = '/api/v3/ssl-certificates/approver-emails/{domain_name}';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($domain_name !== null) {
+            $resourcePath = str_replace(
+                '{domain_name}',
+                ObjectSerializer::toPathValue($domain_name),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                try {
+                    $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
+                } catch (\JsonException $e) {
+                    throw new \InvalidArgumentException('json_encode error: ' . $e->getMessage(), 0, $e);
+                }
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation listSslCertificateExportFormats
+     *
+     * Get export formats
+     *
+     * @param  int $ssl_certificate_id ssl_certificate_id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listSslCertificateExportFormats'] to see the possible values for this operation
+     *
+     * @throws \Shellrent\Sdk\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Shellrent\Sdk\Model\SslCertificateExportFormatListResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError
+     */
+    public function listSslCertificateExportFormats($ssl_certificate_id, string $contentType = self::contentTypes['listSslCertificateExportFormats'][0])
+    {
+        list($response) = $this->listSslCertificateExportFormatsWithHttpInfo($ssl_certificate_id, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation listSslCertificateExportFormatsWithHttpInfo
+     *
+     * Get export formats
+     *
+     * @param  int $ssl_certificate_id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listSslCertificateExportFormats'] to see the possible values for this operation
+     *
+     * @throws \Shellrent\Sdk\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Shellrent\Sdk\Model\SslCertificateExportFormatListResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function listSslCertificateExportFormatsWithHttpInfo($ssl_certificate_id, string $contentType = self::contentTypes['listSslCertificateExportFormats'][0])
+    {
+        $request = $this->listSslCertificateExportFormatsRequest($ssl_certificate_id, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Shellrent\Sdk\Model\SslCertificateExportFormatListResponse',
+                        $request,
+                        $response,
+                    );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $request,
+                        $response,
+                    );
+                case 403:
+                    return $this->handleResponseWithDataType(
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $request,
+                        $response,
+                    );
+                case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $request,
+                        $response,
+                    );
+                case 429:
+                    return $this->handleResponseWithDataType(
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Shellrent\Sdk\Model\SslCertificateExportFormatListResponse',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Shellrent\Sdk\Model\SslCertificateExportFormatListResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 429:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation listSslCertificateExportFormatsAsync
+     *
+     * Get export formats
+     *
+     * @param  int $ssl_certificate_id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listSslCertificateExportFormats'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function listSslCertificateExportFormatsAsync($ssl_certificate_id, string $contentType = self::contentTypes['listSslCertificateExportFormats'][0])
+    {
+        return $this->listSslCertificateExportFormatsAsyncWithHttpInfo($ssl_certificate_id, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation listSslCertificateExportFormatsAsyncWithHttpInfo
+     *
+     * Get export formats
+     *
+     * @param  int $ssl_certificate_id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listSslCertificateExportFormats'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function listSslCertificateExportFormatsAsyncWithHttpInfo($ssl_certificate_id, string $contentType = self::contentTypes['listSslCertificateExportFormats'][0])
+    {
+        $returnType = '\Shellrent\Sdk\Model\SslCertificateExportFormatListResponse';
+        $request = $this->listSslCertificateExportFormatsRequest($ssl_certificate_id, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'listSslCertificateExportFormats'
+     *
+     * @param  int $ssl_certificate_id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listSslCertificateExportFormats'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function listSslCertificateExportFormatsRequest($ssl_certificate_id, string $contentType = self::contentTypes['listSslCertificateExportFormats'][0])
+    {
+
+        // verify the required parameter 'ssl_certificate_id' is set
+        if ($ssl_certificate_id === null || (is_array($ssl_certificate_id) && count($ssl_certificate_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $ssl_certificate_id when calling listSslCertificateExportFormats'
+            );
+        }
+
+
+        $resourcePath = '/api/v3/ssl-certificates/{ssl_certificate_id}/export_formats';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($ssl_certificate_id !== null) {
+            $resourcePath = str_replace(
+                '{ssl_certificate_id}',
+                ObjectSerializer::toPathValue($ssl_certificate_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                try {
+                    $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
+                } catch (\JsonException $e) {
+                    throw new \InvalidArgumentException('json_encode error: ' . $e->getMessage(), 0, $e);
+                }
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation listSslCertificates
+     *
+     * List all SSL Certificates
+     *
+     * @param  string|null $domain_name Certificate&#39;s main domain name (optional)
+     * @param  string|null $san_domain_name One of the SANs domain name (optional)
+     * @param  int|null $page page (optional, default to 1)
+     * @param  int|null $per_page per_page (optional, default to 20)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listSslCertificates'] to see the possible values for this operation
+     *
+     * @throws \Shellrent\Sdk\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Shellrent\Sdk\Model\SslCertificatePaginatedListResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError
+     */
+    public function listSslCertificates($domain_name = null, $san_domain_name = null, $page = 1, $per_page = 20, string $contentType = self::contentTypes['listSslCertificates'][0])
+    {
+        list($response) = $this->listSslCertificatesWithHttpInfo($domain_name, $san_domain_name, $page, $per_page, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation listSslCertificatesWithHttpInfo
+     *
+     * List all SSL Certificates
+     *
+     * @param  string|null $domain_name Certificate&#39;s main domain name (optional)
+     * @param  string|null $san_domain_name One of the SANs domain name (optional)
+     * @param  int|null $page (optional, default to 1)
+     * @param  int|null $per_page (optional, default to 20)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listSslCertificates'] to see the possible values for this operation
+     *
+     * @throws \Shellrent\Sdk\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Shellrent\Sdk\Model\SslCertificatePaginatedListResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function listSslCertificatesWithHttpInfo($domain_name = null, $san_domain_name = null, $page = 1, $per_page = 20, string $contentType = self::contentTypes['listSslCertificates'][0])
+    {
+        $request = $this->listSslCertificatesRequest($domain_name, $san_domain_name, $page, $per_page, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Shellrent\Sdk\Model\SslCertificatePaginatedListResponse',
+                        $request,
+                        $response,
+                    );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $request,
+                        $response,
+                    );
+                case 403:
+                    return $this->handleResponseWithDataType(
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $request,
+                        $response,
+                    );
+                case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $request,
+                        $response,
+                    );
+                case 429:
+                    return $this->handleResponseWithDataType(
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Shellrent\Sdk\Model\SslCertificatePaginatedListResponse',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Shellrent\Sdk\Model\SslCertificatePaginatedListResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 429:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation listSslCertificatesAsync
+     *
+     * List all SSL Certificates
+     *
+     * @param  string|null $domain_name Certificate&#39;s main domain name (optional)
+     * @param  string|null $san_domain_name One of the SANs domain name (optional)
+     * @param  int|null $page (optional, default to 1)
+     * @param  int|null $per_page (optional, default to 20)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listSslCertificates'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function listSslCertificatesAsync($domain_name = null, $san_domain_name = null, $page = 1, $per_page = 20, string $contentType = self::contentTypes['listSslCertificates'][0])
+    {
+        return $this->listSslCertificatesAsyncWithHttpInfo($domain_name, $san_domain_name, $page, $per_page, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation listSslCertificatesAsyncWithHttpInfo
+     *
+     * List all SSL Certificates
+     *
+     * @param  string|null $domain_name Certificate&#39;s main domain name (optional)
+     * @param  string|null $san_domain_name One of the SANs domain name (optional)
+     * @param  int|null $page (optional, default to 1)
+     * @param  int|null $per_page (optional, default to 20)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listSslCertificates'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function listSslCertificatesAsyncWithHttpInfo($domain_name = null, $san_domain_name = null, $page = 1, $per_page = 20, string $contentType = self::contentTypes['listSslCertificates'][0])
+    {
+        $returnType = '\Shellrent\Sdk\Model\SslCertificatePaginatedListResponse';
+        $request = $this->listSslCertificatesRequest($domain_name, $san_domain_name, $page, $per_page, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'listSslCertificates'
+     *
+     * @param  string|null $domain_name Certificate&#39;s main domain name (optional)
+     * @param  string|null $san_domain_name One of the SANs domain name (optional)
+     * @param  int|null $page (optional, default to 1)
+     * @param  int|null $per_page (optional, default to 20)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listSslCertificates'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function listSslCertificatesRequest($domain_name = null, $san_domain_name = null, $page = 1, $per_page = 20, string $contentType = self::contentTypes['listSslCertificates'][0])
+    {
+
+
+
+
+
+
+        $resourcePath = '/api/v3/ssl-certificates';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $domain_name,
+            'domain_name', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $san_domain_name,
+            'san_domain_name', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $page,
+            'page', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $per_page,
+            'per_page', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                try {
+                    $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
+                } catch (\JsonException $e) {
+                    throw new \InvalidArgumentException('json_encode error: ' . $e->getMessage(), 0, $e);
+                }
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation reemitSslCertificate
+     *
+     * Re-emit certificate
+     *
+     * @param  int $ssl_certificate_id ssl_certificate_id (required)
+     * @param  \Shellrent\Sdk\Model\SslCertificateReemitRequest $ssl_certificate_reemit_request ssl_certificate_reemit_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['reemitSslCertificate'] to see the possible values for this operation
+     *
+     * @throws \Shellrent\Sdk\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Shellrent\Sdk\Model\TaskResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError
+     */
+    public function reemitSslCertificate($ssl_certificate_id, $ssl_certificate_reemit_request, string $contentType = self::contentTypes['reemitSslCertificate'][0])
+    {
+        list($response) = $this->reemitSslCertificateWithHttpInfo($ssl_certificate_id, $ssl_certificate_reemit_request, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation reemitSslCertificateWithHttpInfo
+     *
+     * Re-emit certificate
+     *
+     * @param  int $ssl_certificate_id (required)
+     * @param  \Shellrent\Sdk\Model\SslCertificateReemitRequest $ssl_certificate_reemit_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['reemitSslCertificate'] to see the possible values for this operation
+     *
+     * @throws \Shellrent\Sdk\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Shellrent\Sdk\Model\TaskResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function reemitSslCertificateWithHttpInfo($ssl_certificate_id, $ssl_certificate_reemit_request, string $contentType = self::contentTypes['reemitSslCertificate'][0])
+    {
+        $request = $this->reemitSslCertificateRequest($ssl_certificate_id, $ssl_certificate_reemit_request, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Shellrent\Sdk\Model\TaskResponse',
+                        $request,
+                        $response,
+                    );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $request,
+                        $response,
+                    );
+                case 403:
+                    return $this->handleResponseWithDataType(
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $request,
+                        $response,
+                    );
+                case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $request,
+                        $response,
+                    );
+                case 429:
+                    return $this->handleResponseWithDataType(
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Shellrent\Sdk\Model\TaskResponse',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Shellrent\Sdk\Model\TaskResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 429:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation reemitSslCertificateAsync
+     *
+     * Re-emit certificate
+     *
+     * @param  int $ssl_certificate_id (required)
+     * @param  \Shellrent\Sdk\Model\SslCertificateReemitRequest $ssl_certificate_reemit_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['reemitSslCertificate'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function reemitSslCertificateAsync($ssl_certificate_id, $ssl_certificate_reemit_request, string $contentType = self::contentTypes['reemitSslCertificate'][0])
+    {
+        return $this->reemitSslCertificateAsyncWithHttpInfo($ssl_certificate_id, $ssl_certificate_reemit_request, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation reemitSslCertificateAsyncWithHttpInfo
+     *
+     * Re-emit certificate
+     *
+     * @param  int $ssl_certificate_id (required)
+     * @param  \Shellrent\Sdk\Model\SslCertificateReemitRequest $ssl_certificate_reemit_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['reemitSslCertificate'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function reemitSslCertificateAsyncWithHttpInfo($ssl_certificate_id, $ssl_certificate_reemit_request, string $contentType = self::contentTypes['reemitSslCertificate'][0])
+    {
+        $returnType = '\Shellrent\Sdk\Model\TaskResponse';
+        $request = $this->reemitSslCertificateRequest($ssl_certificate_id, $ssl_certificate_reemit_request, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'reemitSslCertificate'
+     *
+     * @param  int $ssl_certificate_id (required)
+     * @param  \Shellrent\Sdk\Model\SslCertificateReemitRequest $ssl_certificate_reemit_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['reemitSslCertificate'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function reemitSslCertificateRequest($ssl_certificate_id, $ssl_certificate_reemit_request, string $contentType = self::contentTypes['reemitSslCertificate'][0])
+    {
+
+        // verify the required parameter 'ssl_certificate_id' is set
+        if ($ssl_certificate_id === null || (is_array($ssl_certificate_id) && count($ssl_certificate_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $ssl_certificate_id when calling reemitSslCertificate'
+            );
+        }
+
+        // verify the required parameter 'ssl_certificate_reemit_request' is set
+        if ($ssl_certificate_reemit_request === null || (is_array($ssl_certificate_reemit_request) && count($ssl_certificate_reemit_request) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $ssl_certificate_reemit_request when calling reemitSslCertificate'
+            );
+        }
+
+
+        $resourcePath = '/api/v3/ssl-certificates/{ssl_certificate_id}/reemit';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($ssl_certificate_id !== null) {
+            $resourcePath = str_replace(
+                '{ssl_certificate_id}',
+                ObjectSerializer::toPathValue($ssl_certificate_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($ssl_certificate_reemit_request)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                try {
+                    $httpBody = json_encode(ObjectSerializer::sanitizeForSerialization($ssl_certificate_reemit_request), JSON_THROW_ON_ERROR);
+                } catch (\JsonException $e) {
+                    throw new \InvalidArgumentException('json_encode error: ' . $e->getMessage(), 0, $e);
+                }
+            } else {
+                $httpBody = $ssl_certificate_reemit_request;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -508,40 +3004,40 @@ class PECApi
     }
 
     /**
-     * Operation createPecMailboxOwnerChange
+     * Operation updateSslCertificateCsr
      *
-     * Create PEC mailbox owner change
+     * Change SSL certificate CSR
      *
-     * @param  int $pec_id pec_id (required)
-     * @param  \Shellrent\Sdk\Model\PecMailboxOwnerChangeCreateRequest $pec_mailbox_owner_change_create_request pec_mailbox_owner_change_create_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createPecMailboxOwnerChange'] to see the possible values for this operation
+     * @param  int $ssl_certificate_id ssl_certificate_id (required)
+     * @param  \Shellrent\Sdk\Model\SslCertificateChangeCsrRequest $ssl_certificate_change_csr_request ssl_certificate_change_csr_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateSslCertificateCsr'] to see the possible values for this operation
      *
      * @throws \Shellrent\Sdk\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Shellrent\Sdk\Model\PecOwnerChangeResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError
+     * @return \Shellrent\Sdk\Model\SslCertificateKeyResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError
      */
-    public function createPecMailboxOwnerChange($pec_id, $pec_mailbox_owner_change_create_request, string $contentType = self::contentTypes['createPecMailboxOwnerChange'][0])
+    public function updateSslCertificateCsr($ssl_certificate_id, $ssl_certificate_change_csr_request, string $contentType = self::contentTypes['updateSslCertificateCsr'][0])
     {
-        list($response) = $this->createPecMailboxOwnerChangeWithHttpInfo($pec_id, $pec_mailbox_owner_change_create_request, $contentType);
+        list($response) = $this->updateSslCertificateCsrWithHttpInfo($ssl_certificate_id, $ssl_certificate_change_csr_request, $contentType);
         return $response;
     }
 
     /**
-     * Operation createPecMailboxOwnerChangeWithHttpInfo
+     * Operation updateSslCertificateCsrWithHttpInfo
      *
-     * Create PEC mailbox owner change
+     * Change SSL certificate CSR
      *
-     * @param  int $pec_id (required)
-     * @param  \Shellrent\Sdk\Model\PecMailboxOwnerChangeCreateRequest $pec_mailbox_owner_change_create_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createPecMailboxOwnerChange'] to see the possible values for this operation
+     * @param  int $ssl_certificate_id (required)
+     * @param  \Shellrent\Sdk\Model\SslCertificateChangeCsrRequest $ssl_certificate_change_csr_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateSslCertificateCsr'] to see the possible values for this operation
      *
      * @throws \Shellrent\Sdk\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Shellrent\Sdk\Model\PecOwnerChangeResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Shellrent\Sdk\Model\SslCertificateKeyResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function createPecMailboxOwnerChangeWithHttpInfo($pec_id, $pec_mailbox_owner_change_create_request, string $contentType = self::contentTypes['createPecMailboxOwnerChange'][0])
+    public function updateSslCertificateCsrWithHttpInfo($ssl_certificate_id, $ssl_certificate_change_csr_request, string $contentType = self::contentTypes['updateSslCertificateCsr'][0])
     {
-        $request = $this->createPecMailboxOwnerChangeRequest($pec_id, $pec_mailbox_owner_change_create_request, $contentType);
+        $request = $this->updateSslCertificateCsrRequest($ssl_certificate_id, $ssl_certificate_change_csr_request, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -569,7 +3065,7 @@ class PECApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Shellrent\Sdk\Model\PecOwnerChangeResponse',
+                        '\Shellrent\Sdk\Model\SslCertificateKeyResponse',
                         $request,
                         $response,
                     );
@@ -592,6 +3088,12 @@ class PECApi
                         $response,
                     );
                 case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $request,
+                        $response,
+                    );
+                case 429:
                     return $this->handleResponseWithDataType(
                         '\Shellrent\Sdk\Model\ApiError',
                         $request,
@@ -615,7 +3117,7 @@ class PECApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Shellrent\Sdk\Model\PecOwnerChangeResponse',
+                '\Shellrent\Sdk\Model\SslCertificateKeyResponse',
                 $request,
                 $response,
             );
@@ -624,7 +3126,7 @@ class PECApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Shellrent\Sdk\Model\PecOwnerChangeResponse',
+                        '\Shellrent\Sdk\Model\SslCertificateKeyResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -661,6 +3163,14 @@ class PECApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
+                case 429:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
             }
         
 
@@ -669,20 +3179,20 @@ class PECApi
     }
 
     /**
-     * Operation createPecMailboxOwnerChangeAsync
+     * Operation updateSslCertificateCsrAsync
      *
-     * Create PEC mailbox owner change
+     * Change SSL certificate CSR
      *
-     * @param  int $pec_id (required)
-     * @param  \Shellrent\Sdk\Model\PecMailboxOwnerChangeCreateRequest $pec_mailbox_owner_change_create_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createPecMailboxOwnerChange'] to see the possible values for this operation
+     * @param  int $ssl_certificate_id (required)
+     * @param  \Shellrent\Sdk\Model\SslCertificateChangeCsrRequest $ssl_certificate_change_csr_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateSslCertificateCsr'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createPecMailboxOwnerChangeAsync($pec_id, $pec_mailbox_owner_change_create_request, string $contentType = self::contentTypes['createPecMailboxOwnerChange'][0])
+    public function updateSslCertificateCsrAsync($ssl_certificate_id, $ssl_certificate_change_csr_request, string $contentType = self::contentTypes['updateSslCertificateCsr'][0])
     {
-        return $this->createPecMailboxOwnerChangeAsyncWithHttpInfo($pec_id, $pec_mailbox_owner_change_create_request, $contentType)
+        return $this->updateSslCertificateCsrAsyncWithHttpInfo($ssl_certificate_id, $ssl_certificate_change_csr_request, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -691,21 +3201,21 @@ class PECApi
     }
 
     /**
-     * Operation createPecMailboxOwnerChangeAsyncWithHttpInfo
+     * Operation updateSslCertificateCsrAsyncWithHttpInfo
      *
-     * Create PEC mailbox owner change
+     * Change SSL certificate CSR
      *
-     * @param  int $pec_id (required)
-     * @param  \Shellrent\Sdk\Model\PecMailboxOwnerChangeCreateRequest $pec_mailbox_owner_change_create_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createPecMailboxOwnerChange'] to see the possible values for this operation
+     * @param  int $ssl_certificate_id (required)
+     * @param  \Shellrent\Sdk\Model\SslCertificateChangeCsrRequest $ssl_certificate_change_csr_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateSslCertificateCsr'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createPecMailboxOwnerChangeAsyncWithHttpInfo($pec_id, $pec_mailbox_owner_change_create_request, string $contentType = self::contentTypes['createPecMailboxOwnerChange'][0])
+    public function updateSslCertificateCsrAsyncWithHttpInfo($ssl_certificate_id, $ssl_certificate_change_csr_request, string $contentType = self::contentTypes['updateSslCertificateCsr'][0])
     {
-        $returnType = '\Shellrent\Sdk\Model\PecOwnerChangeResponse';
-        $request = $this->createPecMailboxOwnerChangeRequest($pec_id, $pec_mailbox_owner_change_create_request, $contentType);
+        $returnType = '\Shellrent\Sdk\Model\SslCertificateKeyResponse';
+        $request = $this->updateSslCertificateCsrRequest($ssl_certificate_id, $ssl_certificate_change_csr_request, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -744,34 +3254,34 @@ class PECApi
     }
 
     /**
-     * Create request for operation 'createPecMailboxOwnerChange'
+     * Create request for operation 'updateSslCertificateCsr'
      *
-     * @param  int $pec_id (required)
-     * @param  \Shellrent\Sdk\Model\PecMailboxOwnerChangeCreateRequest $pec_mailbox_owner_change_create_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createPecMailboxOwnerChange'] to see the possible values for this operation
+     * @param  int $ssl_certificate_id (required)
+     * @param  \Shellrent\Sdk\Model\SslCertificateChangeCsrRequest $ssl_certificate_change_csr_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateSslCertificateCsr'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function createPecMailboxOwnerChangeRequest($pec_id, $pec_mailbox_owner_change_create_request, string $contentType = self::contentTypes['createPecMailboxOwnerChange'][0])
+    public function updateSslCertificateCsrRequest($ssl_certificate_id, $ssl_certificate_change_csr_request, string $contentType = self::contentTypes['updateSslCertificateCsr'][0])
     {
 
-        // verify the required parameter 'pec_id' is set
-        if ($pec_id === null || (is_array($pec_id) && count($pec_id) === 0)) {
+        // verify the required parameter 'ssl_certificate_id' is set
+        if ($ssl_certificate_id === null || (is_array($ssl_certificate_id) && count($ssl_certificate_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $pec_id when calling createPecMailboxOwnerChange'
+                'Missing the required parameter $ssl_certificate_id when calling updateSslCertificateCsr'
             );
         }
 
-        // verify the required parameter 'pec_mailbox_owner_change_create_request' is set
-        if ($pec_mailbox_owner_change_create_request === null || (is_array($pec_mailbox_owner_change_create_request) && count($pec_mailbox_owner_change_create_request) === 0)) {
+        // verify the required parameter 'ssl_certificate_change_csr_request' is set
+        if ($ssl_certificate_change_csr_request === null || (is_array($ssl_certificate_change_csr_request) && count($ssl_certificate_change_csr_request) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $pec_mailbox_owner_change_create_request when calling createPecMailboxOwnerChange'
+                'Missing the required parameter $ssl_certificate_change_csr_request when calling updateSslCertificateCsr'
             );
         }
 
 
-        $resourcePath = '/api/v3/pec-mailboxes/{pec_id}/owner-changes';
+        $resourcePath = '/api/v3/ssl-certificates/{ssl_certificate_id}/csr';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -781,10 +3291,10 @@ class PECApi
 
 
         // path params
-        if ($pec_id !== null) {
+        if ($ssl_certificate_id !== null) {
             $resourcePath = str_replace(
-                '{pec_id}',
-                ObjectSerializer::toPathValue($pec_id),
+                '{ssl_certificate_id}',
+                ObjectSerializer::toPathValue($ssl_certificate_id),
                 $resourcePath
             );
         }
@@ -797,16 +3307,16 @@ class PECApi
         );
 
         // for model (json/xml)
-        if (isset($pec_mailbox_owner_change_create_request)) {
+        if (isset($ssl_certificate_change_csr_request)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
                 try {
-                    $httpBody = json_encode(ObjectSerializer::sanitizeForSerialization($pec_mailbox_owner_change_create_request), JSON_THROW_ON_ERROR);
+                    $httpBody = json_encode(ObjectSerializer::sanitizeForSerialization($ssl_certificate_change_csr_request), JSON_THROW_ON_ERROR);
                 } catch (\JsonException $e) {
                     throw new \InvalidArgumentException('json_encode error: ' . $e->getMessage(), 0, $e);
                 }
             } else {
-                $httpBody = $pec_mailbox_owner_change_create_request;
+                $httpBody = $ssl_certificate_change_csr_request;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -855,7 +3365,7 @@ class PECApi
         $operationHost = $this->config->getHost();
         $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
-            'POST',
+            'PUT',
             $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody
@@ -863,38 +3373,40 @@ class PECApi
     }
 
     /**
-     * Operation getPecDomain
+     * Operation updateSslCertificateOwner
      *
-     * Get PEC domain
+     * Edit SSL certificate owner
      *
-     * @param  int $pec_domain_id pec_domain_id (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPecDomain'] to see the possible values for this operation
+     * @param  int $ssl_certificate_id ssl_certificate_id (required)
+     * @param  \Shellrent\Sdk\Model\SslCertificateOwnerRequest $ssl_certificate_owner_request ssl_certificate_owner_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateSslCertificateOwner'] to see the possible values for this operation
      *
      * @throws \Shellrent\Sdk\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Shellrent\Sdk\Model\PecDomainResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError
+     * @return \Shellrent\Sdk\Model\SslCertificateResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError
      */
-    public function getPecDomain($pec_domain_id, string $contentType = self::contentTypes['getPecDomain'][0])
+    public function updateSslCertificateOwner($ssl_certificate_id, $ssl_certificate_owner_request, string $contentType = self::contentTypes['updateSslCertificateOwner'][0])
     {
-        list($response) = $this->getPecDomainWithHttpInfo($pec_domain_id, $contentType);
+        list($response) = $this->updateSslCertificateOwnerWithHttpInfo($ssl_certificate_id, $ssl_certificate_owner_request, $contentType);
         return $response;
     }
 
     /**
-     * Operation getPecDomainWithHttpInfo
+     * Operation updateSslCertificateOwnerWithHttpInfo
      *
-     * Get PEC domain
+     * Edit SSL certificate owner
      *
-     * @param  int $pec_domain_id (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPecDomain'] to see the possible values for this operation
+     * @param  int $ssl_certificate_id (required)
+     * @param  \Shellrent\Sdk\Model\SslCertificateOwnerRequest $ssl_certificate_owner_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateSslCertificateOwner'] to see the possible values for this operation
      *
      * @throws \Shellrent\Sdk\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Shellrent\Sdk\Model\PecDomainResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Shellrent\Sdk\Model\SslCertificateResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getPecDomainWithHttpInfo($pec_domain_id, string $contentType = self::contentTypes['getPecDomain'][0])
+    public function updateSslCertificateOwnerWithHttpInfo($ssl_certificate_id, $ssl_certificate_owner_request, string $contentType = self::contentTypes['updateSslCertificateOwner'][0])
     {
-        $request = $this->getPecDomainRequest($pec_domain_id, $contentType);
+        $request = $this->updateSslCertificateOwnerRequest($ssl_certificate_id, $ssl_certificate_owner_request, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -922,7 +3434,7 @@ class PECApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Shellrent\Sdk\Model\PecDomainResponse',
+                        '\Shellrent\Sdk\Model\SslCertificateResponse',
                         $request,
                         $response,
                     );
@@ -945,6 +3457,12 @@ class PECApi
                         $response,
                     );
                 case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $request,
+                        $response,
+                    );
+                case 429:
                     return $this->handleResponseWithDataType(
                         '\Shellrent\Sdk\Model\ApiError',
                         $request,
@@ -968,7 +3486,7 @@ class PECApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Shellrent\Sdk\Model\PecDomainResponse',
+                '\Shellrent\Sdk\Model\SslCertificateResponse',
                 $request,
                 $response,
             );
@@ -977,7 +3495,7 @@ class PECApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Shellrent\Sdk\Model\PecDomainResponse',
+                        '\Shellrent\Sdk\Model\SslCertificateResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1014,6 +3532,14 @@ class PECApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
+                case 429:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
             }
         
 
@@ -1022,19 +3548,20 @@ class PECApi
     }
 
     /**
-     * Operation getPecDomainAsync
+     * Operation updateSslCertificateOwnerAsync
      *
-     * Get PEC domain
+     * Edit SSL certificate owner
      *
-     * @param  int $pec_domain_id (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPecDomain'] to see the possible values for this operation
+     * @param  int $ssl_certificate_id (required)
+     * @param  \Shellrent\Sdk\Model\SslCertificateOwnerRequest $ssl_certificate_owner_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateSslCertificateOwner'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getPecDomainAsync($pec_domain_id, string $contentType = self::contentTypes['getPecDomain'][0])
+    public function updateSslCertificateOwnerAsync($ssl_certificate_id, $ssl_certificate_owner_request, string $contentType = self::contentTypes['updateSslCertificateOwner'][0])
     {
-        return $this->getPecDomainAsyncWithHttpInfo($pec_domain_id, $contentType)
+        return $this->updateSslCertificateOwnerAsyncWithHttpInfo($ssl_certificate_id, $ssl_certificate_owner_request, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1043,20 +3570,21 @@ class PECApi
     }
 
     /**
-     * Operation getPecDomainAsyncWithHttpInfo
+     * Operation updateSslCertificateOwnerAsyncWithHttpInfo
      *
-     * Get PEC domain
+     * Edit SSL certificate owner
      *
-     * @param  int $pec_domain_id (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPecDomain'] to see the possible values for this operation
+     * @param  int $ssl_certificate_id (required)
+     * @param  \Shellrent\Sdk\Model\SslCertificateOwnerRequest $ssl_certificate_owner_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateSslCertificateOwner'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getPecDomainAsyncWithHttpInfo($pec_domain_id, string $contentType = self::contentTypes['getPecDomain'][0])
+    public function updateSslCertificateOwnerAsyncWithHttpInfo($ssl_certificate_id, $ssl_certificate_owner_request, string $contentType = self::contentTypes['updateSslCertificateOwner'][0])
     {
-        $returnType = '\Shellrent\Sdk\Model\PecDomainResponse';
-        $request = $this->getPecDomainRequest($pec_domain_id, $contentType);
+        $returnType = '\Shellrent\Sdk\Model\SslCertificateResponse';
+        $request = $this->updateSslCertificateOwnerRequest($ssl_certificate_id, $ssl_certificate_owner_request, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1095,26 +3623,34 @@ class PECApi
     }
 
     /**
-     * Create request for operation 'getPecDomain'
+     * Create request for operation 'updateSslCertificateOwner'
      *
-     * @param  int $pec_domain_id (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPecDomain'] to see the possible values for this operation
+     * @param  int $ssl_certificate_id (required)
+     * @param  \Shellrent\Sdk\Model\SslCertificateOwnerRequest $ssl_certificate_owner_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateSslCertificateOwner'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getPecDomainRequest($pec_domain_id, string $contentType = self::contentTypes['getPecDomain'][0])
+    public function updateSslCertificateOwnerRequest($ssl_certificate_id, $ssl_certificate_owner_request, string $contentType = self::contentTypes['updateSslCertificateOwner'][0])
     {
 
-        // verify the required parameter 'pec_domain_id' is set
-        if ($pec_domain_id === null || (is_array($pec_domain_id) && count($pec_domain_id) === 0)) {
+        // verify the required parameter 'ssl_certificate_id' is set
+        if ($ssl_certificate_id === null || (is_array($ssl_certificate_id) && count($ssl_certificate_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $pec_domain_id when calling getPecDomain'
+                'Missing the required parameter $ssl_certificate_id when calling updateSslCertificateOwner'
+            );
+        }
+
+        // verify the required parameter 'ssl_certificate_owner_request' is set
+        if ($ssl_certificate_owner_request === null || (is_array($ssl_certificate_owner_request) && count($ssl_certificate_owner_request) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $ssl_certificate_owner_request when calling updateSslCertificateOwner'
             );
         }
 
 
-        $resourcePath = '/api/v3/pec-domains/{pec_domain_id}';
+        $resourcePath = '/api/v3/ssl-certificates/{ssl_certificate_id}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -1124,10 +3660,10 @@ class PECApi
 
 
         // path params
-        if ($pec_domain_id !== null) {
+        if ($ssl_certificate_id !== null) {
             $resourcePath = str_replace(
-                '{pec_domain_id}',
-                ObjectSerializer::toPathValue($pec_domain_id),
+                '{ssl_certificate_id}',
+                ObjectSerializer::toPathValue($ssl_certificate_id),
                 $resourcePath
             );
         }
@@ -1140,2452 +3676,16 @@ class PECApi
         );
 
         // for model (json/xml)
-        if (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
-                    foreach ($formParamValueItems as $formParamValueItem) {
-                        $multipartContents[] = [
-                            'name' => $formParamName,
-                            'contents' => $formParamValueItem
-                        ];
-                    }
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the form parameters
-                try {
-                    $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
-                } catch (\JsonException $e) {
-                    throw new \InvalidArgumentException('json_encode error: ' . $e->getMessage(), 0, $e);
-                }
-            } else {
-                // for HTTP post (form)
-                $httpBody = ObjectSerializer::buildQuery($formParams);
-            }
-        }
-
-        // this endpoint requires OAuth (access token)
-        if (!empty($this->config->getAccessToken())) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $operationHost = $this->config->getHost();
-        $query = ObjectSerializer::buildQuery($queryParams);
-        return new Request(
-            'GET',
-            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation getPecDomainOwnerChange
-     *
-     * Get PEC domain owner change
-     *
-     * @param  int $pec_domain_id pec_domain_id (required)
-     * @param  int $owner_change_id owner_change_id (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPecDomainOwnerChange'] to see the possible values for this operation
-     *
-     * @throws \Shellrent\Sdk\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     * @return \Shellrent\Sdk\Model\PecOwnerChangeResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError
-     */
-    public function getPecDomainOwnerChange($pec_domain_id, $owner_change_id, string $contentType = self::contentTypes['getPecDomainOwnerChange'][0])
-    {
-        list($response) = $this->getPecDomainOwnerChangeWithHttpInfo($pec_domain_id, $owner_change_id, $contentType);
-        return $response;
-    }
-
-    /**
-     * Operation getPecDomainOwnerChangeWithHttpInfo
-     *
-     * Get PEC domain owner change
-     *
-     * @param  int $pec_domain_id (required)
-     * @param  int $owner_change_id (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPecDomainOwnerChange'] to see the possible values for this operation
-     *
-     * @throws \Shellrent\Sdk\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     * @return array of \Shellrent\Sdk\Model\PecOwnerChangeResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function getPecDomainOwnerChangeWithHttpInfo($pec_domain_id, $owner_change_id, string $contentType = self::contentTypes['getPecDomainOwnerChange'][0])
-    {
-        $request = $this->getPecDomainOwnerChangeRequest($pec_domain_id, $owner_change_id, $contentType);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
-                );
-            } catch (ConnectException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    null,
-                    null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-
-            switch($statusCode) {
-                case 200:
-                    return $this->handleResponseWithDataType(
-                        '\Shellrent\Sdk\Model\PecOwnerChangeResponse',
-                        $request,
-                        $response,
-                    );
-                case 400:
-                    return $this->handleResponseWithDataType(
-                        '\Shellrent\Sdk\Model\ApiError',
-                        $request,
-                        $response,
-                    );
-                case 401:
-                    return $this->handleResponseWithDataType(
-                        '\Shellrent\Sdk\Model\ApiError',
-                        $request,
-                        $response,
-                    );
-                case 403:
-                    return $this->handleResponseWithDataType(
-                        '\Shellrent\Sdk\Model\ApiError',
-                        $request,
-                        $response,
-                    );
-                case 404:
-                    return $this->handleResponseWithDataType(
-                        '\Shellrent\Sdk\Model\ApiError',
-                        $request,
-                        $response,
-                    );
-            }
-
-            
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
-
-            return $this->handleResponseWithDataType(
-                '\Shellrent\Sdk\Model\PecOwnerChangeResponse',
-                $request,
-                $response,
-            );
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Shellrent\Sdk\Model\PecOwnerChangeResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 400:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Shellrent\Sdk\Model\ApiError',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 401:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Shellrent\Sdk\Model\ApiError',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 403:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Shellrent\Sdk\Model\ApiError',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 404:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Shellrent\Sdk\Model\ApiError',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-            }
-        
-
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation getPecDomainOwnerChangeAsync
-     *
-     * Get PEC domain owner change
-     *
-     * @param  int $pec_domain_id (required)
-     * @param  int $owner_change_id (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPecDomainOwnerChange'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function getPecDomainOwnerChangeAsync($pec_domain_id, $owner_change_id, string $contentType = self::contentTypes['getPecDomainOwnerChange'][0])
-    {
-        return $this->getPecDomainOwnerChangeAsyncWithHttpInfo($pec_domain_id, $owner_change_id, $contentType)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation getPecDomainOwnerChangeAsyncWithHttpInfo
-     *
-     * Get PEC domain owner change
-     *
-     * @param  int $pec_domain_id (required)
-     * @param  int $owner_change_id (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPecDomainOwnerChange'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function getPecDomainOwnerChangeAsyncWithHttpInfo($pec_domain_id, $owner_change_id, string $contentType = self::contentTypes['getPecDomainOwnerChange'][0])
-    {
-        $returnType = '\Shellrent\Sdk\Model\PecOwnerChangeResponse';
-        $request = $this->getPecDomainOwnerChangeRequest($pec_domain_id, $owner_change_id, $contentType);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        (string) $response->getBody()
-                    );
-                }
-            );
-    }
-
-    /**
-     * Create request for operation 'getPecDomainOwnerChange'
-     *
-     * @param  int $pec_domain_id (required)
-     * @param  int $owner_change_id (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPecDomainOwnerChange'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    public function getPecDomainOwnerChangeRequest($pec_domain_id, $owner_change_id, string $contentType = self::contentTypes['getPecDomainOwnerChange'][0])
-    {
-
-        // verify the required parameter 'pec_domain_id' is set
-        if ($pec_domain_id === null || (is_array($pec_domain_id) && count($pec_domain_id) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $pec_domain_id when calling getPecDomainOwnerChange'
-            );
-        }
-
-        // verify the required parameter 'owner_change_id' is set
-        if ($owner_change_id === null || (is_array($owner_change_id) && count($owner_change_id) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $owner_change_id when calling getPecDomainOwnerChange'
-            );
-        }
-
-
-        $resourcePath = '/api/v3/pec-domains/{pec_domain_id}/owner-changes/{owner_change_id}';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-
-
-        // path params
-        if ($pec_domain_id !== null) {
-            $resourcePath = str_replace(
-                '{pec_domain_id}',
-                ObjectSerializer::toPathValue($pec_domain_id),
-                $resourcePath
-            );
-        }
-        // path params
-        if ($owner_change_id !== null) {
-            $resourcePath = str_replace(
-                '{owner_change_id}',
-                ObjectSerializer::toPathValue($owner_change_id),
-                $resourcePath
-            );
-        }
-
-
-        $headers = $this->headerSelector->selectHeaders(
-            ['application/json', ],
-            $contentType,
-            $multipart
-        );
-
-        // for model (json/xml)
-        if (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
-                    foreach ($formParamValueItems as $formParamValueItem) {
-                        $multipartContents[] = [
-                            'name' => $formParamName,
-                            'contents' => $formParamValueItem
-                        ];
-                    }
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the form parameters
-                try {
-                    $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
-                } catch (\JsonException $e) {
-                    throw new \InvalidArgumentException('json_encode error: ' . $e->getMessage(), 0, $e);
-                }
-            } else {
-                // for HTTP post (form)
-                $httpBody = ObjectSerializer::buildQuery($formParams);
-            }
-        }
-
-        // this endpoint requires OAuth (access token)
-        if (!empty($this->config->getAccessToken())) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $operationHost = $this->config->getHost();
-        $query = ObjectSerializer::buildQuery($queryParams);
-        return new Request(
-            'GET',
-            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation getPecMailbox
-     *
-     * Get PEC mailbox
-     *
-     * @param  int $pec_id pec_id (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPecMailbox'] to see the possible values for this operation
-     *
-     * @throws \Shellrent\Sdk\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     * @return \Shellrent\Sdk\Model\PecResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError
-     */
-    public function getPecMailbox($pec_id, string $contentType = self::contentTypes['getPecMailbox'][0])
-    {
-        list($response) = $this->getPecMailboxWithHttpInfo($pec_id, $contentType);
-        return $response;
-    }
-
-    /**
-     * Operation getPecMailboxWithHttpInfo
-     *
-     * Get PEC mailbox
-     *
-     * @param  int $pec_id (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPecMailbox'] to see the possible values for this operation
-     *
-     * @throws \Shellrent\Sdk\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     * @return array of \Shellrent\Sdk\Model\PecResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function getPecMailboxWithHttpInfo($pec_id, string $contentType = self::contentTypes['getPecMailbox'][0])
-    {
-        $request = $this->getPecMailboxRequest($pec_id, $contentType);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
-                );
-            } catch (ConnectException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    null,
-                    null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-
-            switch($statusCode) {
-                case 200:
-                    return $this->handleResponseWithDataType(
-                        '\Shellrent\Sdk\Model\PecResponse',
-                        $request,
-                        $response,
-                    );
-                case 400:
-                    return $this->handleResponseWithDataType(
-                        '\Shellrent\Sdk\Model\ApiError',
-                        $request,
-                        $response,
-                    );
-                case 401:
-                    return $this->handleResponseWithDataType(
-                        '\Shellrent\Sdk\Model\ApiError',
-                        $request,
-                        $response,
-                    );
-                case 403:
-                    return $this->handleResponseWithDataType(
-                        '\Shellrent\Sdk\Model\ApiError',
-                        $request,
-                        $response,
-                    );
-                case 404:
-                    return $this->handleResponseWithDataType(
-                        '\Shellrent\Sdk\Model\ApiError',
-                        $request,
-                        $response,
-                    );
-            }
-
-            
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
-
-            return $this->handleResponseWithDataType(
-                '\Shellrent\Sdk\Model\PecResponse',
-                $request,
-                $response,
-            );
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Shellrent\Sdk\Model\PecResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 400:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Shellrent\Sdk\Model\ApiError',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 401:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Shellrent\Sdk\Model\ApiError',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 403:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Shellrent\Sdk\Model\ApiError',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 404:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Shellrent\Sdk\Model\ApiError',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-            }
-        
-
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation getPecMailboxAsync
-     *
-     * Get PEC mailbox
-     *
-     * @param  int $pec_id (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPecMailbox'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function getPecMailboxAsync($pec_id, string $contentType = self::contentTypes['getPecMailbox'][0])
-    {
-        return $this->getPecMailboxAsyncWithHttpInfo($pec_id, $contentType)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation getPecMailboxAsyncWithHttpInfo
-     *
-     * Get PEC mailbox
-     *
-     * @param  int $pec_id (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPecMailbox'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function getPecMailboxAsyncWithHttpInfo($pec_id, string $contentType = self::contentTypes['getPecMailbox'][0])
-    {
-        $returnType = '\Shellrent\Sdk\Model\PecResponse';
-        $request = $this->getPecMailboxRequest($pec_id, $contentType);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        (string) $response->getBody()
-                    );
-                }
-            );
-    }
-
-    /**
-     * Create request for operation 'getPecMailbox'
-     *
-     * @param  int $pec_id (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPecMailbox'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    public function getPecMailboxRequest($pec_id, string $contentType = self::contentTypes['getPecMailbox'][0])
-    {
-
-        // verify the required parameter 'pec_id' is set
-        if ($pec_id === null || (is_array($pec_id) && count($pec_id) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $pec_id when calling getPecMailbox'
-            );
-        }
-
-
-        $resourcePath = '/api/v3/pec-mailboxes/{pec_id}';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-
-
-        // path params
-        if ($pec_id !== null) {
-            $resourcePath = str_replace(
-                '{pec_id}',
-                ObjectSerializer::toPathValue($pec_id),
-                $resourcePath
-            );
-        }
-
-
-        $headers = $this->headerSelector->selectHeaders(
-            ['application/json', ],
-            $contentType,
-            $multipart
-        );
-
-        // for model (json/xml)
-        if (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
-                    foreach ($formParamValueItems as $formParamValueItem) {
-                        $multipartContents[] = [
-                            'name' => $formParamName,
-                            'contents' => $formParamValueItem
-                        ];
-                    }
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the form parameters
-                try {
-                    $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
-                } catch (\JsonException $e) {
-                    throw new \InvalidArgumentException('json_encode error: ' . $e->getMessage(), 0, $e);
-                }
-            } else {
-                // for HTTP post (form)
-                $httpBody = ObjectSerializer::buildQuery($formParams);
-            }
-        }
-
-        // this endpoint requires OAuth (access token)
-        if (!empty($this->config->getAccessToken())) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $operationHost = $this->config->getHost();
-        $query = ObjectSerializer::buildQuery($queryParams);
-        return new Request(
-            'GET',
-            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation listPecDomainOwnerChanges
-     *
-     * List PEC domain owner changes
-     *
-     * @param  int $pec_domain_id pec_domain_id (required)
-     * @param  int|null $page page (optional, default to 1)
-     * @param  int|null $per_page per_page (optional, default to 20)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listPecDomainOwnerChanges'] to see the possible values for this operation
-     *
-     * @throws \Shellrent\Sdk\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     * @return \Shellrent\Sdk\Model\PecOwnerChangePaginatedListResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError
-     */
-    public function listPecDomainOwnerChanges($pec_domain_id, $page = 1, $per_page = 20, string $contentType = self::contentTypes['listPecDomainOwnerChanges'][0])
-    {
-        list($response) = $this->listPecDomainOwnerChangesWithHttpInfo($pec_domain_id, $page, $per_page, $contentType);
-        return $response;
-    }
-
-    /**
-     * Operation listPecDomainOwnerChangesWithHttpInfo
-     *
-     * List PEC domain owner changes
-     *
-     * @param  int $pec_domain_id (required)
-     * @param  int|null $page (optional, default to 1)
-     * @param  int|null $per_page (optional, default to 20)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listPecDomainOwnerChanges'] to see the possible values for this operation
-     *
-     * @throws \Shellrent\Sdk\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     * @return array of \Shellrent\Sdk\Model\PecOwnerChangePaginatedListResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function listPecDomainOwnerChangesWithHttpInfo($pec_domain_id, $page = 1, $per_page = 20, string $contentType = self::contentTypes['listPecDomainOwnerChanges'][0])
-    {
-        $request = $this->listPecDomainOwnerChangesRequest($pec_domain_id, $page, $per_page, $contentType);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
-                );
-            } catch (ConnectException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    null,
-                    null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-
-            switch($statusCode) {
-                case 200:
-                    return $this->handleResponseWithDataType(
-                        '\Shellrent\Sdk\Model\PecOwnerChangePaginatedListResponse',
-                        $request,
-                        $response,
-                    );
-                case 400:
-                    return $this->handleResponseWithDataType(
-                        '\Shellrent\Sdk\Model\ApiError',
-                        $request,
-                        $response,
-                    );
-                case 401:
-                    return $this->handleResponseWithDataType(
-                        '\Shellrent\Sdk\Model\ApiError',
-                        $request,
-                        $response,
-                    );
-                case 403:
-                    return $this->handleResponseWithDataType(
-                        '\Shellrent\Sdk\Model\ApiError',
-                        $request,
-                        $response,
-                    );
-                case 404:
-                    return $this->handleResponseWithDataType(
-                        '\Shellrent\Sdk\Model\ApiError',
-                        $request,
-                        $response,
-                    );
-            }
-
-            
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
-
-            return $this->handleResponseWithDataType(
-                '\Shellrent\Sdk\Model\PecOwnerChangePaginatedListResponse',
-                $request,
-                $response,
-            );
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Shellrent\Sdk\Model\PecOwnerChangePaginatedListResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 400:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Shellrent\Sdk\Model\ApiError',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 401:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Shellrent\Sdk\Model\ApiError',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 403:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Shellrent\Sdk\Model\ApiError',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 404:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Shellrent\Sdk\Model\ApiError',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-            }
-        
-
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation listPecDomainOwnerChangesAsync
-     *
-     * List PEC domain owner changes
-     *
-     * @param  int $pec_domain_id (required)
-     * @param  int|null $page (optional, default to 1)
-     * @param  int|null $per_page (optional, default to 20)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listPecDomainOwnerChanges'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function listPecDomainOwnerChangesAsync($pec_domain_id, $page = 1, $per_page = 20, string $contentType = self::contentTypes['listPecDomainOwnerChanges'][0])
-    {
-        return $this->listPecDomainOwnerChangesAsyncWithHttpInfo($pec_domain_id, $page, $per_page, $contentType)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation listPecDomainOwnerChangesAsyncWithHttpInfo
-     *
-     * List PEC domain owner changes
-     *
-     * @param  int $pec_domain_id (required)
-     * @param  int|null $page (optional, default to 1)
-     * @param  int|null $per_page (optional, default to 20)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listPecDomainOwnerChanges'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function listPecDomainOwnerChangesAsyncWithHttpInfo($pec_domain_id, $page = 1, $per_page = 20, string $contentType = self::contentTypes['listPecDomainOwnerChanges'][0])
-    {
-        $returnType = '\Shellrent\Sdk\Model\PecOwnerChangePaginatedListResponse';
-        $request = $this->listPecDomainOwnerChangesRequest($pec_domain_id, $page, $per_page, $contentType);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        (string) $response->getBody()
-                    );
-                }
-            );
-    }
-
-    /**
-     * Create request for operation 'listPecDomainOwnerChanges'
-     *
-     * @param  int $pec_domain_id (required)
-     * @param  int|null $page (optional, default to 1)
-     * @param  int|null $per_page (optional, default to 20)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listPecDomainOwnerChanges'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    public function listPecDomainOwnerChangesRequest($pec_domain_id, $page = 1, $per_page = 20, string $contentType = self::contentTypes['listPecDomainOwnerChanges'][0])
-    {
-
-        // verify the required parameter 'pec_domain_id' is set
-        if ($pec_domain_id === null || (is_array($pec_domain_id) && count($pec_domain_id) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $pec_domain_id when calling listPecDomainOwnerChanges'
-            );
-        }
-
-
-
-
-        $resourcePath = '/api/v3/pec-domains/{pec_domain_id}/owner-changes';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $page,
-            'page', // param base name
-            'integer', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $per_page,
-            'per_page', // param base name
-            'integer', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-
-
-        // path params
-        if ($pec_domain_id !== null) {
-            $resourcePath = str_replace(
-                '{pec_domain_id}',
-                ObjectSerializer::toPathValue($pec_domain_id),
-                $resourcePath
-            );
-        }
-
-
-        $headers = $this->headerSelector->selectHeaders(
-            ['application/json', ],
-            $contentType,
-            $multipart
-        );
-
-        // for model (json/xml)
-        if (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
-                    foreach ($formParamValueItems as $formParamValueItem) {
-                        $multipartContents[] = [
-                            'name' => $formParamName,
-                            'contents' => $formParamValueItem
-                        ];
-                    }
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the form parameters
-                try {
-                    $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
-                } catch (\JsonException $e) {
-                    throw new \InvalidArgumentException('json_encode error: ' . $e->getMessage(), 0, $e);
-                }
-            } else {
-                // for HTTP post (form)
-                $httpBody = ObjectSerializer::buildQuery($formParams);
-            }
-        }
-
-        // this endpoint requires OAuth (access token)
-        if (!empty($this->config->getAccessToken())) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $operationHost = $this->config->getHost();
-        $query = ObjectSerializer::buildQuery($queryParams);
-        return new Request(
-            'GET',
-            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation listPecDomains
-     *
-     * List PEC domains
-     *
-     * @param  int|null $page page (optional, default to 1)
-     * @param  int|null $per_page per_page (optional, default to 20)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listPecDomains'] to see the possible values for this operation
-     *
-     * @throws \Shellrent\Sdk\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     * @return \Shellrent\Sdk\Model\PecDomainPaginatedListResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError
-     */
-    public function listPecDomains($page = 1, $per_page = 20, string $contentType = self::contentTypes['listPecDomains'][0])
-    {
-        list($response) = $this->listPecDomainsWithHttpInfo($page, $per_page, $contentType);
-        return $response;
-    }
-
-    /**
-     * Operation listPecDomainsWithHttpInfo
-     *
-     * List PEC domains
-     *
-     * @param  int|null $page (optional, default to 1)
-     * @param  int|null $per_page (optional, default to 20)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listPecDomains'] to see the possible values for this operation
-     *
-     * @throws \Shellrent\Sdk\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     * @return array of \Shellrent\Sdk\Model\PecDomainPaginatedListResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function listPecDomainsWithHttpInfo($page = 1, $per_page = 20, string $contentType = self::contentTypes['listPecDomains'][0])
-    {
-        $request = $this->listPecDomainsRequest($page, $per_page, $contentType);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
-                );
-            } catch (ConnectException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    null,
-                    null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-
-            switch($statusCode) {
-                case 200:
-                    return $this->handleResponseWithDataType(
-                        '\Shellrent\Sdk\Model\PecDomainPaginatedListResponse',
-                        $request,
-                        $response,
-                    );
-                case 400:
-                    return $this->handleResponseWithDataType(
-                        '\Shellrent\Sdk\Model\ApiError',
-                        $request,
-                        $response,
-                    );
-                case 401:
-                    return $this->handleResponseWithDataType(
-                        '\Shellrent\Sdk\Model\ApiError',
-                        $request,
-                        $response,
-                    );
-                case 403:
-                    return $this->handleResponseWithDataType(
-                        '\Shellrent\Sdk\Model\ApiError',
-                        $request,
-                        $response,
-                    );
-                case 404:
-                    return $this->handleResponseWithDataType(
-                        '\Shellrent\Sdk\Model\ApiError',
-                        $request,
-                        $response,
-                    );
-            }
-
-            
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
-
-            return $this->handleResponseWithDataType(
-                '\Shellrent\Sdk\Model\PecDomainPaginatedListResponse',
-                $request,
-                $response,
-            );
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Shellrent\Sdk\Model\PecDomainPaginatedListResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 400:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Shellrent\Sdk\Model\ApiError',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 401:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Shellrent\Sdk\Model\ApiError',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 403:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Shellrent\Sdk\Model\ApiError',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 404:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Shellrent\Sdk\Model\ApiError',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-            }
-        
-
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation listPecDomainsAsync
-     *
-     * List PEC domains
-     *
-     * @param  int|null $page (optional, default to 1)
-     * @param  int|null $per_page (optional, default to 20)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listPecDomains'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function listPecDomainsAsync($page = 1, $per_page = 20, string $contentType = self::contentTypes['listPecDomains'][0])
-    {
-        return $this->listPecDomainsAsyncWithHttpInfo($page, $per_page, $contentType)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation listPecDomainsAsyncWithHttpInfo
-     *
-     * List PEC domains
-     *
-     * @param  int|null $page (optional, default to 1)
-     * @param  int|null $per_page (optional, default to 20)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listPecDomains'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function listPecDomainsAsyncWithHttpInfo($page = 1, $per_page = 20, string $contentType = self::contentTypes['listPecDomains'][0])
-    {
-        $returnType = '\Shellrent\Sdk\Model\PecDomainPaginatedListResponse';
-        $request = $this->listPecDomainsRequest($page, $per_page, $contentType);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        (string) $response->getBody()
-                    );
-                }
-            );
-    }
-
-    /**
-     * Create request for operation 'listPecDomains'
-     *
-     * @param  int|null $page (optional, default to 1)
-     * @param  int|null $per_page (optional, default to 20)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listPecDomains'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    public function listPecDomainsRequest($page = 1, $per_page = 20, string $contentType = self::contentTypes['listPecDomains'][0])
-    {
-
-
-
-
-        $resourcePath = '/api/v3/pec-domains';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $page,
-            'page', // param base name
-            'integer', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $per_page,
-            'per_page', // param base name
-            'integer', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-
-
-
-
-        $headers = $this->headerSelector->selectHeaders(
-            ['application/json', ],
-            $contentType,
-            $multipart
-        );
-
-        // for model (json/xml)
-        if (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
-                    foreach ($formParamValueItems as $formParamValueItem) {
-                        $multipartContents[] = [
-                            'name' => $formParamName,
-                            'contents' => $formParamValueItem
-                        ];
-                    }
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the form parameters
-                try {
-                    $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
-                } catch (\JsonException $e) {
-                    throw new \InvalidArgumentException('json_encode error: ' . $e->getMessage(), 0, $e);
-                }
-            } else {
-                // for HTTP post (form)
-                $httpBody = ObjectSerializer::buildQuery($formParams);
-            }
-        }
-
-        // this endpoint requires OAuth (access token)
-        if (!empty($this->config->getAccessToken())) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $operationHost = $this->config->getHost();
-        $query = ObjectSerializer::buildQuery($queryParams);
-        return new Request(
-            'GET',
-            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation listPecMailboxOwnerChanges
-     *
-     * List PEC mailbox owner changes
-     *
-     * @param  int $pec_id pec_id (required)
-     * @param  int|null $page page (optional, default to 1)
-     * @param  int|null $per_page per_page (optional, default to 20)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listPecMailboxOwnerChanges'] to see the possible values for this operation
-     *
-     * @throws \Shellrent\Sdk\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     * @return \Shellrent\Sdk\Model\PecOwnerChangePaginatedListResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError
-     */
-    public function listPecMailboxOwnerChanges($pec_id, $page = 1, $per_page = 20, string $contentType = self::contentTypes['listPecMailboxOwnerChanges'][0])
-    {
-        list($response) = $this->listPecMailboxOwnerChangesWithHttpInfo($pec_id, $page, $per_page, $contentType);
-        return $response;
-    }
-
-    /**
-     * Operation listPecMailboxOwnerChangesWithHttpInfo
-     *
-     * List PEC mailbox owner changes
-     *
-     * @param  int $pec_id (required)
-     * @param  int|null $page (optional, default to 1)
-     * @param  int|null $per_page (optional, default to 20)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listPecMailboxOwnerChanges'] to see the possible values for this operation
-     *
-     * @throws \Shellrent\Sdk\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     * @return array of \Shellrent\Sdk\Model\PecOwnerChangePaginatedListResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function listPecMailboxOwnerChangesWithHttpInfo($pec_id, $page = 1, $per_page = 20, string $contentType = self::contentTypes['listPecMailboxOwnerChanges'][0])
-    {
-        $request = $this->listPecMailboxOwnerChangesRequest($pec_id, $page, $per_page, $contentType);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
-                );
-            } catch (ConnectException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    null,
-                    null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-
-            switch($statusCode) {
-                case 200:
-                    return $this->handleResponseWithDataType(
-                        '\Shellrent\Sdk\Model\PecOwnerChangePaginatedListResponse',
-                        $request,
-                        $response,
-                    );
-                case 400:
-                    return $this->handleResponseWithDataType(
-                        '\Shellrent\Sdk\Model\ApiError',
-                        $request,
-                        $response,
-                    );
-                case 401:
-                    return $this->handleResponseWithDataType(
-                        '\Shellrent\Sdk\Model\ApiError',
-                        $request,
-                        $response,
-                    );
-                case 403:
-                    return $this->handleResponseWithDataType(
-                        '\Shellrent\Sdk\Model\ApiError',
-                        $request,
-                        $response,
-                    );
-                case 404:
-                    return $this->handleResponseWithDataType(
-                        '\Shellrent\Sdk\Model\ApiError',
-                        $request,
-                        $response,
-                    );
-            }
-
-            
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
-
-            return $this->handleResponseWithDataType(
-                '\Shellrent\Sdk\Model\PecOwnerChangePaginatedListResponse',
-                $request,
-                $response,
-            );
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Shellrent\Sdk\Model\PecOwnerChangePaginatedListResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 400:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Shellrent\Sdk\Model\ApiError',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 401:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Shellrent\Sdk\Model\ApiError',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 403:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Shellrent\Sdk\Model\ApiError',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 404:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Shellrent\Sdk\Model\ApiError',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-            }
-        
-
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation listPecMailboxOwnerChangesAsync
-     *
-     * List PEC mailbox owner changes
-     *
-     * @param  int $pec_id (required)
-     * @param  int|null $page (optional, default to 1)
-     * @param  int|null $per_page (optional, default to 20)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listPecMailboxOwnerChanges'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function listPecMailboxOwnerChangesAsync($pec_id, $page = 1, $per_page = 20, string $contentType = self::contentTypes['listPecMailboxOwnerChanges'][0])
-    {
-        return $this->listPecMailboxOwnerChangesAsyncWithHttpInfo($pec_id, $page, $per_page, $contentType)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation listPecMailboxOwnerChangesAsyncWithHttpInfo
-     *
-     * List PEC mailbox owner changes
-     *
-     * @param  int $pec_id (required)
-     * @param  int|null $page (optional, default to 1)
-     * @param  int|null $per_page (optional, default to 20)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listPecMailboxOwnerChanges'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function listPecMailboxOwnerChangesAsyncWithHttpInfo($pec_id, $page = 1, $per_page = 20, string $contentType = self::contentTypes['listPecMailboxOwnerChanges'][0])
-    {
-        $returnType = '\Shellrent\Sdk\Model\PecOwnerChangePaginatedListResponse';
-        $request = $this->listPecMailboxOwnerChangesRequest($pec_id, $page, $per_page, $contentType);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        (string) $response->getBody()
-                    );
-                }
-            );
-    }
-
-    /**
-     * Create request for operation 'listPecMailboxOwnerChanges'
-     *
-     * @param  int $pec_id (required)
-     * @param  int|null $page (optional, default to 1)
-     * @param  int|null $per_page (optional, default to 20)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listPecMailboxOwnerChanges'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    public function listPecMailboxOwnerChangesRequest($pec_id, $page = 1, $per_page = 20, string $contentType = self::contentTypes['listPecMailboxOwnerChanges'][0])
-    {
-
-        // verify the required parameter 'pec_id' is set
-        if ($pec_id === null || (is_array($pec_id) && count($pec_id) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $pec_id when calling listPecMailboxOwnerChanges'
-            );
-        }
-
-
-
-
-        $resourcePath = '/api/v3/pec-mailboxes/{pec_id}/owner-changes';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $page,
-            'page', // param base name
-            'integer', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $per_page,
-            'per_page', // param base name
-            'integer', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-
-
-        // path params
-        if ($pec_id !== null) {
-            $resourcePath = str_replace(
-                '{pec_id}',
-                ObjectSerializer::toPathValue($pec_id),
-                $resourcePath
-            );
-        }
-
-
-        $headers = $this->headerSelector->selectHeaders(
-            ['application/json', ],
-            $contentType,
-            $multipart
-        );
-
-        // for model (json/xml)
-        if (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
-                    foreach ($formParamValueItems as $formParamValueItem) {
-                        $multipartContents[] = [
-                            'name' => $formParamName,
-                            'contents' => $formParamValueItem
-                        ];
-                    }
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the form parameters
-                try {
-                    $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
-                } catch (\JsonException $e) {
-                    throw new \InvalidArgumentException('json_encode error: ' . $e->getMessage(), 0, $e);
-                }
-            } else {
-                // for HTTP post (form)
-                $httpBody = ObjectSerializer::buildQuery($formParams);
-            }
-        }
-
-        // this endpoint requires OAuth (access token)
-        if (!empty($this->config->getAccessToken())) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $operationHost = $this->config->getHost();
-        $query = ObjectSerializer::buildQuery($queryParams);
-        return new Request(
-            'GET',
-            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation listPecMailboxes
-     *
-     * List PEC mailboxes
-     *
-     * @param  int|null $page page (optional, default to 1)
-     * @param  int|null $per_page per_page (optional, default to 20)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listPecMailboxes'] to see the possible values for this operation
-     *
-     * @throws \Shellrent\Sdk\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     * @return \Shellrent\Sdk\Model\PecPaginatedListResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError
-     */
-    public function listPecMailboxes($page = 1, $per_page = 20, string $contentType = self::contentTypes['listPecMailboxes'][0])
-    {
-        list($response) = $this->listPecMailboxesWithHttpInfo($page, $per_page, $contentType);
-        return $response;
-    }
-
-    /**
-     * Operation listPecMailboxesWithHttpInfo
-     *
-     * List PEC mailboxes
-     *
-     * @param  int|null $page (optional, default to 1)
-     * @param  int|null $per_page (optional, default to 20)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listPecMailboxes'] to see the possible values for this operation
-     *
-     * @throws \Shellrent\Sdk\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     * @return array of \Shellrent\Sdk\Model\PecPaginatedListResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function listPecMailboxesWithHttpInfo($page = 1, $per_page = 20, string $contentType = self::contentTypes['listPecMailboxes'][0])
-    {
-        $request = $this->listPecMailboxesRequest($page, $per_page, $contentType);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
-                );
-            } catch (ConnectException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    null,
-                    null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-
-            switch($statusCode) {
-                case 200:
-                    return $this->handleResponseWithDataType(
-                        '\Shellrent\Sdk\Model\PecPaginatedListResponse',
-                        $request,
-                        $response,
-                    );
-                case 400:
-                    return $this->handleResponseWithDataType(
-                        '\Shellrent\Sdk\Model\ApiError',
-                        $request,
-                        $response,
-                    );
-                case 401:
-                    return $this->handleResponseWithDataType(
-                        '\Shellrent\Sdk\Model\ApiError',
-                        $request,
-                        $response,
-                    );
-                case 403:
-                    return $this->handleResponseWithDataType(
-                        '\Shellrent\Sdk\Model\ApiError',
-                        $request,
-                        $response,
-                    );
-                case 404:
-                    return $this->handleResponseWithDataType(
-                        '\Shellrent\Sdk\Model\ApiError',
-                        $request,
-                        $response,
-                    );
-            }
-
-            
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
-
-            return $this->handleResponseWithDataType(
-                '\Shellrent\Sdk\Model\PecPaginatedListResponse',
-                $request,
-                $response,
-            );
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Shellrent\Sdk\Model\PecPaginatedListResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 400:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Shellrent\Sdk\Model\ApiError',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 401:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Shellrent\Sdk\Model\ApiError',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 403:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Shellrent\Sdk\Model\ApiError',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 404:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Shellrent\Sdk\Model\ApiError',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-            }
-        
-
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation listPecMailboxesAsync
-     *
-     * List PEC mailboxes
-     *
-     * @param  int|null $page (optional, default to 1)
-     * @param  int|null $per_page (optional, default to 20)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listPecMailboxes'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function listPecMailboxesAsync($page = 1, $per_page = 20, string $contentType = self::contentTypes['listPecMailboxes'][0])
-    {
-        return $this->listPecMailboxesAsyncWithHttpInfo($page, $per_page, $contentType)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation listPecMailboxesAsyncWithHttpInfo
-     *
-     * List PEC mailboxes
-     *
-     * @param  int|null $page (optional, default to 1)
-     * @param  int|null $per_page (optional, default to 20)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listPecMailboxes'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function listPecMailboxesAsyncWithHttpInfo($page = 1, $per_page = 20, string $contentType = self::contentTypes['listPecMailboxes'][0])
-    {
-        $returnType = '\Shellrent\Sdk\Model\PecPaginatedListResponse';
-        $request = $this->listPecMailboxesRequest($page, $per_page, $contentType);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        (string) $response->getBody()
-                    );
-                }
-            );
-    }
-
-    /**
-     * Create request for operation 'listPecMailboxes'
-     *
-     * @param  int|null $page (optional, default to 1)
-     * @param  int|null $per_page (optional, default to 20)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listPecMailboxes'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    public function listPecMailboxesRequest($page = 1, $per_page = 20, string $contentType = self::contentTypes['listPecMailboxes'][0])
-    {
-
-
-
-
-        $resourcePath = '/api/v3/pec-mailboxes';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $page,
-            'page', // param base name
-            'integer', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $per_page,
-            'per_page', // param base name
-            'integer', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-
-
-
-
-        $headers = $this->headerSelector->selectHeaders(
-            ['application/json', ],
-            $contentType,
-            $multipart
-        );
-
-        // for model (json/xml)
-        if (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
-                    foreach ($formParamValueItems as $formParamValueItem) {
-                        $multipartContents[] = [
-                            'name' => $formParamName,
-                            'contents' => $formParamValueItem
-                        ];
-                    }
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the form parameters
-                try {
-                    $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
-                } catch (\JsonException $e) {
-                    throw new \InvalidArgumentException('json_encode error: ' . $e->getMessage(), 0, $e);
-                }
-            } else {
-                // for HTTP post (form)
-                $httpBody = ObjectSerializer::buildQuery($formParams);
-            }
-        }
-
-        // this endpoint requires OAuth (access token)
-        if (!empty($this->config->getAccessToken())) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $operationHost = $this->config->getHost();
-        $query = ObjectSerializer::buildQuery($queryParams);
-        return new Request(
-            'GET',
-            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation updatePecMailbox
-     *
-     * Update PEC mailbox
-     *
-     * @param  int $pec_id pec_id (required)
-     * @param  \Shellrent\Sdk\Model\PecMailboxUpdateRequest $pec_mailbox_update_request pec_mailbox_update_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updatePecMailbox'] to see the possible values for this operation
-     *
-     * @throws \Shellrent\Sdk\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     * @return \Shellrent\Sdk\Model\PecResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError
-     */
-    public function updatePecMailbox($pec_id, $pec_mailbox_update_request, string $contentType = self::contentTypes['updatePecMailbox'][0])
-    {
-        list($response) = $this->updatePecMailboxWithHttpInfo($pec_id, $pec_mailbox_update_request, $contentType);
-        return $response;
-    }
-
-    /**
-     * Operation updatePecMailboxWithHttpInfo
-     *
-     * Update PEC mailbox
-     *
-     * @param  int $pec_id (required)
-     * @param  \Shellrent\Sdk\Model\PecMailboxUpdateRequest $pec_mailbox_update_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updatePecMailbox'] to see the possible values for this operation
-     *
-     * @throws \Shellrent\Sdk\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     * @return array of \Shellrent\Sdk\Model\PecResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function updatePecMailboxWithHttpInfo($pec_id, $pec_mailbox_update_request, string $contentType = self::contentTypes['updatePecMailbox'][0])
-    {
-        $request = $this->updatePecMailboxRequest($pec_id, $pec_mailbox_update_request, $contentType);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
-                );
-            } catch (ConnectException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    null,
-                    null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-
-            switch($statusCode) {
-                case 200:
-                    return $this->handleResponseWithDataType(
-                        '\Shellrent\Sdk\Model\PecResponse',
-                        $request,
-                        $response,
-                    );
-                case 400:
-                    return $this->handleResponseWithDataType(
-                        '\Shellrent\Sdk\Model\ApiError',
-                        $request,
-                        $response,
-                    );
-                case 401:
-                    return $this->handleResponseWithDataType(
-                        '\Shellrent\Sdk\Model\ApiError',
-                        $request,
-                        $response,
-                    );
-                case 403:
-                    return $this->handleResponseWithDataType(
-                        '\Shellrent\Sdk\Model\ApiError',
-                        $request,
-                        $response,
-                    );
-                case 404:
-                    return $this->handleResponseWithDataType(
-                        '\Shellrent\Sdk\Model\ApiError',
-                        $request,
-                        $response,
-                    );
-            }
-
-            
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
-
-            return $this->handleResponseWithDataType(
-                '\Shellrent\Sdk\Model\PecResponse',
-                $request,
-                $response,
-            );
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Shellrent\Sdk\Model\PecResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 400:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Shellrent\Sdk\Model\ApiError',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 401:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Shellrent\Sdk\Model\ApiError',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 403:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Shellrent\Sdk\Model\ApiError',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 404:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Shellrent\Sdk\Model\ApiError',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-            }
-        
-
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation updatePecMailboxAsync
-     *
-     * Update PEC mailbox
-     *
-     * @param  int $pec_id (required)
-     * @param  \Shellrent\Sdk\Model\PecMailboxUpdateRequest $pec_mailbox_update_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updatePecMailbox'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function updatePecMailboxAsync($pec_id, $pec_mailbox_update_request, string $contentType = self::contentTypes['updatePecMailbox'][0])
-    {
-        return $this->updatePecMailboxAsyncWithHttpInfo($pec_id, $pec_mailbox_update_request, $contentType)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation updatePecMailboxAsyncWithHttpInfo
-     *
-     * Update PEC mailbox
-     *
-     * @param  int $pec_id (required)
-     * @param  \Shellrent\Sdk\Model\PecMailboxUpdateRequest $pec_mailbox_update_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updatePecMailbox'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function updatePecMailboxAsyncWithHttpInfo($pec_id, $pec_mailbox_update_request, string $contentType = self::contentTypes['updatePecMailbox'][0])
-    {
-        $returnType = '\Shellrent\Sdk\Model\PecResponse';
-        $request = $this->updatePecMailboxRequest($pec_id, $pec_mailbox_update_request, $contentType);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        (string) $response->getBody()
-                    );
-                }
-            );
-    }
-
-    /**
-     * Create request for operation 'updatePecMailbox'
-     *
-     * @param  int $pec_id (required)
-     * @param  \Shellrent\Sdk\Model\PecMailboxUpdateRequest $pec_mailbox_update_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updatePecMailbox'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    public function updatePecMailboxRequest($pec_id, $pec_mailbox_update_request, string $contentType = self::contentTypes['updatePecMailbox'][0])
-    {
-
-        // verify the required parameter 'pec_id' is set
-        if ($pec_id === null || (is_array($pec_id) && count($pec_id) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $pec_id when calling updatePecMailbox'
-            );
-        }
-
-        // verify the required parameter 'pec_mailbox_update_request' is set
-        if ($pec_mailbox_update_request === null || (is_array($pec_mailbox_update_request) && count($pec_mailbox_update_request) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $pec_mailbox_update_request when calling updatePecMailbox'
-            );
-        }
-
-
-        $resourcePath = '/api/v3/pec-mailboxes/{pec_id}';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-
-
-        // path params
-        if ($pec_id !== null) {
-            $resourcePath = str_replace(
-                '{pec_id}',
-                ObjectSerializer::toPathValue($pec_id),
-                $resourcePath
-            );
-        }
-
-
-        $headers = $this->headerSelector->selectHeaders(
-            ['application/json', ],
-            $contentType,
-            $multipart
-        );
-
-        // for model (json/xml)
-        if (isset($pec_mailbox_update_request)) {
+        if (isset($ssl_certificate_owner_request)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
                 try {
-                    $httpBody = json_encode(ObjectSerializer::sanitizeForSerialization($pec_mailbox_update_request), JSON_THROW_ON_ERROR);
+                    $httpBody = json_encode(ObjectSerializer::sanitizeForSerialization($ssl_certificate_owner_request), JSON_THROW_ON_ERROR);
                 } catch (\JsonException $e) {
                     throw new \InvalidArgumentException('json_encode error: ' . $e->getMessage(), 0, $e);
                 }
             } else {
-                $httpBody = $pec_mailbox_update_request;
+                $httpBody = $ssl_certificate_owner_request;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {

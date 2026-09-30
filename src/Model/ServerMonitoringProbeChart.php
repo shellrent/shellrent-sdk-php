@@ -295,6 +295,18 @@ class ServerMonitoringProbeChart implements ModelInterface, ArrayAccess, \JsonSe
     {
         $invalidProperties = [];
 
+        if ($this->container['server_monitoring_id'] === null) {
+            $invalidProperties[] = "'server_monitoring_id' can't be null";
+        }
+        if ($this->container['probe_id'] === null) {
+            $invalidProperties[] = "'probe_id' can't be null";
+        }
+        if ($this->container['interval'] === null) {
+            $invalidProperties[] = "'interval' can't be null";
+        }
+        if ($this->container['points'] === null) {
+            $invalidProperties[] = "'points' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -313,7 +325,7 @@ class ServerMonitoringProbeChart implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Gets server_monitoring_id
      *
-     * @return int|null
+     * @return int
      */
     public function getServerMonitoringId()
     {
@@ -323,7 +335,7 @@ class ServerMonitoringProbeChart implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Sets server_monitoring_id
      *
-     * @param int|null $server_monitoring_id server_monitoring_id
+     * @param int $server_monitoring_id server_monitoring_id
      *
      * @return self
      */
@@ -340,7 +352,7 @@ class ServerMonitoringProbeChart implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Gets probe_id
      *
-     * @return int|null
+     * @return int
      */
     public function getProbeId()
     {
@@ -350,7 +362,7 @@ class ServerMonitoringProbeChart implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Sets probe_id
      *
-     * @param int|null $probe_id probe_id
+     * @param int $probe_id probe_id
      *
      * @return self
      */
@@ -367,7 +379,7 @@ class ServerMonitoringProbeChart implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Gets interval
      *
-     * @return string|null
+     * @return string
      */
     public function getInterval()
     {
@@ -377,7 +389,7 @@ class ServerMonitoringProbeChart implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Sets interval
      *
-     * @param string|null $interval interval
+     * @param string $interval interval
      *
      * @return self
      */
@@ -394,7 +406,7 @@ class ServerMonitoringProbeChart implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Gets points
      *
-     * @return \Shellrent\Sdk\Model\ServerMonitoringProbeChartPointsInner[]|null
+     * @return \Shellrent\Sdk\Model\ServerMonitoringProbeChartPointsInner[]
      */
     public function getPoints()
     {
@@ -404,7 +416,7 @@ class ServerMonitoringProbeChart implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Sets points
      *
-     * @param \Shellrent\Sdk\Model\ServerMonitoringProbeChartPointsInner[]|null $points points
+     * @param \Shellrent\Sdk\Model\ServerMonitoringProbeChartPointsInner[] $points points
      *
      * @return self
      */

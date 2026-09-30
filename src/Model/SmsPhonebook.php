@@ -288,6 +288,15 @@ class SmsPhonebook implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
+        if ($this->container['id'] === null) {
+            $invalidProperties[] = "'id' can't be null";
+        }
+        if ($this->container['name'] === null && !$this->isNullableSetToNull('name')) {
+            $invalidProperties[] = "'name' is required";
+        }
+        if ($this->container['contacts_count'] === null) {
+            $invalidProperties[] = "'contacts_count' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -306,7 +315,7 @@ class SmsPhonebook implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets id
      *
-     * @return int|null
+     * @return int
      */
     public function getId()
     {
@@ -316,7 +325,7 @@ class SmsPhonebook implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets id
      *
-     * @param int|null $id id
+     * @param int $id id
      *
      * @return self
      */
@@ -367,7 +376,7 @@ class SmsPhonebook implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets contacts_count
      *
-     * @return int|null
+     * @return int
      */
     public function getContactsCount()
     {
@@ -377,7 +386,7 @@ class SmsPhonebook implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets contacts_count
      *
-     * @param int|null $contacts_count contacts_count
+     * @param int $contacts_count contacts_count
      *
      * @return self
      */

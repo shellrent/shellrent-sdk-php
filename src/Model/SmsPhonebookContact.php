@@ -316,6 +316,27 @@ class SmsPhonebookContact implements ModelInterface, ArrayAccess, \JsonSerializa
     {
         $invalidProperties = [];
 
+        if ($this->container['id'] === null) {
+            $invalidProperties[] = "'id' can't be null";
+        }
+        if ($this->container['phonebooks'] === null) {
+            $invalidProperties[] = "'phonebooks' can't be null";
+        }
+        if ($this->container['country'] === null) {
+            $invalidProperties[] = "'country' can't be null";
+        }
+        if ($this->container['phone_number'] === null) {
+            $invalidProperties[] = "'phone_number' can't be null";
+        }
+        if ($this->container['name'] === null && !$this->isNullableSetToNull('name')) {
+            $invalidProperties[] = "'name' is required";
+        }
+        if ($this->container['surname'] === null && !$this->isNullableSetToNull('surname')) {
+            $invalidProperties[] = "'surname' is required";
+        }
+        if ($this->container['birth_date'] === null && !$this->isNullableSetToNull('birth_date')) {
+            $invalidProperties[] = "'birth_date' is required";
+        }
         return $invalidProperties;
     }
 
@@ -334,7 +355,7 @@ class SmsPhonebookContact implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Gets id
      *
-     * @return int|null
+     * @return int
      */
     public function getId()
     {
@@ -344,7 +365,7 @@ class SmsPhonebookContact implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets id
      *
-     * @param int|null $id id
+     * @param int $id id
      *
      * @return self
      */
@@ -361,7 +382,7 @@ class SmsPhonebookContact implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Gets phonebooks
      *
-     * @return int[]|null
+     * @return int[]
      */
     public function getPhonebooks()
     {
@@ -371,7 +392,7 @@ class SmsPhonebookContact implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets phonebooks
      *
-     * @param int[]|null $phonebooks phonebooks
+     * @param int[] $phonebooks phonebooks
      *
      * @return self
      */
@@ -388,7 +409,7 @@ class SmsPhonebookContact implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Gets country
      *
-     * @return \Shellrent\Sdk\Model\Country|null
+     * @return \Shellrent\Sdk\Model\Country
      */
     public function getCountry()
     {
@@ -398,7 +419,7 @@ class SmsPhonebookContact implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets country
      *
-     * @param \Shellrent\Sdk\Model\Country|null $country country
+     * @param \Shellrent\Sdk\Model\Country $country country
      *
      * @return self
      */
@@ -415,7 +436,7 @@ class SmsPhonebookContact implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Gets phone_number
      *
-     * @return string|null
+     * @return string
      */
     public function getPhoneNumber()
     {
@@ -425,7 +446,7 @@ class SmsPhonebookContact implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets phone_number
      *
-     * @param string|null $phone_number phone_number
+     * @param string $phone_number phone_number
      *
      * @return self
      */

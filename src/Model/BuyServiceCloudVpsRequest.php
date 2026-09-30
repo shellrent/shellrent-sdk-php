@@ -27,8 +27,6 @@
  */
 
 namespace Shellrent\Sdk\Model;
-
-use \ArrayAccess;
 use \Shellrent\Sdk\ObjectSerializer;
 
 /**
@@ -40,7 +38,7 @@ use \Shellrent\Sdk\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class BuyServiceCloudVpsRequest implements ModelInterface, ArrayAccess, \JsonSerializable
+class BuyServiceCloudVpsRequest extends BuyServiceDedicatedServerRequest
 {
     public const DISCRIMINATOR = null;
 
@@ -103,7 +101,7 @@ class BuyServiceCloudVpsRequest implements ModelInterface, ArrayAccess, \JsonSer
      */
     public static function openAPITypes()
     {
-        return self::$openAPITypes;
+        return self::$openAPITypes + parent::openAPITypes();
     }
 
     /**
@@ -113,7 +111,7 @@ class BuyServiceCloudVpsRequest implements ModelInterface, ArrayAccess, \JsonSer
      */
     public static function openAPIFormats()
     {
-        return self::$openAPIFormats;
+        return self::$openAPIFormats + parent::openAPIFormats();
     }
 
     /**
@@ -123,7 +121,7 @@ class BuyServiceCloudVpsRequest implements ModelInterface, ArrayAccess, \JsonSer
      */
     protected static function openAPINullables(): array
     {
-        return self::$openAPINullables;
+        return self::$openAPINullables + parent::openAPINullables();
     }
 
     /**
@@ -213,7 +211,7 @@ class BuyServiceCloudVpsRequest implements ModelInterface, ArrayAccess, \JsonSer
      */
     public static function attributeMap()
     {
-        return self::$attributeMap;
+        return parent::attributeMap() + self::$attributeMap;
     }
 
     /**
@@ -223,7 +221,7 @@ class BuyServiceCloudVpsRequest implements ModelInterface, ArrayAccess, \JsonSer
      */
     public static function setters()
     {
-        return self::$setters;
+        return parent::setters() + self::$setters;
     }
 
     /**
@@ -233,7 +231,7 @@ class BuyServiceCloudVpsRequest implements ModelInterface, ArrayAccess, \JsonSer
      */
     public static function getters()
     {
-        return self::$getters;
+        return parent::getters() + self::$getters;
     }
 
     /**
@@ -247,12 +245,6 @@ class BuyServiceCloudVpsRequest implements ModelInterface, ArrayAccess, \JsonSer
     }
 
 
-    /**
-     * Associative array for storing property values
-     *
-     * @var mixed[]
-     */
-    protected $container = [];
 
     /**
      * Constructor
@@ -262,6 +254,8 @@ class BuyServiceCloudVpsRequest implements ModelInterface, ArrayAccess, \JsonSer
      */
     public function __construct(?array $data = null)
     {
+        parent::__construct($data);
+
         $this->setIfExists('service_id', $data ?? [], null);
         $this->setIfExists('recurrence_id', $data ?? [], null);
         $this->setIfExists('account_id', $data ?? [], null);
@@ -293,7 +287,7 @@ class BuyServiceCloudVpsRequest implements ModelInterface, ArrayAccess, \JsonSer
      */
     public function listInvalidProperties()
     {
-        $invalidProperties = [];
+        $invalidProperties = parent::listInvalidProperties();
 
         if ($this->container['service_id'] === null) {
             $invalidProperties[] = "'service_id' can't be null";

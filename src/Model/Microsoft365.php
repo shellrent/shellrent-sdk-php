@@ -379,6 +379,54 @@ class Microsoft365 implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
+        if ($this->container['microsoft365_id'] === null) {
+            $invalidProperties[] = "'microsoft365_id' can't be null";
+        }
+        if ($this->container['purchase_id'] === null) {
+            $invalidProperties[] = "'purchase_id' can't be null";
+        }
+        if ($this->container['tenant_id'] === null && !$this->isNullableSetToNull('tenant_id')) {
+            $invalidProperties[] = "'tenant_id' is required";
+        }
+        if ($this->container['service_name'] === null && !$this->isNullableSetToNull('service_name')) {
+            $invalidProperties[] = "'service_name' is required";
+        }
+        if ($this->container['purchase_name'] === null && !$this->isNullableSetToNull('purchase_name')) {
+            $invalidProperties[] = "'purchase_name' is required";
+        }
+        if ($this->container['supplier_code'] === null && !$this->isNullableSetToNull('supplier_code')) {
+            $invalidProperties[] = "'supplier_code' is required";
+        }
+        if ($this->container['supplier_status'] === null && !$this->isNullableSetToNull('supplier_status')) {
+            $invalidProperties[] = "'supplier_status' is required";
+        }
+        if ($this->container['order_code'] === null && !$this->isNullableSetToNull('order_code')) {
+            $invalidProperties[] = "'order_code' is required";
+        }
+        if ($this->container['order_reference'] === null && !$this->isNullableSetToNull('order_reference')) {
+            $invalidProperties[] = "'order_reference' is required";
+        }
+        if ($this->container['order_status'] === null && !$this->isNullableSetToNull('order_status')) {
+            $invalidProperties[] = "'order_status' is required";
+        }
+        if ($this->container['order_need_submit'] === null) {
+            $invalidProperties[] = "'order_need_submit' can't be null";
+        }
+        if ($this->container['autorenew_enabled'] === null) {
+            $invalidProperties[] = "'autorenew_enabled' can't be null";
+        }
+        if ($this->container['is_trial'] === null) {
+            $invalidProperties[] = "'is_trial' can't be null";
+        }
+        if ($this->container['subscription_activation_date'] === null && !$this->isNullableSetToNull('subscription_activation_date')) {
+            $invalidProperties[] = "'subscription_activation_date' is required";
+        }
+        if ($this->container['subscription_expiry_date'] === null && !$this->isNullableSetToNull('subscription_expiry_date')) {
+            $invalidProperties[] = "'subscription_expiry_date' is required";
+        }
+        if ($this->container['tenant'] === null && !$this->isNullableSetToNull('tenant')) {
+            $invalidProperties[] = "'tenant' is required";
+        }
         return $invalidProperties;
     }
 
@@ -397,7 +445,7 @@ class Microsoft365 implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets microsoft365_id
      *
-     * @return int|null
+     * @return int
      */
     public function getMicrosoft365Id()
     {
@@ -407,7 +455,7 @@ class Microsoft365 implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets microsoft365_id
      *
-     * @param int|null $microsoft365_id microsoft365_id
+     * @param int $microsoft365_id microsoft365_id
      *
      * @return self
      */
@@ -424,7 +472,7 @@ class Microsoft365 implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets purchase_id
      *
-     * @return int|null
+     * @return int
      */
     public function getPurchaseId()
     {
@@ -434,7 +482,7 @@ class Microsoft365 implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets purchase_id
      *
-     * @param int|null $purchase_id purchase_id
+     * @param int $purchase_id purchase_id
      *
      * @return self
      */
@@ -723,7 +771,7 @@ class Microsoft365 implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets order_need_submit
      *
-     * @return bool|null
+     * @return bool
      */
     public function getOrderNeedSubmit()
     {
@@ -733,7 +781,7 @@ class Microsoft365 implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets order_need_submit
      *
-     * @param bool|null $order_need_submit order_need_submit
+     * @param bool $order_need_submit order_need_submit
      *
      * @return self
      */
@@ -750,7 +798,7 @@ class Microsoft365 implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets autorenew_enabled
      *
-     * @return bool|null
+     * @return bool
      */
     public function getAutorenewEnabled()
     {
@@ -760,7 +808,7 @@ class Microsoft365 implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets autorenew_enabled
      *
-     * @param bool|null $autorenew_enabled autorenew_enabled
+     * @param bool $autorenew_enabled autorenew_enabled
      *
      * @return self
      */
@@ -777,7 +825,7 @@ class Microsoft365 implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets is_trial
      *
-     * @return bool|null
+     * @return bool
      */
     public function getIsTrial()
     {
@@ -787,7 +835,7 @@ class Microsoft365 implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets is_trial
      *
-     * @param bool|null $is_trial is_trial
+     * @param bool $is_trial is_trial
      *
      * @return self
      */

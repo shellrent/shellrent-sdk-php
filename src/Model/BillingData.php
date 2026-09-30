@@ -288,6 +288,15 @@ class BillingData implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
+        if ($this->container['cig_value'] === null && !$this->isNullableSetToNull('cig_value')) {
+            $invalidProperties[] = "'cig_value' is required";
+        }
+        if ($this->container['cup_value'] === null && !$this->isNullableSetToNull('cup_value')) {
+            $invalidProperties[] = "'cup_value' is required";
+        }
+        if ($this->container['oda_value'] === null && !$this->isNullableSetToNull('oda_value')) {
+            $invalidProperties[] = "'oda_value' is required";
+        }
         return $invalidProperties;
     }
 

@@ -351,6 +351,42 @@ class PecDomain implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
+        if ($this->container['pec_domain_id'] === null) {
+            $invalidProperties[] = "'pec_domain_id' can't be null";
+        }
+        if ($this->container['purchase_id'] === null && !$this->isNullableSetToNull('purchase_id')) {
+            $invalidProperties[] = "'purchase_id' is required";
+        }
+        if ($this->container['purchase_name'] === null && !$this->isNullableSetToNull('purchase_name')) {
+            $invalidProperties[] = "'purchase_name' is required";
+        }
+        if ($this->container['purchase_status_code'] === null && !$this->isNullableSetToNull('purchase_status_code')) {
+            $invalidProperties[] = "'purchase_status_code' is required";
+        }
+        if ($this->container['purchase_pec_owner_id'] === null && !$this->isNullableSetToNull('purchase_pec_owner_id')) {
+            $invalidProperties[] = "'purchase_pec_owner_id' is required";
+        }
+        if ($this->container['domain'] === null && !$this->isNullableSetToNull('domain')) {
+            $invalidProperties[] = "'domain' is required";
+        }
+        if ($this->container['provider_domain_id'] === null && !$this->isNullableSetToNull('provider_domain_id')) {
+            $invalidProperties[] = "'provider_domain_id' is required";
+        }
+        if ($this->container['transfer_in'] === null) {
+            $invalidProperties[] = "'transfer_in' can't be null";
+        }
+        if ($this->container['force_decertify_domain'] === null) {
+            $invalidProperties[] = "'force_decertify_domain' can't be null";
+        }
+        if ($this->container['aruba_public'] === null) {
+            $invalidProperties[] = "'aruba_public' can't be null";
+        }
+        if ($this->container['shellrent_public'] === null) {
+            $invalidProperties[] = "'shellrent_public' can't be null";
+        }
+        if ($this->container['can_require_owner_change'] === null) {
+            $invalidProperties[] = "'can_require_owner_change' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -369,7 +405,7 @@ class PecDomain implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets pec_domain_id
      *
-     * @return int|null
+     * @return int
      */
     public function getPecDomainId()
     {
@@ -379,7 +415,7 @@ class PecDomain implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets pec_domain_id
      *
-     * @param int|null $pec_domain_id pec_domain_id
+     * @param int $pec_domain_id pec_domain_id
      *
      * @return self
      */
@@ -600,7 +636,7 @@ class PecDomain implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets transfer_in
      *
-     * @return bool|null
+     * @return bool
      */
     public function getTransferIn()
     {
@@ -610,7 +646,7 @@ class PecDomain implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets transfer_in
      *
-     * @param bool|null $transfer_in transfer_in
+     * @param bool $transfer_in transfer_in
      *
      * @return self
      */
@@ -627,7 +663,7 @@ class PecDomain implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets force_decertify_domain
      *
-     * @return bool|null
+     * @return bool
      */
     public function getForceDecertifyDomain()
     {
@@ -637,7 +673,7 @@ class PecDomain implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets force_decertify_domain
      *
-     * @param bool|null $force_decertify_domain force_decertify_domain
+     * @param bool $force_decertify_domain force_decertify_domain
      *
      * @return self
      */
@@ -654,7 +690,7 @@ class PecDomain implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets aruba_public
      *
-     * @return bool|null
+     * @return bool
      */
     public function getArubaPublic()
     {
@@ -664,7 +700,7 @@ class PecDomain implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets aruba_public
      *
-     * @param bool|null $aruba_public aruba_public
+     * @param bool $aruba_public aruba_public
      *
      * @return self
      */
@@ -681,7 +717,7 @@ class PecDomain implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets shellrent_public
      *
-     * @return bool|null
+     * @return bool
      */
     public function getShellrentPublic()
     {
@@ -691,7 +727,7 @@ class PecDomain implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets shellrent_public
      *
-     * @param bool|null $shellrent_public shellrent_public
+     * @param bool $shellrent_public shellrent_public
      *
      * @return self
      */
@@ -708,7 +744,7 @@ class PecDomain implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets can_require_owner_change
      *
-     * @return bool|null
+     * @return bool
      */
     public function getCanRequireOwnerChange()
     {
@@ -718,7 +754,7 @@ class PecDomain implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets can_require_owner_change
      *
-     * @param bool|null $can_require_owner_change can_require_owner_change
+     * @param bool $can_require_owner_change can_require_owner_change
      *
      * @return self
      */

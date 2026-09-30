@@ -223,7 +223,7 @@ class StorageApi
      *
      * @throws \Shellrent\Sdk\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Shellrent\Sdk\Model\CloudStorageAccessResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError
+     * @return \Shellrent\Sdk\Model\CloudStorageAccessResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError
      */
     public function createCloudStorageAccess($cloud_storage_id, $cloud_storage_access_create_request, string $contentType = self::contentTypes['createCloudStorageAccess'][0])
     {
@@ -242,7 +242,7 @@ class StorageApi
      *
      * @throws \Shellrent\Sdk\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Shellrent\Sdk\Model\CloudStorageAccessResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Shellrent\Sdk\Model\CloudStorageAccessResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError, HTTP status code, HTTP response headers (array of strings)
      */
     public function createCloudStorageAccessWithHttpInfo($cloud_storage_id, $cloud_storage_access_create_request, string $contentType = self::contentTypes['createCloudStorageAccess'][0])
     {
@@ -297,6 +297,12 @@ class StorageApi
                         $response,
                     );
                 case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $request,
+                        $response,
+                    );
+                case 429:
                     return $this->handleResponseWithDataType(
                         '\Shellrent\Sdk\Model\ApiError',
                         $request,
@@ -359,6 +365,14 @@ class StorageApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\Shellrent\Sdk\Model\ApiError',
@@ -579,7 +593,7 @@ class StorageApi
      *
      * @throws \Shellrent\Sdk\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Shellrent\Sdk\Model\ObjectStorageBucketFirewallEntryResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError
+     * @return \Shellrent\Sdk\Model\ObjectStorageBucketFirewallEntryResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError
      */
     public function createObjectStorageBucketFirewallEntry($object_storage_id, $bucket_id, $object_storage_bucket_firewall_entry_create_request, string $contentType = self::contentTypes['createObjectStorageBucketFirewallEntry'][0])
     {
@@ -599,7 +613,7 @@ class StorageApi
      *
      * @throws \Shellrent\Sdk\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Shellrent\Sdk\Model\ObjectStorageBucketFirewallEntryResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Shellrent\Sdk\Model\ObjectStorageBucketFirewallEntryResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError, HTTP status code, HTTP response headers (array of strings)
      */
     public function createObjectStorageBucketFirewallEntryWithHttpInfo($object_storage_id, $bucket_id, $object_storage_bucket_firewall_entry_create_request, string $contentType = self::contentTypes['createObjectStorageBucketFirewallEntry'][0])
     {
@@ -654,6 +668,12 @@ class StorageApi
                         $response,
                     );
                 case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $request,
+                        $response,
+                    );
+                case 429:
                     return $this->handleResponseWithDataType(
                         '\Shellrent\Sdk\Model\ApiError',
                         $request,
@@ -716,6 +736,14 @@ class StorageApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\Shellrent\Sdk\Model\ApiError',
@@ -952,7 +980,7 @@ class StorageApi
      *
      * @throws \Shellrent\Sdk\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Shellrent\Sdk\Model\ObjectStorageIamUserResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError
+     * @return \Shellrent\Sdk\Model\ObjectStorageIamUserResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError
      */
     public function createObjectStorageIamUser($object_storage_id, string $contentType = self::contentTypes['createObjectStorageIamUser'][0])
     {
@@ -970,7 +998,7 @@ class StorageApi
      *
      * @throws \Shellrent\Sdk\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Shellrent\Sdk\Model\ObjectStorageIamUserResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Shellrent\Sdk\Model\ObjectStorageIamUserResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError, HTTP status code, HTTP response headers (array of strings)
      */
     public function createObjectStorageIamUserWithHttpInfo($object_storage_id, string $contentType = self::contentTypes['createObjectStorageIamUser'][0])
     {
@@ -1025,6 +1053,12 @@ class StorageApi
                         $response,
                     );
                 case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $request,
+                        $response,
+                    );
+                case 429:
                     return $this->handleResponseWithDataType(
                         '\Shellrent\Sdk\Model\ApiError',
                         $request,
@@ -1087,6 +1121,14 @@ class StorageApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\Shellrent\Sdk\Model\ApiError',
@@ -1285,7 +1327,7 @@ class StorageApi
      *
      * @throws \Shellrent\Sdk\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Shellrent\Sdk\Model\ObjectStorageIamUserS3KeyResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError
+     * @return \Shellrent\Sdk\Model\ObjectStorageIamUserS3KeyResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError
      */
     public function createObjectStorageIamUserS3Key($object_storage_id, $iam_user_id, string $contentType = self::contentTypes['createObjectStorageIamUserS3Key'][0])
     {
@@ -1304,7 +1346,7 @@ class StorageApi
      *
      * @throws \Shellrent\Sdk\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Shellrent\Sdk\Model\ObjectStorageIamUserS3KeyResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Shellrent\Sdk\Model\ObjectStorageIamUserS3KeyResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError, HTTP status code, HTTP response headers (array of strings)
      */
     public function createObjectStorageIamUserS3KeyWithHttpInfo($object_storage_id, $iam_user_id, string $contentType = self::contentTypes['createObjectStorageIamUserS3Key'][0])
     {
@@ -1359,6 +1401,12 @@ class StorageApi
                         $response,
                     );
                 case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $request,
+                        $response,
+                    );
+                case 429:
                     return $this->handleResponseWithDataType(
                         '\Shellrent\Sdk\Model\ApiError',
                         $request,
@@ -1421,6 +1469,14 @@ class StorageApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\Shellrent\Sdk\Model\ApiError',
@@ -1637,7 +1693,7 @@ class StorageApi
      *
      * @throws \Shellrent\Sdk\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Shellrent\Sdk\Model\EmptyResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError
+     * @return \Shellrent\Sdk\Model\EmptyResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError
      */
     public function deleteCloudStorageAccess($cloud_storage_id, $access_id, string $contentType = self::contentTypes['deleteCloudStorageAccess'][0])
     {
@@ -1656,7 +1712,7 @@ class StorageApi
      *
      * @throws \Shellrent\Sdk\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Shellrent\Sdk\Model\EmptyResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Shellrent\Sdk\Model\EmptyResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError, HTTP status code, HTTP response headers (array of strings)
      */
     public function deleteCloudStorageAccessWithHttpInfo($cloud_storage_id, $access_id, string $contentType = self::contentTypes['deleteCloudStorageAccess'][0])
     {
@@ -1711,6 +1767,12 @@ class StorageApi
                         $response,
                     );
                 case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $request,
+                        $response,
+                    );
+                case 429:
                     return $this->handleResponseWithDataType(
                         '\Shellrent\Sdk\Model\ApiError',
                         $request,
@@ -1773,6 +1835,14 @@ class StorageApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\Shellrent\Sdk\Model\ApiError',
@@ -1989,7 +2059,7 @@ class StorageApi
      *
      * @throws \Shellrent\Sdk\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Shellrent\Sdk\Model\EmptyResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError
+     * @return \Shellrent\Sdk\Model\EmptyResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError
      */
     public function deleteCloudStorageUser($cloud_storage_id, $cloud_storage_user_id, string $contentType = self::contentTypes['deleteCloudStorageUser'][0])
     {
@@ -2008,7 +2078,7 @@ class StorageApi
      *
      * @throws \Shellrent\Sdk\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Shellrent\Sdk\Model\EmptyResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Shellrent\Sdk\Model\EmptyResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError, HTTP status code, HTTP response headers (array of strings)
      */
     public function deleteCloudStorageUserWithHttpInfo($cloud_storage_id, $cloud_storage_user_id, string $contentType = self::contentTypes['deleteCloudStorageUser'][0])
     {
@@ -2063,6 +2133,12 @@ class StorageApi
                         $response,
                     );
                 case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $request,
+                        $response,
+                    );
+                case 429:
                     return $this->handleResponseWithDataType(
                         '\Shellrent\Sdk\Model\ApiError',
                         $request,
@@ -2125,6 +2201,14 @@ class StorageApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\Shellrent\Sdk\Model\ApiError',
@@ -2342,7 +2426,7 @@ class StorageApi
      *
      * @throws \Shellrent\Sdk\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Shellrent\Sdk\Model\ObjectStorageBucketFirewallEntryResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError
+     * @return \Shellrent\Sdk\Model\ObjectStorageBucketFirewallEntryResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError
      */
     public function deleteObjectStorageBucketFirewallEntry($object_storage_id, $bucket_id, $entry_id, string $contentType = self::contentTypes['deleteObjectStorageBucketFirewallEntry'][0])
     {
@@ -2362,7 +2446,7 @@ class StorageApi
      *
      * @throws \Shellrent\Sdk\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Shellrent\Sdk\Model\ObjectStorageBucketFirewallEntryResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Shellrent\Sdk\Model\ObjectStorageBucketFirewallEntryResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError, HTTP status code, HTTP response headers (array of strings)
      */
     public function deleteObjectStorageBucketFirewallEntryWithHttpInfo($object_storage_id, $bucket_id, $entry_id, string $contentType = self::contentTypes['deleteObjectStorageBucketFirewallEntry'][0])
     {
@@ -2417,6 +2501,12 @@ class StorageApi
                         $response,
                     );
                 case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $request,
+                        $response,
+                    );
+                case 429:
                     return $this->handleResponseWithDataType(
                         '\Shellrent\Sdk\Model\ApiError',
                         $request,
@@ -2479,6 +2569,14 @@ class StorageApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\Shellrent\Sdk\Model\ApiError',
@@ -2713,7 +2811,7 @@ class StorageApi
      *
      * @throws \Shellrent\Sdk\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Shellrent\Sdk\Model\EmptyResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError
+     * @return \Shellrent\Sdk\Model\EmptyResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError
      */
     public function deleteObjectStorageIamUser($object_storage_id, $iam_user_id, string $contentType = self::contentTypes['deleteObjectStorageIamUser'][0])
     {
@@ -2732,7 +2830,7 @@ class StorageApi
      *
      * @throws \Shellrent\Sdk\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Shellrent\Sdk\Model\EmptyResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Shellrent\Sdk\Model\EmptyResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError, HTTP status code, HTTP response headers (array of strings)
      */
     public function deleteObjectStorageIamUserWithHttpInfo($object_storage_id, $iam_user_id, string $contentType = self::contentTypes['deleteObjectStorageIamUser'][0])
     {
@@ -2787,6 +2885,12 @@ class StorageApi
                         $response,
                     );
                 case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $request,
+                        $response,
+                    );
+                case 429:
                     return $this->handleResponseWithDataType(
                         '\Shellrent\Sdk\Model\ApiError',
                         $request,
@@ -2849,6 +2953,14 @@ class StorageApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\Shellrent\Sdk\Model\ApiError',
@@ -3066,7 +3178,7 @@ class StorageApi
      *
      * @throws \Shellrent\Sdk\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Shellrent\Sdk\Model\EmptyResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError
+     * @return \Shellrent\Sdk\Model\EmptyResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError
      */
     public function deleteObjectStorageIamUserS3Key($object_storage_id, $iam_user_id, $s3_key_id, string $contentType = self::contentTypes['deleteObjectStorageIamUserS3Key'][0])
     {
@@ -3086,7 +3198,7 @@ class StorageApi
      *
      * @throws \Shellrent\Sdk\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Shellrent\Sdk\Model\EmptyResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Shellrent\Sdk\Model\EmptyResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError, HTTP status code, HTTP response headers (array of strings)
      */
     public function deleteObjectStorageIamUserS3KeyWithHttpInfo($object_storage_id, $iam_user_id, $s3_key_id, string $contentType = self::contentTypes['deleteObjectStorageIamUserS3Key'][0])
     {
@@ -3141,6 +3253,12 @@ class StorageApi
                         $response,
                     );
                 case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $request,
+                        $response,
+                    );
+                case 429:
                     return $this->handleResponseWithDataType(
                         '\Shellrent\Sdk\Model\ApiError',
                         $request,
@@ -3203,6 +3321,14 @@ class StorageApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\Shellrent\Sdk\Model\ApiError',
@@ -3436,7 +3562,7 @@ class StorageApi
      *
      * @throws \Shellrent\Sdk\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Shellrent\Sdk\Model\TaskResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError
+     * @return \Shellrent\Sdk\Model\TaskResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError
      */
     public function downgradeCloudStorageSize($cloud_storage_id, string $contentType = self::contentTypes['downgradeCloudStorageSize'][0])
     {
@@ -3454,7 +3580,7 @@ class StorageApi
      *
      * @throws \Shellrent\Sdk\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Shellrent\Sdk\Model\TaskResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Shellrent\Sdk\Model\TaskResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError, HTTP status code, HTTP response headers (array of strings)
      */
     public function downgradeCloudStorageSizeWithHttpInfo($cloud_storage_id, string $contentType = self::contentTypes['downgradeCloudStorageSize'][0])
     {
@@ -3509,6 +3635,12 @@ class StorageApi
                         $response,
                     );
                 case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $request,
+                        $response,
+                    );
+                case 429:
                     return $this->handleResponseWithDataType(
                         '\Shellrent\Sdk\Model\ApiError',
                         $request,
@@ -3571,6 +3703,14 @@ class StorageApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\Shellrent\Sdk\Model\ApiError',
@@ -3768,7 +3908,7 @@ class StorageApi
      *
      * @throws \Shellrent\Sdk\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Shellrent\Sdk\Model\CloudStorageResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError
+     * @return \Shellrent\Sdk\Model\CloudStorageResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError
      */
     public function getCloudStorage($cloud_storage_id, string $contentType = self::contentTypes['getCloudStorage'][0])
     {
@@ -3786,7 +3926,7 @@ class StorageApi
      *
      * @throws \Shellrent\Sdk\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Shellrent\Sdk\Model\CloudStorageResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Shellrent\Sdk\Model\CloudStorageResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError, HTTP status code, HTTP response headers (array of strings)
      */
     public function getCloudStorageWithHttpInfo($cloud_storage_id, string $contentType = self::contentTypes['getCloudStorage'][0])
     {
@@ -3841,6 +3981,12 @@ class StorageApi
                         $response,
                     );
                 case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $request,
+                        $response,
+                    );
+                case 429:
                     return $this->handleResponseWithDataType(
                         '\Shellrent\Sdk\Model\ApiError',
                         $request,
@@ -3903,6 +4049,14 @@ class StorageApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\Shellrent\Sdk\Model\ApiError',
@@ -4101,7 +4255,7 @@ class StorageApi
      *
      * @throws \Shellrent\Sdk\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Shellrent\Sdk\Model\CloudStorageAccessResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError
+     * @return \Shellrent\Sdk\Model\CloudStorageAccessResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError
      */
     public function getCloudStorageAccess($cloud_storage_id, $access_id, string $contentType = self::contentTypes['getCloudStorageAccess'][0])
     {
@@ -4120,7 +4274,7 @@ class StorageApi
      *
      * @throws \Shellrent\Sdk\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Shellrent\Sdk\Model\CloudStorageAccessResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Shellrent\Sdk\Model\CloudStorageAccessResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError, HTTP status code, HTTP response headers (array of strings)
      */
     public function getCloudStorageAccessWithHttpInfo($cloud_storage_id, $access_id, string $contentType = self::contentTypes['getCloudStorageAccess'][0])
     {
@@ -4175,6 +4329,12 @@ class StorageApi
                         $response,
                     );
                 case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $request,
+                        $response,
+                    );
+                case 429:
                     return $this->handleResponseWithDataType(
                         '\Shellrent\Sdk\Model\ApiError',
                         $request,
@@ -4237,6 +4397,14 @@ class StorageApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\Shellrent\Sdk\Model\ApiError',
@@ -4453,7 +4621,7 @@ class StorageApi
      *
      * @throws \Shellrent\Sdk\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Shellrent\Sdk\Model\CloudStorageUserResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError
+     * @return \Shellrent\Sdk\Model\CloudStorageUserResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError
      */
     public function getCloudStorageUser($cloud_storage_id, $cloud_storage_user_id, string $contentType = self::contentTypes['getCloudStorageUser'][0])
     {
@@ -4472,7 +4640,7 @@ class StorageApi
      *
      * @throws \Shellrent\Sdk\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Shellrent\Sdk\Model\CloudStorageUserResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Shellrent\Sdk\Model\CloudStorageUserResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError, HTTP status code, HTTP response headers (array of strings)
      */
     public function getCloudStorageUserWithHttpInfo($cloud_storage_id, $cloud_storage_user_id, string $contentType = self::contentTypes['getCloudStorageUser'][0])
     {
@@ -4527,6 +4695,12 @@ class StorageApi
                         $response,
                     );
                 case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $request,
+                        $response,
+                    );
+                case 429:
                     return $this->handleResponseWithDataType(
                         '\Shellrent\Sdk\Model\ApiError',
                         $request,
@@ -4589,6 +4763,14 @@ class StorageApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\Shellrent\Sdk\Model\ApiError',
@@ -4804,7 +4986,7 @@ class StorageApi
      *
      * @throws \Shellrent\Sdk\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Shellrent\Sdk\Model\ObjectStorageResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError
+     * @return \Shellrent\Sdk\Model\ObjectStorageResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError
      */
     public function getObjectStorage($object_storage_id, string $contentType = self::contentTypes['getObjectStorage'][0])
     {
@@ -4822,7 +5004,7 @@ class StorageApi
      *
      * @throws \Shellrent\Sdk\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Shellrent\Sdk\Model\ObjectStorageResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Shellrent\Sdk\Model\ObjectStorageResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError, HTTP status code, HTTP response headers (array of strings)
      */
     public function getObjectStorageWithHttpInfo($object_storage_id, string $contentType = self::contentTypes['getObjectStorage'][0])
     {
@@ -4877,6 +5059,12 @@ class StorageApi
                         $response,
                     );
                 case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $request,
+                        $response,
+                    );
+                case 429:
                     return $this->handleResponseWithDataType(
                         '\Shellrent\Sdk\Model\ApiError',
                         $request,
@@ -4939,6 +5127,14 @@ class StorageApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\Shellrent\Sdk\Model\ApiError',
@@ -5137,7 +5333,7 @@ class StorageApi
      *
      * @throws \Shellrent\Sdk\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Shellrent\Sdk\Model\ObjectStorageBucketResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError
+     * @return \Shellrent\Sdk\Model\ObjectStorageBucketResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError
      */
     public function getObjectStorageBucket($object_storage_id, $bucket_id, string $contentType = self::contentTypes['getObjectStorageBucket'][0])
     {
@@ -5156,7 +5352,7 @@ class StorageApi
      *
      * @throws \Shellrent\Sdk\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Shellrent\Sdk\Model\ObjectStorageBucketResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Shellrent\Sdk\Model\ObjectStorageBucketResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError, HTTP status code, HTTP response headers (array of strings)
      */
     public function getObjectStorageBucketWithHttpInfo($object_storage_id, $bucket_id, string $contentType = self::contentTypes['getObjectStorageBucket'][0])
     {
@@ -5211,6 +5407,12 @@ class StorageApi
                         $response,
                     );
                 case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $request,
+                        $response,
+                    );
+                case 429:
                     return $this->handleResponseWithDataType(
                         '\Shellrent\Sdk\Model\ApiError',
                         $request,
@@ -5273,6 +5475,14 @@ class StorageApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\Shellrent\Sdk\Model\ApiError',
@@ -5489,7 +5699,7 @@ class StorageApi
      *
      * @throws \Shellrent\Sdk\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Shellrent\Sdk\Model\ObjectStorageBucketChartResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError
+     * @return \Shellrent\Sdk\Model\ObjectStorageBucketChartResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError
      */
     public function getObjectStorageBucketChart($object_storage_id, $bucket_id, string $contentType = self::contentTypes['getObjectStorageBucketChart'][0])
     {
@@ -5508,7 +5718,7 @@ class StorageApi
      *
      * @throws \Shellrent\Sdk\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Shellrent\Sdk\Model\ObjectStorageBucketChartResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Shellrent\Sdk\Model\ObjectStorageBucketChartResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError, HTTP status code, HTTP response headers (array of strings)
      */
     public function getObjectStorageBucketChartWithHttpInfo($object_storage_id, $bucket_id, string $contentType = self::contentTypes['getObjectStorageBucketChart'][0])
     {
@@ -5563,6 +5773,12 @@ class StorageApi
                         $response,
                     );
                 case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $request,
+                        $response,
+                    );
+                case 429:
                     return $this->handleResponseWithDataType(
                         '\Shellrent\Sdk\Model\ApiError',
                         $request,
@@ -5625,6 +5841,14 @@ class StorageApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\Shellrent\Sdk\Model\ApiError',
@@ -5842,7 +6066,7 @@ class StorageApi
      *
      * @throws \Shellrent\Sdk\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Shellrent\Sdk\Model\ObjectStorageBucketFirewallEntryResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError
+     * @return \Shellrent\Sdk\Model\ObjectStorageBucketFirewallEntryResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError
      */
     public function getObjectStorageBucketFirewallEntry($object_storage_id, $bucket_id, $entry_id, string $contentType = self::contentTypes['getObjectStorageBucketFirewallEntry'][0])
     {
@@ -5862,7 +6086,7 @@ class StorageApi
      *
      * @throws \Shellrent\Sdk\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Shellrent\Sdk\Model\ObjectStorageBucketFirewallEntryResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Shellrent\Sdk\Model\ObjectStorageBucketFirewallEntryResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError, HTTP status code, HTTP response headers (array of strings)
      */
     public function getObjectStorageBucketFirewallEntryWithHttpInfo($object_storage_id, $bucket_id, $entry_id, string $contentType = self::contentTypes['getObjectStorageBucketFirewallEntry'][0])
     {
@@ -5917,6 +6141,12 @@ class StorageApi
                         $response,
                     );
                 case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $request,
+                        $response,
+                    );
+                case 429:
                     return $this->handleResponseWithDataType(
                         '\Shellrent\Sdk\Model\ApiError',
                         $request,
@@ -5979,6 +6209,14 @@ class StorageApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\Shellrent\Sdk\Model\ApiError',
@@ -6213,7 +6451,7 @@ class StorageApi
      *
      * @throws \Shellrent\Sdk\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Shellrent\Sdk\Model\ObjectStorageIamUserResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError
+     * @return \Shellrent\Sdk\Model\ObjectStorageIamUserResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError
      */
     public function getObjectStorageIamUser($object_storage_id, $iam_user_id, string $contentType = self::contentTypes['getObjectStorageIamUser'][0])
     {
@@ -6232,7 +6470,7 @@ class StorageApi
      *
      * @throws \Shellrent\Sdk\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Shellrent\Sdk\Model\ObjectStorageIamUserResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Shellrent\Sdk\Model\ObjectStorageIamUserResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError, HTTP status code, HTTP response headers (array of strings)
      */
     public function getObjectStorageIamUserWithHttpInfo($object_storage_id, $iam_user_id, string $contentType = self::contentTypes['getObjectStorageIamUser'][0])
     {
@@ -6287,6 +6525,12 @@ class StorageApi
                         $response,
                     );
                 case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $request,
+                        $response,
+                    );
+                case 429:
                     return $this->handleResponseWithDataType(
                         '\Shellrent\Sdk\Model\ApiError',
                         $request,
@@ -6349,6 +6593,14 @@ class StorageApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\Shellrent\Sdk\Model\ApiError',
@@ -6566,7 +6818,7 @@ class StorageApi
      *
      * @throws \Shellrent\Sdk\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Shellrent\Sdk\Model\ObjectStorageIamUserS3KeyResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError
+     * @return \Shellrent\Sdk\Model\ObjectStorageIamUserS3KeyResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError
      */
     public function getObjectStorageIamUserS3Key($object_storage_id, $iam_user_id, $s3_key_id, string $contentType = self::contentTypes['getObjectStorageIamUserS3Key'][0])
     {
@@ -6586,7 +6838,7 @@ class StorageApi
      *
      * @throws \Shellrent\Sdk\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Shellrent\Sdk\Model\ObjectStorageIamUserS3KeyResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Shellrent\Sdk\Model\ObjectStorageIamUserS3KeyResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError, HTTP status code, HTTP response headers (array of strings)
      */
     public function getObjectStorageIamUserS3KeyWithHttpInfo($object_storage_id, $iam_user_id, $s3_key_id, string $contentType = self::contentTypes['getObjectStorageIamUserS3Key'][0])
     {
@@ -6641,6 +6893,12 @@ class StorageApi
                         $response,
                     );
                 case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $request,
+                        $response,
+                    );
+                case 429:
                     return $this->handleResponseWithDataType(
                         '\Shellrent\Sdk\Model\ApiError',
                         $request,
@@ -6703,6 +6961,14 @@ class StorageApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\Shellrent\Sdk\Model\ApiError',
@@ -6936,7 +7202,7 @@ class StorageApi
      *
      * @throws \Shellrent\Sdk\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Shellrent\Sdk\Model\ObjectStorageS3KeyResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError
+     * @return \Shellrent\Sdk\Model\ObjectStorageS3KeyResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError
      */
     public function getObjectStorageS3Key($object_storage_id, string $contentType = self::contentTypes['getObjectStorageS3Key'][0])
     {
@@ -6954,7 +7220,7 @@ class StorageApi
      *
      * @throws \Shellrent\Sdk\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Shellrent\Sdk\Model\ObjectStorageS3KeyResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Shellrent\Sdk\Model\ObjectStorageS3KeyResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError, HTTP status code, HTTP response headers (array of strings)
      */
     public function getObjectStorageS3KeyWithHttpInfo($object_storage_id, string $contentType = self::contentTypes['getObjectStorageS3Key'][0])
     {
@@ -7009,6 +7275,12 @@ class StorageApi
                         $response,
                     );
                 case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $request,
+                        $response,
+                    );
+                case 429:
                     return $this->handleResponseWithDataType(
                         '\Shellrent\Sdk\Model\ApiError',
                         $request,
@@ -7071,6 +7343,14 @@ class StorageApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\Shellrent\Sdk\Model\ApiError',
@@ -7270,7 +7550,7 @@ class StorageApi
      *
      * @throws \Shellrent\Sdk\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Shellrent\Sdk\Model\CloudStorageAccessPaginatedListResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError
+     * @return \Shellrent\Sdk\Model\CloudStorageAccessPaginatedListResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError
      */
     public function listCloudStorageAccesses($cloud_storage_id, $page = 1, $per_page = 20, string $contentType = self::contentTypes['listCloudStorageAccesses'][0])
     {
@@ -7290,7 +7570,7 @@ class StorageApi
      *
      * @throws \Shellrent\Sdk\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Shellrent\Sdk\Model\CloudStorageAccessPaginatedListResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Shellrent\Sdk\Model\CloudStorageAccessPaginatedListResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError, HTTP status code, HTTP response headers (array of strings)
      */
     public function listCloudStorageAccessesWithHttpInfo($cloud_storage_id, $page = 1, $per_page = 20, string $contentType = self::contentTypes['listCloudStorageAccesses'][0])
     {
@@ -7345,6 +7625,12 @@ class StorageApi
                         $response,
                     );
                 case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $request,
+                        $response,
+                    );
+                case 429:
                     return $this->handleResponseWithDataType(
                         '\Shellrent\Sdk\Model\ApiError',
                         $request,
@@ -7407,6 +7693,14 @@ class StorageApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\Shellrent\Sdk\Model\ApiError',
@@ -7630,7 +7924,7 @@ class StorageApi
      *
      * @throws \Shellrent\Sdk\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Shellrent\Sdk\Model\CloudStorageUserListResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError
+     * @return \Shellrent\Sdk\Model\CloudStorageUserListResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError
      */
     public function listCloudStorageUsers($cloud_storage_id, string $contentType = self::contentTypes['listCloudStorageUsers'][0])
     {
@@ -7648,7 +7942,7 @@ class StorageApi
      *
      * @throws \Shellrent\Sdk\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Shellrent\Sdk\Model\CloudStorageUserListResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Shellrent\Sdk\Model\CloudStorageUserListResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError, HTTP status code, HTTP response headers (array of strings)
      */
     public function listCloudStorageUsersWithHttpInfo($cloud_storage_id, string $contentType = self::contentTypes['listCloudStorageUsers'][0])
     {
@@ -7703,6 +7997,12 @@ class StorageApi
                         $response,
                     );
                 case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $request,
+                        $response,
+                    );
+                case 429:
                     return $this->handleResponseWithDataType(
                         '\Shellrent\Sdk\Model\ApiError',
                         $request,
@@ -7765,6 +8065,14 @@ class StorageApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\Shellrent\Sdk\Model\ApiError',
@@ -7963,7 +8271,7 @@ class StorageApi
      *
      * @throws \Shellrent\Sdk\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Shellrent\Sdk\Model\CloudStoragePaginatedListResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError
+     * @return \Shellrent\Sdk\Model\CloudStoragePaginatedListResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError
      */
     public function listCloudStorages($page = 1, $per_page = 20, string $contentType = self::contentTypes['listCloudStorages'][0])
     {
@@ -7982,7 +8290,7 @@ class StorageApi
      *
      * @throws \Shellrent\Sdk\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Shellrent\Sdk\Model\CloudStoragePaginatedListResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Shellrent\Sdk\Model\CloudStoragePaginatedListResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError, HTTP status code, HTTP response headers (array of strings)
      */
     public function listCloudStoragesWithHttpInfo($page = 1, $per_page = 20, string $contentType = self::contentTypes['listCloudStorages'][0])
     {
@@ -8037,6 +8345,12 @@ class StorageApi
                         $response,
                     );
                 case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $request,
+                        $response,
+                    );
+                case 429:
                     return $this->handleResponseWithDataType(
                         '\Shellrent\Sdk\Model\ApiError',
                         $request,
@@ -8099,6 +8413,14 @@ class StorageApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\Shellrent\Sdk\Model\ApiError',
@@ -8307,7 +8629,7 @@ class StorageApi
      *
      * @throws \Shellrent\Sdk\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Shellrent\Sdk\Model\ObjectStorageBucketFirewallEntryPaginatedListResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError
+     * @return \Shellrent\Sdk\Model\ObjectStorageBucketFirewallEntryPaginatedListResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError
      */
     public function listObjectStorageBucketFirewallEntries($object_storage_id, $bucket_id, $page = 1, $per_page = 20, string $contentType = self::contentTypes['listObjectStorageBucketFirewallEntries'][0])
     {
@@ -8328,7 +8650,7 @@ class StorageApi
      *
      * @throws \Shellrent\Sdk\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Shellrent\Sdk\Model\ObjectStorageBucketFirewallEntryPaginatedListResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Shellrent\Sdk\Model\ObjectStorageBucketFirewallEntryPaginatedListResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError, HTTP status code, HTTP response headers (array of strings)
      */
     public function listObjectStorageBucketFirewallEntriesWithHttpInfo($object_storage_id, $bucket_id, $page = 1, $per_page = 20, string $contentType = self::contentTypes['listObjectStorageBucketFirewallEntries'][0])
     {
@@ -8383,6 +8705,12 @@ class StorageApi
                         $response,
                     );
                 case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $request,
+                        $response,
+                    );
+                case 429:
                     return $this->handleResponseWithDataType(
                         '\Shellrent\Sdk\Model\ApiError',
                         $request,
@@ -8445,6 +8773,14 @@ class StorageApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\Shellrent\Sdk\Model\ApiError',
@@ -8688,7 +9024,7 @@ class StorageApi
      *
      * @throws \Shellrent\Sdk\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Shellrent\Sdk\Model\ObjectStorageBucketPaginatedListResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError
+     * @return \Shellrent\Sdk\Model\ObjectStorageBucketPaginatedListResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError
      */
     public function listObjectStorageBuckets($object_storage_id, $page = 1, $per_page = 20, string $contentType = self::contentTypes['listObjectStorageBuckets'][0])
     {
@@ -8708,7 +9044,7 @@ class StorageApi
      *
      * @throws \Shellrent\Sdk\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Shellrent\Sdk\Model\ObjectStorageBucketPaginatedListResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Shellrent\Sdk\Model\ObjectStorageBucketPaginatedListResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError, HTTP status code, HTTP response headers (array of strings)
      */
     public function listObjectStorageBucketsWithHttpInfo($object_storage_id, $page = 1, $per_page = 20, string $contentType = self::contentTypes['listObjectStorageBuckets'][0])
     {
@@ -8763,6 +9099,12 @@ class StorageApi
                         $response,
                     );
                 case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $request,
+                        $response,
+                    );
+                case 429:
                     return $this->handleResponseWithDataType(
                         '\Shellrent\Sdk\Model\ApiError',
                         $request,
@@ -8825,6 +9167,14 @@ class StorageApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\Shellrent\Sdk\Model\ApiError',
@@ -9049,7 +9399,7 @@ class StorageApi
      *
      * @throws \Shellrent\Sdk\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Shellrent\Sdk\Model\ObjectStorageIamUserS3KeyListResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError
+     * @return \Shellrent\Sdk\Model\ObjectStorageIamUserS3KeyListResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError
      */
     public function listObjectStorageIamUserS3Keys($object_storage_id, $iam_user_id, string $contentType = self::contentTypes['listObjectStorageIamUserS3Keys'][0])
     {
@@ -9068,7 +9418,7 @@ class StorageApi
      *
      * @throws \Shellrent\Sdk\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Shellrent\Sdk\Model\ObjectStorageIamUserS3KeyListResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Shellrent\Sdk\Model\ObjectStorageIamUserS3KeyListResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError, HTTP status code, HTTP response headers (array of strings)
      */
     public function listObjectStorageIamUserS3KeysWithHttpInfo($object_storage_id, $iam_user_id, string $contentType = self::contentTypes['listObjectStorageIamUserS3Keys'][0])
     {
@@ -9123,6 +9473,12 @@ class StorageApi
                         $response,
                     );
                 case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $request,
+                        $response,
+                    );
+                case 429:
                     return $this->handleResponseWithDataType(
                         '\Shellrent\Sdk\Model\ApiError',
                         $request,
@@ -9185,6 +9541,14 @@ class StorageApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\Shellrent\Sdk\Model\ApiError',
@@ -9402,7 +9766,7 @@ class StorageApi
      *
      * @throws \Shellrent\Sdk\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Shellrent\Sdk\Model\ObjectStorageIamUserPaginatedListResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError
+     * @return \Shellrent\Sdk\Model\ObjectStorageIamUserPaginatedListResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError
      */
     public function listObjectStorageIamUsers($object_storage_id, $page = 1, $per_page = 20, string $contentType = self::contentTypes['listObjectStorageIamUsers'][0])
     {
@@ -9422,7 +9786,7 @@ class StorageApi
      *
      * @throws \Shellrent\Sdk\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Shellrent\Sdk\Model\ObjectStorageIamUserPaginatedListResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Shellrent\Sdk\Model\ObjectStorageIamUserPaginatedListResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError, HTTP status code, HTTP response headers (array of strings)
      */
     public function listObjectStorageIamUsersWithHttpInfo($object_storage_id, $page = 1, $per_page = 20, string $contentType = self::contentTypes['listObjectStorageIamUsers'][0])
     {
@@ -9477,6 +9841,12 @@ class StorageApi
                         $response,
                     );
                 case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $request,
+                        $response,
+                    );
+                case 429:
                     return $this->handleResponseWithDataType(
                         '\Shellrent\Sdk\Model\ApiError',
                         $request,
@@ -9539,6 +9909,14 @@ class StorageApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\Shellrent\Sdk\Model\ApiError',
@@ -9763,7 +10141,7 @@ class StorageApi
      *
      * @throws \Shellrent\Sdk\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Shellrent\Sdk\Model\ObjectStoragePaginatedListResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError
+     * @return \Shellrent\Sdk\Model\ObjectStoragePaginatedListResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError
      */
     public function listObjectStorages($page = 1, $per_page = 20, string $contentType = self::contentTypes['listObjectStorages'][0])
     {
@@ -9782,7 +10160,7 @@ class StorageApi
      *
      * @throws \Shellrent\Sdk\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Shellrent\Sdk\Model\ObjectStoragePaginatedListResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Shellrent\Sdk\Model\ObjectStoragePaginatedListResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError, HTTP status code, HTTP response headers (array of strings)
      */
     public function listObjectStoragesWithHttpInfo($page = 1, $per_page = 20, string $contentType = self::contentTypes['listObjectStorages'][0])
     {
@@ -9837,6 +10215,12 @@ class StorageApi
                         $response,
                     );
                 case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $request,
+                        $response,
+                    );
+                case 429:
                     return $this->handleResponseWithDataType(
                         '\Shellrent\Sdk\Model\ApiError',
                         $request,
@@ -9899,6 +10283,14 @@ class StorageApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\Shellrent\Sdk\Model\ApiError',
@@ -10106,7 +10498,7 @@ class StorageApi
      *
      * @throws \Shellrent\Sdk\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Shellrent\Sdk\Model\CloudStorageUserResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError
+     * @return \Shellrent\Sdk\Model\CloudStorageUserResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError
      */
     public function updateCloudStorageUserSize($cloud_storage_id, $cloud_storage_user_id, $cloud_storage_user_size_update_request, string $contentType = self::contentTypes['updateCloudStorageUserSize'][0])
     {
@@ -10126,7 +10518,7 @@ class StorageApi
      *
      * @throws \Shellrent\Sdk\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Shellrent\Sdk\Model\CloudStorageUserResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Shellrent\Sdk\Model\CloudStorageUserResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError, HTTP status code, HTTP response headers (array of strings)
      */
     public function updateCloudStorageUserSizeWithHttpInfo($cloud_storage_id, $cloud_storage_user_id, $cloud_storage_user_size_update_request, string $contentType = self::contentTypes['updateCloudStorageUserSize'][0])
     {
@@ -10181,6 +10573,12 @@ class StorageApi
                         $response,
                     );
                 case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $request,
+                        $response,
+                    );
+                case 429:
                     return $this->handleResponseWithDataType(
                         '\Shellrent\Sdk\Model\ApiError',
                         $request,
@@ -10243,6 +10641,14 @@ class StorageApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\Shellrent\Sdk\Model\ApiError',
@@ -10479,7 +10885,7 @@ class StorageApi
      *
      * @throws \Shellrent\Sdk\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Shellrent\Sdk\Model\OrderResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError
+     * @return \Shellrent\Sdk\Model\OrderResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError
      */
     public function upgradeCloudStorageSize($cloud_storage_id, string $contentType = self::contentTypes['upgradeCloudStorageSize'][0])
     {
@@ -10497,7 +10903,7 @@ class StorageApi
      *
      * @throws \Shellrent\Sdk\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Shellrent\Sdk\Model\OrderResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Shellrent\Sdk\Model\OrderResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError, HTTP status code, HTTP response headers (array of strings)
      */
     public function upgradeCloudStorageSizeWithHttpInfo($cloud_storage_id, string $contentType = self::contentTypes['upgradeCloudStorageSize'][0])
     {
@@ -10552,6 +10958,12 @@ class StorageApi
                         $response,
                     );
                 case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $request,
+                        $response,
+                    );
+                case 429:
                     return $this->handleResponseWithDataType(
                         '\Shellrent\Sdk\Model\ApiError',
                         $request,
@@ -10614,6 +11026,14 @@ class StorageApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\Shellrent\Sdk\Model\ApiError',

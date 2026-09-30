@@ -281,6 +281,12 @@ class SslCertificateApproverEmails implements ModelInterface, ArrayAccess, \Json
     {
         $invalidProperties = [];
 
+        if ($this->container['domain_name'] === null) {
+            $invalidProperties[] = "'domain_name' can't be null";
+        }
+        if ($this->container['approver_emails'] === null) {
+            $invalidProperties[] = "'approver_emails' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -299,7 +305,7 @@ class SslCertificateApproverEmails implements ModelInterface, ArrayAccess, \Json
     /**
      * Gets domain_name
      *
-     * @return string|null
+     * @return string
      */
     public function getDomainName()
     {
@@ -309,7 +315,7 @@ class SslCertificateApproverEmails implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets domain_name
      *
-     * @param string|null $domain_name domain_name
+     * @param string $domain_name domain_name
      *
      * @return self
      */
@@ -326,7 +332,7 @@ class SslCertificateApproverEmails implements ModelInterface, ArrayAccess, \Json
     /**
      * Gets approver_emails
      *
-     * @return string[]|null
+     * @return string[]
      */
     public function getApproverEmails()
     {
@@ -336,7 +342,7 @@ class SslCertificateApproverEmails implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets approver_emails
      *
-     * @param string[]|null $approver_emails approver_emails
+     * @param string[] $approver_emails approver_emails
      *
      * @return self
      */

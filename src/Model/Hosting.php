@@ -351,6 +351,42 @@ class Hosting implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
+        if ($this->container['hosting_id'] === null) {
+            $invalidProperties[] = "'hosting_id' can't be null";
+        }
+        if ($this->container['purchase_id'] === null && !$this->isNullableSetToNull('purchase_id')) {
+            $invalidProperties[] = "'purchase_id' is required";
+        }
+        if ($this->container['parent_hosting_id'] === null && !$this->isNullableSetToNull('parent_hosting_id')) {
+            $invalidProperties[] = "'parent_hosting_id' is required";
+        }
+        if ($this->container['is_primary'] === null) {
+            $invalidProperties[] = "'is_primary' can't be null";
+        }
+        if ($this->container['host_name'] === null && !$this->isNullableSetToNull('host_name')) {
+            $invalidProperties[] = "'host_name' is required";
+        }
+        if ($this->container['host_name_idna'] === null && !$this->isNullableSetToNull('host_name_idna')) {
+            $invalidProperties[] = "'host_name_idna' is required";
+        }
+        if ($this->container['full_name'] === null && !$this->isNullableSetToNull('full_name')) {
+            $invalidProperties[] = "'full_name' is required";
+        }
+        if ($this->container['full_name_idna'] === null && !$this->isNullableSetToNull('full_name_idna')) {
+            $invalidProperties[] = "'full_name_idna' is required";
+        }
+        if ($this->container['domain_full_name'] === null && !$this->isNullableSetToNull('domain_full_name')) {
+            $invalidProperties[] = "'domain_full_name' is required";
+        }
+        if ($this->container['domain_full_name_idna'] === null && !$this->isNullableSetToNull('domain_full_name_idna')) {
+            $invalidProperties[] = "'domain_full_name_idna' is required";
+        }
+        if ($this->container['php_version'] === null && !$this->isNullableSetToNull('php_version')) {
+            $invalidProperties[] = "'php_version' is required";
+        }
+        if ($this->container['is_active'] === null) {
+            $invalidProperties[] = "'is_active' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -369,7 +405,7 @@ class Hosting implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets hosting_id
      *
-     * @return int|null
+     * @return int
      */
     public function getHostingId()
     {
@@ -379,7 +415,7 @@ class Hosting implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets hosting_id
      *
-     * @param int|null $hosting_id hosting_id
+     * @param int $hosting_id hosting_id
      *
      * @return self
      */
@@ -464,7 +500,7 @@ class Hosting implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets is_primary
      *
-     * @return bool|null
+     * @return bool
      */
     public function getIsPrimary()
     {
@@ -474,7 +510,7 @@ class Hosting implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets is_primary
      *
-     * @param bool|null $is_primary is_primary
+     * @param bool $is_primary is_primary
      *
      * @return self
      */
@@ -729,7 +765,7 @@ class Hosting implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets is_active
      *
-     * @return bool|null
+     * @return bool
      */
     public function getIsActive()
     {
@@ -739,7 +775,7 @@ class Hosting implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets is_active
      *
-     * @param bool|null $is_active is_active
+     * @param bool $is_active is_active
      *
      * @return self
      */

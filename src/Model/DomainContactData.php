@@ -281,6 +281,12 @@ class DomainContactData implements ModelInterface, ArrayAccess, \JsonSerializabl
     {
         $invalidProperties = [];
 
+        if ($this->container['data_field'] === null) {
+            $invalidProperties[] = "'data_field' can't be null";
+        }
+        if ($this->container['data_value'] === null) {
+            $invalidProperties[] = "'data_value' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -299,7 +305,7 @@ class DomainContactData implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Gets data_field
      *
-     * @return string|null
+     * @return string
      */
     public function getDataField()
     {
@@ -309,7 +315,7 @@ class DomainContactData implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets data_field
      *
-     * @param string|null $data_field data_field
+     * @param string $data_field data_field
      *
      * @return self
      */
@@ -326,7 +332,7 @@ class DomainContactData implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Gets data_value
      *
-     * @return string|null
+     * @return string
      */
     public function getDataValue()
     {
@@ -336,7 +342,7 @@ class DomainContactData implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets data_value
      *
-     * @param string|null $data_value data_value
+     * @param string $data_value data_value
      *
      * @return self
      */

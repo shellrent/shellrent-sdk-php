@@ -4,19 +4,19 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**hosting_backup_id** | **int** |  | [optional]
-**hosting_id** | **int** |  | [optional]
-**backup_id** | **int** |  | [optional]
-**category** | **string** |  | [optional]
-**backup_type_code** | **string** |  | [optional]
-**backup_frequency_code** | **string** |  | [optional]
-**backup_date** | **\DateTime** |  | [optional]
-**backup_size** | **int** |  | [optional]
-**backup_duration** | **string** |  | [optional]
-**exit_status** | **int** |  | [optional]
-**error_type** | **string** |  | [optional]
-**mailbox_name** | **string** |  | [optional]
-**database_name** | **string** |  | [optional]
-**date_created** | **\DateTime** |  | [optional]
+**hosting_backup_id** | **int** |  |
+**hosting_id** | **int** |  |
+**backup_id** | **int** |  |
+**category** | **string** |  |
+**backup_type_code** | **string** |  |
+**backup_frequency_code** | **string** |  |
+**backup_date** | **\DateTime** |  |
+**backup_size** | **int** |  |
+**backup_duration** | **string** |  |
+**exit_status** | **int** |  |
+**error_type** | **string** |  |
+**mailbox_name** | **string** |  |
+**database_name** | **string** |  |
+**date_created** | **\DateTime** |  |
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

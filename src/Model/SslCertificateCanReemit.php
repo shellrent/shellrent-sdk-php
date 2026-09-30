@@ -281,6 +281,12 @@ class SslCertificateCanReemit implements ModelInterface, ArrayAccess, \JsonSeria
     {
         $invalidProperties = [];
 
+        if ($this->container['ssl_certificate_id'] === null) {
+            $invalidProperties[] = "'ssl_certificate_id' can't be null";
+        }
+        if ($this->container['can_reemit'] === null) {
+            $invalidProperties[] = "'can_reemit' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -299,7 +305,7 @@ class SslCertificateCanReemit implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Gets ssl_certificate_id
      *
-     * @return int|null
+     * @return int
      */
     public function getSslCertificateId()
     {
@@ -309,7 +315,7 @@ class SslCertificateCanReemit implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets ssl_certificate_id
      *
-     * @param int|null $ssl_certificate_id ssl_certificate_id
+     * @param int $ssl_certificate_id ssl_certificate_id
      *
      * @return self
      */
@@ -326,7 +332,7 @@ class SslCertificateCanReemit implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Gets can_reemit
      *
-     * @return bool|null
+     * @return bool
      */
     public function getCanReemit()
     {
@@ -336,7 +342,7 @@ class SslCertificateCanReemit implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets can_reemit
      *
-     * @param bool|null $can_reemit can_reemit
+     * @param bool $can_reemit can_reemit
      *
      * @return self
      */

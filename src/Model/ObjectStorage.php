@@ -386,6 +386,57 @@ class ObjectStorage implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
+        if ($this->container['object_storage_id'] === null) {
+            $invalidProperties[] = "'object_storage_id' can't be null";
+        }
+        if ($this->container['purchase_id'] === null && !$this->isNullableSetToNull('purchase_id')) {
+            $invalidProperties[] = "'purchase_id' is required";
+        }
+        if ($this->container['name'] === null && !$this->isNullableSetToNull('name')) {
+            $invalidProperties[] = "'name' is required";
+        }
+        if ($this->container['email'] === null && !$this->isNullableSetToNull('email')) {
+            $invalidProperties[] = "'email' is required";
+        }
+        if ($this->container['code'] === null && !$this->isNullableSetToNull('code')) {
+            $invalidProperties[] = "'code' is required";
+        }
+        if ($this->container['code_full'] === null && !$this->isNullableSetToNull('code_full')) {
+            $invalidProperties[] = "'code_full' is required";
+        }
+        if ($this->container['active'] === null && !$this->isNullableSetToNull('active')) {
+            $invalidProperties[] = "'active' is required";
+        }
+        if ($this->container['active_storage_bytes'] === null && !$this->isNullableSetToNull('active_storage_bytes')) {
+            $invalidProperties[] = "'active_storage_bytes' is required";
+        }
+        if ($this->container['deleted_storage_bytes'] === null && !$this->isNullableSetToNull('deleted_storage_bytes')) {
+            $invalidProperties[] = "'deleted_storage_bytes' is required";
+        }
+        if ($this->container['active_objects'] === null && !$this->isNullableSetToNull('active_objects')) {
+            $invalidProperties[] = "'active_objects' is required";
+        }
+        if ($this->container['deleted_objects'] === null && !$this->isNullableSetToNull('deleted_objects')) {
+            $invalidProperties[] = "'deleted_objects' is required";
+        }
+        if ($this->container['api_calls_count'] === null && !$this->isNullableSetToNull('api_calls_count')) {
+            $invalidProperties[] = "'api_calls_count' is required";
+        }
+        if ($this->container['storage_wrote_bytes'] === null && !$this->isNullableSetToNull('storage_wrote_bytes')) {
+            $invalidProperties[] = "'storage_wrote_bytes' is required";
+        }
+        if ($this->container['storage_read_bytes'] === null && !$this->isNullableSetToNull('storage_read_bytes')) {
+            $invalidProperties[] = "'storage_read_bytes' is required";
+        }
+        if ($this->container['egress_traffic_bytes'] === null && !$this->isNullableSetToNull('egress_traffic_bytes')) {
+            $invalidProperties[] = "'egress_traffic_bytes' is required";
+        }
+        if ($this->container['ingress_traffic_bytes'] === null && !$this->isNullableSetToNull('ingress_traffic_bytes')) {
+            $invalidProperties[] = "'ingress_traffic_bytes' is required";
+        }
+        if ($this->container['reference_date'] === null && !$this->isNullableSetToNull('reference_date')) {
+            $invalidProperties[] = "'reference_date' is required";
+        }
         return $invalidProperties;
     }
 
@@ -404,7 +455,7 @@ class ObjectStorage implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets object_storage_id
      *
-     * @return int|null
+     * @return int
      */
     public function getObjectStorageId()
     {
@@ -414,7 +465,7 @@ class ObjectStorage implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets object_storage_id
      *
-     * @param int|null $object_storage_id object_storage_id
+     * @param int $object_storage_id object_storage_id
      *
      * @return self
      */

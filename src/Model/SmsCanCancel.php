@@ -281,6 +281,12 @@ class SmsCanCancel implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
+        if ($this->container['sms_id'] === null) {
+            $invalidProperties[] = "'sms_id' can't be null";
+        }
+        if ($this->container['can_cancel'] === null) {
+            $invalidProperties[] = "'can_cancel' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -299,7 +305,7 @@ class SmsCanCancel implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets sms_id
      *
-     * @return int|null
+     * @return int
      */
     public function getSmsId()
     {
@@ -309,7 +315,7 @@ class SmsCanCancel implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets sms_id
      *
-     * @param int|null $sms_id sms_id
+     * @param int $sms_id sms_id
      *
      * @return self
      */
@@ -326,7 +332,7 @@ class SmsCanCancel implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets can_cancel
      *
-     * @return bool|null
+     * @return bool
      */
     public function getCanCancel()
     {
@@ -336,7 +342,7 @@ class SmsCanCancel implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets can_cancel
      *
-     * @param bool|null $can_cancel can_cancel
+     * @param bool $can_cancel can_cancel
      *
      * @return self
      */

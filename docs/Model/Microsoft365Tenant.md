@@ -4,27 +4,27 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**tenant_id** | **int** |  | [optional]
-**microsoft_uuid** | **string** |  | [optional]
-**domain_prefix** | **string** |  | [optional]
-**microsoft_domain** | **string** |  | [optional]
-**imported** | **bool** |  | [optional]
-**first_name** | **string** |  | [optional]
-**last_name** | **string** |  | [optional]
-**country** | **string** |  | [optional]
-**company_name** | **string** |  | [optional]
-**address** | **string** |  | [optional]
-**city** | **string** |  | [optional]
-**state** | **string** |  | [optional]
-**postal_code** | **string** |  | [optional]
-**email_address** | **string** |  | [optional]
-**phone_prefix** | **string** |  | [optional]
-**phone_number** | **string** |  | [optional]
-**locale** | **string** |  | [optional]
-**account_login** | **string** |  | [optional]
-**mca_compliant** | **bool** |  | [optional]
-**mca_sign_date** | **\DateTime** |  | [optional]
-**mca_template_id** | **string** |  | [optional]
-**mca_error** | **string** |  | [optional]
+**tenant_id** | **int** |  |
+**microsoft_uuid** | **string** |  |
+**domain_prefix** | **string** |  |
+**microsoft_domain** | **string** |  |
+**imported** | **bool** |  |
+**first_name** | **string** |  |
+**last_name** | **string** |  |
+**country** | **string** |  |
+**company_name** | **string** |  |
+**address** | **string** |  |
+**city** | **string** |  |
+**state** | **string** |  |
+**postal_code** | **string** |  |
+**email_address** | **string** |  |
+**phone_prefix** | **string** |  |
+**phone_number** | **string** |  |
+**locale** | **string** |  |
+**account_login** | **string** |  |
+**mca_compliant** | **bool** |  |
+**mca_sign_date** | **\DateTime** |  |
+**mca_template_id** | **string** |  |
+**mca_error** | **string** |  |
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

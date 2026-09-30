@@ -184,7 +184,7 @@ class LicenseApi
      *
      * @throws \Shellrent\Sdk\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Shellrent\Sdk\Model\TaskResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError
+     * @return \Shellrent\Sdk\Model\TaskResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError
      */
     public function downgradeMicrosoft365SubscriptionQuantity($microsoft365_id, $microsoft365_subscription_quantity_request, string $contentType = self::contentTypes['downgradeMicrosoft365SubscriptionQuantity'][0])
     {
@@ -203,7 +203,7 @@ class LicenseApi
      *
      * @throws \Shellrent\Sdk\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Shellrent\Sdk\Model\TaskResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Shellrent\Sdk\Model\TaskResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError, HTTP status code, HTTP response headers (array of strings)
      */
     public function downgradeMicrosoft365SubscriptionQuantityWithHttpInfo($microsoft365_id, $microsoft365_subscription_quantity_request, string $contentType = self::contentTypes['downgradeMicrosoft365SubscriptionQuantity'][0])
     {
@@ -258,6 +258,12 @@ class LicenseApi
                         $response,
                     );
                 case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $request,
+                        $response,
+                    );
+                case 429:
                     return $this->handleResponseWithDataType(
                         '\Shellrent\Sdk\Model\ApiError',
                         $request,
@@ -320,6 +326,14 @@ class LicenseApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\Shellrent\Sdk\Model\ApiError',
@@ -539,7 +553,7 @@ class LicenseApi
      *
      * @throws \Shellrent\Sdk\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Shellrent\Sdk\Model\TaskResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError
+     * @return \Shellrent\Sdk\Model\TaskResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError
      */
     public function downgradeSecureMailQuantity($securemail_id, $securemail_quantity_request, string $contentType = self::contentTypes['downgradeSecureMailQuantity'][0])
     {
@@ -558,7 +572,7 @@ class LicenseApi
      *
      * @throws \Shellrent\Sdk\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Shellrent\Sdk\Model\TaskResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Shellrent\Sdk\Model\TaskResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError, HTTP status code, HTTP response headers (array of strings)
      */
     public function downgradeSecureMailQuantityWithHttpInfo($securemail_id, $securemail_quantity_request, string $contentType = self::contentTypes['downgradeSecureMailQuantity'][0])
     {
@@ -613,6 +627,12 @@ class LicenseApi
                         $response,
                     );
                 case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $request,
+                        $response,
+                    );
+                case 429:
                     return $this->handleResponseWithDataType(
                         '\Shellrent\Sdk\Model\ApiError',
                         $request,
@@ -675,6 +695,14 @@ class LicenseApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\Shellrent\Sdk\Model\ApiError',
@@ -893,7 +921,7 @@ class LicenseApi
      *
      * @throws \Shellrent\Sdk\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Shellrent\Sdk\Model\CpanelLicenseResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError
+     * @return \Shellrent\Sdk\Model\CpanelLicenseResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError
      */
     public function getCpanelLicense($license_id, string $contentType = self::contentTypes['getCpanelLicense'][0])
     {
@@ -911,7 +939,7 @@ class LicenseApi
      *
      * @throws \Shellrent\Sdk\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Shellrent\Sdk\Model\CpanelLicenseResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Shellrent\Sdk\Model\CpanelLicenseResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError, HTTP status code, HTTP response headers (array of strings)
      */
     public function getCpanelLicenseWithHttpInfo($license_id, string $contentType = self::contentTypes['getCpanelLicense'][0])
     {
@@ -966,6 +994,12 @@ class LicenseApi
                         $response,
                     );
                 case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $request,
+                        $response,
+                    );
+                case 429:
                     return $this->handleResponseWithDataType(
                         '\Shellrent\Sdk\Model\ApiError',
                         $request,
@@ -1028,6 +1062,14 @@ class LicenseApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\Shellrent\Sdk\Model\ApiError',
@@ -1225,7 +1267,7 @@ class LicenseApi
      *
      * @throws \Shellrent\Sdk\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Shellrent\Sdk\Model\Microsoft365PartnerLinkResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError
+     * @return \Shellrent\Sdk\Model\Microsoft365PartnerLinkResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError
      */
     public function getMicrosoft365PartnerLink($service_id, string $contentType = self::contentTypes['getMicrosoft365PartnerLink'][0])
     {
@@ -1243,7 +1285,7 @@ class LicenseApi
      *
      * @throws \Shellrent\Sdk\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Shellrent\Sdk\Model\Microsoft365PartnerLinkResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Shellrent\Sdk\Model\Microsoft365PartnerLinkResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError, HTTP status code, HTTP response headers (array of strings)
      */
     public function getMicrosoft365PartnerLinkWithHttpInfo($service_id, string $contentType = self::contentTypes['getMicrosoft365PartnerLink'][0])
     {
@@ -1298,6 +1340,12 @@ class LicenseApi
                         $response,
                     );
                 case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $request,
+                        $response,
+                    );
+                case 429:
                     return $this->handleResponseWithDataType(
                         '\Shellrent\Sdk\Model\ApiError',
                         $request,
@@ -1360,6 +1408,14 @@ class LicenseApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\Shellrent\Sdk\Model\ApiError',
@@ -1557,7 +1613,7 @@ class LicenseApi
      *
      * @throws \Shellrent\Sdk\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Shellrent\Sdk\Model\Microsoft365Response|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError
+     * @return \Shellrent\Sdk\Model\Microsoft365Response|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError
      */
     public function getMicrosoft365Subscription($microsoft365_id, string $contentType = self::contentTypes['getMicrosoft365Subscription'][0])
     {
@@ -1575,7 +1631,7 @@ class LicenseApi
      *
      * @throws \Shellrent\Sdk\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Shellrent\Sdk\Model\Microsoft365Response|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Shellrent\Sdk\Model\Microsoft365Response|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError, HTTP status code, HTTP response headers (array of strings)
      */
     public function getMicrosoft365SubscriptionWithHttpInfo($microsoft365_id, string $contentType = self::contentTypes['getMicrosoft365Subscription'][0])
     {
@@ -1630,6 +1686,12 @@ class LicenseApi
                         $response,
                     );
                 case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $request,
+                        $response,
+                    );
+                case 429:
                     return $this->handleResponseWithDataType(
                         '\Shellrent\Sdk\Model\ApiError',
                         $request,
@@ -1692,6 +1754,14 @@ class LicenseApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\Shellrent\Sdk\Model\ApiError',
@@ -1889,7 +1959,7 @@ class LicenseApi
      *
      * @throws \Shellrent\Sdk\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Shellrent\Sdk\Model\Microsoft365TenantResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError
+     * @return \Shellrent\Sdk\Model\Microsoft365TenantResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError
      */
     public function getMicrosoft365Tenant($microsoft_365_tenant_id, string $contentType = self::contentTypes['getMicrosoft365Tenant'][0])
     {
@@ -1907,7 +1977,7 @@ class LicenseApi
      *
      * @throws \Shellrent\Sdk\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Shellrent\Sdk\Model\Microsoft365TenantResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Shellrent\Sdk\Model\Microsoft365TenantResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError, HTTP status code, HTTP response headers (array of strings)
      */
     public function getMicrosoft365TenantWithHttpInfo($microsoft_365_tenant_id, string $contentType = self::contentTypes['getMicrosoft365Tenant'][0])
     {
@@ -1962,6 +2032,12 @@ class LicenseApi
                         $response,
                     );
                 case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $request,
+                        $response,
+                    );
+                case 429:
                     return $this->handleResponseWithDataType(
                         '\Shellrent\Sdk\Model\ApiError',
                         $request,
@@ -2024,6 +2100,14 @@ class LicenseApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\Shellrent\Sdk\Model\ApiError',
@@ -2221,7 +2305,7 @@ class LicenseApi
      *
      * @throws \Shellrent\Sdk\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Shellrent\Sdk\Model\PleskLicenseResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError
+     * @return \Shellrent\Sdk\Model\PleskLicenseResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError
      */
     public function getPleskLicense($license_id, string $contentType = self::contentTypes['getPleskLicense'][0])
     {
@@ -2239,7 +2323,7 @@ class LicenseApi
      *
      * @throws \Shellrent\Sdk\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Shellrent\Sdk\Model\PleskLicenseResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Shellrent\Sdk\Model\PleskLicenseResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError, HTTP status code, HTTP response headers (array of strings)
      */
     public function getPleskLicenseWithHttpInfo($license_id, string $contentType = self::contentTypes['getPleskLicense'][0])
     {
@@ -2294,6 +2378,12 @@ class LicenseApi
                         $response,
                     );
                 case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $request,
+                        $response,
+                    );
+                case 429:
                     return $this->handleResponseWithDataType(
                         '\Shellrent\Sdk\Model\ApiError',
                         $request,
@@ -2356,6 +2446,14 @@ class LicenseApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\Shellrent\Sdk\Model\ApiError',
@@ -2553,7 +2651,7 @@ class LicenseApi
      *
      * @throws \Shellrent\Sdk\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Shellrent\Sdk\Model\SecuremailResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError
+     * @return \Shellrent\Sdk\Model\SecuremailResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError
      */
     public function getSecureMail($securemail_id, string $contentType = self::contentTypes['getSecureMail'][0])
     {
@@ -2571,7 +2669,7 @@ class LicenseApi
      *
      * @throws \Shellrent\Sdk\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Shellrent\Sdk\Model\SecuremailResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Shellrent\Sdk\Model\SecuremailResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError, HTTP status code, HTTP response headers (array of strings)
      */
     public function getSecureMailWithHttpInfo($securemail_id, string $contentType = self::contentTypes['getSecureMail'][0])
     {
@@ -2626,6 +2724,12 @@ class LicenseApi
                         $response,
                     );
                 case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $request,
+                        $response,
+                    );
+                case 429:
                     return $this->handleResponseWithDataType(
                         '\Shellrent\Sdk\Model\ApiError',
                         $request,
@@ -2688,6 +2792,14 @@ class LicenseApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\Shellrent\Sdk\Model\ApiError',
@@ -2885,7 +2997,7 @@ class LicenseApi
      *
      * @throws \Shellrent\Sdk\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Shellrent\Sdk\Model\SecuremailStatisticsResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError
+     * @return \Shellrent\Sdk\Model\SecuremailStatisticsResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError
      */
     public function getSecureMailStatistics($securemail_id, string $contentType = self::contentTypes['getSecureMailStatistics'][0])
     {
@@ -2903,7 +3015,7 @@ class LicenseApi
      *
      * @throws \Shellrent\Sdk\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Shellrent\Sdk\Model\SecuremailStatisticsResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Shellrent\Sdk\Model\SecuremailStatisticsResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError, HTTP status code, HTTP response headers (array of strings)
      */
     public function getSecureMailStatisticsWithHttpInfo($securemail_id, string $contentType = self::contentTypes['getSecureMailStatistics'][0])
     {
@@ -2958,6 +3070,12 @@ class LicenseApi
                         $response,
                     );
                 case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $request,
+                        $response,
+                    );
+                case 429:
                     return $this->handleResponseWithDataType(
                         '\Shellrent\Sdk\Model\ApiError',
                         $request,
@@ -3020,6 +3138,14 @@ class LicenseApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\Shellrent\Sdk\Model\ApiError',
@@ -3218,7 +3344,7 @@ class LicenseApi
      *
      * @throws \Shellrent\Sdk\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Shellrent\Sdk\Model\CpanelLicensePaginatedListResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError
+     * @return \Shellrent\Sdk\Model\CpanelLicensePaginatedListResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError
      */
     public function listCpanelLicenses($page = 1, $per_page = 20, string $contentType = self::contentTypes['listCpanelLicenses'][0])
     {
@@ -3237,7 +3363,7 @@ class LicenseApi
      *
      * @throws \Shellrent\Sdk\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Shellrent\Sdk\Model\CpanelLicensePaginatedListResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Shellrent\Sdk\Model\CpanelLicensePaginatedListResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError, HTTP status code, HTTP response headers (array of strings)
      */
     public function listCpanelLicensesWithHttpInfo($page = 1, $per_page = 20, string $contentType = self::contentTypes['listCpanelLicenses'][0])
     {
@@ -3292,6 +3418,12 @@ class LicenseApi
                         $response,
                     );
                 case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $request,
+                        $response,
+                    );
+                case 429:
                     return $this->handleResponseWithDataType(
                         '\Shellrent\Sdk\Model\ApiError',
                         $request,
@@ -3354,6 +3486,14 @@ class LicenseApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\Shellrent\Sdk\Model\ApiError',
@@ -3560,7 +3700,7 @@ class LicenseApi
      *
      * @throws \Shellrent\Sdk\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Shellrent\Sdk\Model\Microsoft365PaginatedListResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError
+     * @return \Shellrent\Sdk\Model\Microsoft365PaginatedListResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError
      */
     public function listMicrosoft365Subscriptions($page = 1, $per_page = 20, string $contentType = self::contentTypes['listMicrosoft365Subscriptions'][0])
     {
@@ -3579,7 +3719,7 @@ class LicenseApi
      *
      * @throws \Shellrent\Sdk\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Shellrent\Sdk\Model\Microsoft365PaginatedListResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Shellrent\Sdk\Model\Microsoft365PaginatedListResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError, HTTP status code, HTTP response headers (array of strings)
      */
     public function listMicrosoft365SubscriptionsWithHttpInfo($page = 1, $per_page = 20, string $contentType = self::contentTypes['listMicrosoft365Subscriptions'][0])
     {
@@ -3634,6 +3774,12 @@ class LicenseApi
                         $response,
                     );
                 case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $request,
+                        $response,
+                    );
+                case 429:
                     return $this->handleResponseWithDataType(
                         '\Shellrent\Sdk\Model\ApiError',
                         $request,
@@ -3696,6 +3842,14 @@ class LicenseApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\Shellrent\Sdk\Model\ApiError',
@@ -3902,7 +4056,7 @@ class LicenseApi
      *
      * @throws \Shellrent\Sdk\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Shellrent\Sdk\Model\Microsoft365TenantPaginatedListResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError
+     * @return \Shellrent\Sdk\Model\Microsoft365TenantPaginatedListResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError
      */
     public function listMicrosoft365Tenants($page = 1, $per_page = 20, string $contentType = self::contentTypes['listMicrosoft365Tenants'][0])
     {
@@ -3921,7 +4075,7 @@ class LicenseApi
      *
      * @throws \Shellrent\Sdk\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Shellrent\Sdk\Model\Microsoft365TenantPaginatedListResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Shellrent\Sdk\Model\Microsoft365TenantPaginatedListResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError, HTTP status code, HTTP response headers (array of strings)
      */
     public function listMicrosoft365TenantsWithHttpInfo($page = 1, $per_page = 20, string $contentType = self::contentTypes['listMicrosoft365Tenants'][0])
     {
@@ -3976,6 +4130,12 @@ class LicenseApi
                         $response,
                     );
                 case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $request,
+                        $response,
+                    );
+                case 429:
                     return $this->handleResponseWithDataType(
                         '\Shellrent\Sdk\Model\ApiError',
                         $request,
@@ -4038,6 +4198,14 @@ class LicenseApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\Shellrent\Sdk\Model\ApiError',
@@ -4244,7 +4412,7 @@ class LicenseApi
      *
      * @throws \Shellrent\Sdk\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Shellrent\Sdk\Model\PleskLicensePaginatedListResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError
+     * @return \Shellrent\Sdk\Model\PleskLicensePaginatedListResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError
      */
     public function listPleskLicenses($page = 1, $per_page = 20, string $contentType = self::contentTypes['listPleskLicenses'][0])
     {
@@ -4263,7 +4431,7 @@ class LicenseApi
      *
      * @throws \Shellrent\Sdk\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Shellrent\Sdk\Model\PleskLicensePaginatedListResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Shellrent\Sdk\Model\PleskLicensePaginatedListResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError, HTTP status code, HTTP response headers (array of strings)
      */
     public function listPleskLicensesWithHttpInfo($page = 1, $per_page = 20, string $contentType = self::contentTypes['listPleskLicenses'][0])
     {
@@ -4318,6 +4486,12 @@ class LicenseApi
                         $response,
                     );
                 case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $request,
+                        $response,
+                    );
+                case 429:
                     return $this->handleResponseWithDataType(
                         '\Shellrent\Sdk\Model\ApiError',
                         $request,
@@ -4380,6 +4554,14 @@ class LicenseApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\Shellrent\Sdk\Model\ApiError',
@@ -4587,7 +4769,7 @@ class LicenseApi
      *
      * @throws \Shellrent\Sdk\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Shellrent\Sdk\Model\SecuremailMailboxPaginatedListResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError
+     * @return \Shellrent\Sdk\Model\SecuremailMailboxPaginatedListResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError
      */
     public function listSecureMailMailboxes($securemail_id, $page = 1, $per_page = 20, string $contentType = self::contentTypes['listSecureMailMailboxes'][0])
     {
@@ -4607,7 +4789,7 @@ class LicenseApi
      *
      * @throws \Shellrent\Sdk\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Shellrent\Sdk\Model\SecuremailMailboxPaginatedListResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Shellrent\Sdk\Model\SecuremailMailboxPaginatedListResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError, HTTP status code, HTTP response headers (array of strings)
      */
     public function listSecureMailMailboxesWithHttpInfo($securemail_id, $page = 1, $per_page = 20, string $contentType = self::contentTypes['listSecureMailMailboxes'][0])
     {
@@ -4662,6 +4844,12 @@ class LicenseApi
                         $response,
                     );
                 case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $request,
+                        $response,
+                    );
+                case 429:
                     return $this->handleResponseWithDataType(
                         '\Shellrent\Sdk\Model\ApiError',
                         $request,
@@ -4724,6 +4912,14 @@ class LicenseApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\Shellrent\Sdk\Model\ApiError',
@@ -4948,7 +5144,7 @@ class LicenseApi
      *
      * @throws \Shellrent\Sdk\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Shellrent\Sdk\Model\SecuremailPaginatedListResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError
+     * @return \Shellrent\Sdk\Model\SecuremailPaginatedListResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError
      */
     public function listSecureMails($page = 1, $per_page = 20, string $contentType = self::contentTypes['listSecureMails'][0])
     {
@@ -4967,7 +5163,7 @@ class LicenseApi
      *
      * @throws \Shellrent\Sdk\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Shellrent\Sdk\Model\SecuremailPaginatedListResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Shellrent\Sdk\Model\SecuremailPaginatedListResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError, HTTP status code, HTTP response headers (array of strings)
      */
     public function listSecureMailsWithHttpInfo($page = 1, $per_page = 20, string $contentType = self::contentTypes['listSecureMails'][0])
     {
@@ -5022,6 +5218,12 @@ class LicenseApi
                         $response,
                     );
                 case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $request,
+                        $response,
+                    );
+                case 429:
                     return $this->handleResponseWithDataType(
                         '\Shellrent\Sdk\Model\ApiError',
                         $request,
@@ -5084,6 +5286,14 @@ class LicenseApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\Shellrent\Sdk\Model\ApiError',
@@ -5290,7 +5500,7 @@ class LicenseApi
      *
      * @throws \Shellrent\Sdk\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Shellrent\Sdk\Model\OrderResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError
+     * @return \Shellrent\Sdk\Model\OrderResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError
      */
     public function upgradeMicrosoft365SubscriptionQuantity($microsoft365_id, $microsoft365_subscription_quantity_request, string $contentType = self::contentTypes['upgradeMicrosoft365SubscriptionQuantity'][0])
     {
@@ -5309,7 +5519,7 @@ class LicenseApi
      *
      * @throws \Shellrent\Sdk\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Shellrent\Sdk\Model\OrderResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Shellrent\Sdk\Model\OrderResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError, HTTP status code, HTTP response headers (array of strings)
      */
     public function upgradeMicrosoft365SubscriptionQuantityWithHttpInfo($microsoft365_id, $microsoft365_subscription_quantity_request, string $contentType = self::contentTypes['upgradeMicrosoft365SubscriptionQuantity'][0])
     {
@@ -5364,6 +5574,12 @@ class LicenseApi
                         $response,
                     );
                 case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $request,
+                        $response,
+                    );
+                case 429:
                     return $this->handleResponseWithDataType(
                         '\Shellrent\Sdk\Model\ApiError',
                         $request,
@@ -5426,6 +5642,14 @@ class LicenseApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\Shellrent\Sdk\Model\ApiError',
@@ -5645,7 +5869,7 @@ class LicenseApi
      *
      * @throws \Shellrent\Sdk\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Shellrent\Sdk\Model\OrderResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError
+     * @return \Shellrent\Sdk\Model\OrderResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError
      */
     public function upgradeSecureMailQuantity($securemail_id, $securemail_quantity_request, string $contentType = self::contentTypes['upgradeSecureMailQuantity'][0])
     {
@@ -5664,7 +5888,7 @@ class LicenseApi
      *
      * @throws \Shellrent\Sdk\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Shellrent\Sdk\Model\OrderResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Shellrent\Sdk\Model\OrderResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError, HTTP status code, HTTP response headers (array of strings)
      */
     public function upgradeSecureMailQuantityWithHttpInfo($securemail_id, $securemail_quantity_request, string $contentType = self::contentTypes['upgradeSecureMailQuantity'][0])
     {
@@ -5719,6 +5943,12 @@ class LicenseApi
                         $response,
                     );
                 case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $request,
+                        $response,
+                    );
+                case 429:
                     return $this->handleResponseWithDataType(
                         '\Shellrent\Sdk\Model\ApiError',
                         $request,
@@ -5781,6 +6011,14 @@ class LicenseApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\Shellrent\Sdk\Model\ApiError',

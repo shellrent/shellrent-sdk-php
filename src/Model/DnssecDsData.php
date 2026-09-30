@@ -302,6 +302,21 @@ class DnssecDsData implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
+        if ($this->container['zone_ttl'] === null) {
+            $invalidProperties[] = "'zone_ttl' can't be null";
+        }
+        if ($this->container['key_tag'] === null) {
+            $invalidProperties[] = "'key_tag' can't be null";
+        }
+        if ($this->container['key_algorithm'] === null) {
+            $invalidProperties[] = "'key_algorithm' can't be null";
+        }
+        if ($this->container['digest_type'] === null) {
+            $invalidProperties[] = "'digest_type' can't be null";
+        }
+        if ($this->container['digest_value'] === null) {
+            $invalidProperties[] = "'digest_value' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -320,7 +335,7 @@ class DnssecDsData implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets zone_ttl
      *
-     * @return int|null
+     * @return int
      */
     public function getZoneTtl()
     {
@@ -330,7 +345,7 @@ class DnssecDsData implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets zone_ttl
      *
-     * @param int|null $zone_ttl zone_ttl
+     * @param int $zone_ttl zone_ttl
      *
      * @return self
      */
@@ -347,7 +362,7 @@ class DnssecDsData implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets key_tag
      *
-     * @return int|null
+     * @return int
      */
     public function getKeyTag()
     {
@@ -357,7 +372,7 @@ class DnssecDsData implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets key_tag
      *
-     * @param int|null $key_tag key_tag
+     * @param int $key_tag key_tag
      *
      * @return self
      */
@@ -374,7 +389,7 @@ class DnssecDsData implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets key_algorithm
      *
-     * @return int|null
+     * @return int
      */
     public function getKeyAlgorithm()
     {
@@ -384,7 +399,7 @@ class DnssecDsData implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets key_algorithm
      *
-     * @param int|null $key_algorithm key_algorithm
+     * @param int $key_algorithm key_algorithm
      *
      * @return self
      */
@@ -401,7 +416,7 @@ class DnssecDsData implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets digest_type
      *
-     * @return int|null
+     * @return int
      */
     public function getDigestType()
     {
@@ -411,7 +426,7 @@ class DnssecDsData implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets digest_type
      *
-     * @param int|null $digest_type digest_type
+     * @param int $digest_type digest_type
      *
      * @return self
      */
@@ -428,7 +443,7 @@ class DnssecDsData implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets digest_value
      *
-     * @return string|null
+     * @return string
      */
     public function getDigestValue()
     {
@@ -438,7 +453,7 @@ class DnssecDsData implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets digest_value
      *
-     * @param string|null $digest_value digest_value
+     * @param string $digest_value digest_value
      *
      * @return self
      */

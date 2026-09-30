@@ -295,6 +295,18 @@ class CloudStorageAccess implements ModelInterface, ArrayAccess, \JsonSerializab
     {
         $invalidProperties = [];
 
+        if ($this->container['access_id'] === null) {
+            $invalidProperties[] = "'access_id' can't be null";
+        }
+        if ($this->container['cloud_storage_id'] === null) {
+            $invalidProperties[] = "'cloud_storage_id' can't be null";
+        }
+        if ($this->container['hostname'] === null && !$this->isNullableSetToNull('hostname')) {
+            $invalidProperties[] = "'hostname' is required";
+        }
+        if ($this->container['username'] === null && !$this->isNullableSetToNull('username')) {
+            $invalidProperties[] = "'username' is required";
+        }
         return $invalidProperties;
     }
 
@@ -313,7 +325,7 @@ class CloudStorageAccess implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Gets access_id
      *
-     * @return string|null
+     * @return string
      */
     public function getAccessId()
     {
@@ -323,7 +335,7 @@ class CloudStorageAccess implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets access_id
      *
-     * @param string|null $access_id access_id
+     * @param string $access_id access_id
      *
      * @return self
      */
@@ -340,7 +352,7 @@ class CloudStorageAccess implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Gets cloud_storage_id
      *
-     * @return int|null
+     * @return int
      */
     public function getCloudStorageId()
     {
@@ -350,7 +362,7 @@ class CloudStorageAccess implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets cloud_storage_id
      *
-     * @param int|null $cloud_storage_id cloud_storage_id
+     * @param int $cloud_storage_id cloud_storage_id
      *
      * @return self
      */

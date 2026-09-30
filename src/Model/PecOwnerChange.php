@@ -379,6 +379,54 @@ class PecOwnerChange implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
+        if ($this->container['owner_change_id'] === null && !$this->isNullableSetToNull('owner_change_id')) {
+            $invalidProperties[] = "'owner_change_id' is required";
+        }
+        if ($this->container['pec_id'] === null && !$this->isNullableSetToNull('pec_id')) {
+            $invalidProperties[] = "'pec_id' is required";
+        }
+        if ($this->container['pec_domain_id'] === null && !$this->isNullableSetToNull('pec_domain_id')) {
+            $invalidProperties[] = "'pec_domain_id' is required";
+        }
+        if ($this->container['status_code'] === null && !$this->isNullableSetToNull('status_code')) {
+            $invalidProperties[] = "'status_code' is required";
+        }
+        if ($this->container['rejection_reason'] === null && !$this->isNullableSetToNull('rejection_reason')) {
+            $invalidProperties[] = "'rejection_reason' is required";
+        }
+        if ($this->container['submission_date'] === null && !$this->isNullableSetToNull('submission_date')) {
+            $invalidProperties[] = "'submission_date' is required";
+        }
+        if ($this->container['acceptance_date'] === null && !$this->isNullableSetToNull('acceptance_date')) {
+            $invalidProperties[] = "'acceptance_date' is required";
+        }
+        if ($this->container['rejection_date'] === null && !$this->isNullableSetToNull('rejection_date')) {
+            $invalidProperties[] = "'rejection_date' is required";
+        }
+        if ($this->container['has_identity_document'] === null) {
+            $invalidProperties[] = "'has_identity_document' can't be null";
+        }
+        if ($this->container['has_contract_document'] === null) {
+            $invalidProperties[] = "'has_contract_document' can't be null";
+        }
+        if ($this->container['has_order_module_document'] === null) {
+            $invalidProperties[] = "'has_order_module_document' can't be null";
+        }
+        if ($this->container['person_id_accept'] === null && !$this->isNullableSetToNull('person_id_accept')) {
+            $invalidProperties[] = "'person_id_accept' is required";
+        }
+        if ($this->container['person_id_reject'] === null && !$this->isNullableSetToNull('person_id_reject')) {
+            $invalidProperties[] = "'person_id_reject' is required";
+        }
+        if ($this->container['owner_old'] === null) {
+            $invalidProperties[] = "'owner_old' can't be null";
+        }
+        if ($this->container['owner_new'] === null) {
+            $invalidProperties[] = "'owner_new' can't be null";
+        }
+        if ($this->container['date_created'] === null && !$this->isNullableSetToNull('date_created')) {
+            $invalidProperties[] = "'date_created' is required";
+        }
         return $invalidProperties;
     }
 
@@ -669,7 +717,7 @@ class PecOwnerChange implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets has_identity_document
      *
-     * @return bool|null
+     * @return bool
      */
     public function getHasIdentityDocument()
     {
@@ -679,7 +727,7 @@ class PecOwnerChange implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets has_identity_document
      *
-     * @param bool|null $has_identity_document has_identity_document
+     * @param bool $has_identity_document has_identity_document
      *
      * @return self
      */
@@ -696,7 +744,7 @@ class PecOwnerChange implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets has_contract_document
      *
-     * @return bool|null
+     * @return bool
      */
     public function getHasContractDocument()
     {
@@ -706,7 +754,7 @@ class PecOwnerChange implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets has_contract_document
      *
-     * @param bool|null $has_contract_document has_contract_document
+     * @param bool $has_contract_document has_contract_document
      *
      * @return self
      */
@@ -723,7 +771,7 @@ class PecOwnerChange implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets has_order_module_document
      *
-     * @return bool|null
+     * @return bool
      */
     public function getHasOrderModuleDocument()
     {
@@ -733,7 +781,7 @@ class PecOwnerChange implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets has_order_module_document
      *
-     * @param bool|null $has_order_module_document has_order_module_document
+     * @param bool $has_order_module_document has_order_module_document
      *
      * @return self
      */
@@ -818,7 +866,7 @@ class PecOwnerChange implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets owner_old
      *
-     * @return \Shellrent\Sdk\Model\PecOwnerSummary|null
+     * @return \Shellrent\Sdk\Model\PecOwnerSummary
      */
     public function getOwnerOld()
     {
@@ -828,7 +876,7 @@ class PecOwnerChange implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets owner_old
      *
-     * @param \Shellrent\Sdk\Model\PecOwnerSummary|null $owner_old owner_old
+     * @param \Shellrent\Sdk\Model\PecOwnerSummary $owner_old owner_old
      *
      * @return self
      */
@@ -845,7 +893,7 @@ class PecOwnerChange implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets owner_new
      *
-     * @return \Shellrent\Sdk\Model\PecOwnerSummary|null
+     * @return \Shellrent\Sdk\Model\PecOwnerSummary
      */
     public function getOwnerNew()
     {
@@ -855,7 +903,7 @@ class PecOwnerChange implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets owner_new
      *
-     * @param \Shellrent\Sdk\Model\PecOwnerSummary|null $owner_new owner_new
+     * @param \Shellrent\Sdk\Model\PecOwnerSummary $owner_new owner_new
      *
      * @return self
      */

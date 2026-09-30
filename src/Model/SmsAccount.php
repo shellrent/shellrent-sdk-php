@@ -288,6 +288,15 @@ class SmsAccount implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
+        if ($this->container['credit'] === null) {
+            $invalidProperties[] = "'credit' can't be null";
+        }
+        if ($this->container['sms_standard'] === null) {
+            $invalidProperties[] = "'sms_standard' can't be null";
+        }
+        if ($this->container['sms_premium'] === null) {
+            $invalidProperties[] = "'sms_premium' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -306,7 +315,7 @@ class SmsAccount implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets credit
      *
-     * @return \Shellrent\Sdk\Model\AmountSimple|null
+     * @return \Shellrent\Sdk\Model\AmountSimple
      */
     public function getCredit()
     {
@@ -316,7 +325,7 @@ class SmsAccount implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets credit
      *
-     * @param \Shellrent\Sdk\Model\AmountSimple|null $credit credit
+     * @param \Shellrent\Sdk\Model\AmountSimple $credit credit
      *
      * @return self
      */
@@ -333,7 +342,7 @@ class SmsAccount implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets sms_standard
      *
-     * @return int|null
+     * @return int
      */
     public function getSmsStandard()
     {
@@ -343,7 +352,7 @@ class SmsAccount implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets sms_standard
      *
-     * @param int|null $sms_standard Estimated number of SMS messages available with \"STANDARD\" quality if sent to Italy
+     * @param int $sms_standard Estimated number of SMS messages available with \"STANDARD\" quality if sent to Italy
      *
      * @return self
      */
@@ -360,7 +369,7 @@ class SmsAccount implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets sms_premium
      *
-     * @return int|null
+     * @return int
      */
     public function getSmsPremium()
     {
@@ -370,7 +379,7 @@ class SmsAccount implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets sms_premium
      *
-     * @param int|null $sms_premium Estimated number of SMS messages available with \"PREMIUM\" quality if sent to Italy
+     * @param int $sms_premium Estimated number of SMS messages available with \"PREMIUM\" quality if sent to Italy
      *
      * @return self
      */

@@ -358,6 +358,45 @@ class DnsRecord implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
+        if ($this->container['record_id'] === null) {
+            $invalidProperties[] = "'record_id' can't be null";
+        }
+        if ($this->container['type'] === null) {
+            $invalidProperties[] = "'type' can't be null";
+        }
+        if ($this->container['host'] === null) {
+            $invalidProperties[] = "'host' can't be null";
+        }
+        if ($this->container['service'] === null && !$this->isNullableSetToNull('service')) {
+            $invalidProperties[] = "'service' is required";
+        }
+        if ($this->container['protocol'] === null && !$this->isNullableSetToNull('protocol')) {
+            $invalidProperties[] = "'protocol' is required";
+        }
+        if ($this->container['destination'] === null) {
+            $invalidProperties[] = "'destination' can't be null";
+        }
+        if ($this->container['port'] === null) {
+            $invalidProperties[] = "'port' can't be null";
+        }
+        if ($this->container['weight'] === null && !$this->isNullableSetToNull('weight')) {
+            $invalidProperties[] = "'weight' is required";
+        }
+        if ($this->container['priority'] === null && !$this->isNullableSetToNull('priority')) {
+            $invalidProperties[] = "'priority' is required";
+        }
+        if ($this->container['ttl'] === null && !$this->isNullableSetToNull('ttl')) {
+            $invalidProperties[] = "'ttl' is required";
+        }
+        if ($this->container['proxied'] === null) {
+            $invalidProperties[] = "'proxied' can't be null";
+        }
+        if ($this->container['caa_data'] === null && !$this->isNullableSetToNull('caa_data')) {
+            $invalidProperties[] = "'caa_data' is required";
+        }
+        if ($this->container['tlsa_data'] === null && !$this->isNullableSetToNull('tlsa_data')) {
+            $invalidProperties[] = "'tlsa_data' is required";
+        }
         return $invalidProperties;
     }
 
@@ -376,7 +415,7 @@ class DnsRecord implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets record_id
      *
-     * @return string|null
+     * @return string
      */
     public function getRecordId()
     {
@@ -386,7 +425,7 @@ class DnsRecord implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets record_id
      *
-     * @param string|null $record_id record_id
+     * @param string $record_id record_id
      *
      * @return self
      */
@@ -403,7 +442,7 @@ class DnsRecord implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets type
      *
-     * @return string|null
+     * @return string
      */
     public function getType()
     {
@@ -413,7 +452,7 @@ class DnsRecord implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets type
      *
-     * @param string|null $type type
+     * @param string $type type
      *
      * @return self
      */
@@ -430,7 +469,7 @@ class DnsRecord implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets host
      *
-     * @return string|null
+     * @return string
      */
     public function getHost()
     {
@@ -440,7 +479,7 @@ class DnsRecord implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets host
      *
-     * @param string|null $host host
+     * @param string $host host
      *
      * @return self
      */
@@ -525,7 +564,7 @@ class DnsRecord implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets destination
      *
-     * @return string|null
+     * @return string
      */
     public function getDestination()
     {
@@ -535,7 +574,7 @@ class DnsRecord implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets destination
      *
-     * @param string|null $destination destination
+     * @param string $destination destination
      *
      * @return self
      */
@@ -552,7 +591,7 @@ class DnsRecord implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets port
      *
-     * @return string|null
+     * @return string
      */
     public function getPort()
     {
@@ -562,7 +601,7 @@ class DnsRecord implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets port
      *
-     * @param string|null $port port
+     * @param string $port port
      *
      * @return self
      */
@@ -681,7 +720,7 @@ class DnsRecord implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets proxied
      *
-     * @return bool|null
+     * @return bool
      */
     public function getProxied()
     {
@@ -691,7 +730,7 @@ class DnsRecord implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets proxied
      *
-     * @param bool|null $proxied proxied
+     * @param bool $proxied proxied
      *
      * @return self
      */

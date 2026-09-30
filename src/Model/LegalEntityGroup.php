@@ -281,6 +281,12 @@ class LegalEntityGroup implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
+        if ($this->container['group_code'] === null) {
+            $invalidProperties[] = "'group_code' can't be null";
+        }
+        if ($this->container['group_name'] === null) {
+            $invalidProperties[] = "'group_name' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -299,7 +305,7 @@ class LegalEntityGroup implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets group_code
      *
-     * @return string|null
+     * @return string
      */
     public function getGroupCode()
     {
@@ -309,7 +315,7 @@ class LegalEntityGroup implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets group_code
      *
-     * @param string|null $group_code group_code
+     * @param string $group_code group_code
      *
      * @return self
      */
@@ -326,7 +332,7 @@ class LegalEntityGroup implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets group_name
      *
-     * @return string|null
+     * @return string
      */
     public function getGroupName()
     {
@@ -336,7 +342,7 @@ class LegalEntityGroup implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets group_name
      *
-     * @param string|null $group_name group_name
+     * @param string $group_name group_name
      *
      * @return self
      */

@@ -309,6 +309,24 @@ class HostingAntivirusRemovalScan implements ModelInterface, ArrayAccess, \JsonS
     {
         $invalidProperties = [];
 
+        if ($this->container['removal_scan_id'] === null) {
+            $invalidProperties[] = "'removal_scan_id' can't be null";
+        }
+        if ($this->container['hosting_id'] === null) {
+            $invalidProperties[] = "'hosting_id' can't be null";
+        }
+        if ($this->container['task_id'] === null && !$this->isNullableSetToNull('task_id')) {
+            $invalidProperties[] = "'task_id' is required";
+        }
+        if ($this->container['status'] === null && !$this->isNullableSetToNull('status')) {
+            $invalidProperties[] = "'status' is required";
+        }
+        if ($this->container['error'] === null && !$this->isNullableSetToNull('error')) {
+            $invalidProperties[] = "'error' is required";
+        }
+        if ($this->container['date_created'] === null) {
+            $invalidProperties[] = "'date_created' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -327,7 +345,7 @@ class HostingAntivirusRemovalScan implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Gets removal_scan_id
      *
-     * @return int|null
+     * @return int
      */
     public function getRemovalScanId()
     {
@@ -337,7 +355,7 @@ class HostingAntivirusRemovalScan implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets removal_scan_id
      *
-     * @param int|null $removal_scan_id removal_scan_id
+     * @param int $removal_scan_id removal_scan_id
      *
      * @return self
      */
@@ -354,7 +372,7 @@ class HostingAntivirusRemovalScan implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Gets hosting_id
      *
-     * @return int|null
+     * @return int
      */
     public function getHostingId()
     {
@@ -364,7 +382,7 @@ class HostingAntivirusRemovalScan implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets hosting_id
      *
-     * @param int|null $hosting_id hosting_id
+     * @param int $hosting_id hosting_id
      *
      * @return self
      */
@@ -483,7 +501,7 @@ class HostingAntivirusRemovalScan implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Gets date_created
      *
-     * @return \DateTime|null
+     * @return \DateTime
      */
     public function getDateCreated()
     {
@@ -493,7 +511,7 @@ class HostingAntivirusRemovalScan implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets date_created
      *
-     * @param \DateTime|null $date_created date_created
+     * @param \DateTime $date_created date_created
      *
      * @return self
      */

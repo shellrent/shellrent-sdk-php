@@ -27,8 +27,6 @@
  */
 
 namespace Shellrent\Sdk\Model;
-
-use \ArrayAccess;
 use \Shellrent\Sdk\ObjectSerializer;
 
 /**
@@ -40,7 +38,7 @@ use \Shellrent\Sdk\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class BuyServiceCpanelLicenseRequest implements ModelInterface, ArrayAccess, \JsonSerializable
+class BuyServiceCpanelLicenseRequest extends BuyServicePleskLicenseRequest
 {
     public const DISCRIMINATOR = null;
 
@@ -100,7 +98,7 @@ class BuyServiceCpanelLicenseRequest implements ModelInterface, ArrayAccess, \Js
      */
     public static function openAPITypes()
     {
-        return self::$openAPITypes;
+        return self::$openAPITypes + parent::openAPITypes();
     }
 
     /**
@@ -110,7 +108,7 @@ class BuyServiceCpanelLicenseRequest implements ModelInterface, ArrayAccess, \Js
      */
     public static function openAPIFormats()
     {
-        return self::$openAPIFormats;
+        return self::$openAPIFormats + parent::openAPIFormats();
     }
 
     /**
@@ -120,7 +118,7 @@ class BuyServiceCpanelLicenseRequest implements ModelInterface, ArrayAccess, \Js
      */
     protected static function openAPINullables(): array
     {
-        return self::$openAPINullables;
+        return self::$openAPINullables + parent::openAPINullables();
     }
 
     /**
@@ -207,7 +205,7 @@ class BuyServiceCpanelLicenseRequest implements ModelInterface, ArrayAccess, \Js
      */
     public static function attributeMap()
     {
-        return self::$attributeMap;
+        return parent::attributeMap() + self::$attributeMap;
     }
 
     /**
@@ -217,7 +215,7 @@ class BuyServiceCpanelLicenseRequest implements ModelInterface, ArrayAccess, \Js
      */
     public static function setters()
     {
-        return self::$setters;
+        return parent::setters() + self::$setters;
     }
 
     /**
@@ -227,7 +225,7 @@ class BuyServiceCpanelLicenseRequest implements ModelInterface, ArrayAccess, \Js
      */
     public static function getters()
     {
-        return self::$getters;
+        return parent::getters() + self::$getters;
     }
 
     /**
@@ -241,12 +239,6 @@ class BuyServiceCpanelLicenseRequest implements ModelInterface, ArrayAccess, \Js
     }
 
 
-    /**
-     * Associative array for storing property values
-     *
-     * @var mixed[]
-     */
-    protected $container = [];
 
     /**
      * Constructor
@@ -256,6 +248,8 @@ class BuyServiceCpanelLicenseRequest implements ModelInterface, ArrayAccess, \Js
      */
     public function __construct(?array $data = null)
     {
+        parent::__construct($data);
+
         $this->setIfExists('service_id', $data ?? [], null);
         $this->setIfExists('account_id', $data ?? [], null);
         $this->setIfExists('data', $data ?? [], null);
@@ -286,7 +280,7 @@ class BuyServiceCpanelLicenseRequest implements ModelInterface, ArrayAccess, \Js
      */
     public function listInvalidProperties()
     {
-        $invalidProperties = [];
+        $invalidProperties = parent::listInvalidProperties();
 
         if ($this->container['service_id'] === null) {
             $invalidProperties[] = "'service_id' can't be null";

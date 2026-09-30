@@ -288,6 +288,15 @@ class PrepaidCredit implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
+        if ($this->container['credit_amount'] === null) {
+            $invalidProperties[] = "'credit_amount' can't be null";
+        }
+        if ($this->container['credit_threshold'] === null && !$this->isNullableSetToNull('credit_threshold')) {
+            $invalidProperties[] = "'credit_threshold' is required";
+        }
+        if ($this->container['threshold_exceeded'] === null && !$this->isNullableSetToNull('threshold_exceeded')) {
+            $invalidProperties[] = "'threshold_exceeded' is required";
+        }
         return $invalidProperties;
     }
 
@@ -306,7 +315,7 @@ class PrepaidCredit implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets credit_amount
      *
-     * @return \Shellrent\Sdk\Model\AmountSimple|null
+     * @return \Shellrent\Sdk\Model\AmountSimple
      */
     public function getCreditAmount()
     {
@@ -316,7 +325,7 @@ class PrepaidCredit implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets credit_amount
      *
-     * @param \Shellrent\Sdk\Model\AmountSimple|null $credit_amount credit_amount
+     * @param \Shellrent\Sdk\Model\AmountSimple $credit_amount credit_amount
      *
      * @return self
      */

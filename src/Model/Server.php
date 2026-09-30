@@ -337,6 +337,36 @@ class Server implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
+        if ($this->container['server_id'] === null) {
+            $invalidProperties[] = "'server_id' can't be null";
+        }
+        if ($this->container['purchase_id'] === null && !$this->isNullableSetToNull('purchase_id')) {
+            $invalidProperties[] = "'purchase_id' is required";
+        }
+        if ($this->container['hostname'] === null && !$this->isNullableSetToNull('hostname')) {
+            $invalidProperties[] = "'hostname' is required";
+        }
+        if ($this->container['server_type'] === null && !$this->isNullableSetToNull('server_type')) {
+            $invalidProperties[] = "'server_type' is required";
+        }
+        if ($this->container['active'] === null) {
+            $invalidProperties[] = "'active' can't be null";
+        }
+        if ($this->container['consolidated'] === null) {
+            $invalidProperties[] = "'consolidated' can't be null";
+        }
+        if ($this->container['ip_address_id'] === null && !$this->isNullableSetToNull('ip_address_id')) {
+            $invalidProperties[] = "'ip_address_id' is required";
+        }
+        if ($this->container['ip_address'] === null && !$this->isNullableSetToNull('ip_address')) {
+            $invalidProperties[] = "'ip_address' is required";
+        }
+        if ($this->container['service_category_code'] === null && !$this->isNullableSetToNull('service_category_code')) {
+            $invalidProperties[] = "'service_category_code' is required";
+        }
+        if ($this->container['date_created'] === null && !$this->isNullableSetToNull('date_created')) {
+            $invalidProperties[] = "'date_created' is required";
+        }
         return $invalidProperties;
     }
 
@@ -355,7 +385,7 @@ class Server implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets server_id
      *
-     * @return int|null
+     * @return int
      */
     public function getServerId()
     {
@@ -365,7 +395,7 @@ class Server implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets server_id
      *
-     * @param int|null $server_id server_id
+     * @param int $server_id server_id
      *
      * @return self
      */
@@ -484,7 +514,7 @@ class Server implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets active
      *
-     * @return bool|null
+     * @return bool
      */
     public function getActive()
     {
@@ -494,7 +524,7 @@ class Server implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets active
      *
-     * @param bool|null $active active
+     * @param bool $active active
      *
      * @return self
      */
@@ -511,7 +541,7 @@ class Server implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets consolidated
      *
-     * @return bool|null
+     * @return bool
      */
     public function getConsolidated()
     {
@@ -521,7 +551,7 @@ class Server implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets consolidated
      *
-     * @param bool|null $consolidated consolidated
+     * @param bool $consolidated consolidated
      *
      * @return self
      */

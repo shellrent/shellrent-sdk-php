@@ -84,9 +84,9 @@ class GetHostingAntivirus200Response implements ModelInterface, ArrayAccess, \Js
      */
     protected static array $openAPINullables = [
         'error' => false,
-        'message' => false,
+        'message' => true,
         'data' => true,
-        'meta' => false
+        'meta' => true
     ];
 
     /**
@@ -295,6 +295,18 @@ class GetHostingAntivirus200Response implements ModelInterface, ArrayAccess, \Js
     {
         $invalidProperties = [];
 
+        if ($this->container['error'] === null) {
+            $invalidProperties[] = "'error' can't be null";
+        }
+        if ($this->container['message'] === null && !$this->isNullableSetToNull('message')) {
+            $invalidProperties[] = "'message' is required";
+        }
+        if ($this->container['data'] === null && !$this->isNullableSetToNull('data')) {
+            $invalidProperties[] = "'data' is required";
+        }
+        if ($this->container['meta'] === null && !$this->isNullableSetToNull('meta')) {
+            $invalidProperties[] = "'meta' is required";
+        }
         return $invalidProperties;
     }
 
@@ -313,7 +325,7 @@ class GetHostingAntivirus200Response implements ModelInterface, ArrayAccess, \Js
     /**
      * Gets error
      *
-     * @return int|null
+     * @return int
      */
     public function getError()
     {
@@ -323,7 +335,7 @@ class GetHostingAntivirus200Response implements ModelInterface, ArrayAccess, \Js
     /**
      * Sets error
      *
-     * @param int|null $error error
+     * @param int $error error
      *
      * @return self
      */
@@ -357,7 +369,14 @@ class GetHostingAntivirus200Response implements ModelInterface, ArrayAccess, \Js
     public function setMessage($message)
     {
         if (is_null($message)) {
-            throw new \InvalidArgumentException('non-nullable message cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'message');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('message', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['message'] = $message;
 
@@ -418,7 +437,14 @@ class GetHostingAntivirus200Response implements ModelInterface, ArrayAccess, \Js
     public function setMeta($meta)
     {
         if (is_null($meta)) {
-            throw new \InvalidArgumentException('non-nullable meta cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'meta');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('meta', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['meta'] = $meta;
 

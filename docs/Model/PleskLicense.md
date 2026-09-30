@@ -4,18 +4,18 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**license_id** | **int** |  | [optional]
-**purchase_id** | **int** |  | [optional]
-**purchase_server_id** | **int** |  | [optional]
-**service_name** | **string** |  | [optional]
-**purchase_name** | **string** |  | [optional]
-**license_ref** | **string** |  | [optional]
-**key_number** | **string** |  | [optional]
-**ip_address** | **string** |  | [optional]
-**is_els** | **bool** |  | [optional]
-**operative_system** | **string** |  | [optional]
-**purchase_status_code** | **string** |  | [optional]
-**date_activation** | **\DateTime** |  | [optional]
-**date_expiry** | **\DateTime** |  | [optional]
+**license_id** | **int** |  |
+**purchase_id** | **int** |  |
+**purchase_server_id** | **int** |  |
+**service_name** | **string** |  |
+**purchase_name** | **string** |  |
+**license_ref** | **string** |  |
+**key_number** | **string** |  |
+**ip_address** | **string** |  |
+**is_els** | **bool** |  |
+**operative_system** | **string** |  |
+**purchase_status_code** | **string** |  |
+**date_activation** | **\DateTime** |  |
+**date_expiry** | **\DateTime** |  |
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

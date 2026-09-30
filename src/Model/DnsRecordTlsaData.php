@@ -288,6 +288,15 @@ class DnsRecordTlsaData implements ModelInterface, ArrayAccess, \JsonSerializabl
     {
         $invalidProperties = [];
 
+        if ($this->container['usage'] === null && !$this->isNullableSetToNull('usage')) {
+            $invalidProperties[] = "'usage' is required";
+        }
+        if ($this->container['selector'] === null && !$this->isNullableSetToNull('selector')) {
+            $invalidProperties[] = "'selector' is required";
+        }
+        if ($this->container['matching_type'] === null && !$this->isNullableSetToNull('matching_type')) {
+            $invalidProperties[] = "'matching_type' is required";
+        }
         return $invalidProperties;
     }
 

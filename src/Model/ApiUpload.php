@@ -309,6 +309,21 @@ class ApiUpload implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
+        if ($this->container['upload_id'] === null) {
+            $invalidProperties[] = "'upload_id' can't be null";
+        }
+        if ($this->container['filename'] === null) {
+            $invalidProperties[] = "'filename' can't be null";
+        }
+        if ($this->container['original_filename'] === null && !$this->isNullableSetToNull('original_filename')) {
+            $invalidProperties[] = "'original_filename' is required";
+        }
+        if ($this->container['file_extension'] === null && !$this->isNullableSetToNull('file_extension')) {
+            $invalidProperties[] = "'file_extension' is required";
+        }
+        if ($this->container['upload_date'] === null) {
+            $invalidProperties[] = "'upload_date' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -327,7 +342,7 @@ class ApiUpload implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets upload_id
      *
-     * @return int|null
+     * @return int
      */
     public function getUploadId()
     {
@@ -337,7 +352,7 @@ class ApiUpload implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets upload_id
      *
-     * @param int|null $upload_id upload_id
+     * @param int $upload_id upload_id
      *
      * @return self
      */
@@ -381,7 +396,7 @@ class ApiUpload implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets filename
      *
-     * @return string|null
+     * @return string
      */
     public function getFilename()
     {
@@ -391,7 +406,7 @@ class ApiUpload implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets filename
      *
-     * @param string|null $filename filename
+     * @param string $filename filename
      *
      * @return self
      */
@@ -476,7 +491,7 @@ class ApiUpload implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets upload_date
      *
-     * @return \DateTime|null
+     * @return \DateTime
      */
     public function getUploadDate()
     {
@@ -486,7 +501,7 @@ class ApiUpload implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets upload_date
      *
-     * @param \DateTime|null $upload_date upload_date
+     * @param \DateTime $upload_date upload_date
      *
      * @return self
      */

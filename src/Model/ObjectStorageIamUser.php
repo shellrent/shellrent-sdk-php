@@ -337,6 +337,36 @@ class ObjectStorageIamUser implements ModelInterface, ArrayAccess, \JsonSerializ
     {
         $invalidProperties = [];
 
+        if ($this->container['iam_user_id'] === null) {
+            $invalidProperties[] = "'iam_user_id' can't be null";
+        }
+        if ($this->container['object_storage_id'] === null) {
+            $invalidProperties[] = "'object_storage_id' can't be null";
+        }
+        if ($this->container['sub_account_id'] === null) {
+            $invalidProperties[] = "'sub_account_id' can't be null";
+        }
+        if ($this->container['code'] === null && !$this->isNullableSetToNull('code')) {
+            $invalidProperties[] = "'code' is required";
+        }
+        if ($this->container['code_full'] === null && !$this->isNullableSetToNull('code_full')) {
+            $invalidProperties[] = "'code_full' is required";
+        }
+        if ($this->container['iam_id'] === null && !$this->isNullableSetToNull('iam_id')) {
+            $invalidProperties[] = "'iam_id' is required";
+        }
+        if ($this->container['arn'] === null && !$this->isNullableSetToNull('arn')) {
+            $invalidProperties[] = "'arn' is required";
+        }
+        if ($this->container['active'] === null && !$this->isNullableSetToNull('active')) {
+            $invalidProperties[] = "'active' is required";
+        }
+        if ($this->container['firewall_policy'] === null && !$this->isNullableSetToNull('firewall_policy')) {
+            $invalidProperties[] = "'firewall_policy' is required";
+        }
+        if ($this->container['date_created'] === null && !$this->isNullableSetToNull('date_created')) {
+            $invalidProperties[] = "'date_created' is required";
+        }
         return $invalidProperties;
     }
 
@@ -355,7 +385,7 @@ class ObjectStorageIamUser implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Gets iam_user_id
      *
-     * @return int|null
+     * @return int
      */
     public function getIamUserId()
     {
@@ -365,7 +395,7 @@ class ObjectStorageIamUser implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets iam_user_id
      *
-     * @param int|null $iam_user_id iam_user_id
+     * @param int $iam_user_id iam_user_id
      *
      * @return self
      */
@@ -382,7 +412,7 @@ class ObjectStorageIamUser implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Gets object_storage_id
      *
-     * @return int|null
+     * @return int
      */
     public function getObjectStorageId()
     {
@@ -392,7 +422,7 @@ class ObjectStorageIamUser implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets object_storage_id
      *
-     * @param int|null $object_storage_id object_storage_id
+     * @param int $object_storage_id object_storage_id
      *
      * @return self
      */
@@ -409,7 +439,7 @@ class ObjectStorageIamUser implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Gets sub_account_id
      *
-     * @return int|null
+     * @return int
      */
     public function getSubAccountId()
     {
@@ -419,7 +449,7 @@ class ObjectStorageIamUser implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets sub_account_id
      *
-     * @param int|null $sub_account_id sub_account_id
+     * @param int $sub_account_id sub_account_id
      *
      * @return self
      */

@@ -302,6 +302,21 @@ class DomainContact implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
+        if ($this->container['domain_contact_id'] === null) {
+            $invalidProperties[] = "'domain_contact_id' can't be null";
+        }
+        if ($this->container['domain_id'] === null) {
+            $invalidProperties[] = "'domain_id' can't be null";
+        }
+        if ($this->container['type'] === null) {
+            $invalidProperties[] = "'type' can't be null";
+        }
+        if ($this->container['to_sync'] === null) {
+            $invalidProperties[] = "'to_sync' can't be null";
+        }
+        if ($this->container['contact_data'] === null) {
+            $invalidProperties[] = "'contact_data' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -320,7 +335,7 @@ class DomainContact implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets domain_contact_id
      *
-     * @return int|null
+     * @return int
      */
     public function getDomainContactId()
     {
@@ -330,7 +345,7 @@ class DomainContact implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets domain_contact_id
      *
-     * @param int|null $domain_contact_id domain_contact_id
+     * @param int $domain_contact_id domain_contact_id
      *
      * @return self
      */
@@ -347,7 +362,7 @@ class DomainContact implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets domain_id
      *
-     * @return int|null
+     * @return int
      */
     public function getDomainId()
     {
@@ -357,7 +372,7 @@ class DomainContact implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets domain_id
      *
-     * @param int|null $domain_id domain_id
+     * @param int $domain_id domain_id
      *
      * @return self
      */
@@ -374,7 +389,7 @@ class DomainContact implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets type
      *
-     * @return string|null
+     * @return string
      */
     public function getType()
     {
@@ -384,7 +399,7 @@ class DomainContact implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets type
      *
-     * @param string|null $type type
+     * @param string $type type
      *
      * @return self
      */
@@ -401,7 +416,7 @@ class DomainContact implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets to_sync
      *
-     * @return bool|null
+     * @return bool
      */
     public function getToSync()
     {
@@ -411,7 +426,7 @@ class DomainContact implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets to_sync
      *
-     * @param bool|null $to_sync to_sync
+     * @param bool $to_sync to_sync
      *
      * @return self
      */
@@ -428,7 +443,7 @@ class DomainContact implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets contact_data
      *
-     * @return \Shellrent\Sdk\Model\DomainContactData[]|null
+     * @return \Shellrent\Sdk\Model\DomainContactData[]
      */
     public function getContactData()
     {
@@ -438,7 +453,7 @@ class DomainContact implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets contact_data
      *
-     * @param \Shellrent\Sdk\Model\DomainContactData[]|null $contact_data contact_data
+     * @param \Shellrent\Sdk\Model\DomainContactData[] $contact_data contact_data
      *
      * @return self
      */

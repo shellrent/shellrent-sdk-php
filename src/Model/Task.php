@@ -323,6 +323,27 @@ class Task implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
+        if ($this->container['task_id'] === null) {
+            $invalidProperties[] = "'task_id' can't be null";
+        }
+        if ($this->container['purchase_id'] === null) {
+            $invalidProperties[] = "'purchase_id' can't be null";
+        }
+        if ($this->container['task_status'] === null) {
+            $invalidProperties[] = "'task_status' can't be null";
+        }
+        if ($this->container['executed_instructions'] === null && !$this->isNullableSetToNull('executed_instructions')) {
+            $invalidProperties[] = "'executed_instructions' is required";
+        }
+        if ($this->container['total_instructions'] === null && !$this->isNullableSetToNull('total_instructions')) {
+            $invalidProperties[] = "'total_instructions' is required";
+        }
+        if ($this->container['is_started'] === null) {
+            $invalidProperties[] = "'is_started' can't be null";
+        }
+        if ($this->container['date_started'] === null) {
+            $invalidProperties[] = "'date_started' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -341,7 +362,7 @@ class Task implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets task_id
      *
-     * @return int|null
+     * @return int
      */
     public function getTaskId()
     {
@@ -351,7 +372,7 @@ class Task implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets task_id
      *
-     * @param int|null $task_id task_id
+     * @param int $task_id task_id
      *
      * @return self
      */
@@ -368,7 +389,7 @@ class Task implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets purchase_id
      *
-     * @return int|null
+     * @return int
      */
     public function getPurchaseId()
     {
@@ -378,7 +399,7 @@ class Task implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets purchase_id
      *
-     * @param int|null $purchase_id purchase_id
+     * @param int $purchase_id purchase_id
      *
      * @return self
      */
@@ -395,7 +416,7 @@ class Task implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets task_status
      *
-     * @return \Shellrent\Sdk\Model\TaskStatus|null
+     * @return \Shellrent\Sdk\Model\TaskStatus
      */
     public function getTaskStatus()
     {
@@ -405,7 +426,7 @@ class Task implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets task_status
      *
-     * @param \Shellrent\Sdk\Model\TaskStatus|null $task_status task_status
+     * @param \Shellrent\Sdk\Model\TaskStatus $task_status task_status
      *
      * @return self
      */
@@ -490,7 +511,7 @@ class Task implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets is_started
      *
-     * @return bool|null
+     * @return bool
      */
     public function getIsStarted()
     {
@@ -500,7 +521,7 @@ class Task implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets is_started
      *
-     * @param bool|null $is_started is_started
+     * @param bool $is_started is_started
      *
      * @return self
      */
@@ -551,7 +572,7 @@ class Task implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets date_started
      *
-     * @return \DateTime|null
+     * @return \DateTime
      */
     public function getDateStarted()
     {
@@ -561,7 +582,7 @@ class Task implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets date_started
      *
-     * @param \DateTime|null $date_started date_started
+     * @param \DateTime $date_started date_started
      *
      * @return self
      */

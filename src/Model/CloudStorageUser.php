@@ -365,6 +365,48 @@ class CloudStorageUser implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
+        if ($this->container['cloud_storage_user_id'] === null) {
+            $invalidProperties[] = "'cloud_storage_user_id' can't be null";
+        }
+        if ($this->container['cloud_storage_id'] === null) {
+            $invalidProperties[] = "'cloud_storage_id' can't be null";
+        }
+        if ($this->container['purchase_id'] === null && !$this->isNullableSetToNull('purchase_id')) {
+            $invalidProperties[] = "'purchase_id' is required";
+        }
+        if ($this->container['type'] === null && !$this->isNullableSetToNull('type')) {
+            $invalidProperties[] = "'type' is required";
+        }
+        if ($this->container['username'] === null && !$this->isNullableSetToNull('username')) {
+            $invalidProperties[] = "'username' is required";
+        }
+        if ($this->container['password'] === null && !$this->isNullableSetToNull('password')) {
+            $invalidProperties[] = "'password' is required";
+        }
+        if ($this->container['path'] === null && !$this->isNullableSetToNull('path')) {
+            $invalidProperties[] = "'path' is required";
+        }
+        if ($this->container['soft_quota_gb'] === null && !$this->isNullableSetToNull('soft_quota_gb')) {
+            $invalidProperties[] = "'soft_quota_gb' is required";
+        }
+        if ($this->container['hard_quota_gb'] === null && !$this->isNullableSetToNull('hard_quota_gb')) {
+            $invalidProperties[] = "'hard_quota_gb' is required";
+        }
+        if ($this->container['used_space_bytes'] === null && !$this->isNullableSetToNull('used_space_bytes')) {
+            $invalidProperties[] = "'used_space_bytes' is required";
+        }
+        if ($this->container['allocated_space_bytes'] === null && !$this->isNullableSetToNull('allocated_space_bytes')) {
+            $invalidProperties[] = "'allocated_space_bytes' is required";
+        }
+        if ($this->container['grace_period_seconds'] === null && !$this->isNullableSetToNull('grace_period_seconds')) {
+            $invalidProperties[] = "'grace_period_seconds' is required";
+        }
+        if ($this->container['last_alert'] === null && !$this->isNullableSetToNull('last_alert')) {
+            $invalidProperties[] = "'last_alert' is required";
+        }
+        if ($this->container['active'] === null && !$this->isNullableSetToNull('active')) {
+            $invalidProperties[] = "'active' is required";
+        }
         return $invalidProperties;
     }
 
@@ -383,7 +425,7 @@ class CloudStorageUser implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets cloud_storage_user_id
      *
-     * @return int|null
+     * @return int
      */
     public function getCloudStorageUserId()
     {
@@ -393,7 +435,7 @@ class CloudStorageUser implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets cloud_storage_user_id
      *
-     * @param int|null $cloud_storage_user_id cloud_storage_user_id
+     * @param int $cloud_storage_user_id cloud_storage_user_id
      *
      * @return self
      */
@@ -410,7 +452,7 @@ class CloudStorageUser implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets cloud_storage_id
      *
-     * @return int|null
+     * @return int
      */
     public function getCloudStorageId()
     {
@@ -420,7 +462,7 @@ class CloudStorageUser implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets cloud_storage_id
      *
-     * @param int|null $cloud_storage_id cloud_storage_id
+     * @param int $cloud_storage_id cloud_storage_id
      *
      * @return self
      */

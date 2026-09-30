@@ -365,6 +365,48 @@ class HostingBackup implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
+        if ($this->container['hosting_backup_id'] === null) {
+            $invalidProperties[] = "'hosting_backup_id' can't be null";
+        }
+        if ($this->container['hosting_id'] === null) {
+            $invalidProperties[] = "'hosting_id' can't be null";
+        }
+        if ($this->container['backup_id'] === null) {
+            $invalidProperties[] = "'backup_id' can't be null";
+        }
+        if ($this->container['category'] === null && !$this->isNullableSetToNull('category')) {
+            $invalidProperties[] = "'category' is required";
+        }
+        if ($this->container['backup_type_code'] === null && !$this->isNullableSetToNull('backup_type_code')) {
+            $invalidProperties[] = "'backup_type_code' is required";
+        }
+        if ($this->container['backup_frequency_code'] === null && !$this->isNullableSetToNull('backup_frequency_code')) {
+            $invalidProperties[] = "'backup_frequency_code' is required";
+        }
+        if ($this->container['backup_date'] === null && !$this->isNullableSetToNull('backup_date')) {
+            $invalidProperties[] = "'backup_date' is required";
+        }
+        if ($this->container['backup_size'] === null && !$this->isNullableSetToNull('backup_size')) {
+            $invalidProperties[] = "'backup_size' is required";
+        }
+        if ($this->container['backup_duration'] === null && !$this->isNullableSetToNull('backup_duration')) {
+            $invalidProperties[] = "'backup_duration' is required";
+        }
+        if ($this->container['exit_status'] === null && !$this->isNullableSetToNull('exit_status')) {
+            $invalidProperties[] = "'exit_status' is required";
+        }
+        if ($this->container['error_type'] === null && !$this->isNullableSetToNull('error_type')) {
+            $invalidProperties[] = "'error_type' is required";
+        }
+        if ($this->container['mailbox_name'] === null && !$this->isNullableSetToNull('mailbox_name')) {
+            $invalidProperties[] = "'mailbox_name' is required";
+        }
+        if ($this->container['database_name'] === null && !$this->isNullableSetToNull('database_name')) {
+            $invalidProperties[] = "'database_name' is required";
+        }
+        if ($this->container['date_created'] === null && !$this->isNullableSetToNull('date_created')) {
+            $invalidProperties[] = "'date_created' is required";
+        }
         return $invalidProperties;
     }
 
@@ -383,7 +425,7 @@ class HostingBackup implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets hosting_backup_id
      *
-     * @return int|null
+     * @return int
      */
     public function getHostingBackupId()
     {
@@ -393,7 +435,7 @@ class HostingBackup implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets hosting_backup_id
      *
-     * @param int|null $hosting_backup_id hosting_backup_id
+     * @param int $hosting_backup_id hosting_backup_id
      *
      * @return self
      */
@@ -410,7 +452,7 @@ class HostingBackup implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets hosting_id
      *
-     * @return int|null
+     * @return int
      */
     public function getHostingId()
     {
@@ -420,7 +462,7 @@ class HostingBackup implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets hosting_id
      *
-     * @param int|null $hosting_id hosting_id
+     * @param int $hosting_id hosting_id
      *
      * @return self
      */
@@ -437,7 +479,7 @@ class HostingBackup implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets backup_id
      *
-     * @return int|null
+     * @return int
      */
     public function getBackupId()
     {
@@ -447,7 +489,7 @@ class HostingBackup implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets backup_id
      *
-     * @param int|null $backup_id backup_id
+     * @param int $backup_id backup_id
      *
      * @return self
      */

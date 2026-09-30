@@ -309,6 +309,24 @@ class SslCertificateExportFormat implements ModelInterface, ArrayAccess, \JsonSe
     {
         $invalidProperties = [];
 
+        if ($this->container['format'] === null) {
+            $invalidProperties[] = "'format' can't be null";
+        }
+        if ($this->container['name'] === null) {
+            $invalidProperties[] = "'name' can't be null";
+        }
+        if ($this->container['description'] === null && !$this->isNullableSetToNull('description')) {
+            $invalidProperties[] = "'description' is required";
+        }
+        if ($this->container['filename'] === null) {
+            $invalidProperties[] = "'filename' can't be null";
+        }
+        if ($this->container['available'] === null) {
+            $invalidProperties[] = "'available' can't be null";
+        }
+        if ($this->container['requires_passphrase'] === null) {
+            $invalidProperties[] = "'requires_passphrase' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -327,7 +345,7 @@ class SslCertificateExportFormat implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Gets format
      *
-     * @return string|null
+     * @return string
      */
     public function getFormat()
     {
@@ -337,7 +355,7 @@ class SslCertificateExportFormat implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Sets format
      *
-     * @param string|null $format format
+     * @param string $format format
      *
      * @return self
      */
@@ -354,7 +372,7 @@ class SslCertificateExportFormat implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Gets name
      *
-     * @return string|null
+     * @return string
      */
     public function getName()
     {
@@ -364,7 +382,7 @@ class SslCertificateExportFormat implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Sets name
      *
-     * @param string|null $name name
+     * @param string $name name
      *
      * @return self
      */
@@ -415,7 +433,7 @@ class SslCertificateExportFormat implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Gets filename
      *
-     * @return string|null
+     * @return string
      */
     public function getFilename()
     {
@@ -425,7 +443,7 @@ class SslCertificateExportFormat implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Sets filename
      *
-     * @param string|null $filename filename
+     * @param string $filename filename
      *
      * @return self
      */
@@ -442,7 +460,7 @@ class SslCertificateExportFormat implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Gets available
      *
-     * @return bool|null
+     * @return bool
      */
     public function getAvailable()
     {
@@ -452,7 +470,7 @@ class SslCertificateExportFormat implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Sets available
      *
-     * @param bool|null $available available
+     * @param bool $available available
      *
      * @return self
      */
@@ -469,7 +487,7 @@ class SslCertificateExportFormat implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Gets requires_passphrase
      *
-     * @return bool|null
+     * @return bool
      */
     public function getRequiresPassphrase()
     {
@@ -479,7 +497,7 @@ class SslCertificateExportFormat implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Sets requires_passphrase
      *
-     * @param bool|null $requires_passphrase requires_passphrase
+     * @param bool $requires_passphrase requires_passphrase
      *
      * @return self
      */

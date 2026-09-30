@@ -281,6 +281,12 @@ class OrderInvoiceStatus implements ModelInterface, ArrayAccess, \JsonSerializab
     {
         $invalidProperties = [];
 
+        if ($this->container['status_code'] === null) {
+            $invalidProperties[] = "'status_code' can't be null";
+        }
+        if ($this->container['status_name'] === null) {
+            $invalidProperties[] = "'status_name' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -299,7 +305,7 @@ class OrderInvoiceStatus implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Gets status_code
      *
-     * @return string|null
+     * @return string
      */
     public function getStatusCode()
     {
@@ -309,7 +315,7 @@ class OrderInvoiceStatus implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets status_code
      *
-     * @param string|null $status_code status_code
+     * @param string $status_code status_code
      *
      * @return self
      */
@@ -326,7 +332,7 @@ class OrderInvoiceStatus implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Gets status_name
      *
-     * @return string|null
+     * @return string
      */
     public function getStatusName()
     {
@@ -336,7 +342,7 @@ class OrderInvoiceStatus implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets status_name
      *
-     * @param string|null $status_name status_name
+     * @param string $status_name status_name
      *
      * @return self
      */

@@ -281,6 +281,12 @@ class SslCertificateKey implements ModelInterface, ArrayAccess, \JsonSerializabl
     {
         $invalidProperties = [];
 
+        if ($this->container['ssl_certificate_id'] === null) {
+            $invalidProperties[] = "'ssl_certificate_id' can't be null";
+        }
+        if ($this->container['csr'] === null && !$this->isNullableSetToNull('csr')) {
+            $invalidProperties[] = "'csr' is required";
+        }
         return $invalidProperties;
     }
 
@@ -299,7 +305,7 @@ class SslCertificateKey implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Gets ssl_certificate_id
      *
-     * @return int|null
+     * @return int
      */
     public function getSslCertificateId()
     {
@@ -309,7 +315,7 @@ class SslCertificateKey implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets ssl_certificate_id
      *
-     * @param int|null $ssl_certificate_id ssl_certificate_id
+     * @param int $ssl_certificate_id ssl_certificate_id
      *
      * @return self
      */

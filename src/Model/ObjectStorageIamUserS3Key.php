@@ -323,6 +323,30 @@ class ObjectStorageIamUserS3Key implements ModelInterface, ArrayAccess, \JsonSer
     {
         $invalidProperties = [];
 
+        if ($this->container['s3_key_id'] === null) {
+            $invalidProperties[] = "'s3_key_id' can't be null";
+        }
+        if ($this->container['object_storage_id'] === null) {
+            $invalidProperties[] = "'object_storage_id' can't be null";
+        }
+        if ($this->container['iam_user_id'] === null) {
+            $invalidProperties[] = "'iam_user_id' can't be null";
+        }
+        if ($this->container['access_key'] === null && !$this->isNullableSetToNull('access_key')) {
+            $invalidProperties[] = "'access_key' is required";
+        }
+        if ($this->container['secret_key'] === null && !$this->isNullableSetToNull('secret_key')) {
+            $invalidProperties[] = "'secret_key' is required";
+        }
+        if ($this->container['status'] === null && !$this->isNullableSetToNull('status')) {
+            $invalidProperties[] = "'status' is required";
+        }
+        if ($this->container['active'] === null && !$this->isNullableSetToNull('active')) {
+            $invalidProperties[] = "'active' is required";
+        }
+        if ($this->container['date_created'] === null && !$this->isNullableSetToNull('date_created')) {
+            $invalidProperties[] = "'date_created' is required";
+        }
         return $invalidProperties;
     }
 
@@ -341,7 +365,7 @@ class ObjectStorageIamUserS3Key implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Gets s3_key_id
      *
-     * @return int|null
+     * @return int
      */
     public function getS3KeyId()
     {
@@ -351,7 +375,7 @@ class ObjectStorageIamUserS3Key implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets s3_key_id
      *
-     * @param int|null $s3_key_id s3_key_id
+     * @param int $s3_key_id s3_key_id
      *
      * @return self
      */
@@ -368,7 +392,7 @@ class ObjectStorageIamUserS3Key implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Gets object_storage_id
      *
-     * @return int|null
+     * @return int
      */
     public function getObjectStorageId()
     {
@@ -378,7 +402,7 @@ class ObjectStorageIamUserS3Key implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets object_storage_id
      *
-     * @param int|null $object_storage_id object_storage_id
+     * @param int $object_storage_id object_storage_id
      *
      * @return self
      */
@@ -395,7 +419,7 @@ class ObjectStorageIamUserS3Key implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Gets iam_user_id
      *
-     * @return int|null
+     * @return int
      */
     public function getIamUserId()
     {
@@ -405,7 +429,7 @@ class ObjectStorageIamUserS3Key implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets iam_user_id
      *
-     * @param int|null $iam_user_id iam_user_id
+     * @param int $iam_user_id iam_user_id
      *
      * @return self
      */

@@ -295,6 +295,18 @@ class LegalEntity implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
+        if ($this->container['legal_entity_group'] === null) {
+            $invalidProperties[] = "'legal_entity_group' can't be null";
+        }
+        if ($this->container['tax_regime'] === null) {
+            $invalidProperties[] = "'tax_regime' can't be null";
+        }
+        if ($this->container['entity_code'] === null) {
+            $invalidProperties[] = "'entity_code' can't be null";
+        }
+        if ($this->container['entity_name'] === null) {
+            $invalidProperties[] = "'entity_name' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -313,7 +325,7 @@ class LegalEntity implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets legal_entity_group
      *
-     * @return \Shellrent\Sdk\Model\LegalEntityGroup|null
+     * @return \Shellrent\Sdk\Model\LegalEntityGroup
      */
     public function getLegalEntityGroup()
     {
@@ -323,7 +335,7 @@ class LegalEntity implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets legal_entity_group
      *
-     * @param \Shellrent\Sdk\Model\LegalEntityGroup|null $legal_entity_group legal_entity_group
+     * @param \Shellrent\Sdk\Model\LegalEntityGroup $legal_entity_group legal_entity_group
      *
      * @return self
      */
@@ -340,7 +352,7 @@ class LegalEntity implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets tax_regime
      *
-     * @return \Shellrent\Sdk\Model\TaxRegime|null
+     * @return \Shellrent\Sdk\Model\TaxRegime
      */
     public function getTaxRegime()
     {
@@ -350,7 +362,7 @@ class LegalEntity implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets tax_regime
      *
-     * @param \Shellrent\Sdk\Model\TaxRegime|null $tax_regime tax_regime
+     * @param \Shellrent\Sdk\Model\TaxRegime $tax_regime tax_regime
      *
      * @return self
      */
@@ -367,7 +379,7 @@ class LegalEntity implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets entity_code
      *
-     * @return string|null
+     * @return string
      */
     public function getEntityCode()
     {
@@ -377,7 +389,7 @@ class LegalEntity implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets entity_code
      *
-     * @param string|null $entity_code entity_code
+     * @param string $entity_code entity_code
      *
      * @return self
      */
@@ -394,7 +406,7 @@ class LegalEntity implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets entity_name
      *
-     * @return string|null
+     * @return string
      */
     public function getEntityName()
     {
@@ -404,7 +416,7 @@ class LegalEntity implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets entity_name
      *
-     * @param string|null $entity_name entity_name
+     * @param string $entity_name entity_name
      *
      * @return self
      */

@@ -4,19 +4,19 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**invoice_row_id** | **int** |  | [optional]
-**invoice_id** | **int** |  | [optional]
-**invoice_id_deposit** | **int** |  | [optional]
-**service** | [**\Shellrent\Sdk\Model\Service**](Service.md) |  | [optional]
-**purchase** | [**\Shellrent\Sdk\Model\Purchase**](Purchase.md) |  | [optional]
-**description** | **string** |  | [optional]
-**unit_description** | **string** |  | [optional]
-**unit_quantity** | **float** |  | [optional]
-**unit_amount** | [**\Shellrent\Sdk\Model\Amount**](Amount.md) |  | [optional]
-**amount** | [**\Shellrent\Sdk\Model\Amount**](Amount.md) |  | [optional]
-**billing_data** | [**\Shellrent\Sdk\Model\BillingData**](BillingData.md) |  | [optional]
-**is_recurring** | **bool** |  | [optional]
-**date_start** | **\DateTime** |  | [optional]
-**date_end** | **\DateTime** |  | [optional]
+**invoice_row_id** | **int** |  |
+**invoice_id** | **int** |  |
+**invoice_id_deposit** | **int** |  |
+**service** | [**\Shellrent\Sdk\Model\Service**](Service.md) |  |
+**purchase** | [**\Shellrent\Sdk\Model\Purchase**](Purchase.md) |  |
+**description** | **string** |  |
+**unit_description** | **string** |  |
+**unit_quantity** | **float** |  |
+**unit_amount** | [**\Shellrent\Sdk\Model\Amount**](Amount.md) |  |
+**amount** | [**\Shellrent\Sdk\Model\Amount**](Amount.md) |  |
+**billing_data** | [**\Shellrent\Sdk\Model\BillingData**](BillingData.md) |  |
+**is_recurring** | **bool** |  |
+**date_start** | **\DateTime** |  |
+**date_end** | **\DateTime** |  |
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

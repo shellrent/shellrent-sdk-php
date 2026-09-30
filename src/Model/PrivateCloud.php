@@ -379,6 +379,54 @@ class PrivateCloud implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
+        if ($this->container['purchase_id'] === null) {
+            $invalidProperties[] = "'purchase_id' can't be null";
+        }
+        if ($this->container['server_id'] === null && !$this->isNullableSetToNull('server_id')) {
+            $invalidProperties[] = "'server_id' is required";
+        }
+        if ($this->container['max_vm'] === null && !$this->isNullableSetToNull('max_vm')) {
+            $invalidProperties[] = "'max_vm' is required";
+        }
+        if ($this->container['available_vm'] === null && !$this->isNullableSetToNull('available_vm')) {
+            $invalidProperties[] = "'available_vm' is required";
+        }
+        if ($this->container['max_cpu'] === null && !$this->isNullableSetToNull('max_cpu')) {
+            $invalidProperties[] = "'max_cpu' is required";
+        }
+        if ($this->container['cpu_overallocation'] === null && !$this->isNullableSetToNull('cpu_overallocation')) {
+            $invalidProperties[] = "'cpu_overallocation' is required";
+        }
+        if ($this->container['min_vm_cpu'] === null && !$this->isNullableSetToNull('min_vm_cpu')) {
+            $invalidProperties[] = "'min_vm_cpu' is required";
+        }
+        if ($this->container['max_vm_cpu'] === null && !$this->isNullableSetToNull('max_vm_cpu')) {
+            $invalidProperties[] = "'max_vm_cpu' is required";
+        }
+        if ($this->container['max_ram'] === null && !$this->isNullableSetToNull('max_ram')) {
+            $invalidProperties[] = "'max_ram' is required";
+        }
+        if ($this->container['min_vm_ram'] === null && !$this->isNullableSetToNull('min_vm_ram')) {
+            $invalidProperties[] = "'min_vm_ram' is required";
+        }
+        if ($this->container['max_vm_ram'] === null && !$this->isNullableSetToNull('max_vm_ram')) {
+            $invalidProperties[] = "'max_vm_ram' is required";
+        }
+        if ($this->container['max_disk'] === null && !$this->isNullableSetToNull('max_disk')) {
+            $invalidProperties[] = "'max_disk' is required";
+        }
+        if ($this->container['min_vm_disk'] === null && !$this->isNullableSetToNull('min_vm_disk')) {
+            $invalidProperties[] = "'min_vm_disk' is required";
+        }
+        if ($this->container['max_vm_disk'] === null && !$this->isNullableSetToNull('max_vm_disk')) {
+            $invalidProperties[] = "'max_vm_disk' is required";
+        }
+        if ($this->container['max_backup'] === null && !$this->isNullableSetToNull('max_backup')) {
+            $invalidProperties[] = "'max_backup' is required";
+        }
+        if ($this->container['max_disk_backup'] === null && !$this->isNullableSetToNull('max_disk_backup')) {
+            $invalidProperties[] = "'max_disk_backup' is required";
+        }
         return $invalidProperties;
     }
 
@@ -397,7 +445,7 @@ class PrivateCloud implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets purchase_id
      *
-     * @return int|null
+     * @return int
      */
     public function getPurchaseId()
     {
@@ -407,7 +455,7 @@ class PrivateCloud implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets purchase_id
      *
-     * @param int|null $purchase_id purchase_id
+     * @param int $purchase_id purchase_id
      *
      * @return self
      */

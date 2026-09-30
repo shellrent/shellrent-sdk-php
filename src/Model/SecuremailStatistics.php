@@ -309,6 +309,24 @@ class SecuremailStatistics implements ModelInterface, ArrayAccess, \JsonSerializ
     {
         $invalidProperties = [];
 
+        if ($this->container['quantity'] === null) {
+            $invalidProperties[] = "'quantity' can't be null";
+        }
+        if ($this->container['protected_mailboxes'] === null) {
+            $invalidProperties[] = "'protected_mailboxes' can't be null";
+        }
+        if ($this->container['not_protected_mailboxes'] === null) {
+            $invalidProperties[] = "'not_protected_mailboxes' can't be null";
+        }
+        if ($this->container['weekly_elaborated_messages'] === null) {
+            $invalidProperties[] = "'weekly_elaborated_messages' can't be null";
+        }
+        if ($this->container['weekly_spam_messages'] === null) {
+            $invalidProperties[] = "'weekly_spam_messages' can't be null";
+        }
+        if ($this->container['weekly_blocked_spam_percentage'] === null) {
+            $invalidProperties[] = "'weekly_blocked_spam_percentage' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -327,7 +345,7 @@ class SecuremailStatistics implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Gets quantity
      *
-     * @return int|null
+     * @return int
      */
     public function getQuantity()
     {
@@ -337,7 +355,7 @@ class SecuremailStatistics implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets quantity
      *
-     * @param int|null $quantity quantity
+     * @param int $quantity quantity
      *
      * @return self
      */
@@ -354,7 +372,7 @@ class SecuremailStatistics implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Gets protected_mailboxes
      *
-     * @return int|null
+     * @return int
      */
     public function getProtectedMailboxes()
     {
@@ -364,7 +382,7 @@ class SecuremailStatistics implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets protected_mailboxes
      *
-     * @param int|null $protected_mailboxes protected_mailboxes
+     * @param int $protected_mailboxes protected_mailboxes
      *
      * @return self
      */
@@ -381,7 +399,7 @@ class SecuremailStatistics implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Gets not_protected_mailboxes
      *
-     * @return int|null
+     * @return int
      */
     public function getNotProtectedMailboxes()
     {
@@ -391,7 +409,7 @@ class SecuremailStatistics implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets not_protected_mailboxes
      *
-     * @param int|null $not_protected_mailboxes not_protected_mailboxes
+     * @param int $not_protected_mailboxes not_protected_mailboxes
      *
      * @return self
      */
@@ -408,7 +426,7 @@ class SecuremailStatistics implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Gets weekly_elaborated_messages
      *
-     * @return int|null
+     * @return int
      */
     public function getWeeklyElaboratedMessages()
     {
@@ -418,7 +436,7 @@ class SecuremailStatistics implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets weekly_elaborated_messages
      *
-     * @param int|null $weekly_elaborated_messages weekly_elaborated_messages
+     * @param int $weekly_elaborated_messages weekly_elaborated_messages
      *
      * @return self
      */
@@ -435,7 +453,7 @@ class SecuremailStatistics implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Gets weekly_spam_messages
      *
-     * @return int|null
+     * @return int
      */
     public function getWeeklySpamMessages()
     {
@@ -445,7 +463,7 @@ class SecuremailStatistics implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets weekly_spam_messages
      *
-     * @param int|null $weekly_spam_messages weekly_spam_messages
+     * @param int $weekly_spam_messages weekly_spam_messages
      *
      * @return self
      */
@@ -462,7 +480,7 @@ class SecuremailStatistics implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Gets weekly_blocked_spam_percentage
      *
-     * @return int|null
+     * @return int
      */
     public function getWeeklyBlockedSpamPercentage()
     {
@@ -472,7 +490,7 @@ class SecuremailStatistics implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets weekly_blocked_spam_percentage
      *
-     * @param int|null $weekly_blocked_spam_percentage weekly_blocked_spam_percentage
+     * @param int $weekly_blocked_spam_percentage weekly_blocked_spam_percentage
      *
      * @return self
      */

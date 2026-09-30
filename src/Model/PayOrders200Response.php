@@ -59,7 +59,7 @@ class PayOrders200Response implements ModelInterface, ArrayAccess, \JsonSerializ
     protected static $openAPITypes = [
         'error' => 'int',
         'message' => 'string',
-        'data' => '\Shellrent\Sdk\Model\PayOrders200ResponseData',
+        'data' => '\Shellrent\Sdk\Model\Payment',
         'meta' => 'object'
     ];
 
@@ -84,9 +84,9 @@ class PayOrders200Response implements ModelInterface, ArrayAccess, \JsonSerializ
      */
     protected static array $openAPINullables = [
         'error' => false,
-        'message' => false,
-        'data' => false,
-        'meta' => false
+        'message' => true,
+        'data' => true,
+        'meta' => true
     ];
 
     /**
@@ -295,6 +295,18 @@ class PayOrders200Response implements ModelInterface, ArrayAccess, \JsonSerializ
     {
         $invalidProperties = [];
 
+        if ($this->container['error'] === null) {
+            $invalidProperties[] = "'error' can't be null";
+        }
+        if ($this->container['message'] === null && !$this->isNullableSetToNull('message')) {
+            $invalidProperties[] = "'message' is required";
+        }
+        if ($this->container['data'] === null && !$this->isNullableSetToNull('data')) {
+            $invalidProperties[] = "'data' is required";
+        }
+        if ($this->container['meta'] === null && !$this->isNullableSetToNull('meta')) {
+            $invalidProperties[] = "'meta' is required";
+        }
         return $invalidProperties;
     }
 
@@ -313,7 +325,7 @@ class PayOrders200Response implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Gets error
      *
-     * @return int|null
+     * @return int
      */
     public function getError()
     {
@@ -323,7 +335,7 @@ class PayOrders200Response implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets error
      *
-     * @param int|null $error error
+     * @param int $error error
      *
      * @return self
      */
@@ -357,7 +369,14 @@ class PayOrders200Response implements ModelInterface, ArrayAccess, \JsonSerializ
     public function setMessage($message)
     {
         if (is_null($message)) {
-            throw new \InvalidArgumentException('non-nullable message cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'message');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('message', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['message'] = $message;
 
@@ -367,7 +386,7 @@ class PayOrders200Response implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Gets data
      *
-     * @return \Shellrent\Sdk\Model\PayOrders200ResponseData|null
+     * @return \Shellrent\Sdk\Model\Payment|null
      */
     public function getData()
     {
@@ -377,14 +396,21 @@ class PayOrders200Response implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets data
      *
-     * @param \Shellrent\Sdk\Model\PayOrders200ResponseData|null $data data
+     * @param \Shellrent\Sdk\Model\Payment|null $data Payment data, null when there is nothing to pay (total amount to pay = 0.00)
      *
      * @return self
      */
     public function setData($data)
     {
         if (is_null($data)) {
-            throw new \InvalidArgumentException('non-nullable data cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'data');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('data', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['data'] = $data;
 
@@ -411,7 +437,14 @@ class PayOrders200Response implements ModelInterface, ArrayAccess, \JsonSerializ
     public function setMeta($meta)
     {
         if (is_null($meta)) {
-            throw new \InvalidArgumentException('non-nullable meta cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'meta');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('meta', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['meta'] = $meta;
 

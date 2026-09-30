@@ -316,6 +316,27 @@ class PrepaidCreditTopup implements ModelInterface, ArrayAccess, \JsonSerializab
     {
         $invalidProperties = [];
 
+        if ($this->container['topup_id'] === null) {
+            $invalidProperties[] = "'topup_id' can't be null";
+        }
+        if ($this->container['invoice'] === null && !$this->isNullableSetToNull('invoice')) {
+            $invalidProperties[] = "'invoice' is required";
+        }
+        if ($this->container['initial_credit'] === null) {
+            $invalidProperties[] = "'initial_credit' can't be null";
+        }
+        if ($this->container['current_credit'] === null) {
+            $invalidProperties[] = "'current_credit' can't be null";
+        }
+        if ($this->container['refund_expiry'] === null && !$this->isNullableSetToNull('refund_expiry')) {
+            $invalidProperties[] = "'refund_expiry' is required";
+        }
+        if ($this->container['credit_expiry'] === null && !$this->isNullableSetToNull('credit_expiry')) {
+            $invalidProperties[] = "'credit_expiry' is required";
+        }
+        if ($this->container['date_created'] === null) {
+            $invalidProperties[] = "'date_created' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -334,7 +355,7 @@ class PrepaidCreditTopup implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Gets topup_id
      *
-     * @return int|null
+     * @return int
      */
     public function getTopupId()
     {
@@ -344,7 +365,7 @@ class PrepaidCreditTopup implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets topup_id
      *
-     * @param int|null $topup_id topup_id
+     * @param int $topup_id topup_id
      *
      * @return self
      */
@@ -395,7 +416,7 @@ class PrepaidCreditTopup implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Gets initial_credit
      *
-     * @return \Shellrent\Sdk\Model\AmountSimple|null
+     * @return \Shellrent\Sdk\Model\AmountSimple
      */
     public function getInitialCredit()
     {
@@ -405,7 +426,7 @@ class PrepaidCreditTopup implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets initial_credit
      *
-     * @param \Shellrent\Sdk\Model\AmountSimple|null $initial_credit initial_credit
+     * @param \Shellrent\Sdk\Model\AmountSimple $initial_credit initial_credit
      *
      * @return self
      */
@@ -422,7 +443,7 @@ class PrepaidCreditTopup implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Gets current_credit
      *
-     * @return \Shellrent\Sdk\Model\AmountSimple|null
+     * @return \Shellrent\Sdk\Model\AmountSimple
      */
     public function getCurrentCredit()
     {
@@ -432,7 +453,7 @@ class PrepaidCreditTopup implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets current_credit
      *
-     * @param \Shellrent\Sdk\Model\AmountSimple|null $current_credit current_credit
+     * @param \Shellrent\Sdk\Model\AmountSimple $current_credit current_credit
      *
      * @return self
      */
@@ -517,7 +538,7 @@ class PrepaidCreditTopup implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Gets date_created
      *
-     * @return \DateTime|null
+     * @return \DateTime
      */
     public function getDateCreated()
     {
@@ -527,7 +548,7 @@ class PrepaidCreditTopup implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets date_created
      *
-     * @param \DateTime|null $date_created date_created
+     * @param \DateTime $date_created date_created
      *
      * @return self
      */

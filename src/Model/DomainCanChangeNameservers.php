@@ -295,6 +295,18 @@ class DomainCanChangeNameservers implements ModelInterface, ArrayAccess, \JsonSe
     {
         $invalidProperties = [];
 
+        if ($this->container['domain_id'] === null) {
+            $invalidProperties[] = "'domain_id' can't be null";
+        }
+        if ($this->container['can_activate_standard'] === null) {
+            $invalidProperties[] = "'can_activate_standard' can't be null";
+        }
+        if ($this->container['can_activate_cloudflare'] === null) {
+            $invalidProperties[] = "'can_activate_cloudflare' can't be null";
+        }
+        if ($this->container['can_activate_external'] === null) {
+            $invalidProperties[] = "'can_activate_external' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -313,7 +325,7 @@ class DomainCanChangeNameservers implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Gets domain_id
      *
-     * @return int|null
+     * @return int
      */
     public function getDomainId()
     {
@@ -323,7 +335,7 @@ class DomainCanChangeNameservers implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Sets domain_id
      *
-     * @param int|null $domain_id domain_id
+     * @param int $domain_id domain_id
      *
      * @return self
      */
@@ -340,7 +352,7 @@ class DomainCanChangeNameservers implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Gets can_activate_standard
      *
-     * @return bool|null
+     * @return bool
      */
     public function getCanActivateStandard()
     {
@@ -350,7 +362,7 @@ class DomainCanChangeNameservers implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Sets can_activate_standard
      *
-     * @param bool|null $can_activate_standard can_activate_standard
+     * @param bool $can_activate_standard can_activate_standard
      *
      * @return self
      */
@@ -367,7 +379,7 @@ class DomainCanChangeNameservers implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Gets can_activate_cloudflare
      *
-     * @return bool|null
+     * @return bool
      */
     public function getCanActivateCloudflare()
     {
@@ -377,7 +389,7 @@ class DomainCanChangeNameservers implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Sets can_activate_cloudflare
      *
-     * @param bool|null $can_activate_cloudflare can_activate_cloudflare
+     * @param bool $can_activate_cloudflare can_activate_cloudflare
      *
      * @return self
      */
@@ -394,7 +406,7 @@ class DomainCanChangeNameservers implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Gets can_activate_external
      *
-     * @return bool|null
+     * @return bool
      */
     public function getCanActivateExternal()
     {
@@ -404,7 +416,7 @@ class DomainCanChangeNameservers implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Sets can_activate_external
      *
-     * @param bool|null $can_activate_external can_activate_external
+     * @param bool $can_activate_external can_activate_external
      *
      * @return self
      */

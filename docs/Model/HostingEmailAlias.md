@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**alias_id** | **string** |  | [optional]
-**address** | **string** |  | [optional]
-**address_idna** | **string** |  | [optional]
-**goto** | **string** |  | [optional]
-**goto_idna** | **string** |  | [optional]
-**domain** | **string** |  | [optional]
-**domain_idna** | **string** |  | [optional]
-**is_active** | **bool** |  | [optional]
-**does_exist** | **bool** |  | [optional]
+**alias_id** | **string** |  |
+**address** | **string** |  |
+**address_idna** | **string** |  |
+**goto** | **string** |  |
+**goto_idna** | **string** |  |
+**domain** | **string** |  |
+**domain_idna** | **string** |  |
+**is_active** | **bool** |  |
+**does_exist** | **bool** |  |
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

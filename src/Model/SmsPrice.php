@@ -295,6 +295,18 @@ class SmsPrice implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
+        if ($this->container['country'] === null) {
+            $invalidProperties[] = "'country' can't be null";
+        }
+        if ($this->container['standard_price'] === null) {
+            $invalidProperties[] = "'standard_price' can't be null";
+        }
+        if ($this->container['premium_price'] === null) {
+            $invalidProperties[] = "'premium_price' can't be null";
+        }
+        if ($this->container['valid_from'] === null && !$this->isNullableSetToNull('valid_from')) {
+            $invalidProperties[] = "'valid_from' is required";
+        }
         return $invalidProperties;
     }
 
@@ -313,7 +325,7 @@ class SmsPrice implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets country
      *
-     * @return \Shellrent\Sdk\Model\Country|null
+     * @return \Shellrent\Sdk\Model\Country
      */
     public function getCountry()
     {
@@ -323,7 +335,7 @@ class SmsPrice implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets country
      *
-     * @param \Shellrent\Sdk\Model\Country|null $country country
+     * @param \Shellrent\Sdk\Model\Country $country country
      *
      * @return self
      */
@@ -340,7 +352,7 @@ class SmsPrice implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets standard_price
      *
-     * @return \Shellrent\Sdk\Model\Amount|null
+     * @return \Shellrent\Sdk\Model\Amount
      */
     public function getStandardPrice()
     {
@@ -350,7 +362,7 @@ class SmsPrice implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets standard_price
      *
-     * @param \Shellrent\Sdk\Model\Amount|null $standard_price standard_price
+     * @param \Shellrent\Sdk\Model\Amount $standard_price standard_price
      *
      * @return self
      */
@@ -367,7 +379,7 @@ class SmsPrice implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets premium_price
      *
-     * @return \Shellrent\Sdk\Model\Amount|null
+     * @return \Shellrent\Sdk\Model\Amount
      */
     public function getPremiumPrice()
     {
@@ -377,7 +389,7 @@ class SmsPrice implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets premium_price
      *
-     * @param \Shellrent\Sdk\Model\Amount|null $premium_price premium_price
+     * @param \Shellrent\Sdk\Model\Amount $premium_price premium_price
      *
      * @return self
      */

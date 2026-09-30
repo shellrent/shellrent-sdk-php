@@ -141,8 +141,8 @@ class AccountBilling implements ModelInterface, ArrayAccess, \JsonSerializable
         'vat_number' => true,
         'is_vat_group' => false,
         'fiscal_code' => false,
-        'edocument_pec' => false,
-        'edocument_code' => false,
+        'edocument_pec' => true,
+        'edocument_code' => true,
         'exporter_expiry' => true,
         'exporter_number' => true,
         'exporter_date' => true,
@@ -435,6 +435,78 @@ class AccountBilling implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
+        if ($this->container['account_billing_id'] === null) {
+            $invalidProperties[] = "'account_billing_id' can't be null";
+        }
+        if ($this->container['legal_entity'] === null) {
+            $invalidProperties[] = "'legal_entity' can't be null";
+        }
+        if ($this->container['tax_regime'] === null) {
+            $invalidProperties[] = "'tax_regime' can't be null";
+        }
+        if ($this->container['organization'] === null && !$this->isNullableSetToNull('organization')) {
+            $invalidProperties[] = "'organization' is required";
+        }
+        if ($this->container['name'] === null && !$this->isNullableSetToNull('name')) {
+            $invalidProperties[] = "'name' is required";
+        }
+        if ($this->container['surname'] === null && !$this->isNullableSetToNull('surname')) {
+            $invalidProperties[] = "'surname' is required";
+        }
+        if ($this->container['address'] === null) {
+            $invalidProperties[] = "'address' can't be null";
+        }
+        if ($this->container['city'] === null) {
+            $invalidProperties[] = "'city' can't be null";
+        }
+        if ($this->container['state'] === null) {
+            $invalidProperties[] = "'state' can't be null";
+        }
+        if ($this->container['postal_code'] === null) {
+            $invalidProperties[] = "'postal_code' can't be null";
+        }
+        if ($this->container['country'] === null) {
+            $invalidProperties[] = "'country' can't be null";
+        }
+        if ($this->container['gender'] === null && !$this->isNullableSetToNull('gender')) {
+            $invalidProperties[] = "'gender' is required";
+        }
+        if ($this->container['birth_date'] === null && !$this->isNullableSetToNull('birth_date')) {
+            $invalidProperties[] = "'birth_date' is required";
+        }
+        if ($this->container['birth_place'] === null && !$this->isNullableSetToNull('birth_place')) {
+            $invalidProperties[] = "'birth_place' is required";
+        }
+        if ($this->container['phone'] === null) {
+            $invalidProperties[] = "'phone' can't be null";
+        }
+        if ($this->container['vat_number'] === null && !$this->isNullableSetToNull('vat_number')) {
+            $invalidProperties[] = "'vat_number' is required";
+        }
+        if ($this->container['is_vat_group'] === null) {
+            $invalidProperties[] = "'is_vat_group' can't be null";
+        }
+        if ($this->container['fiscal_code'] === null) {
+            $invalidProperties[] = "'fiscal_code' can't be null";
+        }
+        if ($this->container['edocument_pec'] === null && !$this->isNullableSetToNull('edocument_pec')) {
+            $invalidProperties[] = "'edocument_pec' is required";
+        }
+        if ($this->container['edocument_code'] === null && !$this->isNullableSetToNull('edocument_code')) {
+            $invalidProperties[] = "'edocument_code' is required";
+        }
+        if ($this->container['exporter_expiry'] === null && !$this->isNullableSetToNull('exporter_expiry')) {
+            $invalidProperties[] = "'exporter_expiry' is required";
+        }
+        if ($this->container['exporter_number'] === null && !$this->isNullableSetToNull('exporter_number')) {
+            $invalidProperties[] = "'exporter_number' is required";
+        }
+        if ($this->container['exporter_date'] === null && !$this->isNullableSetToNull('exporter_date')) {
+            $invalidProperties[] = "'exporter_date' is required";
+        }
+        if ($this->container['is_split_payment'] === null) {
+            $invalidProperties[] = "'is_split_payment' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -453,7 +525,7 @@ class AccountBilling implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets account_billing_id
      *
-     * @return int|null
+     * @return int
      */
     public function getAccountBillingId()
     {
@@ -463,7 +535,7 @@ class AccountBilling implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets account_billing_id
      *
-     * @param int|null $account_billing_id account_billing_id
+     * @param int $account_billing_id account_billing_id
      *
      * @return self
      */
@@ -480,7 +552,7 @@ class AccountBilling implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets legal_entity
      *
-     * @return \Shellrent\Sdk\Model\LegalEntity|null
+     * @return \Shellrent\Sdk\Model\LegalEntity
      */
     public function getLegalEntity()
     {
@@ -490,7 +562,7 @@ class AccountBilling implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets legal_entity
      *
-     * @param \Shellrent\Sdk\Model\LegalEntity|null $legal_entity legal_entity
+     * @param \Shellrent\Sdk\Model\LegalEntity $legal_entity legal_entity
      *
      * @return self
      */
@@ -507,7 +579,7 @@ class AccountBilling implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets tax_regime
      *
-     * @return \Shellrent\Sdk\Model\TaxRegime|null
+     * @return \Shellrent\Sdk\Model\TaxRegime
      */
     public function getTaxRegime()
     {
@@ -517,7 +589,7 @@ class AccountBilling implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets tax_regime
      *
-     * @param \Shellrent\Sdk\Model\TaxRegime|null $tax_regime tax_regime
+     * @param \Shellrent\Sdk\Model\TaxRegime $tax_regime tax_regime
      *
      * @return self
      */
@@ -636,7 +708,7 @@ class AccountBilling implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets address
      *
-     * @return string|null
+     * @return string
      */
     public function getAddress()
     {
@@ -646,7 +718,7 @@ class AccountBilling implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets address
      *
-     * @param string|null $address address
+     * @param string $address address
      *
      * @return self
      */
@@ -663,7 +735,7 @@ class AccountBilling implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets city
      *
-     * @return string|null
+     * @return string
      */
     public function getCity()
     {
@@ -673,7 +745,7 @@ class AccountBilling implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets city
      *
-     * @param string|null $city city
+     * @param string $city city
      *
      * @return self
      */
@@ -690,7 +762,7 @@ class AccountBilling implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets state
      *
-     * @return string|null
+     * @return string
      */
     public function getState()
     {
@@ -700,7 +772,7 @@ class AccountBilling implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets state
      *
-     * @param string|null $state state
+     * @param string $state state
      *
      * @return self
      */
@@ -717,7 +789,7 @@ class AccountBilling implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets postal_code
      *
-     * @return string|null
+     * @return string
      */
     public function getPostalCode()
     {
@@ -727,7 +799,7 @@ class AccountBilling implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets postal_code
      *
-     * @param string|null $postal_code postal_code
+     * @param string $postal_code postal_code
      *
      * @return self
      */
@@ -744,7 +816,7 @@ class AccountBilling implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets country
      *
-     * @return \Shellrent\Sdk\Model\Country|null
+     * @return \Shellrent\Sdk\Model\Country
      */
     public function getCountry()
     {
@@ -754,7 +826,7 @@ class AccountBilling implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets country
      *
-     * @param \Shellrent\Sdk\Model\Country|null $country country
+     * @param \Shellrent\Sdk\Model\Country $country country
      *
      * @return self
      */
@@ -873,7 +945,7 @@ class AccountBilling implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets phone
      *
-     * @return string|null
+     * @return string
      */
     public function getPhone()
     {
@@ -883,7 +955,7 @@ class AccountBilling implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets phone
      *
-     * @param string|null $phone phone
+     * @param string $phone phone
      *
      * @return self
      */
@@ -934,7 +1006,7 @@ class AccountBilling implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets is_vat_group
      *
-     * @return bool|null
+     * @return bool
      */
     public function getIsVatGroup()
     {
@@ -944,7 +1016,7 @@ class AccountBilling implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets is_vat_group
      *
-     * @param bool|null $is_vat_group is_vat_group
+     * @param bool $is_vat_group is_vat_group
      *
      * @return self
      */
@@ -961,7 +1033,7 @@ class AccountBilling implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets fiscal_code
      *
-     * @return string|null
+     * @return string
      */
     public function getFiscalCode()
     {
@@ -971,7 +1043,7 @@ class AccountBilling implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets fiscal_code
      *
-     * @param string|null $fiscal_code fiscal_code
+     * @param string $fiscal_code fiscal_code
      *
      * @return self
      */
@@ -1005,7 +1077,14 @@ class AccountBilling implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setEdocumentPec($edocument_pec)
     {
         if (is_null($edocument_pec)) {
-            throw new \InvalidArgumentException('non-nullable edocument_pec cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'edocument_pec');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('edocument_pec', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['edocument_pec'] = $edocument_pec;
 
@@ -1032,7 +1111,14 @@ class AccountBilling implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setEdocumentCode($edocument_code)
     {
         if (is_null($edocument_code)) {
-            throw new \InvalidArgumentException('non-nullable edocument_code cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'edocument_code');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('edocument_code', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['edocument_code'] = $edocument_code;
 
@@ -1144,7 +1230,7 @@ class AccountBilling implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets is_split_payment
      *
-     * @return bool|null
+     * @return bool
      */
     public function getIsSplitPayment()
     {
@@ -1154,7 +1240,7 @@ class AccountBilling implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets is_split_payment
      *
-     * @param bool|null $is_split_payment is_split_payment
+     * @param bool $is_split_payment is_split_payment
      *
      * @return self
      */

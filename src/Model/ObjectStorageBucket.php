@@ -428,6 +428,75 @@ class ObjectStorageBucket implements ModelInterface, ArrayAccess, \JsonSerializa
     {
         $invalidProperties = [];
 
+        if ($this->container['bucket_id'] === null) {
+            $invalidProperties[] = "'bucket_id' can't be null";
+        }
+        if ($this->container['object_storage_id'] === null) {
+            $invalidProperties[] = "'object_storage_id' can't be null";
+        }
+        if ($this->container['sub_account_id'] === null && !$this->isNullableSetToNull('sub_account_id')) {
+            $invalidProperties[] = "'sub_account_id' is required";
+        }
+        if ($this->container['region_id'] === null && !$this->isNullableSetToNull('region_id')) {
+            $invalidProperties[] = "'region_id' is required";
+        }
+        if ($this->container['bucket_remote_id'] === null && !$this->isNullableSetToNull('bucket_remote_id')) {
+            $invalidProperties[] = "'bucket_remote_id' is required";
+        }
+        if ($this->container['code'] === null && !$this->isNullableSetToNull('code')) {
+            $invalidProperties[] = "'code' is required";
+        }
+        if ($this->container['code_full'] === null && !$this->isNullableSetToNull('code_full')) {
+            $invalidProperties[] = "'code_full' is required";
+        }
+        if ($this->container['bucket_number'] === null && !$this->isNullableSetToNull('bucket_number')) {
+            $invalidProperties[] = "'bucket_number' is required";
+        }
+        if ($this->container['name'] === null && !$this->isNullableSetToNull('name')) {
+            $invalidProperties[] = "'name' is required";
+        }
+        if ($this->container['versioning'] === null && !$this->isNullableSetToNull('versioning')) {
+            $invalidProperties[] = "'versioning' is required";
+        }
+        if ($this->container['creation_date'] === null && !$this->isNullableSetToNull('creation_date')) {
+            $invalidProperties[] = "'creation_date' is required";
+        }
+        if ($this->container['arn'] === null && !$this->isNullableSetToNull('arn')) {
+            $invalidProperties[] = "'arn' is required";
+        }
+        if ($this->container['policy_json'] === null && !$this->isNullableSetToNull('policy_json')) {
+            $invalidProperties[] = "'policy_json' is required";
+        }
+        if ($this->container['active_storage_bytes'] === null && !$this->isNullableSetToNull('active_storage_bytes')) {
+            $invalidProperties[] = "'active_storage_bytes' is required";
+        }
+        if ($this->container['deleted_storage_bytes'] === null && !$this->isNullableSetToNull('deleted_storage_bytes')) {
+            $invalidProperties[] = "'deleted_storage_bytes' is required";
+        }
+        if ($this->container['active_objects'] === null && !$this->isNullableSetToNull('active_objects')) {
+            $invalidProperties[] = "'active_objects' is required";
+        }
+        if ($this->container['deleted_objects'] === null && !$this->isNullableSetToNull('deleted_objects')) {
+            $invalidProperties[] = "'deleted_objects' is required";
+        }
+        if ($this->container['api_calls_count'] === null && !$this->isNullableSetToNull('api_calls_count')) {
+            $invalidProperties[] = "'api_calls_count' is required";
+        }
+        if ($this->container['storage_wrote_bytes'] === null && !$this->isNullableSetToNull('storage_wrote_bytes')) {
+            $invalidProperties[] = "'storage_wrote_bytes' is required";
+        }
+        if ($this->container['storage_read_bytes'] === null && !$this->isNullableSetToNull('storage_read_bytes')) {
+            $invalidProperties[] = "'storage_read_bytes' is required";
+        }
+        if ($this->container['egress_traffic_bytes'] === null && !$this->isNullableSetToNull('egress_traffic_bytes')) {
+            $invalidProperties[] = "'egress_traffic_bytes' is required";
+        }
+        if ($this->container['ingress_traffic_bytes'] === null && !$this->isNullableSetToNull('ingress_traffic_bytes')) {
+            $invalidProperties[] = "'ingress_traffic_bytes' is required";
+        }
+        if ($this->container['reference_date'] === null && !$this->isNullableSetToNull('reference_date')) {
+            $invalidProperties[] = "'reference_date' is required";
+        }
         return $invalidProperties;
     }
 
@@ -446,7 +515,7 @@ class ObjectStorageBucket implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Gets bucket_id
      *
-     * @return int|null
+     * @return int
      */
     public function getBucketId()
     {
@@ -456,7 +525,7 @@ class ObjectStorageBucket implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets bucket_id
      *
-     * @param int|null $bucket_id bucket_id
+     * @param int $bucket_id bucket_id
      *
      * @return self
      */
@@ -473,7 +542,7 @@ class ObjectStorageBucket implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Gets object_storage_id
      *
-     * @return int|null
+     * @return int
      */
     public function getObjectStorageId()
     {
@@ -483,7 +552,7 @@ class ObjectStorageBucket implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets object_storage_id
      *
-     * @param int|null $object_storage_id object_storage_id
+     * @param int $object_storage_id object_storage_id
      *
      * @return self
      */

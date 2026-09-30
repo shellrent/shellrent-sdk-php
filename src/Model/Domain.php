@@ -351,6 +351,42 @@ class Domain implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
+        if ($this->container['domain_id'] === null) {
+            $invalidProperties[] = "'domain_id' can't be null";
+        }
+        if ($this->container['tld_id'] === null) {
+            $invalidProperties[] = "'tld_id' can't be null";
+        }
+        if ($this->container['domain_name'] === null) {
+            $invalidProperties[] = "'domain_name' can't be null";
+        }
+        if ($this->container['dns_type'] === null) {
+            $invalidProperties[] = "'dns_type' can't be null";
+        }
+        if ($this->container['dns_account'] === null && !$this->isNullableSetToNull('dns_account')) {
+            $invalidProperties[] = "'dns_account' is required";
+        }
+        if ($this->container['nameservers'] === null) {
+            $invalidProperties[] = "'nameservers' can't be null";
+        }
+        if ($this->container['domain_data'] === null && !$this->isNullableSetToNull('domain_data')) {
+            $invalidProperties[] = "'domain_data' is required";
+        }
+        if ($this->container['contacts_count'] === null) {
+            $invalidProperties[] = "'contacts_count' can't be null";
+        }
+        if ($this->container['dnssec_enabled'] === null) {
+            $invalidProperties[] = "'dnssec_enabled' can't be null";
+        }
+        if ($this->container['date_info_last'] === null && !$this->isNullableSetToNull('date_info_last')) {
+            $invalidProperties[] = "'date_info_last' is required";
+        }
+        if ($this->container['date_dns_check'] === null && !$this->isNullableSetToNull('date_dns_check')) {
+            $invalidProperties[] = "'date_dns_check' is required";
+        }
+        if ($this->container['vanity_nameserver_enabled'] === null) {
+            $invalidProperties[] = "'vanity_nameserver_enabled' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -369,7 +405,7 @@ class Domain implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets domain_id
      *
-     * @return int|null
+     * @return int
      */
     public function getDomainId()
     {
@@ -379,7 +415,7 @@ class Domain implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets domain_id
      *
-     * @param int|null $domain_id domain_id
+     * @param int $domain_id domain_id
      *
      * @return self
      */
@@ -396,7 +432,7 @@ class Domain implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets tld_id
      *
-     * @return int|null
+     * @return int
      */
     public function getTldId()
     {
@@ -406,7 +442,7 @@ class Domain implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets tld_id
      *
-     * @param int|null $tld_id tld_id
+     * @param int $tld_id tld_id
      *
      * @return self
      */
@@ -423,7 +459,7 @@ class Domain implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets domain_name
      *
-     * @return \Shellrent\Sdk\Model\DomainName|null
+     * @return \Shellrent\Sdk\Model\DomainName
      */
     public function getDomainName()
     {
@@ -433,7 +469,7 @@ class Domain implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets domain_name
      *
-     * @param \Shellrent\Sdk\Model\DomainName|null $domain_name domain_name
+     * @param \Shellrent\Sdk\Model\DomainName $domain_name domain_name
      *
      * @return self
      */
@@ -450,7 +486,7 @@ class Domain implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets dns_type
      *
-     * @return \Shellrent\Sdk\Model\DnsType|null
+     * @return \Shellrent\Sdk\Model\DnsType
      */
     public function getDnsType()
     {
@@ -460,7 +496,7 @@ class Domain implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets dns_type
      *
-     * @param \Shellrent\Sdk\Model\DnsType|null $dns_type dns_type
+     * @param \Shellrent\Sdk\Model\DnsType $dns_type dns_type
      *
      * @return self
      */
@@ -511,7 +547,7 @@ class Domain implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets nameservers
      *
-     * @return string[]|null
+     * @return string[]
      */
     public function getNameservers()
     {
@@ -521,7 +557,7 @@ class Domain implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets nameservers
      *
-     * @param string[]|null $nameservers nameservers
+     * @param string[] $nameservers nameservers
      *
      * @return self
      */
@@ -572,7 +608,7 @@ class Domain implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets contacts_count
      *
-     * @return int|null
+     * @return int
      */
     public function getContactsCount()
     {
@@ -582,7 +618,7 @@ class Domain implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets contacts_count
      *
-     * @param int|null $contacts_count contacts_count
+     * @param int $contacts_count contacts_count
      *
      * @return self
      */
@@ -599,7 +635,7 @@ class Domain implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets dnssec_enabled
      *
-     * @return bool|null
+     * @return bool
      */
     public function getDnssecEnabled()
     {
@@ -609,7 +645,7 @@ class Domain implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets dnssec_enabled
      *
-     * @param bool|null $dnssec_enabled dnssec_enabled
+     * @param bool $dnssec_enabled dnssec_enabled
      *
      * @return self
      */
@@ -694,7 +730,7 @@ class Domain implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets vanity_nameserver_enabled
      *
-     * @return bool|null
+     * @return bool
      */
     public function getVanityNameserverEnabled()
     {
@@ -704,7 +740,7 @@ class Domain implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets vanity_nameserver_enabled
      *
-     * @param bool|null $vanity_nameserver_enabled vanity_nameserver_enabled
+     * @param bool $vanity_nameserver_enabled vanity_nameserver_enabled
      *
      * @return self
      */

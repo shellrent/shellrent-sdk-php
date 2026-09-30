@@ -4,15 +4,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **int** |  | [optional]
-**quality** | **string** |  | [optional]
-**status** | **string** |  | [optional]
-**sender** | **string** |  | [optional]
-**message** | **string** |  | [optional]
-**send_from** | **\DateTime** |  | [optional]
-**date_approved** | **\DateTime** |  | [optional]
-**stop_date** | **\DateTime** |  | [optional]
-**sms_count** | **int** |  | [optional]
-**date_created** | **\DateTime** |  | [optional]
+**id** | **int** |  |
+**quality** | **string** |  |
+**status** | **string** |  |
+**sender** | **string** |  |
+**message** | **string** |  |
+**send_from** | **\DateTime** |  |
+**date_approved** | **\DateTime** |  |
+**stop_date** | **\DateTime** |  |
+**sms_count** | **int** |  |
+**date_created** | **\DateTime** |  |
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

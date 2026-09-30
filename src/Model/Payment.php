@@ -330,6 +330,33 @@ class Payment implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
+        if ($this->container['payment_id'] === null) {
+            $invalidProperties[] = "'payment_id' can't be null";
+        }
+        if ($this->container['payment_method'] === null) {
+            $invalidProperties[] = "'payment_method' can't be null";
+        }
+        if ($this->container['payment_code'] === null) {
+            $invalidProperties[] = "'payment_code' can't be null";
+        }
+        if ($this->container['amount_total'] === null) {
+            $invalidProperties[] = "'amount_total' can't be null";
+        }
+        if ($this->container['amount_payed'] === null) {
+            $invalidProperties[] = "'amount_payed' can't be null";
+        }
+        if ($this->container['date_payment'] === null && !$this->isNullableSetToNull('date_payment')) {
+            $invalidProperties[] = "'date_payment' is required";
+        }
+        if ($this->container['payed'] === null) {
+            $invalidProperties[] = "'payed' can't be null";
+        }
+        if ($this->container['prepaid_credit_operations'] === null) {
+            $invalidProperties[] = "'prepaid_credit_operations' can't be null";
+        }
+        if ($this->container['provider_data'] === null && !$this->isNullableSetToNull('provider_data')) {
+            $invalidProperties[] = "'provider_data' is required";
+        }
         return $invalidProperties;
     }
 
@@ -348,7 +375,7 @@ class Payment implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets payment_id
      *
-     * @return int|null
+     * @return int
      */
     public function getPaymentId()
     {
@@ -358,7 +385,7 @@ class Payment implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets payment_id
      *
-     * @param int|null $payment_id payment_id
+     * @param int $payment_id payment_id
      *
      * @return self
      */
@@ -375,7 +402,7 @@ class Payment implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets payment_method
      *
-     * @return string|null
+     * @return string
      */
     public function getPaymentMethod()
     {
@@ -385,7 +412,7 @@ class Payment implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets payment_method
      *
-     * @param string|null $payment_method payment_method
+     * @param string $payment_method payment_method
      *
      * @return self
      */
@@ -402,7 +429,7 @@ class Payment implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets payment_code
      *
-     * @return string|null
+     * @return string
      */
     public function getPaymentCode()
     {
@@ -412,7 +439,7 @@ class Payment implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets payment_code
      *
-     * @param string|null $payment_code payment_code
+     * @param string $payment_code payment_code
      *
      * @return self
      */
@@ -429,7 +456,7 @@ class Payment implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets amount_total
      *
-     * @return \Shellrent\Sdk\Model\AmountSimple|null
+     * @return \Shellrent\Sdk\Model\AmountSimple
      */
     public function getAmountTotal()
     {
@@ -439,7 +466,7 @@ class Payment implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets amount_total
      *
-     * @param \Shellrent\Sdk\Model\AmountSimple|null $amount_total amount_total
+     * @param \Shellrent\Sdk\Model\AmountSimple $amount_total amount_total
      *
      * @return self
      */
@@ -456,7 +483,7 @@ class Payment implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets amount_payed
      *
-     * @return \Shellrent\Sdk\Model\AmountSimple|null
+     * @return \Shellrent\Sdk\Model\AmountSimple
      */
     public function getAmountPayed()
     {
@@ -466,7 +493,7 @@ class Payment implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets amount_payed
      *
-     * @param \Shellrent\Sdk\Model\AmountSimple|null $amount_payed amount_payed
+     * @param \Shellrent\Sdk\Model\AmountSimple $amount_payed amount_payed
      *
      * @return self
      */
@@ -517,7 +544,7 @@ class Payment implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets payed
      *
-     * @return bool|null
+     * @return bool
      */
     public function getPayed()
     {
@@ -527,7 +554,7 @@ class Payment implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets payed
      *
-     * @param bool|null $payed payed
+     * @param bool $payed payed
      *
      * @return self
      */
@@ -544,7 +571,7 @@ class Payment implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets prepaid_credit_operations
      *
-     * @return \Shellrent\Sdk\Model\PrepaidCreditOperation[]|null
+     * @return \Shellrent\Sdk\Model\PrepaidCreditOperation[]
      */
     public function getPrepaidCreditOperations()
     {
@@ -554,7 +581,7 @@ class Payment implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets prepaid_credit_operations
      *
-     * @param \Shellrent\Sdk\Model\PrepaidCreditOperation[]|null $prepaid_credit_operations prepaid_credit_operations
+     * @param \Shellrent\Sdk\Model\PrepaidCreditOperation[] $prepaid_credit_operations prepaid_credit_operations
      *
      * @return self
      */

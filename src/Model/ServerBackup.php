@@ -414,6 +414,69 @@ class ServerBackup implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
+        if ($this->container['server_backup_id'] === null) {
+            $invalidProperties[] = "'server_backup_id' can't be null";
+        }
+        if ($this->container['backup_recurrent_id'] === null && !$this->isNullableSetToNull('backup_recurrent_id')) {
+            $invalidProperties[] = "'backup_recurrent_id' is required";
+        }
+        if ($this->container['backup_server_id_parent'] === null && !$this->isNullableSetToNull('backup_server_id_parent')) {
+            $invalidProperties[] = "'backup_server_id_parent' is required";
+        }
+        if ($this->container['server_id'] === null) {
+            $invalidProperties[] = "'server_id' can't be null";
+        }
+        if ($this->container['cluster_id_server_residence'] === null && !$this->isNullableSetToNull('cluster_id_server_residence')) {
+            $invalidProperties[] = "'cluster_id_server_residence' is required";
+        }
+        if ($this->container['cluster_id_backup_residence'] === null && !$this->isNullableSetToNull('cluster_id_backup_residence')) {
+            $invalidProperties[] = "'cluster_id_backup_residence' is required";
+        }
+        if ($this->container['backup_type_id'] === null && !$this->isNullableSetToNull('backup_type_id')) {
+            $invalidProperties[] = "'backup_type_id' is required";
+        }
+        if ($this->container['backup_mode'] === null && !$this->isNullableSetToNull('backup_mode')) {
+            $invalidProperties[] = "'backup_mode' is required";
+        }
+        if ($this->container['backup_frequency_id'] === null && !$this->isNullableSetToNull('backup_frequency_id')) {
+            $invalidProperties[] = "'backup_frequency_id' is required";
+        }
+        if ($this->container['backup_type_code'] === null && !$this->isNullableSetToNull('backup_type_code')) {
+            $invalidProperties[] = "'backup_type_code' is required";
+        }
+        if ($this->container['backup_frequency_code'] === null && !$this->isNullableSetToNull('backup_frequency_code')) {
+            $invalidProperties[] = "'backup_frequency_code' is required";
+        }
+        if ($this->container['backup_date'] === null && !$this->isNullableSetToNull('backup_date')) {
+            $invalidProperties[] = "'backup_date' is required";
+        }
+        if ($this->container['backup_size'] === null && !$this->isNullableSetToNull('backup_size')) {
+            $invalidProperties[] = "'backup_size' is required";
+        }
+        if ($this->container['backup_duration'] === null && !$this->isNullableSetToNull('backup_duration')) {
+            $invalidProperties[] = "'backup_duration' is required";
+        }
+        if ($this->container['exit_status'] === null && !$this->isNullableSetToNull('exit_status')) {
+            $invalidProperties[] = "'exit_status' is required";
+        }
+        if ($this->container['error_type'] === null && !$this->isNullableSetToNull('error_type')) {
+            $invalidProperties[] = "'error_type' is required";
+        }
+        if ($this->container['date_created'] === null && !$this->isNullableSetToNull('date_created')) {
+            $invalidProperties[] = "'date_created' is required";
+        }
+        if ($this->container['backup_path'] === null && !$this->isNullableSetToNull('backup_path')) {
+            $invalidProperties[] = "'backup_path' is required";
+        }
+        if ($this->container['checksum'] === null && !$this->isNullableSetToNull('checksum')) {
+            $invalidProperties[] = "'checksum' is required";
+        }
+        if ($this->container['backup_path_parent'] === null && !$this->isNullableSetToNull('backup_path_parent')) {
+            $invalidProperties[] = "'backup_path_parent' is required";
+        }
+        if ($this->container['backup_user_visibility'] === null && !$this->isNullableSetToNull('backup_user_visibility')) {
+            $invalidProperties[] = "'backup_user_visibility' is required";
+        }
         return $invalidProperties;
     }
 
@@ -432,7 +495,7 @@ class ServerBackup implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets server_backup_id
      *
-     * @return int|null
+     * @return int
      */
     public function getServerBackupId()
     {
@@ -442,7 +505,7 @@ class ServerBackup implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets server_backup_id
      *
-     * @param int|null $server_backup_id server_backup_id
+     * @param int $server_backup_id server_backup_id
      *
      * @return self
      */
@@ -527,7 +590,7 @@ class ServerBackup implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets server_id
      *
-     * @return int|null
+     * @return int
      */
     public function getServerId()
     {
@@ -537,7 +600,7 @@ class ServerBackup implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets server_id
      *
-     * @param int|null $server_id server_id
+     * @param int $server_id server_id
      *
      * @return self
      */

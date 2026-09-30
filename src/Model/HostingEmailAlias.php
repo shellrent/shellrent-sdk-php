@@ -330,6 +330,33 @@ class HostingEmailAlias implements ModelInterface, ArrayAccess, \JsonSerializabl
     {
         $invalidProperties = [];
 
+        if ($this->container['alias_id'] === null) {
+            $invalidProperties[] = "'alias_id' can't be null";
+        }
+        if ($this->container['address'] === null) {
+            $invalidProperties[] = "'address' can't be null";
+        }
+        if ($this->container['address_idna'] === null) {
+            $invalidProperties[] = "'address_idna' can't be null";
+        }
+        if ($this->container['goto'] === null && !$this->isNullableSetToNull('goto')) {
+            $invalidProperties[] = "'goto' is required";
+        }
+        if ($this->container['goto_idna'] === null && !$this->isNullableSetToNull('goto_idna')) {
+            $invalidProperties[] = "'goto_idna' is required";
+        }
+        if ($this->container['domain'] === null) {
+            $invalidProperties[] = "'domain' can't be null";
+        }
+        if ($this->container['domain_idna'] === null) {
+            $invalidProperties[] = "'domain_idna' can't be null";
+        }
+        if ($this->container['is_active'] === null) {
+            $invalidProperties[] = "'is_active' can't be null";
+        }
+        if ($this->container['does_exist'] === null) {
+            $invalidProperties[] = "'does_exist' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -348,7 +375,7 @@ class HostingEmailAlias implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Gets alias_id
      *
-     * @return string|null
+     * @return string
      */
     public function getAliasId()
     {
@@ -358,7 +385,7 @@ class HostingEmailAlias implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets alias_id
      *
-     * @param string|null $alias_id alias_id
+     * @param string $alias_id alias_id
      *
      * @return self
      */
@@ -375,7 +402,7 @@ class HostingEmailAlias implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Gets address
      *
-     * @return string|null
+     * @return string
      */
     public function getAddress()
     {
@@ -385,7 +412,7 @@ class HostingEmailAlias implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets address
      *
-     * @param string|null $address address
+     * @param string $address address
      *
      * @return self
      */
@@ -402,7 +429,7 @@ class HostingEmailAlias implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Gets address_idna
      *
-     * @return string|null
+     * @return string
      */
     public function getAddressIdna()
     {
@@ -412,7 +439,7 @@ class HostingEmailAlias implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets address_idna
      *
-     * @param string|null $address_idna address_idna
+     * @param string $address_idna address_idna
      *
      * @return self
      */
@@ -497,7 +524,7 @@ class HostingEmailAlias implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Gets domain
      *
-     * @return string|null
+     * @return string
      */
     public function getDomain()
     {
@@ -507,7 +534,7 @@ class HostingEmailAlias implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets domain
      *
-     * @param string|null $domain domain
+     * @param string $domain domain
      *
      * @return self
      */
@@ -524,7 +551,7 @@ class HostingEmailAlias implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Gets domain_idna
      *
-     * @return string|null
+     * @return string
      */
     public function getDomainIdna()
     {
@@ -534,7 +561,7 @@ class HostingEmailAlias implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets domain_idna
      *
-     * @param string|null $domain_idna domain_idna
+     * @param string $domain_idna domain_idna
      *
      * @return self
      */
@@ -551,7 +578,7 @@ class HostingEmailAlias implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Gets is_active
      *
-     * @return bool|null
+     * @return bool
      */
     public function getIsActive()
     {
@@ -561,7 +588,7 @@ class HostingEmailAlias implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets is_active
      *
-     * @param bool|null $is_active is_active
+     * @param bool $is_active is_active
      *
      * @return self
      */
@@ -578,7 +605,7 @@ class HostingEmailAlias implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Gets does_exist
      *
-     * @return bool|null
+     * @return bool
      */
     public function getDoesExist()
     {
@@ -588,7 +615,7 @@ class HostingEmailAlias implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets does_exist
      *
-     * @param bool|null $does_exist does_exist
+     * @param bool $does_exist does_exist
      *
      * @return self
      */

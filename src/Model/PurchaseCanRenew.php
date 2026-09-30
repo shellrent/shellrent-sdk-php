@@ -281,6 +281,12 @@ class PurchaseCanRenew implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
+        if ($this->container['purchase_id'] === null) {
+            $invalidProperties[] = "'purchase_id' can't be null";
+        }
+        if ($this->container['can_renew'] === null) {
+            $invalidProperties[] = "'can_renew' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -299,7 +305,7 @@ class PurchaseCanRenew implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets purchase_id
      *
-     * @return int|null
+     * @return int
      */
     public function getPurchaseId()
     {
@@ -309,7 +315,7 @@ class PurchaseCanRenew implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets purchase_id
      *
-     * @param int|null $purchase_id purchase_id
+     * @param int $purchase_id purchase_id
      *
      * @return self
      */
@@ -326,7 +332,7 @@ class PurchaseCanRenew implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets can_renew
      *
-     * @return bool|null
+     * @return bool
      */
     public function getCanRenew()
     {
@@ -336,7 +342,7 @@ class PurchaseCanRenew implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets can_renew
      *
-     * @param bool|null $can_renew can_renew
+     * @param bool $can_renew can_renew
      *
      * @return self
      */

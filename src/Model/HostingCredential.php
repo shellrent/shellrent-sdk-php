@@ -309,6 +309,24 @@ class HostingCredential implements ModelInterface, ArrayAccess, \JsonSerializabl
     {
         $invalidProperties = [];
 
+        if ($this->container['credential_id'] === null) {
+            $invalidProperties[] = "'credential_id' can't be null";
+        }
+        if ($this->container['type'] === null) {
+            $invalidProperties[] = "'type' can't be null";
+        }
+        if ($this->container['username'] === null) {
+            $invalidProperties[] = "'username' can't be null";
+        }
+        if ($this->container['password'] === null) {
+            $invalidProperties[] = "'password' can't be null";
+        }
+        if ($this->container['root_path'] === null && !$this->isNullableSetToNull('root_path')) {
+            $invalidProperties[] = "'root_path' is required";
+        }
+        if ($this->container['is_active'] === null) {
+            $invalidProperties[] = "'is_active' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -327,7 +345,7 @@ class HostingCredential implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Gets credential_id
      *
-     * @return int|null
+     * @return int
      */
     public function getCredentialId()
     {
@@ -337,7 +355,7 @@ class HostingCredential implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets credential_id
      *
-     * @param int|null $credential_id credential_id
+     * @param int $credential_id credential_id
      *
      * @return self
      */
@@ -354,7 +372,7 @@ class HostingCredential implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Gets type
      *
-     * @return string|null
+     * @return string
      */
     public function getType()
     {
@@ -364,7 +382,7 @@ class HostingCredential implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets type
      *
-     * @param string|null $type type
+     * @param string $type type
      *
      * @return self
      */
@@ -381,7 +399,7 @@ class HostingCredential implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Gets username
      *
-     * @return string|null
+     * @return string
      */
     public function getUsername()
     {
@@ -391,7 +409,7 @@ class HostingCredential implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets username
      *
-     * @param string|null $username username
+     * @param string $username username
      *
      * @return self
      */
@@ -408,7 +426,7 @@ class HostingCredential implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Gets password
      *
-     * @return string|null
+     * @return string
      */
     public function getPassword()
     {
@@ -418,7 +436,7 @@ class HostingCredential implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets password
      *
-     * @param string|null $password password
+     * @param string $password password
      *
      * @return self
      */
@@ -469,7 +487,7 @@ class HostingCredential implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Gets is_active
      *
-     * @return bool|null
+     * @return bool
      */
     public function getIsActive()
     {
@@ -479,7 +497,7 @@ class HostingCredential implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets is_active
      *
-     * @param bool|null $is_active is_active
+     * @param bool $is_active is_active
      *
      * @return self
      */

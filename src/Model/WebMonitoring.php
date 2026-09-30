@@ -393,6 +393,60 @@ class WebMonitoring implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
+        if ($this->container['web_monitoring_id'] === null) {
+            $invalidProperties[] = "'web_monitoring_id' can't be null";
+        }
+        if ($this->container['purchase_id'] === null && !$this->isNullableSetToNull('purchase_id')) {
+            $invalidProperties[] = "'purchase_id' is required";
+        }
+        if ($this->container['service_name'] === null && !$this->isNullableSetToNull('service_name')) {
+            $invalidProperties[] = "'service_name' is required";
+        }
+        if ($this->container['purchase_name'] === null && !$this->isNullableSetToNull('purchase_name')) {
+            $invalidProperties[] = "'purchase_name' is required";
+        }
+        if ($this->container['purchase_status_code'] === null && !$this->isNullableSetToNull('purchase_status_code')) {
+            $invalidProperties[] = "'purchase_status_code' is required";
+        }
+        if ($this->container['monitored_domain'] === null && !$this->isNullableSetToNull('monitored_domain')) {
+            $invalidProperties[] = "'monitored_domain' is required";
+        }
+        if ($this->container['host_ref'] === null && !$this->isNullableSetToNull('host_ref')) {
+            $invalidProperties[] = "'host_ref' is required";
+        }
+        if ($this->container['web_scenario_ref'] === null && !$this->isNullableSetToNull('web_scenario_ref')) {
+            $invalidProperties[] = "'web_scenario_ref' is required";
+        }
+        if ($this->container['status'] === null && !$this->isNullableSetToNull('status')) {
+            $invalidProperties[] = "'status' is required";
+        }
+        if ($this->container['email_notification'] === null && !$this->isNullableSetToNull('email_notification')) {
+            $invalidProperties[] = "'email_notification' is required";
+        }
+        if ($this->container['sms_notification'] === null && !$this->isNullableSetToNull('sms_notification')) {
+            $invalidProperties[] = "'sms_notification' is required";
+        }
+        if ($this->container['ips'] === null && !$this->isNullableSetToNull('ips')) {
+            $invalidProperties[] = "'ips' is required";
+        }
+        if ($this->container['ip_isp'] === null && !$this->isNullableSetToNull('ip_isp')) {
+            $invalidProperties[] = "'ip_isp' is required";
+        }
+        if ($this->container['ip_location'] === null && !$this->isNullableSetToNull('ip_location')) {
+            $invalidProperties[] = "'ip_location' is required";
+        }
+        if ($this->container['last_http_response'] === null && !$this->isNullableSetToNull('last_http_response')) {
+            $invalidProperties[] = "'last_http_response' is required";
+        }
+        if ($this->container['last_down_date'] === null && !$this->isNullableSetToNull('last_down_date')) {
+            $invalidProperties[] = "'last_down_date' is required";
+        }
+        if ($this->container['send_ssl_notify'] === null) {
+            $invalidProperties[] = "'send_ssl_notify' can't be null";
+        }
+        if ($this->container['active'] === null) {
+            $invalidProperties[] = "'active' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -411,7 +465,7 @@ class WebMonitoring implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets web_monitoring_id
      *
-     * @return int|null
+     * @return int
      */
     public function getWebMonitoringId()
     {
@@ -421,7 +475,7 @@ class WebMonitoring implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets web_monitoring_id
      *
-     * @param int|null $web_monitoring_id web_monitoring_id
+     * @param int $web_monitoring_id web_monitoring_id
      *
      * @return self
      */
@@ -948,7 +1002,7 @@ class WebMonitoring implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets send_ssl_notify
      *
-     * @return bool|null
+     * @return bool
      */
     public function getSendSslNotify()
     {
@@ -958,7 +1012,7 @@ class WebMonitoring implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets send_ssl_notify
      *
-     * @param bool|null $send_ssl_notify send_ssl_notify
+     * @param bool $send_ssl_notify send_ssl_notify
      *
      * @return self
      */
@@ -975,7 +1029,7 @@ class WebMonitoring implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets active
      *
-     * @return bool|null
+     * @return bool
      */
     public function getActive()
     {
@@ -985,7 +1039,7 @@ class WebMonitoring implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets active
      *
-     * @param bool|null $active active
+     * @param bool $active active
      *
      * @return self
      */

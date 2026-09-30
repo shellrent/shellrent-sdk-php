@@ -108,9 +108,9 @@ class Creditnote implements ModelInterface, ArrayAccess, \JsonSerializable
         'creditnote_id' => false,
         'invoice_id' => false,
         'billing' => false,
-        'sdi_document_status' => false,
+        'sdi_document_status' => true,
         'sdi_document_type' => false,
-        'tax_regime' => false,
+        'tax_regime' => true,
         'date_emitted' => false,
         'creditnote_year' => false,
         'creditnote_number' => false,
@@ -372,6 +372,51 @@ class Creditnote implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
+        if ($this->container['creditnote_id'] === null) {
+            $invalidProperties[] = "'creditnote_id' can't be null";
+        }
+        if ($this->container['invoice_id'] === null) {
+            $invalidProperties[] = "'invoice_id' can't be null";
+        }
+        if ($this->container['billing'] === null) {
+            $invalidProperties[] = "'billing' can't be null";
+        }
+        if ($this->container['sdi_document_status'] === null && !$this->isNullableSetToNull('sdi_document_status')) {
+            $invalidProperties[] = "'sdi_document_status' is required";
+        }
+        if ($this->container['sdi_document_type'] === null) {
+            $invalidProperties[] = "'sdi_document_type' can't be null";
+        }
+        if ($this->container['tax_regime'] === null && !$this->isNullableSetToNull('tax_regime')) {
+            $invalidProperties[] = "'tax_regime' is required";
+        }
+        if ($this->container['date_emitted'] === null) {
+            $invalidProperties[] = "'date_emitted' can't be null";
+        }
+        if ($this->container['creditnote_year'] === null) {
+            $invalidProperties[] = "'creditnote_year' can't be null";
+        }
+        if ($this->container['creditnote_number'] === null) {
+            $invalidProperties[] = "'creditnote_number' can't be null";
+        }
+        if ($this->container['creditnote_caption'] === null && !$this->isNullableSetToNull('creditnote_caption')) {
+            $invalidProperties[] = "'creditnote_caption' is required";
+        }
+        if ($this->container['sdi_identifier'] === null) {
+            $invalidProperties[] = "'sdi_identifier' can't be null";
+        }
+        if ($this->container['sdi_filename'] === null) {
+            $invalidProperties[] = "'sdi_filename' can't be null";
+        }
+        if ($this->container['total_amount'] === null) {
+            $invalidProperties[] = "'total_amount' can't be null";
+        }
+        if ($this->container['rows_count'] === null) {
+            $invalidProperties[] = "'rows_count' can't be null";
+        }
+        if ($this->container['date_created'] === null) {
+            $invalidProperties[] = "'date_created' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -390,7 +435,7 @@ class Creditnote implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets creditnote_id
      *
-     * @return int|null
+     * @return int
      */
     public function getCreditnoteId()
     {
@@ -400,7 +445,7 @@ class Creditnote implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets creditnote_id
      *
-     * @param int|null $creditnote_id creditnote_id
+     * @param int $creditnote_id creditnote_id
      *
      * @return self
      */
@@ -417,7 +462,7 @@ class Creditnote implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets invoice_id
      *
-     * @return int|null
+     * @return int
      */
     public function getInvoiceId()
     {
@@ -427,7 +472,7 @@ class Creditnote implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets invoice_id
      *
-     * @param int|null $invoice_id invoice_id
+     * @param int $invoice_id invoice_id
      *
      * @return self
      */
@@ -444,7 +489,7 @@ class Creditnote implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets billing
      *
-     * @return \Shellrent\Sdk\Model\AccountBilling|null
+     * @return \Shellrent\Sdk\Model\AccountBilling
      */
     public function getBilling()
     {
@@ -454,7 +499,7 @@ class Creditnote implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets billing
      *
-     * @param \Shellrent\Sdk\Model\AccountBilling|null $billing billing
+     * @param \Shellrent\Sdk\Model\AccountBilling $billing billing
      *
      * @return self
      */
@@ -488,7 +533,14 @@ class Creditnote implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setSdiDocumentStatus($sdi_document_status)
     {
         if (is_null($sdi_document_status)) {
-            throw new \InvalidArgumentException('non-nullable sdi_document_status cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'sdi_document_status');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('sdi_document_status', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['sdi_document_status'] = $sdi_document_status;
 
@@ -498,7 +550,7 @@ class Creditnote implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets sdi_document_type
      *
-     * @return \Shellrent\Sdk\Model\SdiDocumentType|null
+     * @return \Shellrent\Sdk\Model\SdiDocumentType
      */
     public function getSdiDocumentType()
     {
@@ -508,7 +560,7 @@ class Creditnote implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets sdi_document_type
      *
-     * @param \Shellrent\Sdk\Model\SdiDocumentType|null $sdi_document_type sdi_document_type
+     * @param \Shellrent\Sdk\Model\SdiDocumentType $sdi_document_type sdi_document_type
      *
      * @return self
      */
@@ -542,7 +594,14 @@ class Creditnote implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setTaxRegime($tax_regime)
     {
         if (is_null($tax_regime)) {
-            throw new \InvalidArgumentException('non-nullable tax_regime cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'tax_regime');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('tax_regime', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['tax_regime'] = $tax_regime;
 
@@ -552,7 +611,7 @@ class Creditnote implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets date_emitted
      *
-     * @return \DateTime|null
+     * @return \DateTime
      */
     public function getDateEmitted()
     {
@@ -562,7 +621,7 @@ class Creditnote implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets date_emitted
      *
-     * @param \DateTime|null $date_emitted date_emitted
+     * @param \DateTime $date_emitted date_emitted
      *
      * @return self
      */
@@ -579,7 +638,7 @@ class Creditnote implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets creditnote_year
      *
-     * @return string|null
+     * @return string
      */
     public function getCreditnoteYear()
     {
@@ -589,7 +648,7 @@ class Creditnote implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets creditnote_year
      *
-     * @param string|null $creditnote_year creditnote_year
+     * @param string $creditnote_year creditnote_year
      *
      * @return self
      */
@@ -606,7 +665,7 @@ class Creditnote implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets creditnote_number
      *
-     * @return string|null
+     * @return string
      */
     public function getCreditnoteNumber()
     {
@@ -616,7 +675,7 @@ class Creditnote implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets creditnote_number
      *
-     * @param string|null $creditnote_number creditnote_number
+     * @param string $creditnote_number creditnote_number
      *
      * @return self
      */
@@ -667,7 +726,7 @@ class Creditnote implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets sdi_identifier
      *
-     * @return string|null
+     * @return string
      */
     public function getSdiIdentifier()
     {
@@ -677,7 +736,7 @@ class Creditnote implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets sdi_identifier
      *
-     * @param string|null $sdi_identifier sdi_identifier
+     * @param string $sdi_identifier sdi_identifier
      *
      * @return self
      */
@@ -694,7 +753,7 @@ class Creditnote implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets sdi_filename
      *
-     * @return string|null
+     * @return string
      */
     public function getSdiFilename()
     {
@@ -704,7 +763,7 @@ class Creditnote implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets sdi_filename
      *
-     * @param string|null $sdi_filename sdi_filename
+     * @param string $sdi_filename sdi_filename
      *
      * @return self
      */
@@ -721,7 +780,7 @@ class Creditnote implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets total_amount
      *
-     * @return \Shellrent\Sdk\Model\Amount|null
+     * @return \Shellrent\Sdk\Model\Amount
      */
     public function getTotalAmount()
     {
@@ -731,7 +790,7 @@ class Creditnote implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets total_amount
      *
-     * @param \Shellrent\Sdk\Model\Amount|null $total_amount total_amount
+     * @param \Shellrent\Sdk\Model\Amount $total_amount total_amount
      *
      * @return self
      */
@@ -748,7 +807,7 @@ class Creditnote implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets rows_count
      *
-     * @return int|null
+     * @return int
      */
     public function getRowsCount()
     {
@@ -758,7 +817,7 @@ class Creditnote implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets rows_count
      *
-     * @param int|null $rows_count rows_count
+     * @param int $rows_count rows_count
      *
      * @return self
      */
@@ -775,7 +834,7 @@ class Creditnote implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets date_created
      *
-     * @return \DateTime|null
+     * @return \DateTime
      */
     public function getDateCreated()
     {
@@ -785,7 +844,7 @@ class Creditnote implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets date_created
      *
-     * @param \DateTime|null $date_created date_created
+     * @param \DateTime $date_created date_created
      *
      * @return self
      */

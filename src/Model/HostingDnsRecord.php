@@ -372,6 +372,51 @@ class HostingDnsRecord implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
+        if ($this->container['dns_record_id'] === null) {
+            $invalidProperties[] = "'dns_record_id' can't be null";
+        }
+        if ($this->container['type'] === null) {
+            $invalidProperties[] = "'type' can't be null";
+        }
+        if ($this->container['host'] === null) {
+            $invalidProperties[] = "'host' can't be null";
+        }
+        if ($this->container['destination'] === null) {
+            $invalidProperties[] = "'destination' can't be null";
+        }
+        if ($this->container['priority'] === null && !$this->isNullableSetToNull('priority')) {
+            $invalidProperties[] = "'priority' is required";
+        }
+        if ($this->container['weight'] === null && !$this->isNullableSetToNull('weight')) {
+            $invalidProperties[] = "'weight' is required";
+        }
+        if ($this->container['port'] === null && !$this->isNullableSetToNull('port')) {
+            $invalidProperties[] = "'port' is required";
+        }
+        if ($this->container['service'] === null && !$this->isNullableSetToNull('service')) {
+            $invalidProperties[] = "'service' is required";
+        }
+        if ($this->container['protocol'] === null && !$this->isNullableSetToNull('protocol')) {
+            $invalidProperties[] = "'protocol' is required";
+        }
+        if ($this->container['caa_flag'] === null && !$this->isNullableSetToNull('caa_flag')) {
+            $invalidProperties[] = "'caa_flag' is required";
+        }
+        if ($this->container['caa_tag'] === null && !$this->isNullableSetToNull('caa_tag')) {
+            $invalidProperties[] = "'caa_tag' is required";
+        }
+        if ($this->container['caa_can_sign_http_exchanges'] === null && !$this->isNullableSetToNull('caa_can_sign_http_exchanges')) {
+            $invalidProperties[] = "'caa_can_sign_http_exchanges' is required";
+        }
+        if ($this->container['tlsa_usage'] === null && !$this->isNullableSetToNull('tlsa_usage')) {
+            $invalidProperties[] = "'tlsa_usage' is required";
+        }
+        if ($this->container['tlsa_selector'] === null && !$this->isNullableSetToNull('tlsa_selector')) {
+            $invalidProperties[] = "'tlsa_selector' is required";
+        }
+        if ($this->container['tlsa_matching_type'] === null && !$this->isNullableSetToNull('tlsa_matching_type')) {
+            $invalidProperties[] = "'tlsa_matching_type' is required";
+        }
         return $invalidProperties;
     }
 
@@ -390,7 +435,7 @@ class HostingDnsRecord implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets dns_record_id
      *
-     * @return int|null
+     * @return int
      */
     public function getDnsRecordId()
     {
@@ -400,7 +445,7 @@ class HostingDnsRecord implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets dns_record_id
      *
-     * @param int|null $dns_record_id dns_record_id
+     * @param int $dns_record_id dns_record_id
      *
      * @return self
      */
@@ -417,7 +462,7 @@ class HostingDnsRecord implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets type
      *
-     * @return string|null
+     * @return string
      */
     public function getType()
     {
@@ -427,7 +472,7 @@ class HostingDnsRecord implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets type
      *
-     * @param string|null $type type
+     * @param string $type type
      *
      * @return self
      */
@@ -444,7 +489,7 @@ class HostingDnsRecord implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets host
      *
-     * @return string|null
+     * @return string
      */
     public function getHost()
     {
@@ -454,7 +499,7 @@ class HostingDnsRecord implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets host
      *
-     * @param string|null $host host
+     * @param string $host host
      *
      * @return self
      */
@@ -471,7 +516,7 @@ class HostingDnsRecord implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets destination
      *
-     * @return string|null
+     * @return string
      */
     public function getDestination()
     {
@@ -481,7 +526,7 @@ class HostingDnsRecord implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets destination
      *
-     * @param string|null $destination destination
+     * @param string $destination destination
      *
      * @return self
      */

@@ -295,6 +295,18 @@ class Microsoft365DomainAvailable implements ModelInterface, ArrayAccess, \JsonS
     {
         $invalidProperties = [];
 
+        if ($this->container['domain_prefix'] === null) {
+            $invalidProperties[] = "'domain_prefix' can't be null";
+        }
+        if ($this->container['microsoft_domain'] === null) {
+            $invalidProperties[] = "'microsoft_domain' can't be null";
+        }
+        if ($this->container['available'] === null) {
+            $invalidProperties[] = "'available' can't be null";
+        }
+        if ($this->container['microsoft_uuid'] === null && !$this->isNullableSetToNull('microsoft_uuid')) {
+            $invalidProperties[] = "'microsoft_uuid' is required";
+        }
         return $invalidProperties;
     }
 
@@ -313,7 +325,7 @@ class Microsoft365DomainAvailable implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Gets domain_prefix
      *
-     * @return string|null
+     * @return string
      */
     public function getDomainPrefix()
     {
@@ -323,7 +335,7 @@ class Microsoft365DomainAvailable implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets domain_prefix
      *
-     * @param string|null $domain_prefix Requested tenant domain prefix
+     * @param string $domain_prefix Requested tenant domain prefix
      *
      * @return self
      */
@@ -340,7 +352,7 @@ class Microsoft365DomainAvailable implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Gets microsoft_domain
      *
-     * @return string|null
+     * @return string
      */
     public function getMicrosoftDomain()
     {
@@ -350,7 +362,7 @@ class Microsoft365DomainAvailable implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets microsoft_domain
      *
-     * @param string|null $microsoft_domain Full \".onmicrosoft.com\" domain
+     * @param string $microsoft_domain Full \".onmicrosoft.com\" domain
      *
      * @return self
      */
@@ -367,7 +379,7 @@ class Microsoft365DomainAvailable implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Gets available
      *
-     * @return bool|null
+     * @return bool
      */
     public function getAvailable()
     {
@@ -377,7 +389,7 @@ class Microsoft365DomainAvailable implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets available
      *
-     * @param bool|null $available Whether the domain is available
+     * @param bool $available Whether the domain is available
      *
      * @return self
      */

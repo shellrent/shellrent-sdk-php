@@ -309,6 +309,24 @@ class ObjectStorageBucketFirewallEntry implements ModelInterface, ArrayAccess, \
     {
         $invalidProperties = [];
 
+        if ($this->container['entry_id'] === null) {
+            $invalidProperties[] = "'entry_id' can't be null";
+        }
+        if ($this->container['object_storage_id'] === null) {
+            $invalidProperties[] = "'object_storage_id' can't be null";
+        }
+        if ($this->container['bucket_id'] === null) {
+            $invalidProperties[] = "'bucket_id' can't be null";
+        }
+        if ($this->container['ip'] === null && !$this->isNullableSetToNull('ip')) {
+            $invalidProperties[] = "'ip' is required";
+        }
+        if ($this->container['active'] === null && !$this->isNullableSetToNull('active')) {
+            $invalidProperties[] = "'active' is required";
+        }
+        if ($this->container['date_created'] === null && !$this->isNullableSetToNull('date_created')) {
+            $invalidProperties[] = "'date_created' is required";
+        }
         return $invalidProperties;
     }
 
@@ -327,7 +345,7 @@ class ObjectStorageBucketFirewallEntry implements ModelInterface, ArrayAccess, \
     /**
      * Gets entry_id
      *
-     * @return int|null
+     * @return int
      */
     public function getEntryId()
     {
@@ -337,7 +355,7 @@ class ObjectStorageBucketFirewallEntry implements ModelInterface, ArrayAccess, \
     /**
      * Sets entry_id
      *
-     * @param int|null $entry_id entry_id
+     * @param int $entry_id entry_id
      *
      * @return self
      */
@@ -354,7 +372,7 @@ class ObjectStorageBucketFirewallEntry implements ModelInterface, ArrayAccess, \
     /**
      * Gets object_storage_id
      *
-     * @return int|null
+     * @return int
      */
     public function getObjectStorageId()
     {
@@ -364,7 +382,7 @@ class ObjectStorageBucketFirewallEntry implements ModelInterface, ArrayAccess, \
     /**
      * Sets object_storage_id
      *
-     * @param int|null $object_storage_id object_storage_id
+     * @param int $object_storage_id object_storage_id
      *
      * @return self
      */
@@ -381,7 +399,7 @@ class ObjectStorageBucketFirewallEntry implements ModelInterface, ArrayAccess, \
     /**
      * Gets bucket_id
      *
-     * @return int|null
+     * @return int
      */
     public function getBucketId()
     {
@@ -391,7 +409,7 @@ class ObjectStorageBucketFirewallEntry implements ModelInterface, ArrayAccess, \
     /**
      * Sets bucket_id
      *
-     * @param int|null $bucket_id bucket_id
+     * @param int $bucket_id bucket_id
      *
      * @return self
      */

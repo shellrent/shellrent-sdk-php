@@ -288,6 +288,15 @@ class SslCertificateExport implements ModelInterface, ArrayAccess, \JsonSerializ
     {
         $invalidProperties = [];
 
+        if ($this->container['format'] === null) {
+            $invalidProperties[] = "'format' can't be null";
+        }
+        if ($this->container['filename'] === null) {
+            $invalidProperties[] = "'filename' can't be null";
+        }
+        if ($this->container['content_base64'] === null) {
+            $invalidProperties[] = "'content_base64' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -306,7 +315,7 @@ class SslCertificateExport implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Gets format
      *
-     * @return string|null
+     * @return string
      */
     public function getFormat()
     {
@@ -316,7 +325,7 @@ class SslCertificateExport implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets format
      *
-     * @param string|null $format format
+     * @param string $format format
      *
      * @return self
      */
@@ -333,7 +342,7 @@ class SslCertificateExport implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Gets filename
      *
-     * @return string|null
+     * @return string
      */
     public function getFilename()
     {
@@ -343,7 +352,7 @@ class SslCertificateExport implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets filename
      *
-     * @param string|null $filename filename
+     * @param string $filename filename
      *
      * @return self
      */
@@ -360,7 +369,7 @@ class SslCertificateExport implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Gets content_base64
      *
-     * @return string|null
+     * @return string
      */
     public function getContentBase64()
     {
@@ -370,7 +379,7 @@ class SslCertificateExport implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets content_base64
      *
-     * @param string|null $content_base64 content_base64
+     * @param string $content_base64 content_base64
      *
      * @return self
      */

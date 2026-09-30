@@ -6,13 +6,13 @@ docs/Api/HostingApi.md
 docs/Api/LicenseApi.md
 docs/Api/MonitoringApi.md
 docs/Api/OAuthApi.md
-docs/Api/PECApi.md
 docs/Api/PaymentApi.md
+docs/Api/PecApi.md
 docs/Api/PurchasesApi.md
-docs/Api/SSLApi.md
 docs/Api/ServerApi.md
 docs/Api/ShopApi.md
 docs/Api/SmsApi.md
+docs/Api/SslApi.md
 docs/Api/StorageApi.md
 docs/Model/Account.md
 docs/Model/AccountBilling.md
@@ -262,7 +262,6 @@ docs/Model/OrderRowResponse.md
 docs/Model/OrderStatus.md
 docs/Model/PaginationMeta.md
 docs/Model/PayOrders200Response.md
-docs/Model/PayOrders200ResponseData.md
 docs/Model/Payment.md
 docs/Model/PaymentPaginatedListResponse.md
 docs/Model/PaymentResponse.md
@@ -451,13 +450,13 @@ src/Api/HostingApi.php
 src/Api/LicenseApi.php
 src/Api/MonitoringApi.php
 src/Api/OAuthApi.php
-src/Api/PECApi.php
 src/Api/PaymentApi.php
+src/Api/PecApi.php
 src/Api/PurchasesApi.php
-src/Api/SSLApi.php
 src/Api/ServerApi.php
 src/Api/ShopApi.php
 src/Api/SmsApi.php
+src/Api/SslApi.php
 src/Api/StorageApi.php
 src/ApiAccessors.php
 src/ApiException.php
@@ -713,7 +712,6 @@ src/Model/OrderRowResponse.php
 src/Model/OrderStatus.php
 src/Model/PaginationMeta.php
 src/Model/PayOrders200Response.php
-src/Model/PayOrders200ResponseData.php
 src/Model/Payment.php
 src/Model/PaymentPaginatedListResponse.php
 src/Model/PaymentResponse.php

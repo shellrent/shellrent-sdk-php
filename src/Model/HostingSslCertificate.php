@@ -330,6 +330,33 @@ class HostingSslCertificate implements ModelInterface, ArrayAccess, \JsonSeriali
     {
         $invalidProperties = [];
 
+        if ($this->container['hosting_ssl_certificate_id'] === null) {
+            $invalidProperties[] = "'hosting_ssl_certificate_id' can't be null";
+        }
+        if ($this->container['hosting_id'] === null) {
+            $invalidProperties[] = "'hosting_id' can't be null";
+        }
+        if ($this->container['ssl_certificate_id'] === null && !$this->isNullableSetToNull('ssl_certificate_id')) {
+            $invalidProperties[] = "'ssl_certificate_id' is required";
+        }
+        if ($this->container['lets_encrypt_id'] === null && !$this->isNullableSetToNull('lets_encrypt_id')) {
+            $invalidProperties[] = "'lets_encrypt_id' is required";
+        }
+        if ($this->container['external_certificate_id'] === null && !$this->isNullableSetToNull('external_certificate_id')) {
+            $invalidProperties[] = "'external_certificate_id' is required";
+        }
+        if ($this->container['cn_type'] === null && !$this->isNullableSetToNull('cn_type')) {
+            $invalidProperties[] = "'cn_type' is required";
+        }
+        if ($this->container['installation_date'] === null && !$this->isNullableSetToNull('installation_date')) {
+            $invalidProperties[] = "'installation_date' is required";
+        }
+        if ($this->container['https_rewrite'] === null && !$this->isNullableSetToNull('https_rewrite')) {
+            $invalidProperties[] = "'https_rewrite' is required";
+        }
+        if ($this->container['destination_type'] === null && !$this->isNullableSetToNull('destination_type')) {
+            $invalidProperties[] = "'destination_type' is required";
+        }
         return $invalidProperties;
     }
 
@@ -348,7 +375,7 @@ class HostingSslCertificate implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Gets hosting_ssl_certificate_id
      *
-     * @return int|null
+     * @return int
      */
     public function getHostingSslCertificateId()
     {
@@ -358,7 +385,7 @@ class HostingSslCertificate implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets hosting_ssl_certificate_id
      *
-     * @param int|null $hosting_ssl_certificate_id hosting_ssl_certificate_id
+     * @param int $hosting_ssl_certificate_id hosting_ssl_certificate_id
      *
      * @return self
      */
@@ -375,7 +402,7 @@ class HostingSslCertificate implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Gets hosting_id
      *
-     * @return int|null
+     * @return int
      */
     public function getHostingId()
     {
@@ -385,7 +412,7 @@ class HostingSslCertificate implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets hosting_id
      *
-     * @param int|null $hosting_id hosting_id
+     * @param int $hosting_id hosting_id
      *
      * @return self
      */

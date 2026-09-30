@@ -400,6 +400,63 @@ class Invoice implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
+        if ($this->container['invoice_id'] === null) {
+            $invalidProperties[] = "'invoice_id' can't be null";
+        }
+        if ($this->container['billing'] === null) {
+            $invalidProperties[] = "'billing' can't be null";
+        }
+        if ($this->container['type'] === null && !$this->isNullableSetToNull('type')) {
+            $invalidProperties[] = "'type' is required";
+        }
+        if ($this->container['sdi_document_status'] === null && !$this->isNullableSetToNull('sdi_document_status')) {
+            $invalidProperties[] = "'sdi_document_status' is required";
+        }
+        if ($this->container['sdi_document_type'] === null && !$this->isNullableSetToNull('sdi_document_type')) {
+            $invalidProperties[] = "'sdi_document_type' is required";
+        }
+        if ($this->container['date_emitted'] === null) {
+            $invalidProperties[] = "'date_emitted' can't be null";
+        }
+        if ($this->container['invoice_year'] === null) {
+            $invalidProperties[] = "'invoice_year' can't be null";
+        }
+        if ($this->container['invoice_number'] === null) {
+            $invalidProperties[] = "'invoice_number' can't be null";
+        }
+        if ($this->container['invoice_caption'] === null && !$this->isNullableSetToNull('invoice_caption')) {
+            $invalidProperties[] = "'invoice_caption' is required";
+        }
+        if ($this->container['invoice_caption_additional'] === null && !$this->isNullableSetToNull('invoice_caption_additional')) {
+            $invalidProperties[] = "'invoice_caption_additional' is required";
+        }
+        if ($this->container['payed'] === null) {
+            $invalidProperties[] = "'payed' can't be null";
+        }
+        if ($this->container['sdi_identifier'] === null && !$this->isNullableSetToNull('sdi_identifier')) {
+            $invalidProperties[] = "'sdi_identifier' is required";
+        }
+        if ($this->container['sdi_filename'] === null && !$this->isNullableSetToNull('sdi_filename')) {
+            $invalidProperties[] = "'sdi_filename' is required";
+        }
+        if ($this->container['total_amount'] === null) {
+            $invalidProperties[] = "'total_amount' can't be null";
+        }
+        if ($this->container['amount_no_balance'] === null) {
+            $invalidProperties[] = "'amount_no_balance' can't be null";
+        }
+        if ($this->container['payment_amount'] === null) {
+            $invalidProperties[] = "'payment_amount' can't be null";
+        }
+        if ($this->container['orders'] === null) {
+            $invalidProperties[] = "'orders' can't be null";
+        }
+        if ($this->container['rows_count'] === null) {
+            $invalidProperties[] = "'rows_count' can't be null";
+        }
+        if ($this->container['date_created'] === null) {
+            $invalidProperties[] = "'date_created' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -418,7 +475,7 @@ class Invoice implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets invoice_id
      *
-     * @return int|null
+     * @return int
      */
     public function getInvoiceId()
     {
@@ -428,7 +485,7 @@ class Invoice implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets invoice_id
      *
-     * @param int|null $invoice_id invoice_id
+     * @param int $invoice_id invoice_id
      *
      * @return self
      */
@@ -445,7 +502,7 @@ class Invoice implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets billing
      *
-     * @return \Shellrent\Sdk\Model\AccountBilling|null
+     * @return \Shellrent\Sdk\Model\AccountBilling
      */
     public function getBilling()
     {
@@ -455,7 +512,7 @@ class Invoice implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets billing
      *
-     * @param \Shellrent\Sdk\Model\AccountBilling|null $billing billing
+     * @param \Shellrent\Sdk\Model\AccountBilling $billing billing
      *
      * @return self
      */
@@ -574,7 +631,7 @@ class Invoice implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets date_emitted
      *
-     * @return \DateTime|null
+     * @return \DateTime
      */
     public function getDateEmitted()
     {
@@ -584,7 +641,7 @@ class Invoice implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets date_emitted
      *
-     * @param \DateTime|null $date_emitted date_emitted
+     * @param \DateTime $date_emitted date_emitted
      *
      * @return self
      */
@@ -601,7 +658,7 @@ class Invoice implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets invoice_year
      *
-     * @return int|null
+     * @return int
      */
     public function getInvoiceYear()
     {
@@ -611,7 +668,7 @@ class Invoice implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets invoice_year
      *
-     * @param int|null $invoice_year invoice_year
+     * @param int $invoice_year invoice_year
      *
      * @return self
      */
@@ -628,7 +685,7 @@ class Invoice implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets invoice_number
      *
-     * @return string|null
+     * @return string
      */
     public function getInvoiceNumber()
     {
@@ -638,7 +695,7 @@ class Invoice implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets invoice_number
      *
-     * @param string|null $invoice_number invoice_number
+     * @param string $invoice_number invoice_number
      *
      * @return self
      */
@@ -723,7 +780,7 @@ class Invoice implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets payed
      *
-     * @return bool|null
+     * @return bool
      */
     public function getPayed()
     {
@@ -733,7 +790,7 @@ class Invoice implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets payed
      *
-     * @param bool|null $payed payed
+     * @param bool $payed payed
      *
      * @return self
      */
@@ -818,7 +875,7 @@ class Invoice implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets total_amount
      *
-     * @return \Shellrent\Sdk\Model\Amount|null
+     * @return \Shellrent\Sdk\Model\Amount
      */
     public function getTotalAmount()
     {
@@ -828,7 +885,7 @@ class Invoice implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets total_amount
      *
-     * @param \Shellrent\Sdk\Model\Amount|null $total_amount total_amount
+     * @param \Shellrent\Sdk\Model\Amount $total_amount total_amount
      *
      * @return self
      */
@@ -845,7 +902,7 @@ class Invoice implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets amount_no_balance
      *
-     * @return \Shellrent\Sdk\Model\Amount|null
+     * @return \Shellrent\Sdk\Model\Amount
      */
     public function getAmountNoBalance()
     {
@@ -855,7 +912,7 @@ class Invoice implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets amount_no_balance
      *
-     * @param \Shellrent\Sdk\Model\Amount|null $amount_no_balance amount_no_balance
+     * @param \Shellrent\Sdk\Model\Amount $amount_no_balance amount_no_balance
      *
      * @return self
      */
@@ -872,7 +929,7 @@ class Invoice implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets payment_amount
      *
-     * @return \Shellrent\Sdk\Model\Amount|null
+     * @return \Shellrent\Sdk\Model\Amount
      */
     public function getPaymentAmount()
     {
@@ -882,7 +939,7 @@ class Invoice implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets payment_amount
      *
-     * @param \Shellrent\Sdk\Model\Amount|null $payment_amount payment_amount
+     * @param \Shellrent\Sdk\Model\Amount $payment_amount payment_amount
      *
      * @return self
      */
@@ -899,7 +956,7 @@ class Invoice implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets orders
      *
-     * @return int[]|null
+     * @return int[]
      */
     public function getOrders()
     {
@@ -909,7 +966,7 @@ class Invoice implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets orders
      *
-     * @param int[]|null $orders orders
+     * @param int[] $orders orders
      *
      * @return self
      */
@@ -926,7 +983,7 @@ class Invoice implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets rows_count
      *
-     * @return int|null
+     * @return int
      */
     public function getRowsCount()
     {
@@ -936,7 +993,7 @@ class Invoice implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets rows_count
      *
-     * @param int|null $rows_count rows_count
+     * @param int $rows_count rows_count
      *
      * @return self
      */
@@ -953,7 +1010,7 @@ class Invoice implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets date_created
      *
-     * @return \DateTime|null
+     * @return \DateTime
      */
     public function getDateCreated()
     {
@@ -963,7 +1020,7 @@ class Invoice implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets date_created
      *
-     * @param \DateTime|null $date_created date_created
+     * @param \DateTime $date_created date_created
      *
      * @return self
      */

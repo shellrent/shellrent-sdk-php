@@ -323,6 +323,30 @@ class CloudStorage implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
+        if ($this->container['cloud_storage_id'] === null) {
+            $invalidProperties[] = "'cloud_storage_id' can't be null";
+        }
+        if ($this->container['purchase_id'] === null && !$this->isNullableSetToNull('purchase_id')) {
+            $invalidProperties[] = "'purchase_id' is required";
+        }
+        if ($this->container['name'] === null && !$this->isNullableSetToNull('name')) {
+            $invalidProperties[] = "'name' is required";
+        }
+        if ($this->container['read_write_host'] === null && !$this->isNullableSetToNull('read_write_host')) {
+            $invalidProperties[] = "'read_write_host' is required";
+        }
+        if ($this->container['read_only_host'] === null && !$this->isNullableSetToNull('read_only_host')) {
+            $invalidProperties[] = "'read_only_host' is required";
+        }
+        if ($this->container['app_host'] === null && !$this->isNullableSetToNull('app_host')) {
+            $invalidProperties[] = "'app_host' is required";
+        }
+        if ($this->container['group_disk_used_bytes'] === null && !$this->isNullableSetToNull('group_disk_used_bytes')) {
+            $invalidProperties[] = "'group_disk_used_bytes' is required";
+        }
+        if ($this->container['date_sync'] === null && !$this->isNullableSetToNull('date_sync')) {
+            $invalidProperties[] = "'date_sync' is required";
+        }
         return $invalidProperties;
     }
 
@@ -341,7 +365,7 @@ class CloudStorage implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets cloud_storage_id
      *
-     * @return int|null
+     * @return int
      */
     public function getCloudStorageId()
     {
@@ -351,7 +375,7 @@ class CloudStorage implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets cloud_storage_id
      *
-     * @param int|null $cloud_storage_id cloud_storage_id
+     * @param int $cloud_storage_id cloud_storage_id
      *
      * @return self
      */

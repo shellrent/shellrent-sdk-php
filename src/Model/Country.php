@@ -316,6 +316,27 @@ class Country implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
+        if ($this->container['iso_code_2'] === null) {
+            $invalidProperties[] = "'iso_code_2' can't be null";
+        }
+        if ($this->container['iso_code_3'] === null) {
+            $invalidProperties[] = "'iso_code_3' can't be null";
+        }
+        if ($this->container['country_name'] === null) {
+            $invalidProperties[] = "'country_name' can't be null";
+        }
+        if ($this->container['local_name'] === null) {
+            $invalidProperties[] = "'local_name' can't be null";
+        }
+        if ($this->container['phone_code'] === null) {
+            $invalidProperties[] = "'phone_code' can't be null";
+        }
+        if ($this->container['continent'] === null) {
+            $invalidProperties[] = "'continent' can't be null";
+        }
+        if ($this->container['region'] === null) {
+            $invalidProperties[] = "'region' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -334,7 +355,7 @@ class Country implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets iso_code_2
      *
-     * @return string|null
+     * @return string
      */
     public function getIsoCode2()
     {
@@ -344,7 +365,7 @@ class Country implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets iso_code_2
      *
-     * @param string|null $iso_code_2 ie. IT
+     * @param string $iso_code_2 ie. IT
      *
      * @return self
      */
@@ -361,7 +382,7 @@ class Country implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets iso_code_3
      *
-     * @return string|null
+     * @return string
      */
     public function getIsoCode3()
     {
@@ -371,7 +392,7 @@ class Country implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets iso_code_3
      *
-     * @param string|null $iso_code_3 ie. ITA
+     * @param string $iso_code_3 ie. ITA
      *
      * @return self
      */
@@ -388,7 +409,7 @@ class Country implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets country_name
      *
-     * @return string|null
+     * @return string
      */
     public function getCountryName()
     {
@@ -398,7 +419,7 @@ class Country implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets country_name
      *
-     * @param string|null $country_name country_name
+     * @param string $country_name country_name
      *
      * @return self
      */
@@ -415,7 +436,7 @@ class Country implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets local_name
      *
-     * @return string|null
+     * @return string
      */
     public function getLocalName()
     {
@@ -425,7 +446,7 @@ class Country implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets local_name
      *
-     * @param string|null $local_name local_name
+     * @param string $local_name local_name
      *
      * @return self
      */
@@ -442,7 +463,7 @@ class Country implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets phone_code
      *
-     * @return string|null
+     * @return string
      */
     public function getPhoneCode()
     {
@@ -452,7 +473,7 @@ class Country implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets phone_code
      *
-     * @param string|null $phone_code +39, +44, ...
+     * @param string $phone_code +39, +44, ...
      *
      * @return self
      */
@@ -469,7 +490,7 @@ class Country implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets continent
      *
-     * @return string|null
+     * @return string
      */
     public function getContinent()
     {
@@ -479,7 +500,7 @@ class Country implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets continent
      *
-     * @param string|null $continent Europe, America, ...
+     * @param string $continent Europe, America, ...
      *
      * @return self
      */
@@ -496,7 +517,7 @@ class Country implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets region
      *
-     * @return string|null
+     * @return string
      */
     public function getRegion()
     {
@@ -506,7 +527,7 @@ class Country implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets region
      *
-     * @param string|null $region Macro region
+     * @param string $region Macro region
      *
      * @return self
      */

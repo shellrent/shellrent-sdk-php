@@ -288,6 +288,15 @@ class DnsRecordCaaData implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
+        if ($this->container['flag'] === null && !$this->isNullableSetToNull('flag')) {
+            $invalidProperties[] = "'flag' is required";
+        }
+        if ($this->container['tag_value'] === null && !$this->isNullableSetToNull('tag_value')) {
+            $invalidProperties[] = "'tag_value' is required";
+        }
+        if ($this->container['can_sign_http_exchanges'] === null && !$this->isNullableSetToNull('can_sign_http_exchanges')) {
+            $invalidProperties[] = "'can_sign_http_exchanges' is required";
+        }
         return $invalidProperties;
     }
 

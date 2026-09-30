@@ -344,6 +344,39 @@ class Recurrence implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
+        if ($this->container['recurrence_id'] === null) {
+            $invalidProperties[] = "'recurrence_id' can't be null";
+        }
+        if ($this->container['frequency'] === null) {
+            $invalidProperties[] = "'frequency' can't be null";
+        }
+        if ($this->container['days_renew'] === null && !$this->isNullableSetToNull('days_renew')) {
+            $invalidProperties[] = "'days_renew' is required";
+        }
+        if ($this->container['days_autorenew'] === null && !$this->isNullableSetToNull('days_autorenew')) {
+            $invalidProperties[] = "'days_autorenew' is required";
+        }
+        if ($this->container['days_suspension'] === null && !$this->isNullableSetToNull('days_suspension')) {
+            $invalidProperties[] = "'days_suspension' is required";
+        }
+        if ($this->container['days_restore'] === null && !$this->isNullableSetToNull('days_restore')) {
+            $invalidProperties[] = "'days_restore' is required";
+        }
+        if ($this->container['days_dismission'] === null && !$this->isNullableSetToNull('days_dismission')) {
+            $invalidProperties[] = "'days_dismission' is required";
+        }
+        if ($this->container['days_cancel'] === null) {
+            $invalidProperties[] = "'days_cancel' can't be null";
+        }
+        if ($this->container['days_renew_dismission'] === null && !$this->isNullableSetToNull('days_renew_dismission')) {
+            $invalidProperties[] = "'days_renew_dismission' is required";
+        }
+        if ($this->container['days_no_secondary'] === null && !$this->isNullableSetToNull('days_no_secondary')) {
+            $invalidProperties[] = "'days_no_secondary' is required";
+        }
+        if ($this->container['days_no_service_change'] === null && !$this->isNullableSetToNull('days_no_service_change')) {
+            $invalidProperties[] = "'days_no_service_change' is required";
+        }
         return $invalidProperties;
     }
 
@@ -362,7 +395,7 @@ class Recurrence implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets recurrence_id
      *
-     * @return int|null
+     * @return int
      */
     public function getRecurrenceId()
     {
@@ -372,7 +405,7 @@ class Recurrence implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets recurrence_id
      *
-     * @param int|null $recurrence_id recurrence_id
+     * @param int $recurrence_id recurrence_id
      *
      * @return self
      */
@@ -389,7 +422,7 @@ class Recurrence implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets frequency
      *
-     * @return \Shellrent\Sdk\Model\RecurrenceFrequency|null
+     * @return \Shellrent\Sdk\Model\RecurrenceFrequency
      */
     public function getFrequency()
     {
@@ -399,7 +432,7 @@ class Recurrence implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets frequency
      *
-     * @param \Shellrent\Sdk\Model\RecurrenceFrequency|null $frequency frequency
+     * @param \Shellrent\Sdk\Model\RecurrenceFrequency $frequency frequency
      *
      * @return self
      */
@@ -586,7 +619,7 @@ class Recurrence implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets days_cancel
      *
-     * @return int|null
+     * @return int
      */
     public function getDaysCancel()
     {
@@ -596,7 +629,7 @@ class Recurrence implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets days_cancel
      *
-     * @param int|null $days_cancel days_cancel
+     * @param int $days_cancel days_cancel
      *
      * @return self
      */

@@ -302,6 +302,21 @@ class HostingModSecurityRule implements ModelInterface, ArrayAccess, \JsonSerial
     {
         $invalidProperties = [];
 
+        if ($this->container['rule_id'] === null) {
+            $invalidProperties[] = "'rule_id' can't be null";
+        }
+        if ($this->container['hosting_id'] === null) {
+            $invalidProperties[] = "'hosting_id' can't be null";
+        }
+        if ($this->container['rule_number'] === null) {
+            $invalidProperties[] = "'rule_number' can't be null";
+        }
+        if ($this->container['description'] === null && !$this->isNullableSetToNull('description')) {
+            $invalidProperties[] = "'description' is required";
+        }
+        if ($this->container['included'] === null) {
+            $invalidProperties[] = "'included' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -320,7 +335,7 @@ class HostingModSecurityRule implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets rule_id
      *
-     * @return int|null
+     * @return int
      */
     public function getRuleId()
     {
@@ -330,7 +345,7 @@ class HostingModSecurityRule implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets rule_id
      *
-     * @param int|null $rule_id rule_id
+     * @param int $rule_id rule_id
      *
      * @return self
      */
@@ -347,7 +362,7 @@ class HostingModSecurityRule implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets hosting_id
      *
-     * @return int|null
+     * @return int
      */
     public function getHostingId()
     {
@@ -357,7 +372,7 @@ class HostingModSecurityRule implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets hosting_id
      *
-     * @param int|null $hosting_id hosting_id
+     * @param int $hosting_id hosting_id
      *
      * @return self
      */
@@ -374,7 +389,7 @@ class HostingModSecurityRule implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets rule_number
      *
-     * @return string|null
+     * @return string
      */
     public function getRuleNumber()
     {
@@ -384,7 +399,7 @@ class HostingModSecurityRule implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets rule_number
      *
-     * @param string|null $rule_number rule_number
+     * @param string $rule_number rule_number
      *
      * @return self
      */
@@ -435,7 +450,7 @@ class HostingModSecurityRule implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets included
      *
-     * @return bool|null
+     * @return bool
      */
     public function getIncluded()
     {
@@ -445,7 +460,7 @@ class HostingModSecurityRule implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets included
      *
-     * @param bool|null $included included
+     * @param bool $included included
      *
      * @return self
      */

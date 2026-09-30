@@ -407,6 +407,66 @@ class Tld implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
+        if ($this->container['tld_id'] === null) {
+            $invalidProperties[] = "'tld_id' can't be null";
+        }
+        if ($this->container['extension'] === null) {
+            $invalidProperties[] = "'extension' can't be null";
+        }
+        if ($this->container['punycode'] === null) {
+            $invalidProperties[] = "'punycode' can't be null";
+        }
+        if ($this->container['country'] === null && !$this->isNullableSetToNull('country')) {
+            $invalidProperties[] = "'country' is required";
+        }
+        if ($this->container['char_min'] === null && !$this->isNullableSetToNull('char_min')) {
+            $invalidProperties[] = "'char_min' is required";
+        }
+        if ($this->container['char_max'] === null && !$this->isNullableSetToNull('char_max')) {
+            $invalidProperties[] = "'char_max' is required";
+        }
+        if ($this->container['hyphen_allowed'] === null) {
+            $invalidProperties[] = "'hyphen_allowed' can't be null";
+        }
+        if ($this->container['number_allowed'] === null) {
+            $invalidProperties[] = "'number_allowed' can't be null";
+        }
+        if ($this->container['punycode_allowed'] === null) {
+            $invalidProperties[] = "'punycode_allowed' can't be null";
+        }
+        if ($this->container['dnssec_enabled'] === null) {
+            $invalidProperties[] = "'dnssec_enabled' can't be null";
+        }
+        if ($this->container['rdap_enabled'] === null) {
+            $invalidProperties[] = "'rdap_enabled' can't be null";
+        }
+        if ($this->container['rdap_url'] === null) {
+            $invalidProperties[] = "'rdap_url' can't be null";
+        }
+        if ($this->container['contact_data'] === null) {
+            $invalidProperties[] = "'contact_data' can't be null";
+        }
+        if ($this->container['update_contact_r'] === null) {
+            $invalidProperties[] = "'update_contact_r' can't be null";
+        }
+        if ($this->container['update_contact_a'] === null) {
+            $invalidProperties[] = "'update_contact_a' can't be null";
+        }
+        if ($this->container['update_contact_t'] === null) {
+            $invalidProperties[] = "'update_contact_t' can't be null";
+        }
+        if ($this->container['update_contact_o'] === null) {
+            $invalidProperties[] = "'update_contact_o' can't be null";
+        }
+        if ($this->container['update_contact_additional'] === null) {
+            $invalidProperties[] = "'update_contact_additional' can't be null";
+        }
+        if ($this->container['update_contact_transfer'] === null) {
+            $invalidProperties[] = "'update_contact_transfer' can't be null";
+        }
+        if ($this->container['transfer_authcode'] === null) {
+            $invalidProperties[] = "'transfer_authcode' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -425,7 +485,7 @@ class Tld implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets tld_id
      *
-     * @return int|null
+     * @return int
      */
     public function getTldId()
     {
@@ -435,7 +495,7 @@ class Tld implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets tld_id
      *
-     * @param int|null $tld_id tld_id
+     * @param int $tld_id tld_id
      *
      * @return self
      */
@@ -452,7 +512,7 @@ class Tld implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets extension
      *
-     * @return string|null
+     * @return string
      */
     public function getExtension()
     {
@@ -462,7 +522,7 @@ class Tld implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets extension
      *
-     * @param string|null $extension extension
+     * @param string $extension extension
      *
      * @return self
      */
@@ -479,7 +539,7 @@ class Tld implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets punycode
      *
-     * @return string|null
+     * @return string
      */
     public function getPunycode()
     {
@@ -489,7 +549,7 @@ class Tld implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets punycode
      *
-     * @param string|null $punycode punycode
+     * @param string $punycode punycode
      *
      * @return self
      */
@@ -608,7 +668,7 @@ class Tld implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets hyphen_allowed
      *
-     * @return bool|null
+     * @return bool
      */
     public function getHyphenAllowed()
     {
@@ -618,7 +678,7 @@ class Tld implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets hyphen_allowed
      *
-     * @param bool|null $hyphen_allowed hyphen_allowed
+     * @param bool $hyphen_allowed hyphen_allowed
      *
      * @return self
      */
@@ -635,7 +695,7 @@ class Tld implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets number_allowed
      *
-     * @return bool|null
+     * @return bool
      */
     public function getNumberAllowed()
     {
@@ -645,7 +705,7 @@ class Tld implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets number_allowed
      *
-     * @param bool|null $number_allowed number_allowed
+     * @param bool $number_allowed number_allowed
      *
      * @return self
      */
@@ -662,7 +722,7 @@ class Tld implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets punycode_allowed
      *
-     * @return bool|null
+     * @return bool
      */
     public function getPunycodeAllowed()
     {
@@ -672,7 +732,7 @@ class Tld implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets punycode_allowed
      *
-     * @param bool|null $punycode_allowed punycode_allowed
+     * @param bool $punycode_allowed punycode_allowed
      *
      * @return self
      */
@@ -689,7 +749,7 @@ class Tld implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets dnssec_enabled
      *
-     * @return bool|null
+     * @return bool
      */
     public function getDnssecEnabled()
     {
@@ -699,7 +759,7 @@ class Tld implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets dnssec_enabled
      *
-     * @param bool|null $dnssec_enabled dnssec_enabled
+     * @param bool $dnssec_enabled dnssec_enabled
      *
      * @return self
      */
@@ -716,7 +776,7 @@ class Tld implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets rdap_enabled
      *
-     * @return bool|null
+     * @return bool
      */
     public function getRdapEnabled()
     {
@@ -726,7 +786,7 @@ class Tld implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets rdap_enabled
      *
-     * @param bool|null $rdap_enabled rdap_enabled
+     * @param bool $rdap_enabled rdap_enabled
      *
      * @return self
      */
@@ -743,7 +803,7 @@ class Tld implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets rdap_url
      *
-     * @return string|null
+     * @return string
      */
     public function getRdapUrl()
     {
@@ -753,7 +813,7 @@ class Tld implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets rdap_url
      *
-     * @param string|null $rdap_url rdap_url
+     * @param string $rdap_url rdap_url
      *
      * @return self
      */
@@ -770,7 +830,7 @@ class Tld implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets contact_data
      *
-     * @return \Shellrent\Sdk\Model\TldContactSpecification[]|null
+     * @return \Shellrent\Sdk\Model\TldContactSpecification[]
      */
     public function getContactData()
     {
@@ -780,7 +840,7 @@ class Tld implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets contact_data
      *
-     * @param \Shellrent\Sdk\Model\TldContactSpecification[]|null $contact_data contact_data
+     * @param \Shellrent\Sdk\Model\TldContactSpecification[] $contact_data contact_data
      *
      * @return self
      */
@@ -797,7 +857,7 @@ class Tld implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets update_contact_r
      *
-     * @return bool|null
+     * @return bool
      */
     public function getUpdateContactR()
     {
@@ -807,7 +867,7 @@ class Tld implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets update_contact_r
      *
-     * @param bool|null $update_contact_r update_contact_r
+     * @param bool $update_contact_r update_contact_r
      *
      * @return self
      */
@@ -824,7 +884,7 @@ class Tld implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets update_contact_a
      *
-     * @return bool|null
+     * @return bool
      */
     public function getUpdateContactA()
     {
@@ -834,7 +894,7 @@ class Tld implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets update_contact_a
      *
-     * @param bool|null $update_contact_a update_contact_a
+     * @param bool $update_contact_a update_contact_a
      *
      * @return self
      */
@@ -851,7 +911,7 @@ class Tld implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets update_contact_t
      *
-     * @return bool|null
+     * @return bool
      */
     public function getUpdateContactT()
     {
@@ -861,7 +921,7 @@ class Tld implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets update_contact_t
      *
-     * @param bool|null $update_contact_t update_contact_t
+     * @param bool $update_contact_t update_contact_t
      *
      * @return self
      */
@@ -878,7 +938,7 @@ class Tld implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets update_contact_o
      *
-     * @return bool|null
+     * @return bool
      */
     public function getUpdateContactO()
     {
@@ -888,7 +948,7 @@ class Tld implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets update_contact_o
      *
-     * @param bool|null $update_contact_o update_contact_o
+     * @param bool $update_contact_o update_contact_o
      *
      * @return self
      */
@@ -905,7 +965,7 @@ class Tld implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets update_contact_additional
      *
-     * @return bool|null
+     * @return bool
      */
     public function getUpdateContactAdditional()
     {
@@ -915,7 +975,7 @@ class Tld implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets update_contact_additional
      *
-     * @param bool|null $update_contact_additional update_contact_additional
+     * @param bool $update_contact_additional update_contact_additional
      *
      * @return self
      */
@@ -932,7 +992,7 @@ class Tld implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets update_contact_transfer
      *
-     * @return bool|null
+     * @return bool
      */
     public function getUpdateContactTransfer()
     {
@@ -942,7 +1002,7 @@ class Tld implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets update_contact_transfer
      *
-     * @param bool|null $update_contact_transfer update_contact_transfer
+     * @param bool $update_contact_transfer update_contact_transfer
      *
      * @return self
      */
@@ -959,7 +1019,7 @@ class Tld implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets transfer_authcode
      *
-     * @return bool|null
+     * @return bool
      */
     public function getTransferAuthcode()
     {
@@ -969,7 +1029,7 @@ class Tld implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets transfer_authcode
      *
-     * @param bool|null $transfer_authcode transfer_authcode
+     * @param bool $transfer_authcode transfer_authcode
      *
      * @return self
      */

@@ -4,13 +4,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**cloud_storage_id** | **int** |  | [optional]
-**purchase_id** | **int** |  | [optional]
-**name** | **string** |  | [optional]
-**read_write_host** | **string** |  | [optional]
-**read_only_host** | **string** |  | [optional]
-**app_host** | **string** |  | [optional]
-**group_disk_used_bytes** | **int** |  | [optional]
-**date_sync** | **\DateTime** |  | [optional]
+**cloud_storage_id** | **int** |  |
+**purchase_id** | **int** |  |
+**name** | **string** |  |
+**read_write_host** | **string** |  |
+**read_only_host** | **string** |  |
+**app_host** | **string** |  |
+**group_disk_used_bytes** | **int** |  |
+**date_sync** | **\DateTime** |  |
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

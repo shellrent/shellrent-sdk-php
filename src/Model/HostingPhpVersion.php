@@ -288,6 +288,15 @@ class HostingPhpVersion implements ModelInterface, ArrayAccess, \JsonSerializabl
     {
         $invalidProperties = [];
 
+        if ($this->container['version'] === null) {
+            $invalidProperties[] = "'version' can't be null";
+        }
+        if ($this->container['is_current'] === null) {
+            $invalidProperties[] = "'is_current' can't be null";
+        }
+        if ($this->container['is_default'] === null) {
+            $invalidProperties[] = "'is_default' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -306,7 +315,7 @@ class HostingPhpVersion implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Gets version
      *
-     * @return string|null
+     * @return string
      */
     public function getVersion()
     {
@@ -316,7 +325,7 @@ class HostingPhpVersion implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets version
      *
-     * @param string|null $version version
+     * @param string $version version
      *
      * @return self
      */
@@ -333,7 +342,7 @@ class HostingPhpVersion implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Gets is_current
      *
-     * @return bool|null
+     * @return bool
      */
     public function getIsCurrent()
     {
@@ -343,7 +352,7 @@ class HostingPhpVersion implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets is_current
      *
-     * @param bool|null $is_current is_current
+     * @param bool $is_current is_current
      *
      * @return self
      */
@@ -360,7 +369,7 @@ class HostingPhpVersion implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Gets is_default
      *
-     * @return bool|null
+     * @return bool
      */
     public function getIsDefault()
     {
@@ -370,7 +379,7 @@ class HostingPhpVersion implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets is_default
      *
-     * @param bool|null $is_default is_default
+     * @param bool $is_default is_default
      *
      * @return self
      */

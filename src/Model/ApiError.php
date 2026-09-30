@@ -85,8 +85,8 @@ class ApiError implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static array $openAPINullables = [
         'error' => false,
         'message' => false,
-        'data' => false,
-        'meta' => false
+        'data' => true,
+        'meta' => true
     ];
 
     /**
@@ -305,11 +305,11 @@ class ApiError implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['message'] === null) {
             $invalidProperties[] = "'message' can't be null";
         }
-        if ($this->container['data'] === null) {
-            $invalidProperties[] = "'data' can't be null";
+        if ($this->container['data'] === null && !$this->isNullableSetToNull('data')) {
+            $invalidProperties[] = "'data' is required";
         }
-        if ($this->container['meta'] === null) {
-            $invalidProperties[] = "'meta' can't be null";
+        if ($this->container['meta'] === null && !$this->isNullableSetToNull('meta')) {
+            $invalidProperties[] = "'meta' is required";
         }
         return $invalidProperties;
     }
@@ -387,7 +387,7 @@ class ApiError implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets data
      *
-     * @return object
+     * @return object|null
      */
     public function getData()
     {
@@ -397,14 +397,21 @@ class ApiError implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets data
      *
-     * @param object $data Oggetto dati vuoto
+     * @param object|null $data Null nelle risposte d'errore
      *
      * @return self
      */
     public function setData($data)
     {
         if (is_null($data)) {
-            throw new \InvalidArgumentException('non-nullable data cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'data');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('data', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['data'] = $data;
 
@@ -414,7 +421,7 @@ class ApiError implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets meta
      *
-     * @return object
+     * @return object|null
      */
     public function getMeta()
     {
@@ -424,14 +431,21 @@ class ApiError implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets meta
      *
-     * @param object $meta Oggetto meta vuoto
+     * @param object|null $meta Null nelle risposte d'errore
      *
      * @return self
      */
     public function setMeta($meta)
     {
         if (is_null($meta)) {
-            throw new \InvalidArgumentException('non-nullable meta cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'meta');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('meta', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['meta'] = $meta;
 

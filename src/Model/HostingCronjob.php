@@ -358,6 +358,45 @@ class HostingCronjob implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
+        if ($this->container['cronjob_id'] === null) {
+            $invalidProperties[] = "'cronjob_id' can't be null";
+        }
+        if ($this->container['hosting_id'] === null) {
+            $invalidProperties[] = "'hosting_id' can't be null";
+        }
+        if ($this->container['purchase_id'] === null) {
+            $invalidProperties[] = "'purchase_id' can't be null";
+        }
+        if ($this->container['request_url'] === null) {
+            $invalidProperties[] = "'request_url' can't be null";
+        }
+        if ($this->container['http_request_method'] === null && !$this->isNullableSetToNull('http_request_method')) {
+            $invalidProperties[] = "'http_request_method' is required";
+        }
+        if ($this->container['plan_month'] === null && !$this->isNullableSetToNull('plan_month')) {
+            $invalidProperties[] = "'plan_month' is required";
+        }
+        if ($this->container['plan_monthday'] === null && !$this->isNullableSetToNull('plan_monthday')) {
+            $invalidProperties[] = "'plan_monthday' is required";
+        }
+        if ($this->container['plan_weekday'] === null && !$this->isNullableSetToNull('plan_weekday')) {
+            $invalidProperties[] = "'plan_weekday' is required";
+        }
+        if ($this->container['plan_hour'] === null && !$this->isNullableSetToNull('plan_hour')) {
+            $invalidProperties[] = "'plan_hour' is required";
+        }
+        if ($this->container['plan_minute'] === null && !$this->isNullableSetToNull('plan_minute')) {
+            $invalidProperties[] = "'plan_minute' is required";
+        }
+        if ($this->container['active'] === null) {
+            $invalidProperties[] = "'active' can't be null";
+        }
+        if ($this->container['date_created'] === null && !$this->isNullableSetToNull('date_created')) {
+            $invalidProperties[] = "'date_created' is required";
+        }
+        if ($this->container['date_disabled'] === null && !$this->isNullableSetToNull('date_disabled')) {
+            $invalidProperties[] = "'date_disabled' is required";
+        }
         return $invalidProperties;
     }
 
@@ -376,7 +415,7 @@ class HostingCronjob implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets cronjob_id
      *
-     * @return int|null
+     * @return int
      */
     public function getCronjobId()
     {
@@ -386,7 +425,7 @@ class HostingCronjob implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets cronjob_id
      *
-     * @param int|null $cronjob_id cronjob_id
+     * @param int $cronjob_id cronjob_id
      *
      * @return self
      */
@@ -403,7 +442,7 @@ class HostingCronjob implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets hosting_id
      *
-     * @return int|null
+     * @return int
      */
     public function getHostingId()
     {
@@ -413,7 +452,7 @@ class HostingCronjob implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets hosting_id
      *
-     * @param int|null $hosting_id hosting_id
+     * @param int $hosting_id hosting_id
      *
      * @return self
      */
@@ -430,7 +469,7 @@ class HostingCronjob implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets purchase_id
      *
-     * @return int|null
+     * @return int
      */
     public function getPurchaseId()
     {
@@ -440,7 +479,7 @@ class HostingCronjob implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets purchase_id
      *
-     * @param int|null $purchase_id purchase_id
+     * @param int $purchase_id purchase_id
      *
      * @return self
      */
@@ -457,7 +496,7 @@ class HostingCronjob implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets request_url
      *
-     * @return string|null
+     * @return string
      */
     public function getRequestUrl()
     {
@@ -467,7 +506,7 @@ class HostingCronjob implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets request_url
      *
-     * @param string|null $request_url request_url
+     * @param string $request_url request_url
      *
      * @return self
      */
@@ -688,7 +727,7 @@ class HostingCronjob implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets active
      *
-     * @return bool|null
+     * @return bool
      */
     public function getActive()
     {
@@ -698,7 +737,7 @@ class HostingCronjob implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets active
      *
-     * @param bool|null $active active
+     * @param bool $active active
      *
      * @return self
      */

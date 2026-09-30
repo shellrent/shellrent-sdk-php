@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**version** | **string** |  | [optional]
-**is_current** | **bool** |  | [optional]
-**is_default** | **bool** |  | [optional]
+**version** | **string** |  |
+**is_current** | **bool** |  |
+**is_default** | **bool** |  |
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

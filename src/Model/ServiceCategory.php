@@ -295,6 +295,18 @@ class ServiceCategory implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
+        if ($this->container['category_code'] === null) {
+            $invalidProperties[] = "'category_code' can't be null";
+        }
+        if ($this->container['category_name'] === null) {
+            $invalidProperties[] = "'category_name' can't be null";
+        }
+        if ($this->container['area_code'] === null) {
+            $invalidProperties[] = "'area_code' can't be null";
+        }
+        if ($this->container['area_name'] === null) {
+            $invalidProperties[] = "'area_name' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -313,7 +325,7 @@ class ServiceCategory implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets category_code
      *
-     * @return string|null
+     * @return string
      */
     public function getCategoryCode()
     {
@@ -323,7 +335,7 @@ class ServiceCategory implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets category_code
      *
-     * @param string|null $category_code category_code
+     * @param string $category_code category_code
      *
      * @return self
      */
@@ -340,7 +352,7 @@ class ServiceCategory implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets category_name
      *
-     * @return string|null
+     * @return string
      */
     public function getCategoryName()
     {
@@ -350,7 +362,7 @@ class ServiceCategory implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets category_name
      *
-     * @param string|null $category_name category_name
+     * @param string $category_name category_name
      *
      * @return self
      */
@@ -367,7 +379,7 @@ class ServiceCategory implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets area_code
      *
-     * @return string|null
+     * @return string
      */
     public function getAreaCode()
     {
@@ -377,7 +389,7 @@ class ServiceCategory implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets area_code
      *
-     * @param string|null $area_code area_code
+     * @param string $area_code area_code
      *
      * @return self
      */
@@ -394,7 +406,7 @@ class ServiceCategory implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets area_name
      *
-     * @return string|null
+     * @return string
      */
     public function getAreaName()
     {
@@ -404,7 +416,7 @@ class ServiceCategory implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets area_name
      *
-     * @param string|null $area_name area_name
+     * @param string $area_name area_name
      *
      * @return self
      */

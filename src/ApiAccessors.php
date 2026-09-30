@@ -35,13 +35,13 @@ use Shellrent\Sdk\Api\HostingApi;
 use Shellrent\Sdk\Api\LicenseApi;
 use Shellrent\Sdk\Api\MonitoringApi;
 use Shellrent\Sdk\Api\OAuthApi;
-use Shellrent\Sdk\Api\PECApi;
 use Shellrent\Sdk\Api\PaymentApi;
+use Shellrent\Sdk\Api\PecApi;
 use Shellrent\Sdk\Api\PurchasesApi;
-use Shellrent\Sdk\Api\SSLApi;
 use Shellrent\Sdk\Api\ServerApi;
 use Shellrent\Sdk\Api\ShopApi;
 use Shellrent\Sdk\Api\SmsApi;
+use Shellrent\Sdk\Api\SslApi;
 use Shellrent\Sdk\Api\StorageApi;
 
 /**
@@ -57,13 +57,13 @@ trait ApiAccessors
     private ?LicenseApi $licenseApi = null;
     private ?MonitoringApi $monitoringApi = null;
     private ?OAuthApi $oAuthApi = null;
-    private ?PECApi $pecApi = null;
     private ?PaymentApi $paymentApi = null;
+    private ?PecApi $pecApi = null;
     private ?PurchasesApi $purchasesApi = null;
-    private ?SSLApi $sslApi = null;
     private ?ServerApi $serverApi = null;
     private ?ShopApi $shopApi = null;
     private ?SmsApi $smsApi = null;
+    private ?SslApi $sslApi = null;
     private ?StorageApi $storageApi = null;
 
     abstract public function getHttpClient(): ClientInterface;
@@ -135,14 +135,6 @@ trait ApiAccessors
     }
 
     /**
-     * PEC
-     */
-    public function pec(): PECApi
-    {
-        return $this->pecApi ??= new PECApi($this->getHttpClient(), $this->getConfig());
-    }
-
-    /**
      * Payment
      */
     public function payment(): PaymentApi
@@ -151,19 +143,19 @@ trait ApiAccessors
     }
 
     /**
+     * PEC
+     */
+    public function pec(): PecApi
+    {
+        return $this->pecApi ??= new PecApi($this->getHttpClient(), $this->getConfig());
+    }
+
+    /**
      * Purchases
      */
     public function purchases(): PurchasesApi
     {
         return $this->purchasesApi ??= new PurchasesApi($this->getHttpClient(), $this->getConfig());
-    }
-
-    /**
-     * SSL Certificates
-     */
-    public function ssl(): SSLApi
-    {
-        return $this->sslApi ??= new SSLApi($this->getHttpClient(), $this->getConfig());
     }
 
     /**
@@ -188,6 +180,14 @@ trait ApiAccessors
     public function sms(): SmsApi
     {
         return $this->smsApi ??= new SmsApi($this->getHttpClient(), $this->getConfig());
+    }
+
+    /**
+     * SSL Certificates
+     */
+    public function ssl(): SslApi
+    {
+        return $this->sslApi ??= new SslApi($this->getHttpClient(), $this->getConfig());
     }
 
     /**

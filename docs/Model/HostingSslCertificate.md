@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**hosting_ssl_certificate_id** | **int** |  | [optional]
-**hosting_id** | **int** |  | [optional]
-**ssl_certificate_id** | **int** |  | [optional]
-**lets_encrypt_id** | **int** |  | [optional]
-**external_certificate_id** | **int** |  | [optional]
-**cn_type** | **string** |  | [optional]
-**installation_date** | **\DateTime** |  | [optional]
-**https_rewrite** | **bool** |  | [optional]
-**destination_type** | **string** |  | [optional]
+**hosting_ssl_certificate_id** | **int** |  |
+**hosting_id** | **int** |  |
+**ssl_certificate_id** | **int** |  |
+**lets_encrypt_id** | **int** |  |
+**external_certificate_id** | **int** |  |
+**cn_type** | **string** |  |
+**installation_date** | **\DateTime** |  |
+**https_rewrite** | **bool** |  |
+**destination_type** | **string** |  |
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

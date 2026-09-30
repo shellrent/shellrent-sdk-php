@@ -323,6 +323,27 @@ class SmsMessage implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
+        if ($this->container['id'] === null) {
+            $invalidProperties[] = "'id' can't be null";
+        }
+        if ($this->container['sms_id'] === null) {
+            $invalidProperties[] = "'sms_id' can't be null";
+        }
+        if ($this->container['contact_name'] === null && !$this->isNullableSetToNull('contact_name')) {
+            $invalidProperties[] = "'contact_name' is required";
+        }
+        if ($this->container['phone_number'] === null) {
+            $invalidProperties[] = "'phone_number' can't be null";
+        }
+        if ($this->container['date_sent'] === null && !$this->isNullableSetToNull('date_sent')) {
+            $invalidProperties[] = "'date_sent' is required";
+        }
+        if ($this->container['date_delivered'] === null && !$this->isNullableSetToNull('date_delivered')) {
+            $invalidProperties[] = "'date_delivered' is required";
+        }
+        if ($this->container['error'] === null && !$this->isNullableSetToNull('error')) {
+            $invalidProperties[] = "'error' is required";
+        }
         return $invalidProperties;
     }
 
@@ -341,7 +362,7 @@ class SmsMessage implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets id
      *
-     * @return int|null
+     * @return int
      */
     public function getId()
     {
@@ -351,7 +372,7 @@ class SmsMessage implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets id
      *
-     * @param int|null $id id
+     * @param int $id id
      *
      * @return self
      */
@@ -368,7 +389,7 @@ class SmsMessage implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets sms_id
      *
-     * @return int|null
+     * @return int
      */
     public function getSmsId()
     {
@@ -378,7 +399,7 @@ class SmsMessage implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets sms_id
      *
-     * @param int|null $sms_id sms_id
+     * @param int $sms_id sms_id
      *
      * @return self
      */
@@ -456,7 +477,7 @@ class SmsMessage implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets phone_number
      *
-     * @return string|null
+     * @return string
      */
     public function getPhoneNumber()
     {
@@ -466,7 +487,7 @@ class SmsMessage implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets phone_number
      *
-     * @param string|null $phone_number phone_number
+     * @param string $phone_number phone_number
      *
      * @return self
      */

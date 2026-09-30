@@ -85,7 +85,7 @@ class TaxRegime implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static array $openAPINullables = [
         'regime_code' => false,
         'regime_name' => false,
-        'code_edocument' => false,
+        'code_edocument' => true,
         'tax_rate' => false
     ];
 
@@ -295,6 +295,18 @@ class TaxRegime implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
+        if ($this->container['regime_code'] === null) {
+            $invalidProperties[] = "'regime_code' can't be null";
+        }
+        if ($this->container['regime_name'] === null) {
+            $invalidProperties[] = "'regime_name' can't be null";
+        }
+        if ($this->container['code_edocument'] === null && !$this->isNullableSetToNull('code_edocument')) {
+            $invalidProperties[] = "'code_edocument' is required";
+        }
+        if ($this->container['tax_rate'] === null) {
+            $invalidProperties[] = "'tax_rate' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -313,7 +325,7 @@ class TaxRegime implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets regime_code
      *
-     * @return string|null
+     * @return string
      */
     public function getRegimeCode()
     {
@@ -323,7 +335,7 @@ class TaxRegime implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets regime_code
      *
-     * @param string|null $regime_code regime_code
+     * @param string $regime_code regime_code
      *
      * @return self
      */
@@ -340,7 +352,7 @@ class TaxRegime implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets regime_name
      *
-     * @return string|null
+     * @return string
      */
     public function getRegimeName()
     {
@@ -350,7 +362,7 @@ class TaxRegime implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets regime_name
      *
-     * @param string|null $regime_name regime_name
+     * @param string $regime_name regime_name
      *
      * @return self
      */
@@ -384,7 +396,14 @@ class TaxRegime implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setCodeEdocument($code_edocument)
     {
         if (is_null($code_edocument)) {
-            throw new \InvalidArgumentException('non-nullable code_edocument cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'code_edocument');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('code_edocument', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['code_edocument'] = $code_edocument;
 
@@ -394,7 +413,7 @@ class TaxRegime implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets tax_rate
      *
-     * @return float|null
+     * @return float
      */
     public function getTaxRate()
     {
@@ -404,7 +423,7 @@ class TaxRegime implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets tax_rate
      *
-     * @param float|null $tax_rate tax_rate
+     * @param float $tax_rate tax_rate
      *
      * @return self
      */

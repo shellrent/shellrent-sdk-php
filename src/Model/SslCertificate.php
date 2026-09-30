@@ -442,6 +442,81 @@ class SslCertificate implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
+        if ($this->container['ssl_certificate_id'] === null) {
+            $invalidProperties[] = "'ssl_certificate_id' can't be null";
+        }
+        if ($this->container['purchase_id'] === null) {
+            $invalidProperties[] = "'purchase_id' can't be null";
+        }
+        if ($this->container['domain_name'] === null && !$this->isNullableSetToNull('domain_name')) {
+            $invalidProperties[] = "'domain_name' is required";
+        }
+        if ($this->container['cn_type'] === null && !$this->isNullableSetToNull('cn_type')) {
+            $invalidProperties[] = "'cn_type' is required";
+        }
+        if ($this->container['validation_type'] === null && !$this->isNullableSetToNull('validation_type')) {
+            $invalidProperties[] = "'validation_type' is required";
+        }
+        if ($this->container['san_max'] === null) {
+            $invalidProperties[] = "'san_max' can't be null";
+        }
+        if ($this->container['can_reissue'] === null) {
+            $invalidProperties[] = "'can_reissue' can't be null";
+        }
+        if ($this->container['validation_method'] === null && !$this->isNullableSetToNull('validation_method')) {
+            $invalidProperties[] = "'validation_method' is required";
+        }
+        if ($this->container['valid_to'] === null && !$this->isNullableSetToNull('valid_to')) {
+            $invalidProperties[] = "'valid_to' is required";
+        }
+        if ($this->container['csr_md5_hash'] === null && !$this->isNullableSetToNull('csr_md5_hash')) {
+            $invalidProperties[] = "'csr_md5_hash' is required";
+        }
+        if ($this->container['csr_sha256_hash'] === null && !$this->isNullableSetToNull('csr_sha256_hash')) {
+            $invalidProperties[] = "'csr_sha256_hash' is required";
+        }
+        if ($this->container['certificate_status'] === null && !$this->isNullableSetToNull('certificate_status')) {
+            $invalidProperties[] = "'certificate_status' is required";
+        }
+        if ($this->container['approver_email'] === null && !$this->isNullableSetToNull('approver_email')) {
+            $invalidProperties[] = "'approver_email' is required";
+        }
+        if ($this->container['admin_first_name'] === null && !$this->isNullableSetToNull('admin_first_name')) {
+            $invalidProperties[] = "'admin_first_name' is required";
+        }
+        if ($this->container['admin_last_name'] === null && !$this->isNullableSetToNull('admin_last_name')) {
+            $invalidProperties[] = "'admin_last_name' is required";
+        }
+        if ($this->container['admin_organization'] === null && !$this->isNullableSetToNull('admin_organization')) {
+            $invalidProperties[] = "'admin_organization' is required";
+        }
+        if ($this->container['admin_role'] === null && !$this->isNullableSetToNull('admin_role')) {
+            $invalidProperties[] = "'admin_role' is required";
+        }
+        if ($this->container['admin_email'] === null && !$this->isNullableSetToNull('admin_email')) {
+            $invalidProperties[] = "'admin_email' is required";
+        }
+        if ($this->container['admin_phone_cc'] === null && !$this->isNullableSetToNull('admin_phone_cc')) {
+            $invalidProperties[] = "'admin_phone_cc' is required";
+        }
+        if ($this->container['admin_phone_number'] === null && !$this->isNullableSetToNull('admin_phone_number')) {
+            $invalidProperties[] = "'admin_phone_number' is required";
+        }
+        if ($this->container['admin_address'] === null && !$this->isNullableSetToNull('admin_address')) {
+            $invalidProperties[] = "'admin_address' is required";
+        }
+        if ($this->container['admin_city'] === null && !$this->isNullableSetToNull('admin_city')) {
+            $invalidProperties[] = "'admin_city' is required";
+        }
+        if ($this->container['admin_state'] === null && !$this->isNullableSetToNull('admin_state')) {
+            $invalidProperties[] = "'admin_state' is required";
+        }
+        if ($this->container['admin_postal_code'] === null && !$this->isNullableSetToNull('admin_postal_code')) {
+            $invalidProperties[] = "'admin_postal_code' is required";
+        }
+        if ($this->container['admin_country'] === null && !$this->isNullableSetToNull('admin_country')) {
+            $invalidProperties[] = "'admin_country' is required";
+        }
         return $invalidProperties;
     }
 
@@ -460,7 +535,7 @@ class SslCertificate implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets ssl_certificate_id
      *
-     * @return int|null
+     * @return int
      */
     public function getSslCertificateId()
     {
@@ -470,7 +545,7 @@ class SslCertificate implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets ssl_certificate_id
      *
-     * @param int|null $ssl_certificate_id ssl_certificate_id
+     * @param int $ssl_certificate_id ssl_certificate_id
      *
      * @return self
      */
@@ -487,7 +562,7 @@ class SslCertificate implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets purchase_id
      *
-     * @return int|null
+     * @return int
      */
     public function getPurchaseId()
     {
@@ -497,7 +572,7 @@ class SslCertificate implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets purchase_id
      *
-     * @param int|null $purchase_id purchase_id
+     * @param int $purchase_id purchase_id
      *
      * @return self
      */
@@ -616,7 +691,7 @@ class SslCertificate implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets san_max
      *
-     * @return int|null
+     * @return int
      */
     public function getSanMax()
     {
@@ -626,7 +701,7 @@ class SslCertificate implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets san_max
      *
-     * @param int|null $san_max san_max
+     * @param int $san_max san_max
      *
      * @return self
      */
@@ -643,7 +718,7 @@ class SslCertificate implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets can_reissue
      *
-     * @return bool|null
+     * @return bool
      */
     public function getCanReissue()
     {
@@ -653,7 +728,7 @@ class SslCertificate implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets can_reissue
      *
-     * @param bool|null $can_reissue can_reissue
+     * @param bool $can_reissue can_reissue
      *
      * @return self
      */

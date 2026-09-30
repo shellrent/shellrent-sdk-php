@@ -4,22 +4,22 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**probe_id** | **int** |  | [optional]
-**server_monitoring_id** | **int** |  | [optional]
-**template_id** | **int** |  | [optional]
-**template_code** | **string** |  | [optional]
-**template_name** | **string** |  | [optional]
-**monitoring_item_id** | **int** |  | [optional]
-**monitoring_trigger_id** | **int** |  | [optional]
-**is_default** | **bool** |  | [optional]
-**advanced_item** | **bool** |  | [optional]
-**is_error** | **bool** |  | [optional]
-**monitoring_item_disabled** | **bool** |  | [optional]
-**action_enabled** | **bool** |  | [optional]
-**notification_email** | **string** |  | [optional]
-**notification_sms** | **string** |  | [optional]
-**date_problem** | **\DateTime** |  | [optional]
-**date_last_notification** | **\DateTime** |  | [optional]
-**active** | **bool** |  | [optional]
+**probe_id** | **int** |  |
+**server_monitoring_id** | **int** |  |
+**template_id** | **int** |  |
+**template_code** | **string** |  |
+**template_name** | **string** |  |
+**monitoring_item_id** | **int** |  |
+**monitoring_trigger_id** | **int** |  |
+**is_default** | **bool** |  |
+**advanced_item** | **bool** |  |
+**is_error** | **bool** |  |
+**monitoring_item_disabled** | **bool** |  |
+**action_enabled** | **bool** |  |
+**notification_email** | **string** |  |
+**notification_sms** | **string** |  |
+**date_problem** | **\DateTime** |  |
+**date_last_notification** | **\DateTime** |  |
+**active** | **bool** |  |
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

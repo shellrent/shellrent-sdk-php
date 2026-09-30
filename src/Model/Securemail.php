@@ -102,7 +102,7 @@ class Securemail implements ModelInterface, ArrayAccess, \JsonSerializable
         'service_name' => true,
         'purchase_name' => true,
         'purchase_status_code' => true,
-        'quantity' => false,
+        'quantity' => true,
         'domain' => true,
         'relay_to' => true,
         'relay_to_port' => true,
@@ -344,6 +344,39 @@ class Securemail implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
+        if ($this->container['securemail_id'] === null) {
+            $invalidProperties[] = "'securemail_id' can't be null";
+        }
+        if ($this->container['purchase_id'] === null) {
+            $invalidProperties[] = "'purchase_id' can't be null";
+        }
+        if ($this->container['service_name'] === null && !$this->isNullableSetToNull('service_name')) {
+            $invalidProperties[] = "'service_name' is required";
+        }
+        if ($this->container['purchase_name'] === null && !$this->isNullableSetToNull('purchase_name')) {
+            $invalidProperties[] = "'purchase_name' is required";
+        }
+        if ($this->container['purchase_status_code'] === null && !$this->isNullableSetToNull('purchase_status_code')) {
+            $invalidProperties[] = "'purchase_status_code' is required";
+        }
+        if ($this->container['quantity'] === null && !$this->isNullableSetToNull('quantity')) {
+            $invalidProperties[] = "'quantity' is required";
+        }
+        if ($this->container['domain'] === null && !$this->isNullableSetToNull('domain')) {
+            $invalidProperties[] = "'domain' is required";
+        }
+        if ($this->container['relay_to'] === null && !$this->isNullableSetToNull('relay_to')) {
+            $invalidProperties[] = "'relay_to' is required";
+        }
+        if ($this->container['relay_to_port'] === null && !$this->isNullableSetToNull('relay_to_port')) {
+            $invalidProperties[] = "'relay_to_port' is required";
+        }
+        if ($this->container['is_feasible'] === null) {
+            $invalidProperties[] = "'is_feasible' can't be null";
+        }
+        if ($this->container['provider'] === null) {
+            $invalidProperties[] = "'provider' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -362,7 +395,7 @@ class Securemail implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets securemail_id
      *
-     * @return int|null
+     * @return int
      */
     public function getSecuremailId()
     {
@@ -372,7 +405,7 @@ class Securemail implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets securemail_id
      *
-     * @param int|null $securemail_id securemail_id
+     * @param int $securemail_id securemail_id
      *
      * @return self
      */
@@ -389,7 +422,7 @@ class Securemail implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets purchase_id
      *
-     * @return int|null
+     * @return int
      */
     public function getPurchaseId()
     {
@@ -399,7 +432,7 @@ class Securemail implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets purchase_id
      *
-     * @param int|null $purchase_id purchase_id
+     * @param int $purchase_id purchase_id
      *
      * @return self
      */
@@ -535,7 +568,14 @@ class Securemail implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setQuantity($quantity)
     {
         if (is_null($quantity)) {
-            throw new \InvalidArgumentException('non-nullable quantity cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'quantity');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('quantity', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['quantity'] = $quantity;
 
@@ -647,7 +687,7 @@ class Securemail implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets is_feasible
      *
-     * @return bool|null
+     * @return bool
      */
     public function getIsFeasible()
     {
@@ -657,7 +697,7 @@ class Securemail implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets is_feasible
      *
-     * @param bool|null $is_feasible is_feasible
+     * @param bool $is_feasible is_feasible
      *
      * @return self
      */
@@ -674,7 +714,7 @@ class Securemail implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets provider
      *
-     * @return string|null
+     * @return string
      */
     public function getProvider()
     {
@@ -684,7 +724,7 @@ class Securemail implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets provider
      *
-     * @param string|null $provider provider
+     * @param string $provider provider
      *
      * @return self
      */

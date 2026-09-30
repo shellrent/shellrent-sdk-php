@@ -288,6 +288,15 @@ class PurchaseCanAddAdditional implements ModelInterface, ArrayAccess, \JsonSeri
     {
         $invalidProperties = [];
 
+        if ($this->container['purchase_id'] === null) {
+            $invalidProperties[] = "'purchase_id' can't be null";
+        }
+        if ($this->container['can_add_additional'] === null) {
+            $invalidProperties[] = "'can_add_additional' can't be null";
+        }
+        if ($this->container['services'] === null) {
+            $invalidProperties[] = "'services' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -306,7 +315,7 @@ class PurchaseCanAddAdditional implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Gets purchase_id
      *
-     * @return int|null
+     * @return int
      */
     public function getPurchaseId()
     {
@@ -316,7 +325,7 @@ class PurchaseCanAddAdditional implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets purchase_id
      *
-     * @param int|null $purchase_id purchase_id
+     * @param int $purchase_id purchase_id
      *
      * @return self
      */
@@ -333,7 +342,7 @@ class PurchaseCanAddAdditional implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Gets can_add_additional
      *
-     * @return bool|null
+     * @return bool
      */
     public function getCanAddAdditional()
     {
@@ -343,7 +352,7 @@ class PurchaseCanAddAdditional implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets can_add_additional
      *
-     * @param bool|null $can_add_additional can_add_additional
+     * @param bool $can_add_additional can_add_additional
      *
      * @return self
      */
@@ -360,7 +369,7 @@ class PurchaseCanAddAdditional implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Gets services
      *
-     * @return \Shellrent\Sdk\Model\Service[]|null
+     * @return \Shellrent\Sdk\Model\Service[]
      */
     public function getServices()
     {
@@ -370,7 +379,7 @@ class PurchaseCanAddAdditional implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets services
      *
-     * @param \Shellrent\Sdk\Model\Service[]|null $services Collection of Services to which it is possible to make the change.
+     * @param \Shellrent\Sdk\Model\Service[] $services Collection of Services to which it is possible to make the change.
      *
      * @return self
      */

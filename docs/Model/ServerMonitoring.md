@@ -4,21 +4,21 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**server_monitoring_id** | **int** |  | [optional]
-**purchase_monitoring_id** | **int** |  | [optional]
-**purchase_server_id** | **int** |  | [optional]
-**service_name** | **string** |  | [optional]
-**purchase_name** | **string** |  | [optional]
-**purchase_status_code** | **string** |  | [optional]
-**monitoring_key** | **string** |  | [optional]
-**is_server_monitored** | **bool** |  | [optional]
-**is_ip_monitored** | **bool** |  | [optional]
-**is_external_device_monitored** | **bool** |  | [optional]
-**monitoring_host_enabled** | **bool** |  | [optional]
-**monitoring_type** | **string** |  | [optional]
-**probe_limit** | **int** |  | [optional]
-**severity_level** | **string** |  | [optional]
-**email_notification** | **string** |  | [optional]
-**sms_notification** | **string** |  | [optional]
+**server_monitoring_id** | **int** |  |
+**purchase_monitoring_id** | **int** |  |
+**purchase_server_id** | **int** |  |
+**service_name** | **string** |  |
+**purchase_name** | **string** |  |
+**purchase_status_code** | **string** |  |
+**monitoring_key** | **string** |  |
+**is_server_monitored** | **bool** |  |
+**is_ip_monitored** | **bool** |  |
+**is_external_device_monitored** | **bool** |  |
+**monitoring_host_enabled** | **bool** |  |
+**monitoring_type** | **string** |  |
+**probe_limit** | **int** |  |
+**severity_level** | **string** |  |
+**email_notification** | **string** |  |
+**sms_notification** | **string** |  |
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

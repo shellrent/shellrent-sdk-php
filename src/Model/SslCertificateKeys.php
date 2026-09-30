@@ -302,6 +302,21 @@ class SslCertificateKeys implements ModelInterface, ArrayAccess, \JsonSerializab
     {
         $invalidProperties = [];
 
+        if ($this->container['ssl_certificate_id'] === null) {
+            $invalidProperties[] = "'ssl_certificate_id' can't be null";
+        }
+        if ($this->container['csr'] === null && !$this->isNullableSetToNull('csr')) {
+            $invalidProperties[] = "'csr' is required";
+        }
+        if ($this->container['private_key'] === null && !$this->isNullableSetToNull('private_key')) {
+            $invalidProperties[] = "'private_key' is required";
+        }
+        if ($this->container['public_key'] === null && !$this->isNullableSetToNull('public_key')) {
+            $invalidProperties[] = "'public_key' is required";
+        }
+        if ($this->container['certificate_authority'] === null && !$this->isNullableSetToNull('certificate_authority')) {
+            $invalidProperties[] = "'certificate_authority' is required";
+        }
         return $invalidProperties;
     }
 
@@ -320,7 +335,7 @@ class SslCertificateKeys implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Gets ssl_certificate_id
      *
-     * @return int|null
+     * @return int
      */
     public function getSslCertificateId()
     {
@@ -330,7 +345,7 @@ class SslCertificateKeys implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets ssl_certificate_id
      *
-     * @param int|null $ssl_certificate_id ssl_certificate_id
+     * @param int $ssl_certificate_id ssl_certificate_id
      *
      * @return self
      */

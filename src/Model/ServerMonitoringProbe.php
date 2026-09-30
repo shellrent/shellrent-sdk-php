@@ -386,6 +386,57 @@ class ServerMonitoringProbe implements ModelInterface, ArrayAccess, \JsonSeriali
     {
         $invalidProperties = [];
 
+        if ($this->container['probe_id'] === null) {
+            $invalidProperties[] = "'probe_id' can't be null";
+        }
+        if ($this->container['server_monitoring_id'] === null) {
+            $invalidProperties[] = "'server_monitoring_id' can't be null";
+        }
+        if ($this->container['template_id'] === null && !$this->isNullableSetToNull('template_id')) {
+            $invalidProperties[] = "'template_id' is required";
+        }
+        if ($this->container['template_code'] === null && !$this->isNullableSetToNull('template_code')) {
+            $invalidProperties[] = "'template_code' is required";
+        }
+        if ($this->container['template_name'] === null && !$this->isNullableSetToNull('template_name')) {
+            $invalidProperties[] = "'template_name' is required";
+        }
+        if ($this->container['monitoring_item_id'] === null && !$this->isNullableSetToNull('monitoring_item_id')) {
+            $invalidProperties[] = "'monitoring_item_id' is required";
+        }
+        if ($this->container['monitoring_trigger_id'] === null && !$this->isNullableSetToNull('monitoring_trigger_id')) {
+            $invalidProperties[] = "'monitoring_trigger_id' is required";
+        }
+        if ($this->container['is_default'] === null) {
+            $invalidProperties[] = "'is_default' can't be null";
+        }
+        if ($this->container['advanced_item'] === null) {
+            $invalidProperties[] = "'advanced_item' can't be null";
+        }
+        if ($this->container['is_error'] === null) {
+            $invalidProperties[] = "'is_error' can't be null";
+        }
+        if ($this->container['monitoring_item_disabled'] === null) {
+            $invalidProperties[] = "'monitoring_item_disabled' can't be null";
+        }
+        if ($this->container['action_enabled'] === null) {
+            $invalidProperties[] = "'action_enabled' can't be null";
+        }
+        if ($this->container['notification_email'] === null && !$this->isNullableSetToNull('notification_email')) {
+            $invalidProperties[] = "'notification_email' is required";
+        }
+        if ($this->container['notification_sms'] === null && !$this->isNullableSetToNull('notification_sms')) {
+            $invalidProperties[] = "'notification_sms' is required";
+        }
+        if ($this->container['date_problem'] === null && !$this->isNullableSetToNull('date_problem')) {
+            $invalidProperties[] = "'date_problem' is required";
+        }
+        if ($this->container['date_last_notification'] === null && !$this->isNullableSetToNull('date_last_notification')) {
+            $invalidProperties[] = "'date_last_notification' is required";
+        }
+        if ($this->container['active'] === null) {
+            $invalidProperties[] = "'active' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -404,7 +455,7 @@ class ServerMonitoringProbe implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Gets probe_id
      *
-     * @return int|null
+     * @return int
      */
     public function getProbeId()
     {
@@ -414,7 +465,7 @@ class ServerMonitoringProbe implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets probe_id
      *
-     * @param int|null $probe_id probe_id
+     * @param int $probe_id probe_id
      *
      * @return self
      */
@@ -431,7 +482,7 @@ class ServerMonitoringProbe implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Gets server_monitoring_id
      *
-     * @return int|null
+     * @return int
      */
     public function getServerMonitoringId()
     {
@@ -441,7 +492,7 @@ class ServerMonitoringProbe implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets server_monitoring_id
      *
-     * @param int|null $server_monitoring_id server_monitoring_id
+     * @param int $server_monitoring_id server_monitoring_id
      *
      * @return self
      */
@@ -628,7 +679,7 @@ class ServerMonitoringProbe implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Gets is_default
      *
-     * @return bool|null
+     * @return bool
      */
     public function getIsDefault()
     {
@@ -638,7 +689,7 @@ class ServerMonitoringProbe implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets is_default
      *
-     * @param bool|null $is_default is_default
+     * @param bool $is_default is_default
      *
      * @return self
      */
@@ -655,7 +706,7 @@ class ServerMonitoringProbe implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Gets advanced_item
      *
-     * @return bool|null
+     * @return bool
      */
     public function getAdvancedItem()
     {
@@ -665,7 +716,7 @@ class ServerMonitoringProbe implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets advanced_item
      *
-     * @param bool|null $advanced_item advanced_item
+     * @param bool $advanced_item advanced_item
      *
      * @return self
      */
@@ -682,7 +733,7 @@ class ServerMonitoringProbe implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Gets is_error
      *
-     * @return bool|null
+     * @return bool
      */
     public function getIsError()
     {
@@ -692,7 +743,7 @@ class ServerMonitoringProbe implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets is_error
      *
-     * @param bool|null $is_error is_error
+     * @param bool $is_error is_error
      *
      * @return self
      */
@@ -709,7 +760,7 @@ class ServerMonitoringProbe implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Gets monitoring_item_disabled
      *
-     * @return bool|null
+     * @return bool
      */
     public function getMonitoringItemDisabled()
     {
@@ -719,7 +770,7 @@ class ServerMonitoringProbe implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets monitoring_item_disabled
      *
-     * @param bool|null $monitoring_item_disabled monitoring_item_disabled
+     * @param bool $monitoring_item_disabled monitoring_item_disabled
      *
      * @return self
      */
@@ -736,7 +787,7 @@ class ServerMonitoringProbe implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Gets action_enabled
      *
-     * @return bool|null
+     * @return bool
      */
     public function getActionEnabled()
     {
@@ -746,7 +797,7 @@ class ServerMonitoringProbe implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets action_enabled
      *
-     * @param bool|null $action_enabled action_enabled
+     * @param bool $action_enabled action_enabled
      *
      * @return self
      */
@@ -899,7 +950,7 @@ class ServerMonitoringProbe implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Gets active
      *
-     * @return bool|null
+     * @return bool
      */
     public function getActive()
     {
@@ -909,7 +960,7 @@ class ServerMonitoringProbe implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets active
      *
-     * @param bool|null $active active
+     * @param bool $active active
      *
      * @return self
      */

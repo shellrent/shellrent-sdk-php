@@ -295,6 +295,18 @@ class WebMonitoringDownloadSpeedChart implements ModelInterface, ArrayAccess, \J
     {
         $invalidProperties = [];
 
+        if ($this->container['web_monitoring_id'] === null) {
+            $invalidProperties[] = "'web_monitoring_id' can't be null";
+        }
+        if ($this->container['interval'] === null) {
+            $invalidProperties[] = "'interval' can't be null";
+        }
+        if ($this->container['unit'] === null) {
+            $invalidProperties[] = "'unit' can't be null";
+        }
+        if ($this->container['points'] === null) {
+            $invalidProperties[] = "'points' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -313,7 +325,7 @@ class WebMonitoringDownloadSpeedChart implements ModelInterface, ArrayAccess, \J
     /**
      * Gets web_monitoring_id
      *
-     * @return int|null
+     * @return int
      */
     public function getWebMonitoringId()
     {
@@ -323,7 +335,7 @@ class WebMonitoringDownloadSpeedChart implements ModelInterface, ArrayAccess, \J
     /**
      * Sets web_monitoring_id
      *
-     * @param int|null $web_monitoring_id web_monitoring_id
+     * @param int $web_monitoring_id web_monitoring_id
      *
      * @return self
      */
@@ -340,7 +352,7 @@ class WebMonitoringDownloadSpeedChart implements ModelInterface, ArrayAccess, \J
     /**
      * Gets interval
      *
-     * @return string|null
+     * @return string
      */
     public function getInterval()
     {
@@ -350,7 +362,7 @@ class WebMonitoringDownloadSpeedChart implements ModelInterface, ArrayAccess, \J
     /**
      * Sets interval
      *
-     * @param string|null $interval interval
+     * @param string $interval interval
      *
      * @return self
      */
@@ -367,7 +379,7 @@ class WebMonitoringDownloadSpeedChart implements ModelInterface, ArrayAccess, \J
     /**
      * Gets unit
      *
-     * @return string|null
+     * @return string
      */
     public function getUnit()
     {
@@ -377,7 +389,7 @@ class WebMonitoringDownloadSpeedChart implements ModelInterface, ArrayAccess, \J
     /**
      * Sets unit
      *
-     * @param string|null $unit unit
+     * @param string $unit unit
      *
      * @return self
      */
@@ -394,7 +406,7 @@ class WebMonitoringDownloadSpeedChart implements ModelInterface, ArrayAccess, \J
     /**
      * Gets points
      *
-     * @return \Shellrent\Sdk\Model\WebMonitoringDownloadSpeedChartPointsInner[]|null
+     * @return \Shellrent\Sdk\Model\WebMonitoringDownloadSpeedChartPointsInner[]
      */
     public function getPoints()
     {
@@ -404,7 +416,7 @@ class WebMonitoringDownloadSpeedChart implements ModelInterface, ArrayAccess, \J
     /**
      * Sets points
      *
-     * @param \Shellrent\Sdk\Model\WebMonitoringDownloadSpeedChartPointsInner[]|null $points points
+     * @param \Shellrent\Sdk\Model\WebMonitoringDownloadSpeedChartPointsInner[] $points points
      *
      * @return self
      */

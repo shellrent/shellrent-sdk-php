@@ -4,11 +4,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**format** | **string** |  | [optional]
-**name** | **string** |  | [optional]
-**description** | **string** |  | [optional]
-**filename** | **string** |  | [optional]
-**available** | **bool** |  | [optional]
-**requires_passphrase** | **bool** |  | [optional]
+**format** | **string** |  |
+**name** | **string** |  |
+**description** | **string** |  |
+**filename** | **string** |  |
+**available** | **bool** |  |
+**requires_passphrase** | **bool** |  |
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

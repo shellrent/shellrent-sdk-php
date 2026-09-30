@@ -281,6 +281,12 @@ class ServiceChange implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
+        if ($this->container['service'] === null) {
+            $invalidProperties[] = "'service' can't be null";
+        }
+        if ($this->container['activation_price'] === null) {
+            $invalidProperties[] = "'activation_price' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -299,7 +305,7 @@ class ServiceChange implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets service
      *
-     * @return \Shellrent\Sdk\Model\Service|null
+     * @return \Shellrent\Sdk\Model\Service
      */
     public function getService()
     {
@@ -309,7 +315,7 @@ class ServiceChange implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets service
      *
-     * @param \Shellrent\Sdk\Model\Service|null $service service
+     * @param \Shellrent\Sdk\Model\Service $service service
      *
      * @return self
      */
@@ -326,7 +332,7 @@ class ServiceChange implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets activation_price
      *
-     * @return \Shellrent\Sdk\Model\Amount|null
+     * @return \Shellrent\Sdk\Model\Amount
      */
     public function getActivationPrice()
     {
@@ -336,7 +342,7 @@ class ServiceChange implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets activation_price
      *
-     * @param \Shellrent\Sdk\Model\Amount|null $activation_price activation_price
+     * @param \Shellrent\Sdk\Model\Amount $activation_price activation_price
      *
      * @return self
      */

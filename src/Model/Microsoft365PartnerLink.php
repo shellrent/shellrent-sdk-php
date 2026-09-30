@@ -274,6 +274,9 @@ class Microsoft365PartnerLink implements ModelInterface, ArrayAccess, \JsonSeria
     {
         $invalidProperties = [];
 
+        if ($this->container['partner_link'] === null) {
+            $invalidProperties[] = "'partner_link' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -292,7 +295,7 @@ class Microsoft365PartnerLink implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Gets partner_link
      *
-     * @return string|null
+     * @return string
      */
     public function getPartnerLink()
     {
@@ -302,7 +305,7 @@ class Microsoft365PartnerLink implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets partner_link
      *
-     * @param string|null $partner_link partner_link
+     * @param string $partner_link partner_link
      *
      * @return self
      */

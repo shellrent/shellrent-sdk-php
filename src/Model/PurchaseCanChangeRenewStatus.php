@@ -281,6 +281,12 @@ class PurchaseCanChangeRenewStatus implements ModelInterface, ArrayAccess, \Json
     {
         $invalidProperties = [];
 
+        if ($this->container['purchase_id'] === null) {
+            $invalidProperties[] = "'purchase_id' can't be null";
+        }
+        if ($this->container['can_change_renew_status'] === null) {
+            $invalidProperties[] = "'can_change_renew_status' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -299,7 +305,7 @@ class PurchaseCanChangeRenewStatus implements ModelInterface, ArrayAccess, \Json
     /**
      * Gets purchase_id
      *
-     * @return int|null
+     * @return int
      */
     public function getPurchaseId()
     {
@@ -309,7 +315,7 @@ class PurchaseCanChangeRenewStatus implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets purchase_id
      *
-     * @param int|null $purchase_id purchase_id
+     * @param int $purchase_id purchase_id
      *
      * @return self
      */
@@ -326,7 +332,7 @@ class PurchaseCanChangeRenewStatus implements ModelInterface, ArrayAccess, \Json
     /**
      * Gets can_change_renew_status
      *
-     * @return bool|null
+     * @return bool
      */
     public function getCanChangeRenewStatus()
     {
@@ -336,7 +342,7 @@ class PurchaseCanChangeRenewStatus implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets can_change_renew_status
      *
-     * @param bool|null $can_change_renew_status can_change_renew_status
+     * @param bool $can_change_renew_status can_change_renew_status
      *
      * @return self
      */

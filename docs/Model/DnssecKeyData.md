@@ -4,10 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**zone_ttl** | **int** |  | [optional]
-**flags** | **int** |  | [optional]
-**key_protocol** | **int** |  | [optional]
-**key_algorithm** | **int** |  | [optional]
-**public_key** | **string** |  | [optional]
+**zone_ttl** | **int** |  |
+**flags** | **int** |  |
+**key_protocol** | **int** |  |
+**key_algorithm** | **int** |  |
+**public_key** | **string** |  |
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

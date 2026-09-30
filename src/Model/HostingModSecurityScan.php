@@ -309,6 +309,24 @@ class HostingModSecurityScan implements ModelInterface, ArrayAccess, \JsonSerial
     {
         $invalidProperties = [];
 
+        if ($this->container['scan_id'] === null) {
+            $invalidProperties[] = "'scan_id' can't be null";
+        }
+        if ($this->container['hosting_id'] === null) {
+            $invalidProperties[] = "'hosting_id' can't be null";
+        }
+        if ($this->container['date_created'] === null) {
+            $invalidProperties[] = "'date_created' can't be null";
+        }
+        if ($this->container['error'] === null && !$this->isNullableSetToNull('error')) {
+            $invalidProperties[] = "'error' is required";
+        }
+        if ($this->container['rules_found'] === null) {
+            $invalidProperties[] = "'rules_found' can't be null";
+        }
+        if ($this->container['rules_excluded'] === null) {
+            $invalidProperties[] = "'rules_excluded' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -327,7 +345,7 @@ class HostingModSecurityScan implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets scan_id
      *
-     * @return int|null
+     * @return int
      */
     public function getScanId()
     {
@@ -337,7 +355,7 @@ class HostingModSecurityScan implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets scan_id
      *
-     * @param int|null $scan_id scan_id
+     * @param int $scan_id scan_id
      *
      * @return self
      */
@@ -354,7 +372,7 @@ class HostingModSecurityScan implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets hosting_id
      *
-     * @return int|null
+     * @return int
      */
     public function getHostingId()
     {
@@ -364,7 +382,7 @@ class HostingModSecurityScan implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets hosting_id
      *
-     * @param int|null $hosting_id hosting_id
+     * @param int $hosting_id hosting_id
      *
      * @return self
      */
@@ -381,7 +399,7 @@ class HostingModSecurityScan implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets date_created
      *
-     * @return \DateTime|null
+     * @return \DateTime
      */
     public function getDateCreated()
     {
@@ -391,7 +409,7 @@ class HostingModSecurityScan implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets date_created
      *
-     * @param \DateTime|null $date_created date_created
+     * @param \DateTime $date_created date_created
      *
      * @return self
      */
@@ -442,7 +460,7 @@ class HostingModSecurityScan implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets rules_found
      *
-     * @return int|null
+     * @return int
      */
     public function getRulesFound()
     {
@@ -452,7 +470,7 @@ class HostingModSecurityScan implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets rules_found
      *
-     * @param int|null $rules_found rules_found
+     * @param int $rules_found rules_found
      *
      * @return self
      */
@@ -469,7 +487,7 @@ class HostingModSecurityScan implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets rules_excluded
      *
-     * @return int|null
+     * @return int
      */
     public function getRulesExcluded()
     {
@@ -479,7 +497,7 @@ class HostingModSecurityScan implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets rules_excluded
      *
-     * @param int|null $rules_excluded rules_excluded
+     * @param int $rules_excluded rules_excluded
      *
      * @return self
      */

@@ -295,6 +295,18 @@ class DnsZone implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
+        if ($this->container['zone_id'] === null) {
+            $invalidProperties[] = "'zone_id' can't be null";
+        }
+        if ($this->container['zone_name'] === null) {
+            $invalidProperties[] = "'zone_name' can't be null";
+        }
+        if ($this->container['nameservers'] === null) {
+            $invalidProperties[] = "'nameservers' can't be null";
+        }
+        if ($this->container['ttl'] === null) {
+            $invalidProperties[] = "'ttl' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -313,7 +325,7 @@ class DnsZone implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets zone_id
      *
-     * @return string|null
+     * @return string
      */
     public function getZoneId()
     {
@@ -323,7 +335,7 @@ class DnsZone implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets zone_id
      *
-     * @param string|null $zone_id zone_id
+     * @param string $zone_id zone_id
      *
      * @return self
      */
@@ -340,7 +352,7 @@ class DnsZone implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets zone_name
      *
-     * @return string|null
+     * @return string
      */
     public function getZoneName()
     {
@@ -350,7 +362,7 @@ class DnsZone implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets zone_name
      *
-     * @param string|null $zone_name zone_name
+     * @param string $zone_name zone_name
      *
      * @return self
      */
@@ -367,7 +379,7 @@ class DnsZone implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets nameservers
      *
-     * @return string[]|null
+     * @return string[]
      */
     public function getNameservers()
     {
@@ -377,7 +389,7 @@ class DnsZone implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets nameservers
      *
-     * @param string[]|null $nameservers nameservers
+     * @param string[] $nameservers nameservers
      *
      * @return self
      */
@@ -394,7 +406,7 @@ class DnsZone implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets ttl
      *
-     * @return int|null
+     * @return int
      */
     public function getTtl()
     {
@@ -404,7 +416,7 @@ class DnsZone implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets ttl
      *
-     * @param int|null $ttl ttl
+     * @param int $ttl ttl
      *
      * @return self
      */

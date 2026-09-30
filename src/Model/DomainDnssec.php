@@ -281,6 +281,12 @@ class DomainDnssec implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
+        if ($this->container['ds_data'] === null) {
+            $invalidProperties[] = "'ds_data' can't be null";
+        }
+        if ($this->container['key_data'] === null) {
+            $invalidProperties[] = "'key_data' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -299,7 +305,7 @@ class DomainDnssec implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets ds_data
      *
-     * @return \Shellrent\Sdk\Model\DnssecDsData[]|null
+     * @return \Shellrent\Sdk\Model\DnssecDsData[]
      */
     public function getDsData()
     {
@@ -309,7 +315,7 @@ class DomainDnssec implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets ds_data
      *
-     * @param \Shellrent\Sdk\Model\DnssecDsData[]|null $ds_data ds_data
+     * @param \Shellrent\Sdk\Model\DnssecDsData[] $ds_data ds_data
      *
      * @return self
      */
@@ -326,7 +332,7 @@ class DomainDnssec implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets key_data
      *
-     * @return \Shellrent\Sdk\Model\DnssecKeyData[]|null
+     * @return \Shellrent\Sdk\Model\DnssecKeyData[]
      */
     public function getKeyData()
     {
@@ -336,7 +342,7 @@ class DomainDnssec implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets key_data
      *
-     * @param \Shellrent\Sdk\Model\DnssecKeyData[]|null $key_data key_data
+     * @param \Shellrent\Sdk\Model\DnssecKeyData[] $key_data key_data
      *
      * @return self
      */

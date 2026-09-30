@@ -302,6 +302,21 @@ class ServerOs implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
+        if ($this->container['os_code'] === null) {
+            $invalidProperties[] = "'os_code' can't be null";
+        }
+        if ($this->container['os_name'] === null) {
+            $invalidProperties[] = "'os_name' can't be null";
+        }
+        if ($this->container['min_ram'] === null && !$this->isNullableSetToNull('min_ram')) {
+            $invalidProperties[] = "'min_ram' is required";
+        }
+        if ($this->container['min_cpu'] === null && !$this->isNullableSetToNull('min_cpu')) {
+            $invalidProperties[] = "'min_cpu' is required";
+        }
+        if ($this->container['min_disk'] === null && !$this->isNullableSetToNull('min_disk')) {
+            $invalidProperties[] = "'min_disk' is required";
+        }
         return $invalidProperties;
     }
 
@@ -320,7 +335,7 @@ class ServerOs implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets os_code
      *
-     * @return string|null
+     * @return string
      */
     public function getOsCode()
     {
@@ -330,7 +345,7 @@ class ServerOs implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets os_code
      *
-     * @param string|null $os_code os_code
+     * @param string $os_code os_code
      *
      * @return self
      */
@@ -347,7 +362,7 @@ class ServerOs implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets os_name
      *
-     * @return string|null
+     * @return string
      */
     public function getOsName()
     {
@@ -357,7 +372,7 @@ class ServerOs implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets os_name
      *
-     * @param string|null $os_name os_name
+     * @param string $os_name os_name
      *
      * @return self
      */

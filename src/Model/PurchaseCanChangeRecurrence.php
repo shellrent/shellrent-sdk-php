@@ -281,6 +281,12 @@ class PurchaseCanChangeRecurrence implements ModelInterface, ArrayAccess, \JsonS
     {
         $invalidProperties = [];
 
+        if ($this->container['purchase_id'] === null) {
+            $invalidProperties[] = "'purchase_id' can't be null";
+        }
+        if ($this->container['can_change_recurrence'] === null) {
+            $invalidProperties[] = "'can_change_recurrence' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -299,7 +305,7 @@ class PurchaseCanChangeRecurrence implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Gets purchase_id
      *
-     * @return int|null
+     * @return int
      */
     public function getPurchaseId()
     {
@@ -309,7 +315,7 @@ class PurchaseCanChangeRecurrence implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets purchase_id
      *
-     * @param int|null $purchase_id purchase_id
+     * @param int $purchase_id purchase_id
      *
      * @return self
      */
@@ -326,7 +332,7 @@ class PurchaseCanChangeRecurrence implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Gets can_change_recurrence
      *
-     * @return bool|null
+     * @return bool
      */
     public function getCanChangeRecurrence()
     {
@@ -336,7 +342,7 @@ class PurchaseCanChangeRecurrence implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets can_change_recurrence
      *
-     * @param bool|null $can_change_recurrence can_change_recurrence
+     * @param bool $can_change_recurrence can_change_recurrence
      *
      * @return self
      */

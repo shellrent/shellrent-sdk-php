@@ -4,12 +4,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **int** |  | [optional]
-**phonebooks** | **int[]** |  | [optional]
-**country** | [**\Shellrent\Sdk\Model\Country**](Country.md) |  | [optional]
-**phone_number** | **string** |  | [optional]
-**name** | **string** |  | [optional]
-**surname** | **string** |  | [optional]
-**birth_date** | **\DateTime** |  | [optional]
+**id** | **int** |  |
+**phonebooks** | **int[]** |  |
+**country** | [**\Shellrent\Sdk\Model\Country**](Country.md) |  |
+**phone_number** | **string** |  |
+**name** | **string** |  |
+**surname** | **string** |  |
+**birth_date** | **\DateTime** |  |
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

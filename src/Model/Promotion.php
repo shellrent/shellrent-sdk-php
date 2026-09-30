@@ -330,6 +330,33 @@ class Promotion implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
+        if ($this->container['promocode'] === null && !$this->isNullableSetToNull('promocode')) {
+            $invalidProperties[] = "'promocode' is required";
+        }
+        if ($this->container['description'] === null) {
+            $invalidProperties[] = "'description' can't be null";
+        }
+        if ($this->container['percentage_increase'] === null && !$this->isNullableSetToNull('percentage_increase')) {
+            $invalidProperties[] = "'percentage_increase' is required";
+        }
+        if ($this->container['percentage_decrease'] === null && !$this->isNullableSetToNull('percentage_decrease')) {
+            $invalidProperties[] = "'percentage_decrease' is required";
+        }
+        if ($this->container['amount_increase'] === null && !$this->isNullableSetToNull('amount_increase')) {
+            $invalidProperties[] = "'amount_increase' is required";
+        }
+        if ($this->container['amount_decrease'] === null && !$this->isNullableSetToNull('amount_decrease')) {
+            $invalidProperties[] = "'amount_decrease' is required";
+        }
+        if ($this->container['amount_fixed'] === null && !$this->isNullableSetToNull('amount_fixed')) {
+            $invalidProperties[] = "'amount_fixed' is required";
+        }
+        if ($this->container['applied_amount'] === null && !$this->isNullableSetToNull('applied_amount')) {
+            $invalidProperties[] = "'applied_amount' is required";
+        }
+        if ($this->container['date_applied'] === null) {
+            $invalidProperties[] = "'date_applied' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -382,7 +409,7 @@ class Promotion implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets description
      *
-     * @return string|null
+     * @return string
      */
     public function getDescription()
     {
@@ -392,7 +419,7 @@ class Promotion implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets description
      *
-     * @param string|null $description description
+     * @param string $description description
      *
      * @return self
      */
@@ -613,7 +640,7 @@ class Promotion implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets date_applied
      *
-     * @return \DateTime|null
+     * @return \DateTime
      */
     public function getDateApplied()
     {
@@ -623,7 +650,7 @@ class Promotion implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets date_applied
      *
-     * @param \DateTime|null $date_applied date_applied
+     * @param \DateTime $date_applied date_applied
      *
      * @return self
      */

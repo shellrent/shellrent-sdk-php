@@ -408,7 +408,7 @@ class OAuthApi
      *
      * @throws \Shellrent\Sdk\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Shellrent\Sdk\Model\OAuthTokenResponse|\Shellrent\Sdk\Model\OAuthError|\Shellrent\Sdk\Model\OAuthError|\Shellrent\Sdk\Model\OAuthError
+     * @return \Shellrent\Sdk\Model\OAuthTokenResponse|\Shellrent\Sdk\Model\OAuthError|\Shellrent\Sdk\Model\OAuthError|\Shellrent\Sdk\Model\OAuthError|\Shellrent\Sdk\Model\OAuthError
      */
     public function requestAccessToken($grant_type, $client_id = null, $client_secret = null, $scope = null, $audience = null, string $contentType = self::contentTypes['requestAccessToken'][0])
     {
@@ -430,7 +430,7 @@ class OAuthApi
      *
      * @throws \Shellrent\Sdk\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Shellrent\Sdk\Model\OAuthTokenResponse|\Shellrent\Sdk\Model\OAuthError|\Shellrent\Sdk\Model\OAuthError|\Shellrent\Sdk\Model\OAuthError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Shellrent\Sdk\Model\OAuthTokenResponse|\Shellrent\Sdk\Model\OAuthError|\Shellrent\Sdk\Model\OAuthError|\Shellrent\Sdk\Model\OAuthError|\Shellrent\Sdk\Model\OAuthError, HTTP status code, HTTP response headers (array of strings)
      */
     public function requestAccessTokenWithHttpInfo($grant_type, $client_id = null, $client_secret = null, $scope = null, $audience = null, string $contentType = self::contentTypes['requestAccessToken'][0])
     {
@@ -473,6 +473,12 @@ class OAuthApi
                         $response,
                     );
                 case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Shellrent\Sdk\Model\OAuthError',
+                        $request,
+                        $response,
+                    );
+                case 429:
                     return $this->handleResponseWithDataType(
                         '\Shellrent\Sdk\Model\OAuthError',
                         $request,
@@ -525,6 +531,14 @@ class OAuthApi
                     $e->setResponseObject($data);
                     throw $e;
                 case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Shellrent\Sdk\Model\OAuthError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\Shellrent\Sdk\Model\OAuthError',

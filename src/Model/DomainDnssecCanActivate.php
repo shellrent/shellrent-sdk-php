@@ -281,6 +281,12 @@ class DomainDnssecCanActivate implements ModelInterface, ArrayAccess, \JsonSeria
     {
         $invalidProperties = [];
 
+        if ($this->container['domain_id'] === null) {
+            $invalidProperties[] = "'domain_id' can't be null";
+        }
+        if ($this->container['can_active'] === null) {
+            $invalidProperties[] = "'can_active' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -299,7 +305,7 @@ class DomainDnssecCanActivate implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Gets domain_id
      *
-     * @return int|null
+     * @return int
      */
     public function getDomainId()
     {
@@ -309,7 +315,7 @@ class DomainDnssecCanActivate implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets domain_id
      *
-     * @param int|null $domain_id domain_id
+     * @param int $domain_id domain_id
      *
      * @return self
      */
@@ -326,7 +332,7 @@ class DomainDnssecCanActivate implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Gets can_active
      *
-     * @return bool|null
+     * @return bool
      */
     public function getCanActive()
     {
@@ -336,7 +342,7 @@ class DomainDnssecCanActivate implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets can_active
      *
-     * @param bool|null $can_active can_active
+     * @param bool $can_active can_active
      *
      * @return self
      */

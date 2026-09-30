@@ -274,6 +274,9 @@ class OneClickAutorenew implements ModelInterface, ArrayAccess, \JsonSerializabl
     {
         $invalidProperties = [];
 
+        if ($this->container['one_click_preference'] === null) {
+            $invalidProperties[] = "'one_click_preference' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -292,7 +295,7 @@ class OneClickAutorenew implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Gets one_click_preference
      *
-     * @return \Shellrent\Sdk\Model\OneClick[]|null
+     * @return \Shellrent\Sdk\Model\OneClick[]
      */
     public function getOneClickPreference()
     {
@@ -302,7 +305,7 @@ class OneClickAutorenew implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets one_click_preference
      *
-     * @param \Shellrent\Sdk\Model\OneClick[]|null $one_click_preference one_click_preference
+     * @param \Shellrent\Sdk\Model\OneClick[] $one_click_preference one_click_preference
      *
      * @return self
      */

@@ -295,6 +295,18 @@ class HostingEmailCatchAll implements ModelInterface, ArrayAccess, \JsonSerializ
     {
         $invalidProperties = [];
 
+        if ($this->container['is_active'] === null) {
+            $invalidProperties[] = "'is_active' can't be null";
+        }
+        if ($this->container['address'] === null) {
+            $invalidProperties[] = "'address' can't be null";
+        }
+        if ($this->container['address_idna'] === null) {
+            $invalidProperties[] = "'address_idna' can't be null";
+        }
+        if ($this->container['destinations'] === null) {
+            $invalidProperties[] = "'destinations' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -313,7 +325,7 @@ class HostingEmailCatchAll implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Gets is_active
      *
-     * @return bool|null
+     * @return bool
      */
     public function getIsActive()
     {
@@ -323,7 +335,7 @@ class HostingEmailCatchAll implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets is_active
      *
-     * @param bool|null $is_active is_active
+     * @param bool $is_active is_active
      *
      * @return self
      */
@@ -340,7 +352,7 @@ class HostingEmailCatchAll implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Gets address
      *
-     * @return string|null
+     * @return string
      */
     public function getAddress()
     {
@@ -350,7 +362,7 @@ class HostingEmailCatchAll implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets address
      *
-     * @param string|null $address address
+     * @param string $address address
      *
      * @return self
      */
@@ -367,7 +379,7 @@ class HostingEmailCatchAll implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Gets address_idna
      *
-     * @return string|null
+     * @return string
      */
     public function getAddressIdna()
     {
@@ -377,7 +389,7 @@ class HostingEmailCatchAll implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets address_idna
      *
-     * @param string|null $address_idna address_idna
+     * @param string $address_idna address_idna
      *
      * @return self
      */
@@ -394,7 +406,7 @@ class HostingEmailCatchAll implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Gets destinations
      *
-     * @return string[]|null
+     * @return string[]
      */
     public function getDestinations()
     {
@@ -404,7 +416,7 @@ class HostingEmailCatchAll implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets destinations
      *
-     * @param string[]|null $destinations destinations
+     * @param string[] $destinations destinations
      *
      * @return self
      */

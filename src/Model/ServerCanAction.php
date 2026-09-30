@@ -281,6 +281,12 @@ class ServerCanAction implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
+        if ($this->container['server_id'] === null) {
+            $invalidProperties[] = "'server_id' can't be null";
+        }
+        if ($this->container['can_action'] === null) {
+            $invalidProperties[] = "'can_action' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -299,7 +305,7 @@ class ServerCanAction implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets server_id
      *
-     * @return int|null
+     * @return int
      */
     public function getServerId()
     {
@@ -309,7 +315,7 @@ class ServerCanAction implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets server_id
      *
-     * @param int|null $server_id server_id
+     * @param int $server_id server_id
      *
      * @return self
      */
@@ -326,7 +332,7 @@ class ServerCanAction implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets can_action
      *
-     * @return bool|null
+     * @return bool
      */
     public function getCanAction()
     {
@@ -336,7 +342,7 @@ class ServerCanAction implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets can_action
      *
-     * @param bool|null $can_action can_action
+     * @param bool $can_action can_action
      *
      * @return self
      */

@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**web_monitoring_id** | **int** |  | [optional]
-**interval** | **string** |  | [optional]
-**unit** | **string** |  | [optional]
-**points** | [**\Shellrent\Sdk\Model\WebMonitoringResponseTimeChartPointsInner[]**](WebMonitoringResponseTimeChartPointsInner.md) |  | [optional]
+**web_monitoring_id** | **int** |  |
+**interval** | **string** |  |
+**unit** | **string** |  |
+**points** | [**\Shellrent\Sdk\Model\WebMonitoringResponseTimeChartPointsInner[]**](WebMonitoringResponseTimeChartPointsInner.md) |  |
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

@@ -337,6 +337,36 @@ class IpAddress implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
+        if ($this->container['ip_address_id'] === null) {
+            $invalidProperties[] = "'ip_address_id' can't be null";
+        }
+        if ($this->container['server_id'] === null && !$this->isNullableSetToNull('server_id')) {
+            $invalidProperties[] = "'server_id' is required";
+        }
+        if ($this->container['ip_address'] === null) {
+            $invalidProperties[] = "'ip_address' can't be null";
+        }
+        if ($this->container['reverse_dns'] === null && !$this->isNullableSetToNull('reverse_dns')) {
+            $invalidProperties[] = "'reverse_dns' is required";
+        }
+        if ($this->container['reverse_dns_external'] === null && !$this->isNullableSetToNull('reverse_dns_external')) {
+            $invalidProperties[] = "'reverse_dns_external' is required";
+        }
+        if ($this->container['mac_address'] === null && !$this->isNullableSetToNull('mac_address')) {
+            $invalidProperties[] = "'mac_address' is required";
+        }
+        if ($this->container['blocked_for_spam'] === null) {
+            $invalidProperties[] = "'blocked_for_spam' can't be null";
+        }
+        if ($this->container['active'] === null) {
+            $invalidProperties[] = "'active' can't be null";
+        }
+        if ($this->container['available'] === null) {
+            $invalidProperties[] = "'available' can't be null";
+        }
+        if ($this->container['date_created'] === null && !$this->isNullableSetToNull('date_created')) {
+            $invalidProperties[] = "'date_created' is required";
+        }
         return $invalidProperties;
     }
 
@@ -355,7 +385,7 @@ class IpAddress implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets ip_address_id
      *
-     * @return int|null
+     * @return int
      */
     public function getIpAddressId()
     {
@@ -365,7 +395,7 @@ class IpAddress implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets ip_address_id
      *
-     * @param int|null $ip_address_id ip_address_id
+     * @param int $ip_address_id ip_address_id
      *
      * @return self
      */
@@ -416,7 +446,7 @@ class IpAddress implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets ip_address
      *
-     * @return string|null
+     * @return string
      */
     public function getIpAddress()
     {
@@ -426,7 +456,7 @@ class IpAddress implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets ip_address
      *
-     * @param string|null $ip_address ip_address
+     * @param string $ip_address ip_address
      *
      * @return self
      */
@@ -545,7 +575,7 @@ class IpAddress implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets blocked_for_spam
      *
-     * @return bool|null
+     * @return bool
      */
     public function getBlockedForSpam()
     {
@@ -555,7 +585,7 @@ class IpAddress implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets blocked_for_spam
      *
-     * @param bool|null $blocked_for_spam blocked_for_spam
+     * @param bool $blocked_for_spam blocked_for_spam
      *
      * @return self
      */
@@ -572,7 +602,7 @@ class IpAddress implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets active
      *
-     * @return bool|null
+     * @return bool
      */
     public function getActive()
     {
@@ -582,7 +612,7 @@ class IpAddress implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets active
      *
-     * @param bool|null $active active
+     * @param bool $active active
      *
      * @return self
      */
@@ -599,7 +629,7 @@ class IpAddress implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets available
      *
-     * @return bool|null
+     * @return bool
      */
     public function getAvailable()
     {
@@ -609,7 +639,7 @@ class IpAddress implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets available
      *
-     * @param bool|null $available available
+     * @param bool $available available
      *
      * @return self
      */

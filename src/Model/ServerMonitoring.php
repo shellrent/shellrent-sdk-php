@@ -379,6 +379,54 @@ class ServerMonitoring implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
+        if ($this->container['server_monitoring_id'] === null) {
+            $invalidProperties[] = "'server_monitoring_id' can't be null";
+        }
+        if ($this->container['purchase_monitoring_id'] === null && !$this->isNullableSetToNull('purchase_monitoring_id')) {
+            $invalidProperties[] = "'purchase_monitoring_id' is required";
+        }
+        if ($this->container['purchase_server_id'] === null && !$this->isNullableSetToNull('purchase_server_id')) {
+            $invalidProperties[] = "'purchase_server_id' is required";
+        }
+        if ($this->container['service_name'] === null && !$this->isNullableSetToNull('service_name')) {
+            $invalidProperties[] = "'service_name' is required";
+        }
+        if ($this->container['purchase_name'] === null && !$this->isNullableSetToNull('purchase_name')) {
+            $invalidProperties[] = "'purchase_name' is required";
+        }
+        if ($this->container['purchase_status_code'] === null && !$this->isNullableSetToNull('purchase_status_code')) {
+            $invalidProperties[] = "'purchase_status_code' is required";
+        }
+        if ($this->container['monitoring_key'] === null && !$this->isNullableSetToNull('monitoring_key')) {
+            $invalidProperties[] = "'monitoring_key' is required";
+        }
+        if ($this->container['is_server_monitored'] === null) {
+            $invalidProperties[] = "'is_server_monitored' can't be null";
+        }
+        if ($this->container['is_ip_monitored'] === null) {
+            $invalidProperties[] = "'is_ip_monitored' can't be null";
+        }
+        if ($this->container['is_external_device_monitored'] === null) {
+            $invalidProperties[] = "'is_external_device_monitored' can't be null";
+        }
+        if ($this->container['monitoring_host_enabled'] === null) {
+            $invalidProperties[] = "'monitoring_host_enabled' can't be null";
+        }
+        if ($this->container['monitoring_type'] === null && !$this->isNullableSetToNull('monitoring_type')) {
+            $invalidProperties[] = "'monitoring_type' is required";
+        }
+        if ($this->container['probe_limit'] === null && !$this->isNullableSetToNull('probe_limit')) {
+            $invalidProperties[] = "'probe_limit' is required";
+        }
+        if ($this->container['severity_level'] === null && !$this->isNullableSetToNull('severity_level')) {
+            $invalidProperties[] = "'severity_level' is required";
+        }
+        if ($this->container['email_notification'] === null && !$this->isNullableSetToNull('email_notification')) {
+            $invalidProperties[] = "'email_notification' is required";
+        }
+        if ($this->container['sms_notification'] === null && !$this->isNullableSetToNull('sms_notification')) {
+            $invalidProperties[] = "'sms_notification' is required";
+        }
         return $invalidProperties;
     }
 
@@ -397,7 +445,7 @@ class ServerMonitoring implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets server_monitoring_id
      *
-     * @return int|null
+     * @return int
      */
     public function getServerMonitoringId()
     {
@@ -407,7 +455,7 @@ class ServerMonitoring implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets server_monitoring_id
      *
-     * @param int|null $server_monitoring_id server_monitoring_id
+     * @param int $server_monitoring_id server_monitoring_id
      *
      * @return self
      */
@@ -628,7 +676,7 @@ class ServerMonitoring implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets is_server_monitored
      *
-     * @return bool|null
+     * @return bool
      */
     public function getIsServerMonitored()
     {
@@ -638,7 +686,7 @@ class ServerMonitoring implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets is_server_monitored
      *
-     * @param bool|null $is_server_monitored is_server_monitored
+     * @param bool $is_server_monitored is_server_monitored
      *
      * @return self
      */
@@ -655,7 +703,7 @@ class ServerMonitoring implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets is_ip_monitored
      *
-     * @return bool|null
+     * @return bool
      */
     public function getIsIpMonitored()
     {
@@ -665,7 +713,7 @@ class ServerMonitoring implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets is_ip_monitored
      *
-     * @param bool|null $is_ip_monitored is_ip_monitored
+     * @param bool $is_ip_monitored is_ip_monitored
      *
      * @return self
      */
@@ -682,7 +730,7 @@ class ServerMonitoring implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets is_external_device_monitored
      *
-     * @return bool|null
+     * @return bool
      */
     public function getIsExternalDeviceMonitored()
     {
@@ -692,7 +740,7 @@ class ServerMonitoring implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets is_external_device_monitored
      *
-     * @param bool|null $is_external_device_monitored is_external_device_monitored
+     * @param bool $is_external_device_monitored is_external_device_monitored
      *
      * @return self
      */
@@ -709,7 +757,7 @@ class ServerMonitoring implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets monitoring_host_enabled
      *
-     * @return bool|null
+     * @return bool
      */
     public function getMonitoringHostEnabled()
     {
@@ -719,7 +767,7 @@ class ServerMonitoring implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets monitoring_host_enabled
      *
-     * @param bool|null $monitoring_host_enabled monitoring_host_enabled
+     * @param bool $monitoring_host_enabled monitoring_host_enabled
      *
      * @return self
      */

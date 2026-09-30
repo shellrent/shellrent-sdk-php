@@ -358,6 +358,45 @@ class PleskLicense implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
+        if ($this->container['license_id'] === null) {
+            $invalidProperties[] = "'license_id' can't be null";
+        }
+        if ($this->container['purchase_id'] === null) {
+            $invalidProperties[] = "'purchase_id' can't be null";
+        }
+        if ($this->container['purchase_server_id'] === null && !$this->isNullableSetToNull('purchase_server_id')) {
+            $invalidProperties[] = "'purchase_server_id' is required";
+        }
+        if ($this->container['service_name'] === null && !$this->isNullableSetToNull('service_name')) {
+            $invalidProperties[] = "'service_name' is required";
+        }
+        if ($this->container['purchase_name'] === null && !$this->isNullableSetToNull('purchase_name')) {
+            $invalidProperties[] = "'purchase_name' is required";
+        }
+        if ($this->container['license_ref'] === null && !$this->isNullableSetToNull('license_ref')) {
+            $invalidProperties[] = "'license_ref' is required";
+        }
+        if ($this->container['key_number'] === null && !$this->isNullableSetToNull('key_number')) {
+            $invalidProperties[] = "'key_number' is required";
+        }
+        if ($this->container['ip_address'] === null && !$this->isNullableSetToNull('ip_address')) {
+            $invalidProperties[] = "'ip_address' is required";
+        }
+        if ($this->container['is_els'] === null) {
+            $invalidProperties[] = "'is_els' can't be null";
+        }
+        if ($this->container['operative_system'] === null && !$this->isNullableSetToNull('operative_system')) {
+            $invalidProperties[] = "'operative_system' is required";
+        }
+        if ($this->container['purchase_status_code'] === null && !$this->isNullableSetToNull('purchase_status_code')) {
+            $invalidProperties[] = "'purchase_status_code' is required";
+        }
+        if ($this->container['date_activation'] === null && !$this->isNullableSetToNull('date_activation')) {
+            $invalidProperties[] = "'date_activation' is required";
+        }
+        if ($this->container['date_expiry'] === null && !$this->isNullableSetToNull('date_expiry')) {
+            $invalidProperties[] = "'date_expiry' is required";
+        }
         return $invalidProperties;
     }
 
@@ -376,7 +415,7 @@ class PleskLicense implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets license_id
      *
-     * @return int|null
+     * @return int
      */
     public function getLicenseId()
     {
@@ -386,7 +425,7 @@ class PleskLicense implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets license_id
      *
-     * @param int|null $license_id license_id
+     * @param int $license_id license_id
      *
      * @return self
      */
@@ -403,7 +442,7 @@ class PleskLicense implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets purchase_id
      *
-     * @return int|null
+     * @return int
      */
     public function getPurchaseId()
     {
@@ -413,7 +452,7 @@ class PleskLicense implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets purchase_id
      *
-     * @param int|null $purchase_id purchase_id
+     * @param int $purchase_id purchase_id
      *
      * @return self
      */
@@ -634,7 +673,7 @@ class PleskLicense implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets is_els
      *
-     * @return bool|null
+     * @return bool
      */
     public function getIsEls()
     {
@@ -644,7 +683,7 @@ class PleskLicense implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets is_els
      *
-     * @param bool|null $is_els is_els
+     * @param bool $is_els is_els
      *
      * @return self
      */

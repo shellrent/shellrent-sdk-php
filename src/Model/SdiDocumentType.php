@@ -281,6 +281,12 @@ class SdiDocumentType implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
+        if ($this->container['type_code'] === null) {
+            $invalidProperties[] = "'type_code' can't be null";
+        }
+        if ($this->container['type_description'] === null) {
+            $invalidProperties[] = "'type_description' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -299,7 +305,7 @@ class SdiDocumentType implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets type_code
      *
-     * @return string|null
+     * @return string
      */
     public function getTypeCode()
     {
@@ -309,7 +315,7 @@ class SdiDocumentType implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets type_code
      *
-     * @param string|null $type_code type_code
+     * @param string $type_code type_code
      *
      * @return self
      */
@@ -326,7 +332,7 @@ class SdiDocumentType implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets type_description
      *
-     * @return string|null
+     * @return string
      */
     public function getTypeDescription()
     {
@@ -336,7 +342,7 @@ class SdiDocumentType implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets type_description
      *
-     * @param string|null $type_description type_description
+     * @param string $type_description type_description
      *
      * @return self
      */

@@ -400,6 +400,63 @@ class Service implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
+        if ($this->container['service_id'] === null) {
+            $invalidProperties[] = "'service_id' can't be null";
+        }
+        if ($this->container['service_category'] === null) {
+            $invalidProperties[] = "'service_category' can't be null";
+        }
+        if ($this->container['service_name'] === null) {
+            $invalidProperties[] = "'service_name' can't be null";
+        }
+        if ($this->container['recurrence'] === null) {
+            $invalidProperties[] = "'recurrence' can't be null";
+        }
+        if ($this->container['recurrences_available'] === null) {
+            $invalidProperties[] = "'recurrences_available' can't be null";
+        }
+        if ($this->container['tld_id'] === null && !$this->isNullableSetToNull('tld_id')) {
+            $invalidProperties[] = "'tld_id' is required";
+        }
+        if ($this->container['service_code'] === null) {
+            $invalidProperties[] = "'service_code' can't be null";
+        }
+        if ($this->container['service_url'] === null) {
+            $invalidProperties[] = "'service_url' can't be null";
+        }
+        if ($this->container['activation_price'] === null) {
+            $invalidProperties[] = "'activation_price' can't be null";
+        }
+        if ($this->container['renew_price'] === null && !$this->isNullableSetToNull('renew_price')) {
+            $invalidProperties[] = "'renew_price' is required";
+        }
+        if ($this->container['restore_price'] === null && !$this->isNullableSetToNull('restore_price')) {
+            $invalidProperties[] = "'restore_price' is required";
+        }
+        if ($this->container['transfer_price'] === null && !$this->isNullableSetToNull('transfer_price')) {
+            $invalidProperties[] = "'transfer_price' is required";
+        }
+        if ($this->container['is_primary'] === null && !$this->isNullableSetToNull('is_primary')) {
+            $invalidProperties[] = "'is_primary' is required";
+        }
+        if ($this->container['is_secondary'] === null && !$this->isNullableSetToNull('is_secondary')) {
+            $invalidProperties[] = "'is_secondary' is required";
+        }
+        if ($this->container['is_presale'] === null && !$this->isNullableSetToNull('is_presale')) {
+            $invalidProperties[] = "'is_presale' is required";
+        }
+        if ($this->container['is_aftersale'] === null && !$this->isNullableSetToNull('is_aftersale')) {
+            $invalidProperties[] = "'is_aftersale' is required";
+        }
+        if ($this->container['is_quantifiable'] === null && !$this->isNullableSetToNull('is_quantifiable')) {
+            $invalidProperties[] = "'is_quantifiable' is required";
+        }
+        if ($this->container['quantity_min'] === null && !$this->isNullableSetToNull('quantity_min')) {
+            $invalidProperties[] = "'quantity_min' is required";
+        }
+        if ($this->container['quantity_max'] === null && !$this->isNullableSetToNull('quantity_max')) {
+            $invalidProperties[] = "'quantity_max' is required";
+        }
         return $invalidProperties;
     }
 
@@ -418,7 +475,7 @@ class Service implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets service_id
      *
-     * @return int|null
+     * @return int
      */
     public function getServiceId()
     {
@@ -428,7 +485,7 @@ class Service implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets service_id
      *
-     * @param int|null $service_id service_id
+     * @param int $service_id service_id
      *
      * @return self
      */
@@ -445,7 +502,7 @@ class Service implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets service_category
      *
-     * @return \Shellrent\Sdk\Model\ServiceCategory|null
+     * @return \Shellrent\Sdk\Model\ServiceCategory
      */
     public function getServiceCategory()
     {
@@ -455,7 +512,7 @@ class Service implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets service_category
      *
-     * @param \Shellrent\Sdk\Model\ServiceCategory|null $service_category service_category
+     * @param \Shellrent\Sdk\Model\ServiceCategory $service_category service_category
      *
      * @return self
      */
@@ -472,7 +529,7 @@ class Service implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets service_name
      *
-     * @return string|null
+     * @return string
      */
     public function getServiceName()
     {
@@ -482,7 +539,7 @@ class Service implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets service_name
      *
-     * @param string|null $service_name service_name
+     * @param string $service_name service_name
      *
      * @return self
      */
@@ -499,7 +556,7 @@ class Service implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets recurrence
      *
-     * @return \Shellrent\Sdk\Model\Recurrence|null
+     * @return \Shellrent\Sdk\Model\Recurrence
      */
     public function getRecurrence()
     {
@@ -509,7 +566,7 @@ class Service implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets recurrence
      *
-     * @param \Shellrent\Sdk\Model\Recurrence|null $recurrence recurrence
+     * @param \Shellrent\Sdk\Model\Recurrence $recurrence recurrence
      *
      * @return self
      */
@@ -526,7 +583,7 @@ class Service implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets recurrences_available
      *
-     * @return \Shellrent\Sdk\Model\Recurrence[]|null
+     * @return \Shellrent\Sdk\Model\Recurrence[]
      */
     public function getRecurrencesAvailable()
     {
@@ -536,7 +593,7 @@ class Service implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets recurrences_available
      *
-     * @param \Shellrent\Sdk\Model\Recurrence[]|null $recurrences_available recurrences_available
+     * @param \Shellrent\Sdk\Model\Recurrence[] $recurrences_available recurrences_available
      *
      * @return self
      */
@@ -587,7 +644,7 @@ class Service implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets service_code
      *
-     * @return string|null
+     * @return string
      */
     public function getServiceCode()
     {
@@ -597,7 +654,7 @@ class Service implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets service_code
      *
-     * @param string|null $service_code service_code
+     * @param string $service_code service_code
      *
      * @return self
      */
@@ -614,7 +671,7 @@ class Service implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets service_url
      *
-     * @return string|null
+     * @return string
      */
     public function getServiceUrl()
     {
@@ -624,7 +681,7 @@ class Service implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets service_url
      *
-     * @param string|null $service_url service_url
+     * @param string $service_url service_url
      *
      * @return self
      */
@@ -641,7 +698,7 @@ class Service implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets activation_price
      *
-     * @return \Shellrent\Sdk\Model\Amount|null
+     * @return \Shellrent\Sdk\Model\Amount
      */
     public function getActivationPrice()
     {
@@ -651,7 +708,7 @@ class Service implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets activation_price
      *
-     * @param \Shellrent\Sdk\Model\Amount|null $activation_price activation_price
+     * @param \Shellrent\Sdk\Model\Amount $activation_price activation_price
      *
      * @return self
      */

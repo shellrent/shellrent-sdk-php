@@ -288,6 +288,15 @@ class PurchaseName implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
+        if ($this->container['name'] === null) {
+            $invalidProperties[] = "'name' can't be null";
+        }
+        if ($this->container['full_name'] === null) {
+            $invalidProperties[] = "'full_name' can't be null";
+        }
+        if ($this->container['object_name'] === null) {
+            $invalidProperties[] = "'object_name' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -306,7 +315,7 @@ class PurchaseName implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets name
      *
-     * @return string|null
+     * @return string
      */
     public function getName()
     {
@@ -316,7 +325,7 @@ class PurchaseName implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets name
      *
-     * @param string|null $name Service name
+     * @param string $name Service name
      *
      * @return self
      */
@@ -333,7 +342,7 @@ class PurchaseName implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets full_name
      *
-     * @return string|null
+     * @return string
      */
     public function getFullName()
     {
@@ -343,7 +352,7 @@ class PurchaseName implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets full_name
      *
-     * @param string|null $full_name Complete name (Service and object name)
+     * @param string $full_name Complete name (Service and object name)
      *
      * @return self
      */
@@ -360,7 +369,7 @@ class PurchaseName implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets object_name
      *
-     * @return string|null
+     * @return string
      */
     public function getObjectName()
     {
@@ -370,7 +379,7 @@ class PurchaseName implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets object_name
      *
-     * @param string|null $object_name Name of the purchase object (ie. domain name, server hostname, etc.)
+     * @param string $object_name Name of the purchase object (ie. domain name, server hostname, etc.)
      *
      * @return self
      */

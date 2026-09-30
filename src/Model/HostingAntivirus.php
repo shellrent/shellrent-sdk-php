@@ -101,7 +101,7 @@ class HostingAntivirus implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static array $openAPINullables = [
         'antivirus_id' => false,
         'hosting_id' => false,
-        'status_code' => false,
+        'status_code' => true,
         'status_name' => true,
         'status_color' => true,
         'antivirus_type' => false,
@@ -351,6 +351,42 @@ class HostingAntivirus implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
+        if ($this->container['antivirus_id'] === null) {
+            $invalidProperties[] = "'antivirus_id' can't be null";
+        }
+        if ($this->container['hosting_id'] === null) {
+            $invalidProperties[] = "'hosting_id' can't be null";
+        }
+        if ($this->container['status_code'] === null && !$this->isNullableSetToNull('status_code')) {
+            $invalidProperties[] = "'status_code' is required";
+        }
+        if ($this->container['status_name'] === null && !$this->isNullableSetToNull('status_name')) {
+            $invalidProperties[] = "'status_name' is required";
+        }
+        if ($this->container['status_color'] === null && !$this->isNullableSetToNull('status_color')) {
+            $invalidProperties[] = "'status_color' is required";
+        }
+        if ($this->container['antivirus_type'] === null) {
+            $invalidProperties[] = "'antivirus_type' can't be null";
+        }
+        if ($this->container['date_started'] === null && !$this->isNullableSetToNull('date_started')) {
+            $invalidProperties[] = "'date_started' is required";
+        }
+        if ($this->container['date_completed'] === null && !$this->isNullableSetToNull('date_completed')) {
+            $invalidProperties[] = "'date_completed' is required";
+        }
+        if ($this->container['date_timeout'] === null && !$this->isNullableSetToNull('date_timeout')) {
+            $invalidProperties[] = "'date_timeout' is required";
+        }
+        if ($this->container['total_files'] === null && !$this->isNullableSetToNull('total_files')) {
+            $invalidProperties[] = "'total_files' is required";
+        }
+        if ($this->container['total_infected'] === null && !$this->isNullableSetToNull('total_infected')) {
+            $invalidProperties[] = "'total_infected' is required";
+        }
+        if ($this->container['total_cleaned'] === null && !$this->isNullableSetToNull('total_cleaned')) {
+            $invalidProperties[] = "'total_cleaned' is required";
+        }
         return $invalidProperties;
     }
 
@@ -369,7 +405,7 @@ class HostingAntivirus implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets antivirus_id
      *
-     * @return int|null
+     * @return int
      */
     public function getAntivirusId()
     {
@@ -379,7 +415,7 @@ class HostingAntivirus implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets antivirus_id
      *
-     * @param int|null $antivirus_id antivirus_id
+     * @param int $antivirus_id antivirus_id
      *
      * @return self
      */
@@ -396,7 +432,7 @@ class HostingAntivirus implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets hosting_id
      *
-     * @return int|null
+     * @return int
      */
     public function getHostingId()
     {
@@ -406,7 +442,7 @@ class HostingAntivirus implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets hosting_id
      *
-     * @param int|null $hosting_id hosting_id
+     * @param int $hosting_id hosting_id
      *
      * @return self
      */
@@ -440,7 +476,14 @@ class HostingAntivirus implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setStatusCode($status_code)
     {
         if (is_null($status_code)) {
-            throw new \InvalidArgumentException('non-nullable status_code cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'status_code');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('status_code', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['status_code'] = $status_code;
 
@@ -518,7 +561,7 @@ class HostingAntivirus implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets antivirus_type
      *
-     * @return string|null
+     * @return string
      */
     public function getAntivirusType()
     {
@@ -528,7 +571,7 @@ class HostingAntivirus implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets antivirus_type
      *
-     * @param string|null $antivirus_type antivirus_type
+     * @param string $antivirus_type antivirus_type
      *
      * @return self
      */

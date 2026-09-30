@@ -35,7 +35,7 @@ use \Shellrent\Sdk\ObjectSerializer;
  * OrderPayRequest Class Doc Comment
  *
  * @category Class
- * @description Provide exactly one payment source: either set use_prepaid_credit to true or specify a one_click_id.
+ * @description Pays one or more orders. The payment mode is chosen by three fields, evaluated in this order: 1) use_prepaid_credit set to true: pays with the available Prepaid Credit; 2) use_one_click set to true: tries the saved One-Click payment methods in priority order until one is successfully authorized; 3) one_click_id: pays with that specific One-Click payment method. Provide one of them: if more are provided, only the first one in this order is used. If none is provided the request fails, unless the amount to pay is zero: in that case no payment mode is needed.
  * @package  Shellrent\Sdk
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -331,7 +331,7 @@ class OrderPayRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets use_prepaid_credit
      *
-     * @param bool|null $use_prepaid_credit Set to true to use available Prepaid Credit for the payment
+     * @param bool|null $use_prepaid_credit Payment mode 1: set to true to pay with the available Prepaid Credit. Takes precedence over use_one_click and one_click_id.
      *
      * @return self
      */
@@ -358,7 +358,7 @@ class OrderPayRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets use_one_click
      *
-     * @param bool|null $use_one_click Set to true to use One-Click payment methods. Payment will be attempted using saved methods in priority order until one is successfully authorized.
+     * @param bool|null $use_one_click Payment mode 2: set to true to use the saved One-Click payment methods. Payment will be attempted using saved methods in priority order until one is successfully authorized. Ignored if use_prepaid_credit is true; takes precedence over one_click_id.
      *
      * @return self
      */
@@ -385,7 +385,7 @@ class OrderPayRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets one_click_id
      *
-     * @param int|null $one_click_id Identifier of the One-Click payment method to use. Use this if you wish to use only one specific One-Click payment method.
+     * @param int|null $one_click_id Payment mode 3: identifier of the One-Click payment method to use, to pay only with that specific method. Ignored if use_prepaid_credit or use_one_click is true.
      *
      * @return self
      */

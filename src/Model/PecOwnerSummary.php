@@ -337,6 +337,36 @@ class PecOwnerSummary implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
+        if ($this->container['pec_owner_id'] === null && !$this->isNullableSetToNull('pec_owner_id')) {
+            $invalidProperties[] = "'pec_owner_id' is required";
+        }
+        if ($this->container['owner_legal_entity_type'] === null && !$this->isNullableSetToNull('owner_legal_entity_type')) {
+            $invalidProperties[] = "'owner_legal_entity_type' is required";
+        }
+        if ($this->container['admin_first_name'] === null && !$this->isNullableSetToNull('admin_first_name')) {
+            $invalidProperties[] = "'admin_first_name' is required";
+        }
+        if ($this->container['admin_last_name'] === null && !$this->isNullableSetToNull('admin_last_name')) {
+            $invalidProperties[] = "'admin_last_name' is required";
+        }
+        if ($this->container['admin_email'] === null && !$this->isNullableSetToNull('admin_email')) {
+            $invalidProperties[] = "'admin_email' is required";
+        }
+        if ($this->container['admin_fiscal_code'] === null && !$this->isNullableSetToNull('admin_fiscal_code')) {
+            $invalidProperties[] = "'admin_fiscal_code' is required";
+        }
+        if ($this->container['admin_vat_number'] === null && !$this->isNullableSetToNull('admin_vat_number')) {
+            $invalidProperties[] = "'admin_vat_number' is required";
+        }
+        if ($this->container['company_name'] === null && !$this->isNullableSetToNull('company_name')) {
+            $invalidProperties[] = "'company_name' is required";
+        }
+        if ($this->container['company_email'] === null && !$this->isNullableSetToNull('company_email')) {
+            $invalidProperties[] = "'company_email' is required";
+        }
+        if ($this->container['company_fiscal_code'] === null && !$this->isNullableSetToNull('company_fiscal_code')) {
+            $invalidProperties[] = "'company_fiscal_code' is required";
+        }
         return $invalidProperties;
     }
 

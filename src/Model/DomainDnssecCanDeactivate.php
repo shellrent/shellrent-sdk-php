@@ -281,6 +281,12 @@ class DomainDnssecCanDeactivate implements ModelInterface, ArrayAccess, \JsonSer
     {
         $invalidProperties = [];
 
+        if ($this->container['domain_id'] === null) {
+            $invalidProperties[] = "'domain_id' can't be null";
+        }
+        if ($this->container['can_deactivate'] === null) {
+            $invalidProperties[] = "'can_deactivate' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -299,7 +305,7 @@ class DomainDnssecCanDeactivate implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Gets domain_id
      *
-     * @return int|null
+     * @return int
      */
     public function getDomainId()
     {
@@ -309,7 +315,7 @@ class DomainDnssecCanDeactivate implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets domain_id
      *
-     * @param int|null $domain_id domain_id
+     * @param int $domain_id domain_id
      *
      * @return self
      */
@@ -326,7 +332,7 @@ class DomainDnssecCanDeactivate implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Gets can_deactivate
      *
-     * @return bool|null
+     * @return bool
      */
     public function getCanDeactivate()
     {
@@ -336,7 +342,7 @@ class DomainDnssecCanDeactivate implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets can_deactivate
      *
-     * @param bool|null $can_deactivate can_deactivate
+     * @param bool $can_deactivate can_deactivate
      *
      * @return self
      */

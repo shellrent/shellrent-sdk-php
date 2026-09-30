@@ -289,6 +289,15 @@ class TldContactSpecification implements ModelInterface, ArrayAccess, \JsonSeria
     {
         $invalidProperties = [];
 
+        if ($this->container['name'] === null) {
+            $invalidProperties[] = "'name' can't be null";
+        }
+        if ($this->container['type'] === null) {
+            $invalidProperties[] = "'type' can't be null";
+        }
+        if ($this->container['enum'] === null && !$this->isNullableSetToNull('enum')) {
+            $invalidProperties[] = "'enum' is required";
+        }
         return $invalidProperties;
     }
 
@@ -307,7 +316,7 @@ class TldContactSpecification implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Gets name
      *
-     * @return string|null
+     * @return string
      */
     public function getName()
     {
@@ -317,7 +326,7 @@ class TldContactSpecification implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets name
      *
-     * @param string|null $name Code of the contact specification
+     * @param string $name Code of the contact specification
      *
      * @return self
      */
@@ -334,7 +343,7 @@ class TldContactSpecification implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Gets type
      *
-     * @return string|null
+     * @return string
      */
     public function getType()
     {
@@ -344,7 +353,7 @@ class TldContactSpecification implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets type
      *
-     * @param string|null $type Data type of the specification value
+     * @param string $type Data type of the specification value
      *
      * @return self
      */

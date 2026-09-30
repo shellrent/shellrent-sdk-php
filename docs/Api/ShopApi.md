@@ -2511,7 +2511,7 @@ payOrders($order_pay_request): \Shellrent\Sdk\Model\PayOrders200Response
 
 Pay Orders
 
-Pay one or more Orders
+Pay one or more Orders. The response data is the payment, or null when there is nothing to pay (total amount to pay = 0.00).
 
 ### Example
 

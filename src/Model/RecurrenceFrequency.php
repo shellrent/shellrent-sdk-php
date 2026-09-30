@@ -281,6 +281,12 @@ class RecurrenceFrequency implements ModelInterface, ArrayAccess, \JsonSerializa
     {
         $invalidProperties = [];
 
+        if ($this->container['family'] === null) {
+            $invalidProperties[] = "'family' can't be null";
+        }
+        if ($this->container['value'] === null) {
+            $invalidProperties[] = "'value' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -299,7 +305,7 @@ class RecurrenceFrequency implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Gets family
      *
-     * @return string|null
+     * @return string
      */
     public function getFamily()
     {
@@ -309,7 +315,7 @@ class RecurrenceFrequency implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets family
      *
-     * @param string|null $family family
+     * @param string $family family
      *
      * @return self
      */
@@ -326,7 +332,7 @@ class RecurrenceFrequency implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Gets value
      *
-     * @return int|null
+     * @return int
      */
     public function getValue()
     {
@@ -336,7 +342,7 @@ class RecurrenceFrequency implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets value
      *
-     * @param int|null $value value
+     * @param int $value value
      *
      * @return self
      */

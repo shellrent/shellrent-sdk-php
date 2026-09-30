@@ -323,6 +323,27 @@ class OneClick implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
+        if ($this->container['one_click_id'] === null) {
+            $invalidProperties[] = "'one_click_id' can't be null";
+        }
+        if ($this->container['payment_method'] === null) {
+            $invalidProperties[] = "'payment_method' can't be null";
+        }
+        if ($this->container['description'] === null) {
+            $invalidProperties[] = "'description' can't be null";
+        }
+        if ($this->container['method_type'] === null && !$this->isNullableSetToNull('method_type')) {
+            $invalidProperties[] = "'method_type' is required";
+        }
+        if ($this->container['creditcard_pan'] === null && !$this->isNullableSetToNull('creditcard_pan')) {
+            $invalidProperties[] = "'creditcard_pan' is required";
+        }
+        if ($this->container['date_expiry'] === null && !$this->isNullableSetToNull('date_expiry')) {
+            $invalidProperties[] = "'date_expiry' is required";
+        }
+        if ($this->container['date_created'] === null) {
+            $invalidProperties[] = "'date_created' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -341,7 +362,7 @@ class OneClick implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets one_click_id
      *
-     * @return int|null
+     * @return int
      */
     public function getOneClickId()
     {
@@ -351,7 +372,7 @@ class OneClick implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets one_click_id
      *
-     * @param int|null $one_click_id one_click_id
+     * @param int $one_click_id one_click_id
      *
      * @return self
      */
@@ -368,7 +389,7 @@ class OneClick implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets payment_method
      *
-     * @return string|null
+     * @return string
      */
     public function getPaymentMethod()
     {
@@ -378,7 +399,7 @@ class OneClick implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets payment_method
      *
-     * @param string|null $payment_method payment_method
+     * @param string $payment_method payment_method
      *
      * @return self
      */
@@ -395,7 +416,7 @@ class OneClick implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets description
      *
-     * @return string|null
+     * @return string
      */
     public function getDescription()
     {
@@ -405,7 +426,7 @@ class OneClick implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets description
      *
-     * @param string|null $description description
+     * @param string $description description
      *
      * @return self
      */
@@ -524,7 +545,7 @@ class OneClick implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets date_created
      *
-     * @return \DateTime|null
+     * @return \DateTime
      */
     public function getDateCreated()
     {
@@ -534,7 +555,7 @@ class OneClick implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets date_created
      *
-     * @param \DateTime|null $date_created date_created
+     * @param \DateTime $date_created date_created
      *
      * @return self
      */

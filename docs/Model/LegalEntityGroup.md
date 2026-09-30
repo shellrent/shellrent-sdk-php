@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**group_code** | **string** |  | [optional]
-**group_name** | **string** |  | [optional]
+**group_code** | **string** |  |
+**group_name** | **string** |  |
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

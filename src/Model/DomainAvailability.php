@@ -281,6 +281,12 @@ class DomainAvailability implements ModelInterface, ArrayAccess, \JsonSerializab
     {
         $invalidProperties = [];
 
+        if ($this->container['domain_name'] === null) {
+            $invalidProperties[] = "'domain_name' can't be null";
+        }
+        if ($this->container['availability'] === null) {
+            $invalidProperties[] = "'availability' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -299,7 +305,7 @@ class DomainAvailability implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Gets domain_name
      *
-     * @return \Shellrent\Sdk\Model\DomainName|null
+     * @return \Shellrent\Sdk\Model\DomainName
      */
     public function getDomainName()
     {
@@ -309,7 +315,7 @@ class DomainAvailability implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets domain_name
      *
-     * @param \Shellrent\Sdk\Model\DomainName|null $domain_name domain_name
+     * @param \Shellrent\Sdk\Model\DomainName $domain_name domain_name
      *
      * @return self
      */
@@ -326,7 +332,7 @@ class DomainAvailability implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Gets availability
      *
-     * @return string|null
+     * @return string
      */
     public function getAvailability()
     {
@@ -336,7 +342,7 @@ class DomainAvailability implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets availability
      *
-     * @param string|null $availability availability
+     * @param string $availability availability
      *
      * @return self
      */

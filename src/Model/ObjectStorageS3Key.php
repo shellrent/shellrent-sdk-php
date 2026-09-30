@@ -316,6 +316,27 @@ class ObjectStorageS3Key implements ModelInterface, ArrayAccess, \JsonSerializab
     {
         $invalidProperties = [];
 
+        if ($this->container['object_storage_id'] === null) {
+            $invalidProperties[] = "'object_storage_id' can't be null";
+        }
+        if ($this->container['sub_account_id'] === null) {
+            $invalidProperties[] = "'sub_account_id' can't be null";
+        }
+        if ($this->container['username'] === null && !$this->isNullableSetToNull('username')) {
+            $invalidProperties[] = "'username' is required";
+        }
+        if ($this->container['user_id'] === null && !$this->isNullableSetToNull('user_id')) {
+            $invalidProperties[] = "'user_id' is required";
+        }
+        if ($this->container['arn'] === null && !$this->isNullableSetToNull('arn')) {
+            $invalidProperties[] = "'arn' is required";
+        }
+        if ($this->container['access_key'] === null && !$this->isNullableSetToNull('access_key')) {
+            $invalidProperties[] = "'access_key' is required";
+        }
+        if ($this->container['secret_key'] === null && !$this->isNullableSetToNull('secret_key')) {
+            $invalidProperties[] = "'secret_key' is required";
+        }
         return $invalidProperties;
     }
 
@@ -334,7 +355,7 @@ class ObjectStorageS3Key implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Gets object_storage_id
      *
-     * @return int|null
+     * @return int
      */
     public function getObjectStorageId()
     {
@@ -344,7 +365,7 @@ class ObjectStorageS3Key implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets object_storage_id
      *
-     * @param int|null $object_storage_id object_storage_id
+     * @param int $object_storage_id object_storage_id
      *
      * @return self
      */
@@ -361,7 +382,7 @@ class ObjectStorageS3Key implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Gets sub_account_id
      *
-     * @return int|null
+     * @return int
      */
     public function getSubAccountId()
     {
@@ -371,7 +392,7 @@ class ObjectStorageS3Key implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets sub_account_id
      *
-     * @param int|null $sub_account_id sub_account_id
+     * @param int $sub_account_id sub_account_id
      *
      * @return self
      */

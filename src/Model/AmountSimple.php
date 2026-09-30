@@ -281,6 +281,12 @@ class AmountSimple implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
+        if ($this->container['amount'] === null) {
+            $invalidProperties[] = "'amount' can't be null";
+        }
+        if ($this->container['currency'] === null) {
+            $invalidProperties[] = "'currency' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -299,7 +305,7 @@ class AmountSimple implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets amount
      *
-     * @return float|null
+     * @return float
      */
     public function getAmount()
     {
@@ -309,7 +315,7 @@ class AmountSimple implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets amount
      *
-     * @param float|null $amount amount
+     * @param float $amount amount
      *
      * @return self
      */
@@ -326,7 +332,7 @@ class AmountSimple implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets currency
      *
-     * @return string|null
+     * @return string
      */
     public function getCurrency()
     {
@@ -336,7 +342,7 @@ class AmountSimple implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets currency
      *
-     * @param string|null $currency currency
+     * @param string $currency currency
      *
      * @return self
      */

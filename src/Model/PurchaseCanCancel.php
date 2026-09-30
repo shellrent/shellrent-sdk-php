@@ -281,6 +281,12 @@ class PurchaseCanCancel implements ModelInterface, ArrayAccess, \JsonSerializabl
     {
         $invalidProperties = [];
 
+        if ($this->container['purchase_id'] === null) {
+            $invalidProperties[] = "'purchase_id' can't be null";
+        }
+        if ($this->container['can_cancel'] === null) {
+            $invalidProperties[] = "'can_cancel' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -299,7 +305,7 @@ class PurchaseCanCancel implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Gets purchase_id
      *
-     * @return int|null
+     * @return int
      */
     public function getPurchaseId()
     {
@@ -309,7 +315,7 @@ class PurchaseCanCancel implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets purchase_id
      *
-     * @param int|null $purchase_id purchase_id
+     * @param int $purchase_id purchase_id
      *
      * @return self
      */
@@ -326,7 +332,7 @@ class PurchaseCanCancel implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Gets can_cancel
      *
-     * @return bool|null
+     * @return bool
      */
     public function getCanCancel()
     {
@@ -336,7 +342,7 @@ class PurchaseCanCancel implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets can_cancel
      *
-     * @param bool|null $can_cancel can_cancel
+     * @param bool $can_cancel can_cancel
      *
      * @return self
      */

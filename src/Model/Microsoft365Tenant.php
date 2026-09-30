@@ -421,6 +421,72 @@ class Microsoft365Tenant implements ModelInterface, ArrayAccess, \JsonSerializab
     {
         $invalidProperties = [];
 
+        if ($this->container['tenant_id'] === null) {
+            $invalidProperties[] = "'tenant_id' can't be null";
+        }
+        if ($this->container['microsoft_uuid'] === null && !$this->isNullableSetToNull('microsoft_uuid')) {
+            $invalidProperties[] = "'microsoft_uuid' is required";
+        }
+        if ($this->container['domain_prefix'] === null && !$this->isNullableSetToNull('domain_prefix')) {
+            $invalidProperties[] = "'domain_prefix' is required";
+        }
+        if ($this->container['microsoft_domain'] === null && !$this->isNullableSetToNull('microsoft_domain')) {
+            $invalidProperties[] = "'microsoft_domain' is required";
+        }
+        if ($this->container['imported'] === null) {
+            $invalidProperties[] = "'imported' can't be null";
+        }
+        if ($this->container['first_name'] === null && !$this->isNullableSetToNull('first_name')) {
+            $invalidProperties[] = "'first_name' is required";
+        }
+        if ($this->container['last_name'] === null && !$this->isNullableSetToNull('last_name')) {
+            $invalidProperties[] = "'last_name' is required";
+        }
+        if ($this->container['country'] === null && !$this->isNullableSetToNull('country')) {
+            $invalidProperties[] = "'country' is required";
+        }
+        if ($this->container['company_name'] === null && !$this->isNullableSetToNull('company_name')) {
+            $invalidProperties[] = "'company_name' is required";
+        }
+        if ($this->container['address'] === null && !$this->isNullableSetToNull('address')) {
+            $invalidProperties[] = "'address' is required";
+        }
+        if ($this->container['city'] === null && !$this->isNullableSetToNull('city')) {
+            $invalidProperties[] = "'city' is required";
+        }
+        if ($this->container['state'] === null && !$this->isNullableSetToNull('state')) {
+            $invalidProperties[] = "'state' is required";
+        }
+        if ($this->container['postal_code'] === null && !$this->isNullableSetToNull('postal_code')) {
+            $invalidProperties[] = "'postal_code' is required";
+        }
+        if ($this->container['email_address'] === null && !$this->isNullableSetToNull('email_address')) {
+            $invalidProperties[] = "'email_address' is required";
+        }
+        if ($this->container['phone_prefix'] === null && !$this->isNullableSetToNull('phone_prefix')) {
+            $invalidProperties[] = "'phone_prefix' is required";
+        }
+        if ($this->container['phone_number'] === null && !$this->isNullableSetToNull('phone_number')) {
+            $invalidProperties[] = "'phone_number' is required";
+        }
+        if ($this->container['locale'] === null && !$this->isNullableSetToNull('locale')) {
+            $invalidProperties[] = "'locale' is required";
+        }
+        if ($this->container['account_login'] === null && !$this->isNullableSetToNull('account_login')) {
+            $invalidProperties[] = "'account_login' is required";
+        }
+        if ($this->container['mca_compliant'] === null) {
+            $invalidProperties[] = "'mca_compliant' can't be null";
+        }
+        if ($this->container['mca_sign_date'] === null && !$this->isNullableSetToNull('mca_sign_date')) {
+            $invalidProperties[] = "'mca_sign_date' is required";
+        }
+        if ($this->container['mca_template_id'] === null && !$this->isNullableSetToNull('mca_template_id')) {
+            $invalidProperties[] = "'mca_template_id' is required";
+        }
+        if ($this->container['mca_error'] === null && !$this->isNullableSetToNull('mca_error')) {
+            $invalidProperties[] = "'mca_error' is required";
+        }
         return $invalidProperties;
     }
 
@@ -439,7 +505,7 @@ class Microsoft365Tenant implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Gets tenant_id
      *
-     * @return int|null
+     * @return int
      */
     public function getTenantId()
     {
@@ -449,7 +515,7 @@ class Microsoft365Tenant implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets tenant_id
      *
-     * @param int|null $tenant_id tenant_id
+     * @param int $tenant_id tenant_id
      *
      * @return self
      */
@@ -568,7 +634,7 @@ class Microsoft365Tenant implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Gets imported
      *
-     * @return bool|null
+     * @return bool
      */
     public function getImported()
     {
@@ -578,7 +644,7 @@ class Microsoft365Tenant implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets imported
      *
-     * @param bool|null $imported imported
+     * @param bool $imported imported
      *
      * @return self
      */
@@ -1037,7 +1103,7 @@ class Microsoft365Tenant implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Gets mca_compliant
      *
-     * @return bool|null
+     * @return bool
      */
     public function getMcaCompliant()
     {
@@ -1047,7 +1113,7 @@ class Microsoft365Tenant implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets mca_compliant
      *
-     * @param bool|null $mca_compliant mca_compliant
+     * @param bool $mca_compliant mca_compliant
      *
      * @return self
      */

@@ -35,6 +35,7 @@ use \Shellrent\Sdk\ObjectSerializer;
  * SmsCreateRequest Class Doc Comment
  *
  * @category Class
+ * @description Sends an SMS. Recipients: provide exactly one of phone_numbers or phonebooks, not both. Sender: required when quality is PREMIUM (from 2 to 11 characters), ignored when quality is STANDARD.
  * @package  Shellrent\Sdk
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -57,10 +58,10 @@ class SmsCreateRequest implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $openAPITypes = [
-        'quality' => 'string',
         'phone_numbers' => 'string[]',
         'phonebooks' => 'int[]',
         'message' => 'string',
+        'quality' => 'string',
         'sender' => 'string',
         'send_date' => '\DateTime'
     ];
@@ -73,10 +74,10 @@ class SmsCreateRequest implements ModelInterface, ArrayAccess, \JsonSerializable
      * @psalm-var array<string, string|null>
      */
     protected static $openAPIFormats = [
-        'quality' => null,
         'phone_numbers' => null,
         'phonebooks' => null,
         'message' => null,
+        'quality' => null,
         'sender' => null,
         'send_date' => 'date-time'
     ];
@@ -87,10 +88,10 @@ class SmsCreateRequest implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var boolean[]
      */
     protected static array $openAPINullables = [
-        'quality' => false,
         'phone_numbers' => false,
         'phonebooks' => false,
         'message' => false,
+        'quality' => false,
         'sender' => false,
         'send_date' => false
     ];
@@ -181,10 +182,10 @@ class SmsCreateRequest implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'quality' => 'quality',
         'phone_numbers' => 'phone_numbers',
         'phonebooks' => 'phonebooks',
         'message' => 'message',
+        'quality' => 'quality',
         'sender' => 'sender',
         'send_date' => 'send_date'
     ];
@@ -195,10 +196,10 @@ class SmsCreateRequest implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'quality' => 'setQuality',
         'phone_numbers' => 'setPhoneNumbers',
         'phonebooks' => 'setPhonebooks',
         'message' => 'setMessage',
+        'quality' => 'setQuality',
         'sender' => 'setSender',
         'send_date' => 'setSendDate'
     ];
@@ -209,10 +210,10 @@ class SmsCreateRequest implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'quality' => 'getQuality',
         'phone_numbers' => 'getPhoneNumbers',
         'phonebooks' => 'getPhonebooks',
         'message' => 'getMessage',
+        'quality' => 'getQuality',
         'sender' => 'getSender',
         'send_date' => 'getSendDate'
     ];
@@ -289,10 +290,10 @@ class SmsCreateRequest implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('quality', $data ?? [], null);
         $this->setIfExists('phone_numbers', $data ?? [], null);
         $this->setIfExists('phonebooks', $data ?? [], null);
         $this->setIfExists('message', $data ?? [], null);
+        $this->setIfExists('quality', $data ?? [], null);
         $this->setIfExists('sender', $data ?? [], null);
         $this->setIfExists('send_date', $data ?? [], null);
     }
@@ -324,6 +325,17 @@ class SmsCreateRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
+        if (!is_null($this->container['phone_numbers']) && (count($this->container['phone_numbers']) < 1)) {
+            $invalidProperties[] = "invalid value for 'phone_numbers', number of items must be greater than or equal to 1.";
+        }
+
+        if (!is_null($this->container['phonebooks']) && (count($this->container['phonebooks']) < 1)) {
+            $invalidProperties[] = "invalid value for 'phonebooks', number of items must be greater than or equal to 1.";
+        }
+
+        if ($this->container['message'] === null) {
+            $invalidProperties[] = "'message' can't be null";
+        }
         if ($this->container['quality'] === null) {
             $invalidProperties[] = "'quality' can't be null";
         }
@@ -336,20 +348,6 @@ class SmsCreateRequest implements ModelInterface, ArrayAccess, \JsonSerializable
             );
         }
 
-        if (!is_null($this->container['phone_numbers']) && (count($this->container['phone_numbers']) < 1)) {
-            $invalidProperties[] = "invalid value for 'phone_numbers', number of items must be greater than or equal to 1.";
-        }
-
-        if (!is_null($this->container['phonebooks']) && (count($this->container['phonebooks']) < 1)) {
-            $invalidProperties[] = "invalid value for 'phonebooks', number of items must be greater than or equal to 1.";
-        }
-
-        if ($this->container['message'] === null) {
-            $invalidProperties[] = "'message' can't be null";
-        }
-        if ($this->container['sender'] === null) {
-            $invalidProperties[] = "'sender' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -364,43 +362,6 @@ class SmsCreateRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets quality
-     *
-     * @return string
-     */
-    public function getQuality()
-    {
-        return $this->container['quality'];
-    }
-
-    /**
-     * Sets quality
-     *
-     * @param string $quality SMS delivery quality.
-     *
-     * @return self
-     */
-    public function setQuality($quality)
-    {
-        if (is_null($quality)) {
-            throw new \InvalidArgumentException('non-nullable quality cannot be null');
-        }
-        $allowedValues = $this->getQualityAllowableValues();
-        if (!in_array($quality, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'quality', must be one of '%s'",
-                    $quality,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['quality'] = $quality;
-
-        return $this;
-    }
 
     /**
      * Gets phone_numbers
@@ -492,9 +453,46 @@ class SmsCreateRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets sender
+     * Gets quality
      *
      * @return string
+     */
+    public function getQuality()
+    {
+        return $this->container['quality'];
+    }
+
+    /**
+     * Sets quality
+     *
+     * @param string $quality SMS delivery quality. PREMIUM requires sender.
+     *
+     * @return self
+     */
+    public function setQuality($quality)
+    {
+        if (is_null($quality)) {
+            throw new \InvalidArgumentException('non-nullable quality cannot be null');
+        }
+        $allowedValues = $this->getQualityAllowableValues();
+        if (!in_array($quality, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'quality', must be one of '%s'",
+                    $quality,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['quality'] = $quality;
+
+        return $this;
+    }
+
+    /**
+     * Gets sender
+     *
+     * @return string|null
      */
     public function getSender()
     {
@@ -504,7 +502,7 @@ class SmsCreateRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets sender
      *
-     * @param string $sender Sender name. Required when \"quality\" is \"PREMIUM\".
+     * @param string|null $sender Sender name, from 2 to 11 characters. Required when quality is PREMIUM, ignored when quality is STANDARD.
      *
      * @return self
      */

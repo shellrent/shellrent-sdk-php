@@ -365,6 +365,48 @@ class ServerNetworkInterface implements ModelInterface, ArrayAccess, \JsonSerial
     {
         $invalidProperties = [];
 
+        if ($this->container['network_interface_id'] === null) {
+            $invalidProperties[] = "'network_interface_id' can't be null";
+        }
+        if ($this->container['server_id'] === null) {
+            $invalidProperties[] = "'server_id' can't be null";
+        }
+        if ($this->container['network_id'] === null && !$this->isNullableSetToNull('network_id')) {
+            $invalidProperties[] = "'network_id' is required";
+        }
+        if ($this->container['ip_address_id'] === null && !$this->isNullableSetToNull('ip_address_id')) {
+            $invalidProperties[] = "'ip_address_id' is required";
+        }
+        if ($this->container['vif_uuid'] === null && !$this->isNullableSetToNull('vif_uuid')) {
+            $invalidProperties[] = "'vif_uuid' is required";
+        }
+        if ($this->container['device_name'] === null && !$this->isNullableSetToNull('device_name')) {
+            $invalidProperties[] = "'device_name' is required";
+        }
+        if ($this->container['mac_address'] === null && !$this->isNullableSetToNull('mac_address')) {
+            $invalidProperties[] = "'mac_address' is required";
+        }
+        if ($this->container['is_default'] === null && !$this->isNullableSetToNull('is_default')) {
+            $invalidProperties[] = "'is_default' is required";
+        }
+        if ($this->container['is_active'] === null && !$this->isNullableSetToNull('is_active')) {
+            $invalidProperties[] = "'is_active' is required";
+        }
+        if ($this->container['network_type'] === null && !$this->isNullableSetToNull('network_type')) {
+            $invalidProperties[] = "'network_type' is required";
+        }
+        if ($this->container['network_label'] === null && !$this->isNullableSetToNull('network_label')) {
+            $invalidProperties[] = "'network_label' is required";
+        }
+        if ($this->container['network_bridge'] === null && !$this->isNullableSetToNull('network_bridge')) {
+            $invalidProperties[] = "'network_bridge' is required";
+        }
+        if ($this->container['ip_address'] === null && !$this->isNullableSetToNull('ip_address')) {
+            $invalidProperties[] = "'ip_address' is required";
+        }
+        if ($this->container['date_created'] === null && !$this->isNullableSetToNull('date_created')) {
+            $invalidProperties[] = "'date_created' is required";
+        }
         return $invalidProperties;
     }
 
@@ -383,7 +425,7 @@ class ServerNetworkInterface implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets network_interface_id
      *
-     * @return int|null
+     * @return int
      */
     public function getNetworkInterfaceId()
     {
@@ -393,7 +435,7 @@ class ServerNetworkInterface implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets network_interface_id
      *
-     * @param int|null $network_interface_id network_interface_id
+     * @param int $network_interface_id network_interface_id
      *
      * @return self
      */
@@ -410,7 +452,7 @@ class ServerNetworkInterface implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets server_id
      *
-     * @return int|null
+     * @return int
      */
     public function getServerId()
     {
@@ -420,7 +462,7 @@ class ServerNetworkInterface implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets server_id
      *
-     * @param int|null $server_id server_id
+     * @param int $server_id server_id
      *
      * @return self
      */

@@ -365,6 +365,48 @@ class DomainData implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
+        if ($this->container['registry_status'] === null && !$this->isNullableSetToNull('registry_status')) {
+            $invalidProperties[] = "'registry_status' is required";
+        }
+        if ($this->container['incoming_authcode'] === null && !$this->isNullableSetToNull('incoming_authcode')) {
+            $invalidProperties[] = "'incoming_authcode' is required";
+        }
+        if ($this->container['outgoing_authcode'] === null && !$this->isNullableSetToNull('outgoing_authcode')) {
+            $invalidProperties[] = "'outgoing_authcode' is required";
+        }
+        if ($this->container['registry_nameservers'] === null && !$this->isNullableSetToNull('registry_nameservers')) {
+            $invalidProperties[] = "'registry_nameservers' is required";
+        }
+        if ($this->container['registry_expiry'] === null && !$this->isNullableSetToNull('registry_expiry')) {
+            $invalidProperties[] = "'registry_expiry' is required";
+        }
+        if ($this->container['registry_created'] === null && !$this->isNullableSetToNull('registry_created')) {
+            $invalidProperties[] = "'registry_created' is required";
+        }
+        if ($this->container['registry_updated'] === null && !$this->isNullableSetToNull('registry_updated')) {
+            $invalidProperties[] = "'registry_updated' is required";
+        }
+        if ($this->container['registry_deletion'] === null && !$this->isNullableSetToNull('registry_deletion')) {
+            $invalidProperties[] = "'registry_deletion' is required";
+        }
+        if ($this->container['date_deactivation'] === null && !$this->isNullableSetToNull('date_deactivation')) {
+            $invalidProperties[] = "'date_deactivation' is required";
+        }
+        if ($this->container['identity_validation_status'] === null && !$this->isNullableSetToNull('identity_validation_status')) {
+            $invalidProperties[] = "'identity_validation_status' is required";
+        }
+        if ($this->container['is_on_hold'] === null) {
+            $invalidProperties[] = "'is_on_hold' can't be null";
+        }
+        if ($this->container['transfer_wrong_authcode'] === null) {
+            $invalidProperties[] = "'transfer_wrong_authcode' can't be null";
+        }
+        if ($this->container['transfer_locked'] === null) {
+            $invalidProperties[] = "'transfer_locked' can't be null";
+        }
+        if ($this->container['date_created'] === null) {
+            $invalidProperties[] = "'date_created' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -723,7 +765,7 @@ class DomainData implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets is_on_hold
      *
-     * @return bool|null
+     * @return bool
      */
     public function getIsOnHold()
     {
@@ -733,7 +775,7 @@ class DomainData implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets is_on_hold
      *
-     * @param bool|null $is_on_hold is_on_hold
+     * @param bool $is_on_hold is_on_hold
      *
      * @return self
      */
@@ -750,7 +792,7 @@ class DomainData implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets transfer_wrong_authcode
      *
-     * @return bool|null
+     * @return bool
      */
     public function getTransferWrongAuthcode()
     {
@@ -760,7 +802,7 @@ class DomainData implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets transfer_wrong_authcode
      *
-     * @param bool|null $transfer_wrong_authcode transfer_wrong_authcode
+     * @param bool $transfer_wrong_authcode transfer_wrong_authcode
      *
      * @return self
      */
@@ -777,7 +819,7 @@ class DomainData implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets transfer_locked
      *
-     * @return bool|null
+     * @return bool
      */
     public function getTransferLocked()
     {
@@ -787,7 +829,7 @@ class DomainData implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets transfer_locked
      *
-     * @param bool|null $transfer_locked transfer_locked
+     * @param bool $transfer_locked transfer_locked
      *
      * @return self
      */
@@ -804,7 +846,7 @@ class DomainData implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets date_created
      *
-     * @return \DateTime|null
+     * @return \DateTime
      */
     public function getDateCreated()
     {
@@ -814,7 +856,7 @@ class DomainData implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets date_created
      *
-     * @param \DateTime|null $date_created date_created
+     * @param \DateTime $date_created date_created
      *
      * @return self
      */

@@ -309,6 +309,24 @@ class DomainName implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
+        if ($this->container['unicode'] === null && !$this->isNullableSetToNull('unicode')) {
+            $invalidProperties[] = "'unicode' is required";
+        }
+        if ($this->container['punycode'] === null && !$this->isNullableSetToNull('punycode')) {
+            $invalidProperties[] = "'punycode' is required";
+        }
+        if ($this->container['unicode_name'] === null && !$this->isNullableSetToNull('unicode_name')) {
+            $invalidProperties[] = "'unicode_name' is required";
+        }
+        if ($this->container['punycode_name'] === null && !$this->isNullableSetToNull('punycode_name')) {
+            $invalidProperties[] = "'punycode_name' is required";
+        }
+        if ($this->container['unicode_tld'] === null && !$this->isNullableSetToNull('unicode_tld')) {
+            $invalidProperties[] = "'unicode_tld' is required";
+        }
+        if ($this->container['punycode_tld'] === null && !$this->isNullableSetToNull('punycode_tld')) {
+            $invalidProperties[] = "'punycode_tld' is required";
+        }
         return $invalidProperties;
     }
 

@@ -302,6 +302,21 @@ class HostingEmailBlocList implements ModelInterface, ArrayAccess, \JsonSerializ
     {
         $invalidProperties = [];
 
+        if ($this->container['block_list_id'] === null) {
+            $invalidProperties[] = "'block_list_id' can't be null";
+        }
+        if ($this->container['hosting_id'] === null) {
+            $invalidProperties[] = "'hosting_id' can't be null";
+        }
+        if ($this->container['sender'] === null) {
+            $invalidProperties[] = "'sender' can't be null";
+        }
+        if ($this->container['domain'] === null && !$this->isNullableSetToNull('domain')) {
+            $invalidProperties[] = "'domain' is required";
+        }
+        if ($this->container['mailbox'] === null && !$this->isNullableSetToNull('mailbox')) {
+            $invalidProperties[] = "'mailbox' is required";
+        }
         return $invalidProperties;
     }
 
@@ -320,7 +335,7 @@ class HostingEmailBlocList implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Gets block_list_id
      *
-     * @return int|null
+     * @return int
      */
     public function getBlockListId()
     {
@@ -330,7 +345,7 @@ class HostingEmailBlocList implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets block_list_id
      *
-     * @param int|null $block_list_id block_list_id
+     * @param int $block_list_id block_list_id
      *
      * @return self
      */
@@ -347,7 +362,7 @@ class HostingEmailBlocList implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Gets hosting_id
      *
-     * @return int|null
+     * @return int
      */
     public function getHostingId()
     {
@@ -357,7 +372,7 @@ class HostingEmailBlocList implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets hosting_id
      *
-     * @param int|null $hosting_id hosting_id
+     * @param int $hosting_id hosting_id
      *
      * @return self
      */
@@ -374,7 +389,7 @@ class HostingEmailBlocList implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Gets sender
      *
-     * @return string|null
+     * @return string
      */
     public function getSender()
     {
@@ -384,7 +399,7 @@ class HostingEmailBlocList implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets sender
      *
-     * @param string|null $sender sender
+     * @param string $sender sender
      *
      * @return self
      */

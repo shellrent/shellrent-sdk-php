@@ -309,6 +309,24 @@ class ServerAutomaticSnapshot implements ModelInterface, ArrayAccess, \JsonSeria
     {
         $invalidProperties = [];
 
+        if ($this->container['snapshot_id'] === null) {
+            $invalidProperties[] = "'snapshot_id' can't be null";
+        }
+        if ($this->container['server_id'] === null) {
+            $invalidProperties[] = "'server_id' can't be null";
+        }
+        if ($this->container['name'] === null) {
+            $invalidProperties[] = "'name' can't be null";
+        }
+        if ($this->container['days_of_week'] === null) {
+            $invalidProperties[] = "'days_of_week' can't be null";
+        }
+        if ($this->container['hour_of_day'] === null) {
+            $invalidProperties[] = "'hour_of_day' can't be null";
+        }
+        if ($this->container['is_active'] === null) {
+            $invalidProperties[] = "'is_active' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -327,7 +345,7 @@ class ServerAutomaticSnapshot implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Gets snapshot_id
      *
-     * @return int|null
+     * @return int
      */
     public function getSnapshotId()
     {
@@ -337,7 +355,7 @@ class ServerAutomaticSnapshot implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets snapshot_id
      *
-     * @param int|null $snapshot_id snapshot_id
+     * @param int $snapshot_id snapshot_id
      *
      * @return self
      */
@@ -354,7 +372,7 @@ class ServerAutomaticSnapshot implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Gets server_id
      *
-     * @return int|null
+     * @return int
      */
     public function getServerId()
     {
@@ -364,7 +382,7 @@ class ServerAutomaticSnapshot implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets server_id
      *
-     * @param int|null $server_id server_id
+     * @param int $server_id server_id
      *
      * @return self
      */
@@ -381,7 +399,7 @@ class ServerAutomaticSnapshot implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Gets name
      *
-     * @return string|null
+     * @return string
      */
     public function getName()
     {
@@ -391,7 +409,7 @@ class ServerAutomaticSnapshot implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets name
      *
-     * @param string|null $name name
+     * @param string $name name
      *
      * @return self
      */
@@ -408,7 +426,7 @@ class ServerAutomaticSnapshot implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Gets days_of_week
      *
-     * @return int[]|null
+     * @return int[]
      */
     public function getDaysOfWeek()
     {
@@ -418,7 +436,7 @@ class ServerAutomaticSnapshot implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets days_of_week
      *
-     * @param int[]|null $days_of_week days_of_week
+     * @param int[] $days_of_week days_of_week
      *
      * @return self
      */
@@ -435,7 +453,7 @@ class ServerAutomaticSnapshot implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Gets hour_of_day
      *
-     * @return string|null
+     * @return string
      */
     public function getHourOfDay()
     {
@@ -445,7 +463,7 @@ class ServerAutomaticSnapshot implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets hour_of_day
      *
-     * @param string|null $hour_of_day hour_of_day
+     * @param string $hour_of_day hour_of_day
      *
      * @return self
      */
@@ -462,7 +480,7 @@ class ServerAutomaticSnapshot implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Gets is_active
      *
-     * @return bool|null
+     * @return bool
      */
     public function getIsActive()
     {
@@ -472,7 +490,7 @@ class ServerAutomaticSnapshot implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets is_active
      *
-     * @param bool|null $is_active is_active
+     * @param bool $is_active is_active
      *
      * @return self
      */

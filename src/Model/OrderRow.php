@@ -316,6 +316,27 @@ class OrderRow implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
+        if ($this->container['order_row_id'] === null) {
+            $invalidProperties[] = "'order_row_id' can't be null";
+        }
+        if ($this->container['order_id'] === null) {
+            $invalidProperties[] = "'order_id' can't be null";
+        }
+        if ($this->container['service'] === null && !$this->isNullableSetToNull('service')) {
+            $invalidProperties[] = "'service' is required";
+        }
+        if ($this->container['purchase'] === null && !$this->isNullableSetToNull('purchase')) {
+            $invalidProperties[] = "'purchase' is required";
+        }
+        if ($this->container['recurrence'] === null && !$this->isNullableSetToNull('recurrence')) {
+            $invalidProperties[] = "'recurrence' is required";
+        }
+        if ($this->container['price'] === null) {
+            $invalidProperties[] = "'price' can't be null";
+        }
+        if ($this->container['base_price'] === null) {
+            $invalidProperties[] = "'base_price' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -334,7 +355,7 @@ class OrderRow implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets order_row_id
      *
-     * @return int|null
+     * @return int
      */
     public function getOrderRowId()
     {
@@ -344,7 +365,7 @@ class OrderRow implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets order_row_id
      *
-     * @param int|null $order_row_id order_row_id
+     * @param int $order_row_id order_row_id
      *
      * @return self
      */
@@ -361,7 +382,7 @@ class OrderRow implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets order_id
      *
-     * @return int|null
+     * @return int
      */
     public function getOrderId()
     {
@@ -371,7 +392,7 @@ class OrderRow implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets order_id
      *
-     * @param int|null $order_id order_id
+     * @param int $order_id order_id
      *
      * @return self
      */
@@ -490,7 +511,7 @@ class OrderRow implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets price
      *
-     * @return \Shellrent\Sdk\Model\Amount|null
+     * @return \Shellrent\Sdk\Model\Amount
      */
     public function getPrice()
     {
@@ -500,7 +521,7 @@ class OrderRow implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets price
      *
-     * @param \Shellrent\Sdk\Model\Amount|null $price price
+     * @param \Shellrent\Sdk\Model\Amount $price price
      *
      * @return self
      */
@@ -517,7 +538,7 @@ class OrderRow implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets base_price
      *
-     * @return \Shellrent\Sdk\Model\Amount|null
+     * @return \Shellrent\Sdk\Model\Amount
      */
     public function getBasePrice()
     {
@@ -527,7 +548,7 @@ class OrderRow implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets base_price
      *
-     * @param \Shellrent\Sdk\Model\Amount|null $base_price base_price
+     * @param \Shellrent\Sdk\Model\Amount $base_price base_price
      *
      * @return self
      */
