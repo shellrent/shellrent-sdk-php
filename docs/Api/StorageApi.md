@@ -15,7 +15,7 @@ All URIs are relative to https://api.shellrent.com, except if the operation defi
 | [**deleteObjectStorageBucketFirewallEntry()**](StorageApi.md#deleteObjectStorageBucketFirewallEntry) | **DELETE** /api/v3/object-storages/{object_storage_id}/buckets/{bucket_id}/firewall-entries/{entry_id} | Delete object storage bucket firewall entry |
 | [**deleteObjectStorageIamUser()**](StorageApi.md#deleteObjectStorageIamUser) | **DELETE** /api/v3/object-storages/{object_storage_id}/iam-users/{iam_user_id} | Delete object storage IAM user |
 | [**deleteObjectStorageIamUserS3Key()**](StorageApi.md#deleteObjectStorageIamUserS3Key) | **DELETE** /api/v3/object-storages/{object_storage_id}/iam-users/{iam_user_id}/s3-keys/{s3_key_id} | Delete object storage IAM user S3 key |
-| [**downgradeCloudStorageSize()**](StorageApi.md#downgradeCloudStorageSize) | **PATCH** /api/v3/cloud-storages/{cloud_storage_id}/size-downgrade | Downgrade cloud storage size |
+| [**downgradeCloudStorageSize()**](StorageApi.md#downgradeCloudStorageSize) | **POST** /api/v3/cloud-storages/{cloud_storage_id}/size-downgrades | Downgrade cloud storage size |
 | [**getCloudStorage()**](StorageApi.md#getCloudStorage) | **GET** /api/v3/cloud-storages/{cloud_storage_id} | Get cloud storage |
 | [**getCloudStorageAccess()**](StorageApi.md#getCloudStorageAccess) | **GET** /api/v3/cloud-storages/{cloud_storage_id}/accesses/{access_id} | Get cloud storage access |
 | [**getCloudStorageUser()**](StorageApi.md#getCloudStorageUser) | **GET** /api/v3/cloud-storages/{cloud_storage_id}/users/{cloud_storage_user_id} | Get cloud storage user |
@@ -34,8 +34,8 @@ All URIs are relative to https://api.shellrent.com, except if the operation defi
 | [**listObjectStorageIamUserS3Keys()**](StorageApi.md#listObjectStorageIamUserS3Keys) | **GET** /api/v3/object-storages/{object_storage_id}/iam-users/{iam_user_id}/s3-keys | List object storage IAM user S3 keys |
 | [**listObjectStorageIamUsers()**](StorageApi.md#listObjectStorageIamUsers) | **GET** /api/v3/object-storages/{object_storage_id}/iam-users | List object storage IAM users |
 | [**listObjectStorages()**](StorageApi.md#listObjectStorages) | **GET** /api/v3/object-storages | List object storages |
-| [**updateCloudStorageUserSize()**](StorageApi.md#updateCloudStorageUserSize) | **PATCH** /api/v3/cloud-storages/{cloud_storage_id}/users/{cloud_storage_user_id}/size | Update cloud storage user size |
-| [**upgradeCloudStorageSize()**](StorageApi.md#upgradeCloudStorageSize) | **POST** /api/v3/cloud-storages/{cloud_storage_id}/size-upgrade | Upgrade cloud storage size |
+| [**updateCloudStorageUserSize()**](StorageApi.md#updateCloudStorageUserSize) | **PATCH** /api/v3/cloud-storages/{cloud_storage_id}/users/{cloud_storage_user_id} | Update cloud storage user size |
+| [**upgradeCloudStorageSize()**](StorageApi.md#upgradeCloudStorageSize) | **POST** /api/v3/cloud-storages/{cloud_storage_id}/size-upgrades | Upgrade cloud storage size |
 
 
 ## `createCloudStorageAccess()`
@@ -65,7 +65,7 @@ $apiInstance = new Shellrent\Sdk\Api\StorageApi(
     new GuzzleHttp\Client(),
     $config
 );
-$cloud_storage_id = 56; // int
+$cloud_storage_id = 56; // int | ID of the cloud storage
 $cloud_storage_access_create_request = new \Shellrent\Sdk\Model\CloudStorageAccessCreateRequest(); // \Shellrent\Sdk\Model\CloudStorageAccessCreateRequest
 
 try {
@@ -80,7 +80,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **cloud_storage_id** | **int**|  | |
+| **cloud_storage_id** | **int**| ID of the cloud storage | |
 | **cloud_storage_access_create_request** | [**\Shellrent\Sdk\Model\CloudStorageAccessCreateRequest**](../Model/CloudStorageAccessCreateRequest.md)|  | |
 
 ### Return type
@@ -103,12 +103,12 @@ try {
 ## `createObjectStorageBucketFirewallEntry()`
 
 ```php
-createObjectStorageBucketFirewallEntry($object_storage_id, $bucket_id, $object_storage_bucket_firewall_entry_create_request): \Shellrent\Sdk\Model\ObjectStorageBucketFirewallEntryResponse
+createObjectStorageBucketFirewallEntry($object_storage_id, $bucket_id, $object_storage_bucket_firewall_entry_create_request): \Shellrent\Sdk\Model\TaskResponse
 ```
 
 Create object storage bucket firewall entry
 
-Create object storage bucket firewall entry
+Starts adding an IP address or a subnet (CIDR) to the firewall of the bucket, returned as a Task: the entry appears among the firewall entries when the operation is completed. Firewall operations on the buckets of an object storage run one at a time: while one is running, the request is rejected with 409.
 
 ### Example
 
@@ -127,8 +127,8 @@ $apiInstance = new Shellrent\Sdk\Api\StorageApi(
     new GuzzleHttp\Client(),
     $config
 );
-$object_storage_id = 56; // int
-$bucket_id = 56; // int
+$object_storage_id = 56; // int | ID of the object storage
+$bucket_id = 56; // int | ID of the bucket
 $object_storage_bucket_firewall_entry_create_request = new \Shellrent\Sdk\Model\ObjectStorageBucketFirewallEntryCreateRequest(); // \Shellrent\Sdk\Model\ObjectStorageBucketFirewallEntryCreateRequest
 
 try {
@@ -143,13 +143,13 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **object_storage_id** | **int**|  | |
-| **bucket_id** | **int**|  | |
+| **object_storage_id** | **int**| ID of the object storage | |
+| **bucket_id** | **int**| ID of the bucket | |
 | **object_storage_bucket_firewall_entry_create_request** | [**\Shellrent\Sdk\Model\ObjectStorageBucketFirewallEntryCreateRequest**](../Model/ObjectStorageBucketFirewallEntryCreateRequest.md)|  | |
 
 ### Return type
 
-[**\Shellrent\Sdk\Model\ObjectStorageBucketFirewallEntryResponse**](../Model/ObjectStorageBucketFirewallEntryResponse.md)
+[**\Shellrent\Sdk\Model\TaskResponse**](../Model/TaskResponse.md)
 
 ### Authorization
 
@@ -191,7 +191,7 @@ $apiInstance = new Shellrent\Sdk\Api\StorageApi(
     new GuzzleHttp\Client(),
     $config
 );
-$object_storage_id = 56; // int
+$object_storage_id = 56; // int | ID of the object storage
 
 try {
     $result = $apiInstance->createObjectStorageIamUser($object_storage_id);
@@ -205,7 +205,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **object_storage_id** | **int**|  | |
+| **object_storage_id** | **int**| ID of the object storage | |
 
 ### Return type
 
@@ -232,7 +232,7 @@ createObjectStorageIamUserS3Key($object_storage_id, $iam_user_id): \Shellrent\Sd
 
 Create object storage IAM user S3 key
 
-Create object storage IAM user S3 key
+Creates a new S3 key for the IAM user and returns it with its secret, which afterwards is returned only with the objectstorage:secrets scope. An IAM user has at most 2 keys: with 2 keys the request is rejected with 409, as when the object storage is not active or is under maintenance.
 
 ### Example
 
@@ -251,8 +251,8 @@ $apiInstance = new Shellrent\Sdk\Api\StorageApi(
     new GuzzleHttp\Client(),
     $config
 );
-$object_storage_id = 56; // int
-$iam_user_id = 56; // int
+$object_storage_id = 56; // int | ID of the object storage
+$iam_user_id = 56; // int | ID of the IAM user
 
 try {
     $result = $apiInstance->createObjectStorageIamUserS3Key($object_storage_id, $iam_user_id);
@@ -266,8 +266,8 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **object_storage_id** | **int**|  | |
-| **iam_user_id** | **int**|  | |
+| **object_storage_id** | **int**| ID of the object storage | |
+| **iam_user_id** | **int**| ID of the IAM user | |
 
 ### Return type
 
@@ -289,7 +289,7 @@ try {
 ## `deleteCloudStorageAccess()`
 
 ```php
-deleteCloudStorageAccess($cloud_storage_id, $access_id): \Shellrent\Sdk\Model\EmptyResponse
+deleteCloudStorageAccess($cloud_storage_id, $access_id)
 ```
 
 Delete cloud storage access
@@ -313,12 +313,11 @@ $apiInstance = new Shellrent\Sdk\Api\StorageApi(
     new GuzzleHttp\Client(),
     $config
 );
-$cloud_storage_id = 56; // int
-$access_id = 'access_id_example'; // string
+$cloud_storage_id = 56; // int | ID of the cloud storage
+$access_id = 'access_id_example'; // string | Access of the cloud storage: the `access_id` field of the accesses list, that is the hostname allowed to mount the storage
 
 try {
-    $result = $apiInstance->deleteCloudStorageAccess($cloud_storage_id, $access_id);
-    print_r($result);
+    $apiInstance->deleteCloudStorageAccess($cloud_storage_id, $access_id);
 } catch (Exception $e) {
     echo 'Exception when calling StorageApi->deleteCloudStorageAccess: ', $e->getMessage(), PHP_EOL;
 }
@@ -328,12 +327,12 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **cloud_storage_id** | **int**|  | |
-| **access_id** | **string**|  | |
+| **cloud_storage_id** | **int**| ID of the cloud storage | |
+| **access_id** | **string**| Access of the cloud storage: the &#x60;access_id&#x60; field of the accesses list, that is the hostname allowed to mount the storage | |
 
 ### Return type
 
-[**\Shellrent\Sdk\Model\EmptyResponse**](../Model/EmptyResponse.md)
+void (empty response body)
 
 ### Authorization
 
@@ -351,7 +350,7 @@ try {
 ## `deleteCloudStorageUser()`
 
 ```php
-deleteCloudStorageUser($cloud_storage_id, $cloud_storage_user_id): \Shellrent\Sdk\Model\EmptyResponse
+deleteCloudStorageUser($cloud_storage_id, $cloud_storage_user_id)
 ```
 
 Delete cloud storage user
@@ -375,12 +374,11 @@ $apiInstance = new Shellrent\Sdk\Api\StorageApi(
     new GuzzleHttp\Client(),
     $config
 );
-$cloud_storage_id = 56; // int
-$cloud_storage_user_id = 56; // int
+$cloud_storage_id = 56; // int | ID of the cloud storage
+$cloud_storage_user_id = 56; // int | ID of the cloud storage user
 
 try {
-    $result = $apiInstance->deleteCloudStorageUser($cloud_storage_id, $cloud_storage_user_id);
-    print_r($result);
+    $apiInstance->deleteCloudStorageUser($cloud_storage_id, $cloud_storage_user_id);
 } catch (Exception $e) {
     echo 'Exception when calling StorageApi->deleteCloudStorageUser: ', $e->getMessage(), PHP_EOL;
 }
@@ -390,12 +388,12 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **cloud_storage_id** | **int**|  | |
-| **cloud_storage_user_id** | **int**|  | |
+| **cloud_storage_id** | **int**| ID of the cloud storage | |
+| **cloud_storage_user_id** | **int**| ID of the cloud storage user | |
 
 ### Return type
 
-[**\Shellrent\Sdk\Model\EmptyResponse**](../Model/EmptyResponse.md)
+void (empty response body)
 
 ### Authorization
 
@@ -413,12 +411,12 @@ try {
 ## `deleteObjectStorageBucketFirewallEntry()`
 
 ```php
-deleteObjectStorageBucketFirewallEntry($object_storage_id, $bucket_id, $entry_id): \Shellrent\Sdk\Model\ObjectStorageBucketFirewallEntryResponse
+deleteObjectStorageBucketFirewallEntry($object_storage_id, $bucket_id, $entry_id): \Shellrent\Sdk\Model\TaskResponse
 ```
 
 Delete object storage bucket firewall entry
 
-Delete object storage bucket firewall entry
+Starts removing the entry from the firewall of the bucket, returned as a Task: the entry disappears when the operation is completed. Firewall operations on the buckets of an object storage run one at a time: while one is running, the request is rejected with 409.
 
 ### Example
 
@@ -437,9 +435,9 @@ $apiInstance = new Shellrent\Sdk\Api\StorageApi(
     new GuzzleHttp\Client(),
     $config
 );
-$object_storage_id = 56; // int
-$bucket_id = 56; // int
-$entry_id = 56; // int
+$object_storage_id = 56; // int | ID of the object storage
+$bucket_id = 56; // int | ID of the bucket
+$entry_id = 56; // int | ID of the firewall entry of the bucket
 
 try {
     $result = $apiInstance->deleteObjectStorageBucketFirewallEntry($object_storage_id, $bucket_id, $entry_id);
@@ -453,13 +451,13 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **object_storage_id** | **int**|  | |
-| **bucket_id** | **int**|  | |
-| **entry_id** | **int**|  | |
+| **object_storage_id** | **int**| ID of the object storage | |
+| **bucket_id** | **int**| ID of the bucket | |
+| **entry_id** | **int**| ID of the firewall entry of the bucket | |
 
 ### Return type
 
-[**\Shellrent\Sdk\Model\ObjectStorageBucketFirewallEntryResponse**](../Model/ObjectStorageBucketFirewallEntryResponse.md)
+[**\Shellrent\Sdk\Model\TaskResponse**](../Model/TaskResponse.md)
 
 ### Authorization
 
@@ -477,7 +475,7 @@ try {
 ## `deleteObjectStorageIamUser()`
 
 ```php
-deleteObjectStorageIamUser($object_storage_id, $iam_user_id): \Shellrent\Sdk\Model\EmptyResponse
+deleteObjectStorageIamUser($object_storage_id, $iam_user_id)
 ```
 
 Delete object storage IAM user
@@ -501,12 +499,11 @@ $apiInstance = new Shellrent\Sdk\Api\StorageApi(
     new GuzzleHttp\Client(),
     $config
 );
-$object_storage_id = 56; // int
-$iam_user_id = 56; // int
+$object_storage_id = 56; // int | ID of the object storage
+$iam_user_id = 56; // int | ID of the IAM user
 
 try {
-    $result = $apiInstance->deleteObjectStorageIamUser($object_storage_id, $iam_user_id);
-    print_r($result);
+    $apiInstance->deleteObjectStorageIamUser($object_storage_id, $iam_user_id);
 } catch (Exception $e) {
     echo 'Exception when calling StorageApi->deleteObjectStorageIamUser: ', $e->getMessage(), PHP_EOL;
 }
@@ -516,12 +513,12 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **object_storage_id** | **int**|  | |
-| **iam_user_id** | **int**|  | |
+| **object_storage_id** | **int**| ID of the object storage | |
+| **iam_user_id** | **int**| ID of the IAM user | |
 
 ### Return type
 
-[**\Shellrent\Sdk\Model\EmptyResponse**](../Model/EmptyResponse.md)
+void (empty response body)
 
 ### Authorization
 
@@ -539,12 +536,12 @@ try {
 ## `deleteObjectStorageIamUserS3Key()`
 
 ```php
-deleteObjectStorageIamUserS3Key($object_storage_id, $iam_user_id, $s3_key_id): \Shellrent\Sdk\Model\EmptyResponse
+deleteObjectStorageIamUserS3Key($object_storage_id, $iam_user_id, $s3_key_id)
 ```
 
 Delete object storage IAM user S3 key
 
-Delete object storage IAM user S3 key
+Deletes the S3 key of the IAM user on the storage, so it can no longer be used. A key already deleted is not found (404); the request is rejected with 409 when the object storage is not active or is under maintenance.
 
 ### Example
 
@@ -563,13 +560,12 @@ $apiInstance = new Shellrent\Sdk\Api\StorageApi(
     new GuzzleHttp\Client(),
     $config
 );
-$object_storage_id = 56; // int
-$iam_user_id = 56; // int
-$s3_key_id = 56; // int
+$object_storage_id = 56; // int | ID of the object storage
+$iam_user_id = 56; // int | ID of the IAM user
+$s3_key_id = 56; // int | ID of the S3 key
 
 try {
-    $result = $apiInstance->deleteObjectStorageIamUserS3Key($object_storage_id, $iam_user_id, $s3_key_id);
-    print_r($result);
+    $apiInstance->deleteObjectStorageIamUserS3Key($object_storage_id, $iam_user_id, $s3_key_id);
 } catch (Exception $e) {
     echo 'Exception when calling StorageApi->deleteObjectStorageIamUserS3Key: ', $e->getMessage(), PHP_EOL;
 }
@@ -579,13 +575,13 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **object_storage_id** | **int**|  | |
-| **iam_user_id** | **int**|  | |
-| **s3_key_id** | **int**|  | |
+| **object_storage_id** | **int**| ID of the object storage | |
+| **iam_user_id** | **int**| ID of the IAM user | |
+| **s3_key_id** | **int**| ID of the S3 key | |
 
 ### Return type
 
-[**\Shellrent\Sdk\Model\EmptyResponse**](../Model/EmptyResponse.md)
+void (empty response body)
 
 ### Authorization
 
@@ -608,7 +604,7 @@ downgradeCloudStorageSize($cloud_storage_id): \Shellrent\Sdk\Model\TaskResponse
 
 Downgrade cloud storage size
 
-Downgrade the cloud storage size. Returns the background Task created for the downgrade.
+Downgrade the cloud storage size. Returns the background Task created for the downgrade.  Not available to sub-accounts: the response is 403 (error 1601).
 
 ### Example
 
@@ -627,7 +623,7 @@ $apiInstance = new Shellrent\Sdk\Api\StorageApi(
     new GuzzleHttp\Client(),
     $config
 );
-$cloud_storage_id = 56; // int
+$cloud_storage_id = 56; // int | ID of the cloud storage
 
 try {
     $result = $apiInstance->downgradeCloudStorageSize($cloud_storage_id);
@@ -641,7 +637,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **cloud_storage_id** | **int**|  | |
+| **cloud_storage_id** | **int**| ID of the cloud storage | |
 
 ### Return type
 
@@ -687,7 +683,7 @@ $apiInstance = new Shellrent\Sdk\Api\StorageApi(
     new GuzzleHttp\Client(),
     $config
 );
-$cloud_storage_id = 56; // int
+$cloud_storage_id = 56; // int | ID of the cloud storage
 
 try {
     $result = $apiInstance->getCloudStorage($cloud_storage_id);
@@ -701,7 +697,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **cloud_storage_id** | **int**|  | |
+| **cloud_storage_id** | **int**| ID of the cloud storage | |
 
 ### Return type
 
@@ -747,8 +743,8 @@ $apiInstance = new Shellrent\Sdk\Api\StorageApi(
     new GuzzleHttp\Client(),
     $config
 );
-$cloud_storage_id = 56; // int
-$access_id = 'access_id_example'; // string
+$cloud_storage_id = 56; // int | ID of the cloud storage
+$access_id = 'access_id_example'; // string | Access of the cloud storage: the `access_id` field of the accesses list, that is the hostname allowed to mount the storage
 
 try {
     $result = $apiInstance->getCloudStorageAccess($cloud_storage_id, $access_id);
@@ -762,8 +758,8 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **cloud_storage_id** | **int**|  | |
-| **access_id** | **string**|  | |
+| **cloud_storage_id** | **int**| ID of the cloud storage | |
+| **access_id** | **string**| Access of the cloud storage: the &#x60;access_id&#x60; field of the accesses list, that is the hostname allowed to mount the storage | |
 
 ### Return type
 
@@ -809,8 +805,8 @@ $apiInstance = new Shellrent\Sdk\Api\StorageApi(
     new GuzzleHttp\Client(),
     $config
 );
-$cloud_storage_id = 56; // int
-$cloud_storage_user_id = 56; // int
+$cloud_storage_id = 56; // int | ID of the cloud storage
+$cloud_storage_user_id = 56; // int | ID of the cloud storage user
 
 try {
     $result = $apiInstance->getCloudStorageUser($cloud_storage_id, $cloud_storage_user_id);
@@ -824,8 +820,8 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **cloud_storage_id** | **int**|  | |
-| **cloud_storage_user_id** | **int**|  | |
+| **cloud_storage_id** | **int**| ID of the cloud storage | |
+| **cloud_storage_user_id** | **int**| ID of the cloud storage user | |
 
 ### Return type
 
@@ -871,7 +867,7 @@ $apiInstance = new Shellrent\Sdk\Api\StorageApi(
     new GuzzleHttp\Client(),
     $config
 );
-$object_storage_id = 56; // int
+$object_storage_id = 56; // int | ID of the object storage
 
 try {
     $result = $apiInstance->getObjectStorage($object_storage_id);
@@ -885,7 +881,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **object_storage_id** | **int**|  | |
+| **object_storage_id** | **int**| ID of the object storage | |
 
 ### Return type
 
@@ -931,8 +927,8 @@ $apiInstance = new Shellrent\Sdk\Api\StorageApi(
     new GuzzleHttp\Client(),
     $config
 );
-$object_storage_id = 56; // int
-$bucket_id = 56; // int
+$object_storage_id = 56; // int | ID of the object storage
+$bucket_id = 56; // int | ID of the bucket
 
 try {
     $result = $apiInstance->getObjectStorageBucket($object_storage_id, $bucket_id);
@@ -946,8 +942,8 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **object_storage_id** | **int**|  | |
-| **bucket_id** | **int**|  | |
+| **object_storage_id** | **int**| ID of the object storage | |
+| **bucket_id** | **int**| ID of the bucket | |
 
 ### Return type
 
@@ -993,8 +989,8 @@ $apiInstance = new Shellrent\Sdk\Api\StorageApi(
     new GuzzleHttp\Client(),
     $config
 );
-$object_storage_id = 56; // int
-$bucket_id = 56; // int
+$object_storage_id = 56; // int | ID of the object storage
+$bucket_id = 56; // int | ID of the bucket
 
 try {
     $result = $apiInstance->getObjectStorageBucketChart($object_storage_id, $bucket_id);
@@ -1008,8 +1004,8 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **object_storage_id** | **int**|  | |
-| **bucket_id** | **int**|  | |
+| **object_storage_id** | **int**| ID of the object storage | |
+| **bucket_id** | **int**| ID of the bucket | |
 
 ### Return type
 
@@ -1055,9 +1051,9 @@ $apiInstance = new Shellrent\Sdk\Api\StorageApi(
     new GuzzleHttp\Client(),
     $config
 );
-$object_storage_id = 56; // int
-$bucket_id = 56; // int
-$entry_id = 56; // int
+$object_storage_id = 56; // int | ID of the object storage
+$bucket_id = 56; // int | ID of the bucket
+$entry_id = 56; // int | ID of the firewall entry of the bucket
 
 try {
     $result = $apiInstance->getObjectStorageBucketFirewallEntry($object_storage_id, $bucket_id, $entry_id);
@@ -1071,9 +1067,9 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **object_storage_id** | **int**|  | |
-| **bucket_id** | **int**|  | |
-| **entry_id** | **int**|  | |
+| **object_storage_id** | **int**| ID of the object storage | |
+| **bucket_id** | **int**| ID of the bucket | |
+| **entry_id** | **int**| ID of the firewall entry of the bucket | |
 
 ### Return type
 
@@ -1119,8 +1115,8 @@ $apiInstance = new Shellrent\Sdk\Api\StorageApi(
     new GuzzleHttp\Client(),
     $config
 );
-$object_storage_id = 56; // int
-$iam_user_id = 56; // int
+$object_storage_id = 56; // int | ID of the object storage
+$iam_user_id = 56; // int | ID of the IAM user
 
 try {
     $result = $apiInstance->getObjectStorageIamUser($object_storage_id, $iam_user_id);
@@ -1134,8 +1130,8 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **object_storage_id** | **int**|  | |
-| **iam_user_id** | **int**|  | |
+| **object_storage_id** | **int**| ID of the object storage | |
+| **iam_user_id** | **int**| ID of the IAM user | |
 
 ### Return type
 
@@ -1181,9 +1177,9 @@ $apiInstance = new Shellrent\Sdk\Api\StorageApi(
     new GuzzleHttp\Client(),
     $config
 );
-$object_storage_id = 56; // int
-$iam_user_id = 56; // int
-$s3_key_id = 56; // int
+$object_storage_id = 56; // int | ID of the object storage
+$iam_user_id = 56; // int | ID of the IAM user
+$s3_key_id = 56; // int | ID of the S3 key
 
 try {
     $result = $apiInstance->getObjectStorageIamUserS3Key($object_storage_id, $iam_user_id, $s3_key_id);
@@ -1197,9 +1193,9 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **object_storage_id** | **int**|  | |
-| **iam_user_id** | **int**|  | |
-| **s3_key_id** | **int**|  | |
+| **object_storage_id** | **int**| ID of the object storage | |
+| **iam_user_id** | **int**| ID of the IAM user | |
+| **s3_key_id** | **int**| ID of the S3 key | |
 
 ### Return type
 
@@ -1245,7 +1241,7 @@ $apiInstance = new Shellrent\Sdk\Api\StorageApi(
     new GuzzleHttp\Client(),
     $config
 );
-$object_storage_id = 56; // int
+$object_storage_id = 56; // int | ID of the object storage
 
 try {
     $result = $apiInstance->getObjectStorageS3Key($object_storage_id);
@@ -1259,7 +1255,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **object_storage_id** | **int**|  | |
+| **object_storage_id** | **int**| ID of the object storage | |
 
 ### Return type
 
@@ -1305,9 +1301,9 @@ $apiInstance = new Shellrent\Sdk\Api\StorageApi(
     new GuzzleHttp\Client(),
     $config
 );
-$cloud_storage_id = 56; // int
-$page = 1; // int
-$per_page = 20; // int
+$cloud_storage_id = 56; // int | ID of the cloud storage
+$page = 1; // int | Page number, starting from 1. A page beyond the last one returns an empty `data` list (with the requested `page` in `meta`).
+$per_page = 20; // int | Number of items per page. Values outside the allowed range are rejected with a validation error.
 
 try {
     $result = $apiInstance->listCloudStorageAccesses($cloud_storage_id, $page, $per_page);
@@ -1321,9 +1317,9 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **cloud_storage_id** | **int**|  | |
-| **page** | **int**|  | [optional] [default to 1] |
-| **per_page** | **int**|  | [optional] [default to 20] |
+| **cloud_storage_id** | **int**| ID of the cloud storage | |
+| **page** | **int**| Page number, starting from 1. A page beyond the last one returns an empty &#x60;data&#x60; list (with the requested &#x60;page&#x60; in &#x60;meta&#x60;). | [optional] [default to 1] |
+| **per_page** | **int**| Number of items per page. Values outside the allowed range are rejected with a validation error. | [optional] [default to 20] |
 
 ### Return type
 
@@ -1369,7 +1365,7 @@ $apiInstance = new Shellrent\Sdk\Api\StorageApi(
     new GuzzleHttp\Client(),
     $config
 );
-$cloud_storage_id = 56; // int
+$cloud_storage_id = 56; // int | ID of the cloud storage
 
 try {
     $result = $apiInstance->listCloudStorageUsers($cloud_storage_id);
@@ -1383,7 +1379,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **cloud_storage_id** | **int**|  | |
+| **cloud_storage_id** | **int**| ID of the cloud storage | |
 
 ### Return type
 
@@ -1429,8 +1425,8 @@ $apiInstance = new Shellrent\Sdk\Api\StorageApi(
     new GuzzleHttp\Client(),
     $config
 );
-$page = 1; // int
-$per_page = 20; // int
+$page = 1; // int | Page number, starting from 1. A page beyond the last one returns an empty `data` list (with the requested `page` in `meta`).
+$per_page = 20; // int | Number of items per page. Values outside the allowed range are rejected with a validation error.
 
 try {
     $result = $apiInstance->listCloudStorages($page, $per_page);
@@ -1444,8 +1440,8 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **page** | **int**|  | [optional] [default to 1] |
-| **per_page** | **int**|  | [optional] [default to 20] |
+| **page** | **int**| Page number, starting from 1. A page beyond the last one returns an empty &#x60;data&#x60; list (with the requested &#x60;page&#x60; in &#x60;meta&#x60;). | [optional] [default to 1] |
+| **per_page** | **int**| Number of items per page. Values outside the allowed range are rejected with a validation error. | [optional] [default to 20] |
 
 ### Return type
 
@@ -1491,10 +1487,10 @@ $apiInstance = new Shellrent\Sdk\Api\StorageApi(
     new GuzzleHttp\Client(),
     $config
 );
-$object_storage_id = 56; // int
-$bucket_id = 56; // int
-$page = 1; // int
-$per_page = 20; // int
+$object_storage_id = 56; // int | ID of the object storage
+$bucket_id = 56; // int | ID of the bucket
+$page = 1; // int | Page number, starting from 1. A page beyond the last one returns an empty `data` list (with the requested `page` in `meta`).
+$per_page = 20; // int | Number of items per page. Values outside the allowed range are rejected with a validation error.
 
 try {
     $result = $apiInstance->listObjectStorageBucketFirewallEntries($object_storage_id, $bucket_id, $page, $per_page);
@@ -1508,10 +1504,10 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **object_storage_id** | **int**|  | |
-| **bucket_id** | **int**|  | |
-| **page** | **int**|  | [optional] [default to 1] |
-| **per_page** | **int**|  | [optional] [default to 20] |
+| **object_storage_id** | **int**| ID of the object storage | |
+| **bucket_id** | **int**| ID of the bucket | |
+| **page** | **int**| Page number, starting from 1. A page beyond the last one returns an empty &#x60;data&#x60; list (with the requested &#x60;page&#x60; in &#x60;meta&#x60;). | [optional] [default to 1] |
+| **per_page** | **int**| Number of items per page. Values outside the allowed range are rejected with a validation error. | [optional] [default to 20] |
 
 ### Return type
 
@@ -1557,9 +1553,9 @@ $apiInstance = new Shellrent\Sdk\Api\StorageApi(
     new GuzzleHttp\Client(),
     $config
 );
-$object_storage_id = 56; // int
-$page = 1; // int
-$per_page = 20; // int
+$object_storage_id = 56; // int | ID of the object storage
+$page = 1; // int | Page number, starting from 1. A page beyond the last one returns an empty `data` list (with the requested `page` in `meta`).
+$per_page = 20; // int | Number of items per page. Values outside the allowed range are rejected with a validation error.
 
 try {
     $result = $apiInstance->listObjectStorageBuckets($object_storage_id, $page, $per_page);
@@ -1573,9 +1569,9 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **object_storage_id** | **int**|  | |
-| **page** | **int**|  | [optional] [default to 1] |
-| **per_page** | **int**|  | [optional] [default to 20] |
+| **object_storage_id** | **int**| ID of the object storage | |
+| **page** | **int**| Page number, starting from 1. A page beyond the last one returns an empty &#x60;data&#x60; list (with the requested &#x60;page&#x60; in &#x60;meta&#x60;). | [optional] [default to 1] |
+| **per_page** | **int**| Number of items per page. Values outside the allowed range are rejected with a validation error. | [optional] [default to 20] |
 
 ### Return type
 
@@ -1621,8 +1617,8 @@ $apiInstance = new Shellrent\Sdk\Api\StorageApi(
     new GuzzleHttp\Client(),
     $config
 );
-$object_storage_id = 56; // int
-$iam_user_id = 56; // int
+$object_storage_id = 56; // int | ID of the object storage
+$iam_user_id = 56; // int | ID of the IAM user
 
 try {
     $result = $apiInstance->listObjectStorageIamUserS3Keys($object_storage_id, $iam_user_id);
@@ -1636,8 +1632,8 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **object_storage_id** | **int**|  | |
-| **iam_user_id** | **int**|  | |
+| **object_storage_id** | **int**| ID of the object storage | |
+| **iam_user_id** | **int**| ID of the IAM user | |
 
 ### Return type
 
@@ -1683,9 +1679,9 @@ $apiInstance = new Shellrent\Sdk\Api\StorageApi(
     new GuzzleHttp\Client(),
     $config
 );
-$object_storage_id = 56; // int
-$page = 1; // int
-$per_page = 20; // int
+$object_storage_id = 56; // int | ID of the object storage
+$page = 1; // int | Page number, starting from 1. A page beyond the last one returns an empty `data` list (with the requested `page` in `meta`).
+$per_page = 20; // int | Number of items per page. Values outside the allowed range are rejected with a validation error.
 
 try {
     $result = $apiInstance->listObjectStorageIamUsers($object_storage_id, $page, $per_page);
@@ -1699,9 +1695,9 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **object_storage_id** | **int**|  | |
-| **page** | **int**|  | [optional] [default to 1] |
-| **per_page** | **int**|  | [optional] [default to 20] |
+| **object_storage_id** | **int**| ID of the object storage | |
+| **page** | **int**| Page number, starting from 1. A page beyond the last one returns an empty &#x60;data&#x60; list (with the requested &#x60;page&#x60; in &#x60;meta&#x60;). | [optional] [default to 1] |
+| **per_page** | **int**| Number of items per page. Values outside the allowed range are rejected with a validation error. | [optional] [default to 20] |
 
 ### Return type
 
@@ -1747,8 +1743,8 @@ $apiInstance = new Shellrent\Sdk\Api\StorageApi(
     new GuzzleHttp\Client(),
     $config
 );
-$page = 1; // int
-$per_page = 20; // int
+$page = 1; // int | Page number, starting from 1. A page beyond the last one returns an empty `data` list (with the requested `page` in `meta`).
+$per_page = 20; // int | Number of items per page. Values outside the allowed range are rejected with a validation error.
 
 try {
     $result = $apiInstance->listObjectStorages($page, $per_page);
@@ -1762,8 +1758,8 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **page** | **int**|  | [optional] [default to 1] |
-| **per_page** | **int**|  | [optional] [default to 20] |
+| **page** | **int**| Page number, starting from 1. A page beyond the last one returns an empty &#x60;data&#x60; list (with the requested &#x60;page&#x60; in &#x60;meta&#x60;). | [optional] [default to 1] |
+| **per_page** | **int**| Number of items per page. Values outside the allowed range are rejected with a validation error. | [optional] [default to 20] |
 
 ### Return type
 
@@ -1809,8 +1805,8 @@ $apiInstance = new Shellrent\Sdk\Api\StorageApi(
     new GuzzleHttp\Client(),
     $config
 );
-$cloud_storage_id = 56; // int
-$cloud_storage_user_id = 56; // int
+$cloud_storage_id = 56; // int | ID of the cloud storage
+$cloud_storage_user_id = 56; // int | ID of the cloud storage user
 $cloud_storage_user_size_update_request = new \Shellrent\Sdk\Model\CloudStorageUserSizeUpdateRequest(); // \Shellrent\Sdk\Model\CloudStorageUserSizeUpdateRequest
 
 try {
@@ -1825,8 +1821,8 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **cloud_storage_id** | **int**|  | |
-| **cloud_storage_user_id** | **int**|  | |
+| **cloud_storage_id** | **int**| ID of the cloud storage | |
+| **cloud_storage_user_id** | **int**| ID of the cloud storage user | |
 | **cloud_storage_user_size_update_request** | [**\Shellrent\Sdk\Model\CloudStorageUserSizeUpdateRequest**](../Model/CloudStorageUserSizeUpdateRequest.md)|  | |
 
 ### Return type
@@ -1854,7 +1850,7 @@ upgradeCloudStorageSize($cloud_storage_id): \Shellrent\Sdk\Model\OrderResponse
 
 Upgrade cloud storage size
 
-Upgrade the cloud storage size. Returns the generated Order to pay the additional size.
+Upgrade the cloud storage size. Returns the generated Order to pay the additional size.  Not available to sub-accounts: the response is 403 (error 1601).
 
 ### Example
 
@@ -1873,7 +1869,7 @@ $apiInstance = new Shellrent\Sdk\Api\StorageApi(
     new GuzzleHttp\Client(),
     $config
 );
-$cloud_storage_id = 56; // int
+$cloud_storage_id = 56; // int | ID of the cloud storage
 
 try {
     $result = $apiInstance->upgradeCloudStorageSize($cloud_storage_id);
@@ -1887,7 +1883,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **cloud_storage_id** | **int**|  | |
+| **cloud_storage_id** | **int**| ID of the cloud storage | |
 
 ### Return type
 

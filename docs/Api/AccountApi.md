@@ -12,7 +12,7 @@ All URIs are relative to https://api.shellrent.com, except if the operation defi
 | [**getSubAccount()**](AccountApi.md#getSubAccount) | **GET** /api/v3/account/sub-accounts/{account_id} | Get a user sub-account |
 | [**listSubAccounts()**](AccountApi.md#listSubAccounts) | **GET** /api/v3/account/sub-accounts | List all sub accounts |
 | [**updateSubAccount()**](AccountApi.md#updateSubAccount) | **PATCH** /api/v3/account/sub-accounts/{account_id} | Edit a user sub-account |
-| [**uploadFile()**](AccountApi.md#uploadFile) | **POST** /api/v3/upload | Upload file |
+| [**uploadFile()**](AccountApi.md#uploadFile) | **POST** /api/v3/uploads | Upload file |
 
 
 ## `createSubAccount()`
@@ -78,12 +78,12 @@ try {
 ## `deleteSubAccount()`
 
 ```php
-deleteSubAccount($account_id): \Shellrent\Sdk\Model\EmptyResponse
+deleteSubAccount($account_id)
 ```
 
 Delete a user sub-account
 
-Delete a user sub-account
+Deactivates the sub-account: it can no longer log in and is no longer among the sub-accounts, and its One-Click payment methods, automatic renewals, deferred payment and unified billing are revoked. The response is 404 when the account is not an active sub-account of the reseller, 403 when the account of the token cannot manage sub-accounts
 
 ### Example
 
@@ -102,11 +102,10 @@ $apiInstance = new Shellrent\Sdk\Api\AccountApi(
     new GuzzleHttp\Client(),
     $config
 );
-$account_id = 56; // int
+$account_id = 56; // int | ID of the sub-account
 
 try {
-    $result = $apiInstance->deleteSubAccount($account_id);
-    print_r($result);
+    $apiInstance->deleteSubAccount($account_id);
 } catch (Exception $e) {
     echo 'Exception when calling AccountApi->deleteSubAccount: ', $e->getMessage(), PHP_EOL;
 }
@@ -116,11 +115,11 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **account_id** | **int**|  | |
+| **account_id** | **int**| ID of the sub-account | |
 
 ### Return type
 
-[**\Shellrent\Sdk\Model\EmptyResponse**](../Model/EmptyResponse.md)
+void (empty response body)
 
 ### Authorization
 
@@ -219,7 +218,7 @@ $apiInstance = new Shellrent\Sdk\Api\AccountApi(
     new GuzzleHttp\Client(),
     $config
 );
-$account_id = 56; // int
+$account_id = 56; // int | ID of the sub-account
 
 try {
     $result = $apiInstance->getSubAccount($account_id);
@@ -233,7 +232,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **account_id** | **int**|  | |
+| **account_id** | **int**| ID of the sub-account | |
 
 ### Return type
 
@@ -279,8 +278,8 @@ $apiInstance = new Shellrent\Sdk\Api\AccountApi(
     new GuzzleHttp\Client(),
     $config
 );
-$page = 1; // int
-$per_page = 20; // int
+$page = 1; // int | Page number, starting from 1. A page beyond the last one returns an empty `data` list (with the requested `page` in `meta`).
+$per_page = 20; // int | Number of items per page. Values outside the allowed range are rejected with a validation error.
 
 try {
     $result = $apiInstance->listSubAccounts($page, $per_page);
@@ -294,8 +293,8 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **page** | **int**|  | [optional] [default to 1] |
-| **per_page** | **int**|  | [optional] [default to 20] |
+| **page** | **int**| Page number, starting from 1. A page beyond the last one returns an empty &#x60;data&#x60; list (with the requested &#x60;page&#x60; in &#x60;meta&#x60;). | [optional] [default to 1] |
+| **per_page** | **int**| Number of items per page. Values outside the allowed range are rejected with a validation error. | [optional] [default to 20] |
 
 ### Return type
 
@@ -322,7 +321,7 @@ updateSubAccount($account_id, $sub_account_update_request): \Shellrent\Sdk\Model
 
 Edit a user sub-account
 
-Edit an existing user sub-account
+Edit an existing user sub-account. Only the given fields change, with the rules of the creation: a field required by the creation cannot be emptied, and phone and mobile numbers are given together with their prefix
 
 ### Example
 
@@ -341,7 +340,7 @@ $apiInstance = new Shellrent\Sdk\Api\AccountApi(
     new GuzzleHttp\Client(),
     $config
 );
-$account_id = 56; // int
+$account_id = 56; // int | ID of the sub-account
 $sub_account_update_request = new \Shellrent\Sdk\Model\SubAccountUpdateRequest(); // \Shellrent\Sdk\Model\SubAccountUpdateRequest
 
 try {
@@ -356,7 +355,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **account_id** | **int**|  | |
+| **account_id** | **int**| ID of the sub-account | |
 | **sub_account_update_request** | [**\Shellrent\Sdk\Model\SubAccountUpdateRequest**](../Model/SubAccountUpdateRequest.md)|  | |
 
 ### Return type
@@ -379,12 +378,12 @@ try {
 ## `uploadFile()`
 
 ```php
-uploadFile($body): \Shellrent\Sdk\Model\ApiUploadResponse
+uploadFile($file): \Shellrent\Sdk\Model\ApiUploadResponse
 ```
 
 Upload file
 
-Upload one or more files
+Uploads a file, whose upload_id is then used by other calls (e.g. the PEC documents).
 
 ### Example
 
@@ -403,10 +402,10 @@ $apiInstance = new Shellrent\Sdk\Api\AccountApi(
     new GuzzleHttp\Client(),
     $config
 );
-$body = array('key' => new \stdClass); // object
+$file = '/path/to/file.txt'; // \SplFileObject | File to upload, at most 5 MB, with extension pdf, p7m, jpg, jpeg, png, txt, doc, docx, xls or xlsx. The content must match the extension
 
 try {
-    $result = $apiInstance->uploadFile($body);
+    $result = $apiInstance->uploadFile($file);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AccountApi->uploadFile: ', $e->getMessage(), PHP_EOL;
@@ -417,7 +416,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **body** | **object**|  | [optional] |
+| **file** | **\SplFileObject****\SplFileObject**| File to upload, at most 5 MB, with extension pdf, p7m, jpg, jpeg, png, txt, doc, docx, xls or xlsx. The content must match the extension | |
 
 ### Return type
 
@@ -429,7 +428,7 @@ try {
 
 ### HTTP request headers
 
-- **Content-Type**: `application/json`
+- **Content-Type**: `multipart/form-data`
 - **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)

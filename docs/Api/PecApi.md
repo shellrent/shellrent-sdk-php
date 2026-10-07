@@ -11,6 +11,7 @@ All URIs are relative to https://api.shellrent.com, except if the operation defi
 | [**getPecDomain()**](PecApi.md#getPecDomain) | **GET** /api/v3/pec-domains/{pec_domain_id} | Get PEC domain |
 | [**getPecDomainOwnerChange()**](PecApi.md#getPecDomainOwnerChange) | **GET** /api/v3/pec-domains/{pec_domain_id}/owner-changes/{owner_change_id} | Get PEC domain owner change |
 | [**getPecMailbox()**](PecApi.md#getPecMailbox) | **GET** /api/v3/pec-mailboxes/{pec_id} | Get PEC mailbox |
+| [**getPecMailboxOwnerChange()**](PecApi.md#getPecMailboxOwnerChange) | **GET** /api/v3/pec-mailboxes/{pec_id}/owner-changes/{owner_change_id} | Get PEC mailbox owner change |
 | [**listPecDomainOwnerChanges()**](PecApi.md#listPecDomainOwnerChanges) | **GET** /api/v3/pec-domains/{pec_domain_id}/owner-changes | List PEC domain owner changes |
 | [**listPecDomains()**](PecApi.md#listPecDomains) | **GET** /api/v3/pec-domains | List PEC domains |
 | [**listPecMailboxOwnerChanges()**](PecApi.md#listPecMailboxOwnerChanges) | **GET** /api/v3/pec-mailboxes/{pec_id}/owner-changes | List PEC mailbox owner changes |
@@ -45,7 +46,7 @@ $apiInstance = new Shellrent\Sdk\Api\PecApi(
     new GuzzleHttp\Client(),
     $config
 );
-$pec_domain_id = 56; // int
+$pec_domain_id = 56; // int | ID of the PEC domain
 $pec_mailbox_owner_change_create_request = new \Shellrent\Sdk\Model\PecMailboxOwnerChangeCreateRequest(); // \Shellrent\Sdk\Model\PecMailboxOwnerChangeCreateRequest
 
 try {
@@ -60,7 +61,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **pec_domain_id** | **int**|  | |
+| **pec_domain_id** | **int**| ID of the PEC domain | |
 | **pec_mailbox_owner_change_create_request** | [**\Shellrent\Sdk\Model\PecMailboxOwnerChangeCreateRequest**](../Model/PecMailboxOwnerChangeCreateRequest.md)|  | |
 
 ### Return type
@@ -107,7 +108,7 @@ $apiInstance = new Shellrent\Sdk\Api\PecApi(
     new GuzzleHttp\Client(),
     $config
 );
-$pec_id = 56; // int
+$pec_id = 56; // int | ID of the PEC mailbox
 $pec_mailbox_owner_change_create_request = new \Shellrent\Sdk\Model\PecMailboxOwnerChangeCreateRequest(); // \Shellrent\Sdk\Model\PecMailboxOwnerChangeCreateRequest
 
 try {
@@ -122,7 +123,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **pec_id** | **int**|  | |
+| **pec_id** | **int**| ID of the PEC mailbox | |
 | **pec_mailbox_owner_change_create_request** | [**\Shellrent\Sdk\Model\PecMailboxOwnerChangeCreateRequest**](../Model/PecMailboxOwnerChangeCreateRequest.md)|  | |
 
 ### Return type
@@ -169,7 +170,7 @@ $apiInstance = new Shellrent\Sdk\Api\PecApi(
     new GuzzleHttp\Client(),
     $config
 );
-$pec_domain_id = 56; // int
+$pec_domain_id = 56; // int | ID of the PEC domain
 
 try {
     $result = $apiInstance->getPecDomain($pec_domain_id);
@@ -183,7 +184,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **pec_domain_id** | **int**|  | |
+| **pec_domain_id** | **int**| ID of the PEC domain | |
 
 ### Return type
 
@@ -229,8 +230,8 @@ $apiInstance = new Shellrent\Sdk\Api\PecApi(
     new GuzzleHttp\Client(),
     $config
 );
-$pec_domain_id = 56; // int
-$owner_change_id = 56; // int
+$pec_domain_id = 56; // int | ID of the PEC domain
+$owner_change_id = 56; // int | ID of the owner change
 
 try {
     $result = $apiInstance->getPecDomainOwnerChange($pec_domain_id, $owner_change_id);
@@ -244,8 +245,8 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **pec_domain_id** | **int**|  | |
-| **owner_change_id** | **int**|  | |
+| **pec_domain_id** | **int**| ID of the PEC domain | |
+| **owner_change_id** | **int**| ID of the owner change | |
 
 ### Return type
 
@@ -291,7 +292,7 @@ $apiInstance = new Shellrent\Sdk\Api\PecApi(
     new GuzzleHttp\Client(),
     $config
 );
-$pec_id = 56; // int
+$pec_id = 56; // int | ID of the PEC mailbox
 
 try {
     $result = $apiInstance->getPecMailbox($pec_id);
@@ -305,11 +306,73 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **pec_id** | **int**|  | |
+| **pec_id** | **int**| ID of the PEC mailbox | |
 
 ### Return type
 
 [**\Shellrent\Sdk\Model\PecResponse**](../Model/PecResponse.md)
+
+### Authorization
+
+[oauth2](../../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `getPecMailboxOwnerChange()`
+
+```php
+getPecMailboxOwnerChange($pec_id, $owner_change_id): \Shellrent\Sdk\Model\PecOwnerChangeResponse
+```
+
+Get PEC mailbox owner change
+
+Get details of a specific owner change request for a PEC mailbox
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure OAuth2 access token for authorization: oauth2
+$config = Shellrent\Sdk\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Shellrent\Sdk\Api\PecApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$pec_id = 56; // int | ID of the PEC mailbox
+$owner_change_id = 56; // int | ID of the owner change
+
+try {
+    $result = $apiInstance->getPecMailboxOwnerChange($pec_id, $owner_change_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling PecApi->getPecMailboxOwnerChange: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **pec_id** | **int**| ID of the PEC mailbox | |
+| **owner_change_id** | **int**| ID of the owner change | |
+
+### Return type
+
+[**\Shellrent\Sdk\Model\PecOwnerChangeResponse**](../Model/PecOwnerChangeResponse.md)
 
 ### Authorization
 
@@ -351,9 +414,9 @@ $apiInstance = new Shellrent\Sdk\Api\PecApi(
     new GuzzleHttp\Client(),
     $config
 );
-$pec_domain_id = 56; // int
-$page = 1; // int
-$per_page = 20; // int
+$pec_domain_id = 56; // int | ID of the PEC domain
+$page = 1; // int | Page number, starting from 1. A page beyond the last one returns an empty `data` list (with the requested `page` in `meta`).
+$per_page = 20; // int | Number of items per page. Values outside the allowed range are rejected with a validation error.
 
 try {
     $result = $apiInstance->listPecDomainOwnerChanges($pec_domain_id, $page, $per_page);
@@ -367,9 +430,9 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **pec_domain_id** | **int**|  | |
-| **page** | **int**|  | [optional] [default to 1] |
-| **per_page** | **int**|  | [optional] [default to 20] |
+| **pec_domain_id** | **int**| ID of the PEC domain | |
+| **page** | **int**| Page number, starting from 1. A page beyond the last one returns an empty &#x60;data&#x60; list (with the requested &#x60;page&#x60; in &#x60;meta&#x60;). | [optional] [default to 1] |
+| **per_page** | **int**| Number of items per page. Values outside the allowed range are rejected with a validation error. | [optional] [default to 20] |
 
 ### Return type
 
@@ -415,8 +478,8 @@ $apiInstance = new Shellrent\Sdk\Api\PecApi(
     new GuzzleHttp\Client(),
     $config
 );
-$page = 1; // int
-$per_page = 20; // int
+$page = 1; // int | Page number, starting from 1. A page beyond the last one returns an empty `data` list (with the requested `page` in `meta`).
+$per_page = 20; // int | Number of items per page. Values outside the allowed range are rejected with a validation error.
 
 try {
     $result = $apiInstance->listPecDomains($page, $per_page);
@@ -430,8 +493,8 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **page** | **int**|  | [optional] [default to 1] |
-| **per_page** | **int**|  | [optional] [default to 20] |
+| **page** | **int**| Page number, starting from 1. A page beyond the last one returns an empty &#x60;data&#x60; list (with the requested &#x60;page&#x60; in &#x60;meta&#x60;). | [optional] [default to 1] |
+| **per_page** | **int**| Number of items per page. Values outside the allowed range are rejected with a validation error. | [optional] [default to 20] |
 
 ### Return type
 
@@ -477,9 +540,9 @@ $apiInstance = new Shellrent\Sdk\Api\PecApi(
     new GuzzleHttp\Client(),
     $config
 );
-$pec_id = 56; // int
-$page = 1; // int
-$per_page = 20; // int
+$pec_id = 56; // int | ID of the PEC mailbox
+$page = 1; // int | Page number, starting from 1. A page beyond the last one returns an empty `data` list (with the requested `page` in `meta`).
+$per_page = 20; // int | Number of items per page. Values outside the allowed range are rejected with a validation error.
 
 try {
     $result = $apiInstance->listPecMailboxOwnerChanges($pec_id, $page, $per_page);
@@ -493,9 +556,9 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **pec_id** | **int**|  | |
-| **page** | **int**|  | [optional] [default to 1] |
-| **per_page** | **int**|  | [optional] [default to 20] |
+| **pec_id** | **int**| ID of the PEC mailbox | |
+| **page** | **int**| Page number, starting from 1. A page beyond the last one returns an empty &#x60;data&#x60; list (with the requested &#x60;page&#x60; in &#x60;meta&#x60;). | [optional] [default to 1] |
+| **per_page** | **int**| Number of items per page. Values outside the allowed range are rejected with a validation error. | [optional] [default to 20] |
 
 ### Return type
 
@@ -541,8 +604,8 @@ $apiInstance = new Shellrent\Sdk\Api\PecApi(
     new GuzzleHttp\Client(),
     $config
 );
-$page = 1; // int
-$per_page = 20; // int
+$page = 1; // int | Page number, starting from 1. A page beyond the last one returns an empty `data` list (with the requested `page` in `meta`).
+$per_page = 20; // int | Number of items per page. Values outside the allowed range are rejected with a validation error.
 
 try {
     $result = $apiInstance->listPecMailboxes($page, $per_page);
@@ -556,8 +619,8 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **page** | **int**|  | [optional] [default to 1] |
-| **per_page** | **int**|  | [optional] [default to 20] |
+| **page** | **int**| Page number, starting from 1. A page beyond the last one returns an empty &#x60;data&#x60; list (with the requested &#x60;page&#x60; in &#x60;meta&#x60;). | [optional] [default to 1] |
+| **per_page** | **int**| Number of items per page. Values outside the allowed range are rejected with a validation error. | [optional] [default to 20] |
 
 ### Return type
 
@@ -603,7 +666,7 @@ $apiInstance = new Shellrent\Sdk\Api\PecApi(
     new GuzzleHttp\Client(),
     $config
 );
-$pec_id = 56; // int
+$pec_id = 56; // int | ID of the PEC mailbox
 $pec_mailbox_update_request = new \Shellrent\Sdk\Model\PecMailboxUpdateRequest(); // \Shellrent\Sdk\Model\PecMailboxUpdateRequest
 
 try {
@@ -618,7 +681,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **pec_id** | **int**|  | |
+| **pec_id** | **int**| ID of the PEC mailbox | |
 | **pec_mailbox_update_request** | [**\Shellrent\Sdk\Model\PecMailboxUpdateRequest**](../Model/PecMailboxUpdateRequest.md)|  | |
 
 ### Return type

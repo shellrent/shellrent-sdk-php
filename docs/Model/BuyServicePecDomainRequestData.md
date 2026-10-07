@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**domain_name** | **string** | Domain complete name (with TLD extension), for example: \&quot;example.com\&quot; or \&quot;example.co.uk\&quot; | [optional]
+**domain_name** | **string** | Domain complete name (with TLD extension), for example: \&quot;example.com\&quot; or \&quot;example.co.uk\&quot; |
 **legal_entity** | **string** | Legal entity of the PEC owner | [optional]
 **owner** | **int** | Id of the PEC owner, if it already exists | [optional]
 **admin_first_name** | **string** | First name of the PEC owner | [optional]

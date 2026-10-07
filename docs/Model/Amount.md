@@ -5,8 +5,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **amount** | **float** | Taxable amount |
-**currency** | **string** | Currency (EUR, USD, GBP, ...) |
-**tax_rate** | **float** | VAT rate in cents (iva/vat) |
+**currency** | **string** | Currency code: always &#x60;EUR&#x60; |
+**tax_rate** | **float** | VAT rate as a fraction, for example &#x60;0.22&#x60; for 22% |
 **tax** | **float** | VAT (tax) amount |
 **total** | **float** | Total amount |
 

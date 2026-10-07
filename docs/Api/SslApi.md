@@ -6,27 +6,27 @@ All URIs are relative to https://api.shellrent.com, except if the operation defi
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**canReemitSslCertificate()**](SslApi.md#canReemitSslCertificate) | **GET** /api/v3/ssl-certificates/{ssl_certificate_id}/can-reemit | Can re-emit certificate |
-| [**exportSslCertificate()**](SslApi.md#exportSslCertificate) | **GET** /api/v3/ssl-certificates/{ssl_certificate_id}/export_format/{format} | Export SSL certificate keys |
+| [**canReissueSslCertificate()**](SslApi.md#canReissueSslCertificate) | **GET** /api/v3/ssl-certificates/{ssl_certificate_id}/can-reissue | Can reissue certificate |
+| [**exportSslCertificate()**](SslApi.md#exportSslCertificate) | **POST** /api/v3/ssl-certificates/{ssl_certificate_id}/exports | Export SSL certificate keys |
 | [**getSslCertificate()**](SslApi.md#getSslCertificate) | **GET** /api/v3/ssl-certificates/{ssl_certificate_id} | Get SSL certificate |
 | [**getSslCertificateKeys()**](SslApi.md#getSslCertificateKeys) | **GET** /api/v3/ssl-certificates/{ssl_certificate_id}/keys | Get SSL certificate keys |
-| [**listSslApproverEmails()**](SslApi.md#listSslApproverEmails) | **GET** /api/v3/ssl-certificates/approver-emails/{domain_name} | Get approver emails list |
-| [**listSslCertificateExportFormats()**](SslApi.md#listSslCertificateExportFormats) | **GET** /api/v3/ssl-certificates/{ssl_certificate_id}/export_formats | Get export formats |
+| [**listSslApproverEmails()**](SslApi.md#listSslApproverEmails) | **GET** /api/v3/ssl-certificates/approver-emails | Get approver emails list |
+| [**listSslCertificateExportFormats()**](SslApi.md#listSslCertificateExportFormats) | **GET** /api/v3/ssl-certificates/{ssl_certificate_id}/export-formats | Get export formats |
 | [**listSslCertificates()**](SslApi.md#listSslCertificates) | **GET** /api/v3/ssl-certificates | List all SSL Certificates |
-| [**reemitSslCertificate()**](SslApi.md#reemitSslCertificate) | **POST** /api/v3/ssl-certificates/{ssl_certificate_id}/reemit | Re-emit certificate |
+| [**reissueSslCertificate()**](SslApi.md#reissueSslCertificate) | **POST** /api/v3/ssl-certificates/{ssl_certificate_id}/reissues | Reissue certificate |
 | [**updateSslCertificateCsr()**](SslApi.md#updateSslCertificateCsr) | **PUT** /api/v3/ssl-certificates/{ssl_certificate_id}/csr | Change SSL certificate CSR |
 | [**updateSslCertificateOwner()**](SslApi.md#updateSslCertificateOwner) | **PATCH** /api/v3/ssl-certificates/{ssl_certificate_id} | Edit SSL certificate owner |
 
 
-## `canReemitSslCertificate()`
+## `canReissueSslCertificate()`
 
 ```php
-canReemitSslCertificate($ssl_certificate_id): \Shellrent\Sdk\Model\SslCertificateCanReemitResponse
+canReissueSslCertificate($ssl_certificate_id): \Shellrent\Sdk\Model\SslCertificateCanReissueResponse
 ```
 
-Can re-emit certificate
+Can reissue certificate
 
-Know if it's possible to re-emit the SSL Certificate
+Know if it's possible to reissue the SSL Certificate
 
 ### Example
 
@@ -45,13 +45,13 @@ $apiInstance = new Shellrent\Sdk\Api\SslApi(
     new GuzzleHttp\Client(),
     $config
 );
-$ssl_certificate_id = 56; // int
+$ssl_certificate_id = 56; // int | ID of the SSL certificate
 
 try {
-    $result = $apiInstance->canReemitSslCertificate($ssl_certificate_id);
+    $result = $apiInstance->canReissueSslCertificate($ssl_certificate_id);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling SslApi->canReemitSslCertificate: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling SslApi->canReissueSslCertificate: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -59,11 +59,11 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **ssl_certificate_id** | **int**|  | |
+| **ssl_certificate_id** | **int**| ID of the SSL certificate | |
 
 ### Return type
 
-[**\Shellrent\Sdk\Model\SslCertificateCanReemitResponse**](../Model/SslCertificateCanReemitResponse.md)
+[**\Shellrent\Sdk\Model\SslCertificateCanReissueResponse**](../Model/SslCertificateCanReissueResponse.md)
 
 ### Authorization
 
@@ -81,12 +81,12 @@ try {
 ## `exportSslCertificate()`
 
 ```php
-exportSslCertificate($ssl_certificate_id, $format): \Shellrent\Sdk\Model\SslCertificateExportResponse
+exportSslCertificate($ssl_certificate_id, $ssl_certificate_export_request): \Shellrent\Sdk\Model\SslCertificateExportResponse
 ```
 
 Export SSL certificate keys
 
-Export SSL certificate keys
+Exports the certificate and its keys in the requested format, as a base64 encoded file. The format and, when needed, the passphrases travel in the request body. The formats that include the private key (PK, PK_CERT_CA, MULTI_ZIP) also require the ssl:secrets scope, otherwise the response is 403.
 
 ### Example
 
@@ -105,11 +105,11 @@ $apiInstance = new Shellrent\Sdk\Api\SslApi(
     new GuzzleHttp\Client(),
     $config
 );
-$ssl_certificate_id = 56; // int
-$format = 'format_example'; // string
+$ssl_certificate_id = 56; // int | ID of the SSL certificate
+$ssl_certificate_export_request = new \Shellrent\Sdk\Model\SslCertificateExportRequest(); // \Shellrent\Sdk\Model\SslCertificateExportRequest
 
 try {
-    $result = $apiInstance->exportSslCertificate($ssl_certificate_id, $format);
+    $result = $apiInstance->exportSslCertificate($ssl_certificate_id, $ssl_certificate_export_request);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling SslApi->exportSslCertificate: ', $e->getMessage(), PHP_EOL;
@@ -120,8 +120,8 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **ssl_certificate_id** | **int**|  | |
-| **format** | **string**|  | |
+| **ssl_certificate_id** | **int**| ID of the SSL certificate | |
+| **ssl_certificate_export_request** | [**\Shellrent\Sdk\Model\SslCertificateExportRequest**](../Model/SslCertificateExportRequest.md)|  | |
 
 ### Return type
 
@@ -133,7 +133,7 @@ try {
 
 ### HTTP request headers
 
-- **Content-Type**: Not defined
+- **Content-Type**: `application/json`
 - **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
@@ -167,7 +167,7 @@ $apiInstance = new Shellrent\Sdk\Api\SslApi(
     new GuzzleHttp\Client(),
     $config
 );
-$ssl_certificate_id = 56; // int
+$ssl_certificate_id = 56; // int | ID of the SSL certificate
 
 try {
     $result = $apiInstance->getSslCertificate($ssl_certificate_id);
@@ -181,7 +181,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **ssl_certificate_id** | **int**|  | |
+| **ssl_certificate_id** | **int**| ID of the SSL certificate | |
 
 ### Return type
 
@@ -227,7 +227,7 @@ $apiInstance = new Shellrent\Sdk\Api\SslApi(
     new GuzzleHttp\Client(),
     $config
 );
-$ssl_certificate_id = 56; // int
+$ssl_certificate_id = 56; // int | ID of the SSL certificate
 
 try {
     $result = $apiInstance->getSslCertificateKeys($ssl_certificate_id);
@@ -241,7 +241,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **ssl_certificate_id** | **int**|  | |
+| **ssl_certificate_id** | **int**| ID of the SSL certificate | |
 
 ### Return type
 
@@ -287,7 +287,7 @@ $apiInstance = new Shellrent\Sdk\Api\SslApi(
     new GuzzleHttp\Client(),
     $config
 );
-$domain_name = 'domain_name_example'; // string
+$domain_name = 'domain_name_example'; // string | Domain name of the certificate
 
 try {
     $result = $apiInstance->listSslApproverEmails($domain_name);
@@ -301,7 +301,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **domain_name** | **string**|  | |
+| **domain_name** | **string**| Domain name of the certificate | |
 
 ### Return type
 
@@ -347,7 +347,7 @@ $apiInstance = new Shellrent\Sdk\Api\SslApi(
     new GuzzleHttp\Client(),
     $config
 );
-$ssl_certificate_id = 56; // int
+$ssl_certificate_id = 56; // int | ID of the SSL certificate
 
 try {
     $result = $apiInstance->listSslCertificateExportFormats($ssl_certificate_id);
@@ -361,7 +361,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **ssl_certificate_id** | **int**|  | |
+| **ssl_certificate_id** | **int**| ID of the SSL certificate | |
 
 ### Return type
 
@@ -409,8 +409,8 @@ $apiInstance = new Shellrent\Sdk\Api\SslApi(
 );
 $domain_name = 'domain_name_example'; // string | Certificate's main domain name
 $san_domain_name = 'san_domain_name_example'; // string | One of the SANs domain name
-$page = 1; // int
-$per_page = 20; // int
+$page = 1; // int | Page number, starting from 1. A page beyond the last one returns an empty `data` list (with the requested `page` in `meta`).
+$per_page = 20; // int | Number of items per page. Values outside the allowed range are rejected with a validation error.
 
 try {
     $result = $apiInstance->listSslCertificates($domain_name, $san_domain_name, $page, $per_page);
@@ -426,8 +426,8 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **domain_name** | **string**| Certificate&#39;s main domain name | [optional] |
 | **san_domain_name** | **string**| One of the SANs domain name | [optional] |
-| **page** | **int**|  | [optional] [default to 1] |
-| **per_page** | **int**|  | [optional] [default to 20] |
+| **page** | **int**| Page number, starting from 1. A page beyond the last one returns an empty &#x60;data&#x60; list (with the requested &#x60;page&#x60; in &#x60;meta&#x60;). | [optional] [default to 1] |
+| **per_page** | **int**| Number of items per page. Values outside the allowed range are rejected with a validation error. | [optional] [default to 20] |
 
 ### Return type
 
@@ -446,15 +446,15 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `reemitSslCertificate()`
+## `reissueSslCertificate()`
 
 ```php
-reemitSslCertificate($ssl_certificate_id, $ssl_certificate_reemit_request): \Shellrent\Sdk\Model\TaskResponse
+reissueSslCertificate($ssl_certificate_id, $ssl_certificate_reemit_request): \Shellrent\Sdk\Model\TaskResponse
 ```
 
-Re-emit certificate
+Reissue certificate
 
-Ask for the SSL Certificate to be re-emitted
+Asks for the SSL certificate to be reissued, optionally with a custom CSR or private key. The reissue must be allowed (see `GET /api/v3/ssl-certificates/{ssl_certificate_id}/can-reissue`), otherwise the response is 409; the operation is asynchronous and is returned as a Task.
 
 ### Example
 
@@ -473,14 +473,14 @@ $apiInstance = new Shellrent\Sdk\Api\SslApi(
     new GuzzleHttp\Client(),
     $config
 );
-$ssl_certificate_id = 56; // int
+$ssl_certificate_id = 56; // int | ID of the SSL certificate
 $ssl_certificate_reemit_request = new \Shellrent\Sdk\Model\SslCertificateReemitRequest(); // \Shellrent\Sdk\Model\SslCertificateReemitRequest
 
 try {
-    $result = $apiInstance->reemitSslCertificate($ssl_certificate_id, $ssl_certificate_reemit_request);
+    $result = $apiInstance->reissueSslCertificate($ssl_certificate_id, $ssl_certificate_reemit_request);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling SslApi->reemitSslCertificate: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling SslApi->reissueSslCertificate: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -488,7 +488,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **ssl_certificate_id** | **int**|  | |
+| **ssl_certificate_id** | **int**| ID of the SSL certificate | |
 | **ssl_certificate_reemit_request** | [**\Shellrent\Sdk\Model\SslCertificateReemitRequest**](../Model/SslCertificateReemitRequest.md)|  | |
 
 ### Return type
@@ -516,7 +516,7 @@ updateSslCertificateCsr($ssl_certificate_id, $ssl_certificate_change_csr_request
 
 Change SSL certificate CSR
 
-Change SSL certificate CSR
+Sets a custom CSR for the certificate, after verifying it with the certificate supplier, and returns the CSR of the certificate; sending the current CSR changes nothing. The certificate is not reissued: see `POST /api/v3/ssl-certificates/{ssl_certificate_id}/reissues`
 
 ### Example
 
@@ -535,7 +535,7 @@ $apiInstance = new Shellrent\Sdk\Api\SslApi(
     new GuzzleHttp\Client(),
     $config
 );
-$ssl_certificate_id = 56; // int
+$ssl_certificate_id = 56; // int | ID of the SSL certificate
 $ssl_certificate_change_csr_request = new \Shellrent\Sdk\Model\SslCertificateChangeCsrRequest(); // \Shellrent\Sdk\Model\SslCertificateChangeCsrRequest
 
 try {
@@ -550,7 +550,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **ssl_certificate_id** | **int**|  | |
+| **ssl_certificate_id** | **int**| ID of the SSL certificate | |
 | **ssl_certificate_change_csr_request** | [**\Shellrent\Sdk\Model\SslCertificateChangeCsrRequest**](../Model/SslCertificateChangeCsrRequest.md)|  | |
 
 ### Return type
@@ -578,7 +578,7 @@ updateSslCertificateOwner($ssl_certificate_id, $ssl_certificate_owner_request): 
 
 Edit SSL certificate owner
 
-Edit SSL certificate owner
+Changes the administrative contact of the certificate (the `admin_*` fields) and returns the certificate; only the fields sent change. The certificate already issued does not change: the CSRs we generate afterwards take the organization, city, state and country of the contact
 
 ### Example
 
@@ -597,7 +597,7 @@ $apiInstance = new Shellrent\Sdk\Api\SslApi(
     new GuzzleHttp\Client(),
     $config
 );
-$ssl_certificate_id = 56; // int
+$ssl_certificate_id = 56; // int | ID of the SSL certificate
 $ssl_certificate_owner_request = new \Shellrent\Sdk\Model\SslCertificateOwnerRequest(); // \Shellrent\Sdk\Model\SslCertificateOwnerRequest
 
 try {
@@ -612,7 +612,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **ssl_certificate_id** | **int**|  | |
+| **ssl_certificate_id** | **int**| ID of the SSL certificate | |
 | **ssl_certificate_owner_request** | [**\Shellrent\Sdk\Model\SslCertificateOwnerRequest**](../Model/SslCertificateOwnerRequest.md)|  | |
 
 ### Return type

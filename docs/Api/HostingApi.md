@@ -8,23 +8,22 @@ All URIs are relative to https://api.shellrent.com, except if the operation defi
 | ------------- | ------------- | ------------- |
 | [**createHostingAllowListEntry()**](HostingApi.md#createHostingAllowListEntry) | **POST** /api/v3/hostings/{hosting_id}/allow-lists | Create allow list entry |
 | [**createHostingBlockListEntry()**](HostingApi.md#createHostingBlockListEntry) | **POST** /api/v3/hostings/{hosting_id}/block-lists | Create block list entry |
-| [**createHostingCatchAll()**](HostingApi.md#createHostingCatchAll) | **POST** /api/v3/hostings/{hosting_id}/email/catch-all | Create catch-all alias |
-| [**createHostingCronjob()**](HostingApi.md#createHostingCronjob) | **POST** /api/v3/hostings/{hosting_id}/cronjobs | Create hosting cronjob |
+| [**createHostingCronjob()**](HostingApi.md#createHostingCronjob) | **POST** /api/v3/hostings/{hosting_id}/cron-jobs | Create hosting cronjob |
 | [**createHostingDatabase()**](HostingApi.md#createHostingDatabase) | **POST** /api/v3/hostings/{hosting_id}/databases | Create hosting database |
 | [**createHostingEmailAlias()**](HostingApi.md#createHostingEmailAlias) | **POST** /api/v3/hostings/{hosting_id}/email/aliases | Create hosting email alias |
 | [**createHostingModSecurityRule()**](HostingApi.md#createHostingModSecurityRule) | **POST** /api/v3/hostings/{hosting_id}/modsecurity/rules | Create ModSecurity rule |
-| [**createHostingSubdomain()**](HostingApi.md#createHostingSubdomain) | **POST** /api/v3/hostings/{hosting_id} | Create subdomain |
+| [**createHostingSubdomain()**](HostingApi.md#createHostingSubdomain) | **POST** /api/v3/hostings/{hosting_id}/subdomains | Create subdomain |
 | [**deleteAllHostingModSecurityRules()**](HostingApi.md#deleteAllHostingModSecurityRules) | **DELETE** /api/v3/hostings/{hosting_id}/modsecurity/rules | Delete all ModSecurity rules |
 | [**deleteHostingAllowListEntry()**](HostingApi.md#deleteHostingAllowListEntry) | **DELETE** /api/v3/hostings/{hosting_id}/allow-lists/{allow_list_id} | Delete allow list entry |
 | [**deleteHostingBlockListEntry()**](HostingApi.md#deleteHostingBlockListEntry) | **DELETE** /api/v3/hostings/{hosting_id}/block-lists/{block_list_id} | Delete block list entry |
 | [**deleteHostingCatchAll()**](HostingApi.md#deleteHostingCatchAll) | **DELETE** /api/v3/hostings/{hosting_id}/email/catch-all | Delete catch-all alias |
-| [**deleteHostingCronjob()**](HostingApi.md#deleteHostingCronjob) | **DELETE** /api/v3/hostings/{hosting_id}/cronjobs/{cronjob_id} | Delete hosting cronjob |
+| [**deleteHostingCronjob()**](HostingApi.md#deleteHostingCronjob) | **DELETE** /api/v3/hostings/{hosting_id}/cron-jobs/{cron_job_id} | Delete hosting cronjob |
 | [**deleteHostingEmailAlias()**](HostingApi.md#deleteHostingEmailAlias) | **DELETE** /api/v3/hostings/{hosting_id}/email/aliases/{alias_id} | Delete hosting email alias |
 | [**deleteHostingExposedBackup()**](HostingApi.md#deleteHostingExposedBackup) | **DELETE** /api/v3/hostings/{hosting_id}/backups/exhibitions/{hosting_backup_id} | Delete exposed backup |
 | [**deleteHostingModSecurityRule()**](HostingApi.md#deleteHostingModSecurityRule) | **DELETE** /api/v3/hostings/{hosting_id}/modsecurity/rules/{rule_id} | Delete ModSecurity rule |
 | [**deleteHostingSubdomain()**](HostingApi.md#deleteHostingSubdomain) | **DELETE** /api/v3/hostings/{hosting_id} | Delete subdomain |
 | [**enableHostingModSecurityRules()**](HostingApi.md#enableHostingModSecurityRules) | **PUT** /api/v3/hostings/{hosting_id}/modsecurity/rules | Enable ModSecurity rules |
-| [**exposeHostingBackups()**](HostingApi.md#exposeHostingBackups) | **POST** /api/v3/hostings/{hosting_id}/backups/exhibit | Expose hosting backups |
+| [**exposeHostingBackups()**](HostingApi.md#exposeHostingBackups) | **POST** /api/v3/hostings/{hosting_id}/backups/exhibitions | Expose hosting backups |
 | [**getHosting()**](HostingApi.md#getHosting) | **GET** /api/v3/hostings/{hosting_id} | Get hosting |
 | [**getHostingAllowListEntry()**](HostingApi.md#getHostingAllowListEntry) | **GET** /api/v3/hostings/{hosting_id}/allow-lists/{allow_list_id} | Get hosting allow list entry |
 | [**getHostingAntivirus()**](HostingApi.md#getHostingAntivirus) | **GET** /api/v3/hostings/{hosting_id}/antivirus | Get antivirus status |
@@ -34,7 +33,7 @@ All URIs are relative to https://api.shellrent.com, except if the operation defi
 | [**getHostingBlockListEntry()**](HostingApi.md#getHostingBlockListEntry) | **GET** /api/v3/hostings/{hosting_id}/block-lists/{block_list_id} | Get hosting block list entry |
 | [**getHostingCatchAll()**](HostingApi.md#getHostingCatchAll) | **GET** /api/v3/hostings/{hosting_id}/email/catch-all | Get catch-all alias |
 | [**getHostingCredentials()**](HostingApi.md#getHostingCredentials) | **GET** /api/v3/hostings/{hosting_id}/credentials | Get hosting credentials |
-| [**getHostingCronjob()**](HostingApi.md#getHostingCronjob) | **GET** /api/v3/hostings/{hosting_id}/cronjobs/{cronjob_id} | Get hosting cronjob |
+| [**getHostingCronjob()**](HostingApi.md#getHostingCronjob) | **GET** /api/v3/hostings/{hosting_id}/cron-jobs/{cron_job_id} | Get hosting cronjob |
 | [**getHostingDatabase()**](HostingApi.md#getHostingDatabase) | **GET** /api/v3/hostings/{hosting_id}/databases/{database_id} | Get hosting database |
 | [**getHostingEmailAlias()**](HostingApi.md#getHostingEmailAlias) | **GET** /api/v3/hostings/{hosting_id}/email/aliases/{alias_id} | Get hosting email alias |
 | [**getHostingModSecurity()**](HostingApi.md#getHostingModSecurity) | **GET** /api/v3/hostings/{hosting_id}/modsecurity | Get ModSecurity status |
@@ -47,7 +46,7 @@ All URIs are relative to https://api.shellrent.com, except if the operation defi
 | [**listHostingAntivirusScans()**](HostingApi.md#listHostingAntivirusScans) | **GET** /api/v3/hostings/{hosting_id}/antivirus/scans | List antivirus scans |
 | [**listHostingBackups()**](HostingApi.md#listHostingBackups) | **GET** /api/v3/hostings/{hosting_id}/backups | List hosting backups |
 | [**listHostingBlockListEntries()**](HostingApi.md#listHostingBlockListEntries) | **GET** /api/v3/hostings/{hosting_id}/block-lists | List hosting block list |
-| [**listHostingCronjobs()**](HostingApi.md#listHostingCronjobs) | **GET** /api/v3/hostings/{hosting_id}/cronjobs | List hosting cronjobs |
+| [**listHostingCronjobs()**](HostingApi.md#listHostingCronjobs) | **GET** /api/v3/hostings/{hosting_id}/cron-jobs | List hosting cronjobs |
 | [**listHostingDatabases()**](HostingApi.md#listHostingDatabases) | **GET** /api/v3/hostings/{hosting_id}/databases | Get hosting databases |
 | [**listHostingDnsRecords()**](HostingApi.md#listHostingDnsRecords) | **GET** /api/v3/hostings/{hosting_id}/dns-records | Get hosting DNS records |
 | [**listHostingEmailAliases()**](HostingApi.md#listHostingEmailAliases) | **GET** /api/v3/hostings/{hosting_id}/email/aliases | List hosting email aliases |
@@ -58,11 +57,11 @@ All URIs are relative to https://api.shellrent.com, except if the operation defi
 | [**listHostingSslCertificates()**](HostingApi.md#listHostingSslCertificates) | **GET** /api/v3/hostings/{hosting_id}/ssl-certificates | List hosting SSL certificates |
 | [**listHostings()**](HostingApi.md#listHostings) | **GET** /api/v3/hostings | List all hostings |
 | [**removeHostingSslCertificate()**](HostingApi.md#removeHostingSslCertificate) | **DELETE** /api/v3/hostings/{hosting_id}/ssl-certificates/{hosting_ssl_certificate_id} | Remove hosting SSL certificate |
-| [**restoreHostingBackup()**](HostingApi.md#restoreHostingBackup) | **POST** /api/v3/hostings/{hosting_id}/backups/{hosting_backup_id}/restore | Restore hosting backup |
+| [**restoreHostingBackup()**](HostingApi.md#restoreHostingBackup) | **POST** /api/v3/hostings/{hosting_id}/backups/{hosting_backup_id}/restores | Restore hosting backup |
 | [**startHostingAntivirusRemovalScan()**](HostingApi.md#startHostingAntivirusRemovalScan) | **POST** /api/v3/hostings/{hosting_id}/antivirus/removal-scans | Start antivirus removal scan |
 | [**startHostingAntivirusScan()**](HostingApi.md#startHostingAntivirusScan) | **POST** /api/v3/hostings/{hosting_id}/antivirus/scans | Start antivirus scan |
-| [**startHostingFirstBackup()**](HostingApi.md#startHostingFirstBackup) | **POST** /api/v3/hostings/{hosting_id}/backups/first-save | Start hosting backup |
-| [**updateHostingCatchAll()**](HostingApi.md#updateHostingCatchAll) | **PUT** /api/v3/hostings/{hosting_id}/email/catch-all | Update catch-all alias |
+| [**startHostingFirstBackup()**](HostingApi.md#startHostingFirstBackup) | **POST** /api/v3/hostings/{hosting_id}/backups | Start hosting backup |
+| [**updateHostingCatchAll()**](HostingApi.md#updateHostingCatchAll) | **PUT** /api/v3/hostings/{hosting_id}/email/catch-all | Create or replace catch-all alias |
 | [**updateHostingFileProtection()**](HostingApi.md#updateHostingFileProtection) | **PATCH** /api/v3/hostings/{hosting_id}/file-protection | Update file protection status |
 | [**updateHostingHttpVersion()**](HostingApi.md#updateHostingHttpVersion) | **PATCH** /api/v3/hostings/{hosting_id}/http-version | Update HTTP version |
 | [**updateHostingModSecurity()**](HostingApi.md#updateHostingModSecurity) | **PATCH** /api/v3/hostings/{hosting_id}/modsecurity | Update ModSecurity status |
@@ -97,7 +96,7 @@ $apiInstance = new Shellrent\Sdk\Api\HostingApi(
     new GuzzleHttp\Client(),
     $config
 );
-$hosting_id = 56; // int
+$hosting_id = 56; // int | ID of the hosting
 $hosting_email_wblist_request = new \Shellrent\Sdk\Model\HostingEmailWblistRequest(); // \Shellrent\Sdk\Model\HostingEmailWblistRequest
 
 try {
@@ -112,7 +111,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **hosting_id** | **int**|  | |
+| **hosting_id** | **int**| ID of the hosting | |
 | **hosting_email_wblist_request** | [**\Shellrent\Sdk\Model\HostingEmailWblistRequest**](../Model/HostingEmailWblistRequest.md)|  | |
 
 ### Return type
@@ -135,7 +134,7 @@ try {
 ## `createHostingBlockListEntry()`
 
 ```php
-createHostingBlockListEntry($hosting_id, $hosting_email_wblist_request): \Shellrent\Sdk\Model\HostingEmailBlocListResponse
+createHostingBlockListEntry($hosting_id, $hosting_email_wblist_request): \Shellrent\Sdk\Model\HostingEmailBlockListResponse
 ```
 
 Create block list entry
@@ -159,7 +158,7 @@ $apiInstance = new Shellrent\Sdk\Api\HostingApi(
     new GuzzleHttp\Client(),
     $config
 );
-$hosting_id = 56; // int
+$hosting_id = 56; // int | ID of the hosting
 $hosting_email_wblist_request = new \Shellrent\Sdk\Model\HostingEmailWblistRequest(); // \Shellrent\Sdk\Model\HostingEmailWblistRequest
 
 try {
@@ -174,74 +173,12 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **hosting_id** | **int**|  | |
+| **hosting_id** | **int**| ID of the hosting | |
 | **hosting_email_wblist_request** | [**\Shellrent\Sdk\Model\HostingEmailWblistRequest**](../Model/HostingEmailWblistRequest.md)|  | |
 
 ### Return type
 
-[**\Shellrent\Sdk\Model\HostingEmailBlocListResponse**](../Model/HostingEmailBlocListResponse.md)
-
-### Authorization
-
-[oauth2](../../README.md#oauth2)
-
-### HTTP request headers
-
-- **Content-Type**: `application/json`
-- **Accept**: `application/json`
-
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
-
-## `createHostingCatchAll()`
-
-```php
-createHostingCatchAll($hosting_id, $hosting_email_catch_all_request): \Shellrent\Sdk\Model\HostingEmailCatchAllResponse
-```
-
-Create catch-all alias
-
-Create a catch-all alias with destinations
-
-### Example
-
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-// Configure OAuth2 access token for authorization: oauth2
-$config = Shellrent\Sdk\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
-
-$apiInstance = new Shellrent\Sdk\Api\HostingApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$hosting_id = 56; // int
-$hosting_email_catch_all_request = new \Shellrent\Sdk\Model\HostingEmailCatchAllRequest(); // \Shellrent\Sdk\Model\HostingEmailCatchAllRequest
-
-try {
-    $result = $apiInstance->createHostingCatchAll($hosting_id, $hosting_email_catch_all_request);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling HostingApi->createHostingCatchAll: ', $e->getMessage(), PHP_EOL;
-}
-```
-
-### Parameters
-
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | ------------- |
-| **hosting_id** | **int**|  | |
-| **hosting_email_catch_all_request** | [**\Shellrent\Sdk\Model\HostingEmailCatchAllRequest**](../Model/HostingEmailCatchAllRequest.md)|  | |
-
-### Return type
-
-[**\Shellrent\Sdk\Model\HostingEmailCatchAllResponse**](../Model/HostingEmailCatchAllResponse.md)
+[**\Shellrent\Sdk\Model\HostingEmailBlockListResponse**](../Model/HostingEmailBlockListResponse.md)
 
 ### Authorization
 
@@ -283,7 +220,7 @@ $apiInstance = new Shellrent\Sdk\Api\HostingApi(
     new GuzzleHttp\Client(),
     $config
 );
-$hosting_id = 56; // int
+$hosting_id = 56; // int | ID of the hosting
 $hosting_cronjob_create_request = new \Shellrent\Sdk\Model\HostingCronjobCreateRequest(); // \Shellrent\Sdk\Model\HostingCronjobCreateRequest
 
 try {
@@ -298,7 +235,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **hosting_id** | **int**|  | |
+| **hosting_id** | **int**| ID of the hosting | |
 | **hosting_cronjob_create_request** | [**\Shellrent\Sdk\Model\HostingCronjobCreateRequest**](../Model/HostingCronjobCreateRequest.md)|  | |
 
 ### Return type
@@ -321,12 +258,12 @@ try {
 ## `createHostingDatabase()`
 
 ```php
-createHostingDatabase($hosting_id, $hosting_database_create_request): \Shellrent\Sdk\Model\HostingDatabaseResponse
+createHostingDatabase($hosting_id): \Shellrent\Sdk\Model\HostingDatabaseResponse
 ```
 
 Create hosting database
 
-Create hosting database
+Create a database of the hosting. The request has no body: as in the control panel, the name is `<username of the database account>_<n>`, with the first free n. If the database server already uses that name for another account, it adds a suffix: the response has the actual name
 
 ### Example
 
@@ -345,11 +282,10 @@ $apiInstance = new Shellrent\Sdk\Api\HostingApi(
     new GuzzleHttp\Client(),
     $config
 );
-$hosting_id = 56; // int
-$hosting_database_create_request = new \Shellrent\Sdk\Model\HostingDatabaseCreateRequest(); // \Shellrent\Sdk\Model\HostingDatabaseCreateRequest
+$hosting_id = 56; // int | ID of the hosting
 
 try {
-    $result = $apiInstance->createHostingDatabase($hosting_id, $hosting_database_create_request);
+    $result = $apiInstance->createHostingDatabase($hosting_id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling HostingApi->createHostingDatabase: ', $e->getMessage(), PHP_EOL;
@@ -360,8 +296,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **hosting_id** | **int**|  | |
-| **hosting_database_create_request** | [**\Shellrent\Sdk\Model\HostingDatabaseCreateRequest**](../Model/HostingDatabaseCreateRequest.md)|  | |
+| **hosting_id** | **int**| ID of the hosting | |
 
 ### Return type
 
@@ -373,7 +308,7 @@ try {
 
 ### HTTP request headers
 
-- **Content-Type**: `application/json`
+- **Content-Type**: Not defined
 - **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
@@ -407,7 +342,7 @@ $apiInstance = new Shellrent\Sdk\Api\HostingApi(
     new GuzzleHttp\Client(),
     $config
 );
-$hosting_id = 56; // int
+$hosting_id = 56; // int | ID of the hosting
 $hosting_email_alias_create_request = new \Shellrent\Sdk\Model\HostingEmailAliasCreateRequest(); // \Shellrent\Sdk\Model\HostingEmailAliasCreateRequest
 
 try {
@@ -422,7 +357,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **hosting_id** | **int**|  | |
+| **hosting_id** | **int**| ID of the hosting | |
 | **hosting_email_alias_create_request** | [**\Shellrent\Sdk\Model\HostingEmailAliasCreateRequest**](../Model/HostingEmailAliasCreateRequest.md)|  | |
 
 ### Return type
@@ -450,7 +385,7 @@ createHostingModSecurityRule($hosting_id, $hosting_mod_security_rule_create_requ
 
 Create ModSecurity rule
 
-Add a ModSecurity rule by rule number
+Disables the ModSecurity rule `rule_number` on the hosting, so that ModSecurity no longer applies it, and returns the rule with `included` true. Responds 200 instead of 201 when the hosting already had the rule, found by a scan or added before
 
 ### Example
 
@@ -469,7 +404,7 @@ $apiInstance = new Shellrent\Sdk\Api\HostingApi(
     new GuzzleHttp\Client(),
     $config
 );
-$hosting_id = 56; // int
+$hosting_id = 56; // int | ID of the hosting
 $hosting_mod_security_rule_create_request = new \Shellrent\Sdk\Model\HostingModSecurityRuleCreateRequest(); // \Shellrent\Sdk\Model\HostingModSecurityRuleCreateRequest
 
 try {
@@ -484,7 +419,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **hosting_id** | **int**|  | |
+| **hosting_id** | **int**| ID of the hosting | |
 | **hosting_mod_security_rule_create_request** | [**\Shellrent\Sdk\Model\HostingModSecurityRuleCreateRequest**](../Model/HostingModSecurityRuleCreateRequest.md)|  | |
 
 ### Return type
@@ -512,7 +447,7 @@ createHostingSubdomain($hosting_id, $hosting_subdomain_create_request): \Shellre
 
 Create subdomain
 
-Create subdomain
+Creates a subdomain of a main hosting and returns it. When the DNS of the domain is a purchase of the same account, it also adds the A record of the subdomain. Not available (403) when the plan does not include subdomains; 409 on a subdomain, when the limit is reached or when the subdomain or its DNS record already exists
 
 ### Example
 
@@ -531,7 +466,7 @@ $apiInstance = new Shellrent\Sdk\Api\HostingApi(
     new GuzzleHttp\Client(),
     $config
 );
-$hosting_id = 56; // int
+$hosting_id = 56; // int | ID of the hosting
 $hosting_subdomain_create_request = new \Shellrent\Sdk\Model\HostingSubdomainCreateRequest(); // \Shellrent\Sdk\Model\HostingSubdomainCreateRequest
 
 try {
@@ -546,7 +481,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **hosting_id** | **int**|  | |
+| **hosting_id** | **int**| ID of the hosting | |
 | **hosting_subdomain_create_request** | [**\Shellrent\Sdk\Model\HostingSubdomainCreateRequest**](../Model/HostingSubdomainCreateRequest.md)|  | |
 
 ### Return type
@@ -569,12 +504,12 @@ try {
 ## `deleteAllHostingModSecurityRules()`
 
 ```php
-deleteAllHostingModSecurityRules($hosting_id): \Shellrent\Sdk\Model\EmptyResponse
+deleteAllHostingModSecurityRules($hosting_id)
 ```
 
 Delete all ModSecurity rules
 
-Disable all ModSecurity rules for a hosting
+Enables again all the ModSecurity rules disabled on the hosting: ModSecurity applies them again and their `included` becomes false. The rules stay in the list
 
 ### Example
 
@@ -593,11 +528,10 @@ $apiInstance = new Shellrent\Sdk\Api\HostingApi(
     new GuzzleHttp\Client(),
     $config
 );
-$hosting_id = 56; // int
+$hosting_id = 56; // int | ID of the hosting
 
 try {
-    $result = $apiInstance->deleteAllHostingModSecurityRules($hosting_id);
-    print_r($result);
+    $apiInstance->deleteAllHostingModSecurityRules($hosting_id);
 } catch (Exception $e) {
     echo 'Exception when calling HostingApi->deleteAllHostingModSecurityRules: ', $e->getMessage(), PHP_EOL;
 }
@@ -607,11 +541,11 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **hosting_id** | **int**|  | |
+| **hosting_id** | **int**| ID of the hosting | |
 
 ### Return type
 
-[**\Shellrent\Sdk\Model\EmptyResponse**](../Model/EmptyResponse.md)
+void (empty response body)
 
 ### Authorization
 
@@ -629,7 +563,7 @@ try {
 ## `deleteHostingAllowListEntry()`
 
 ```php
-deleteHostingAllowListEntry($hosting_id, $allow_list_id): \Shellrent\Sdk\Model\EmptyResponse
+deleteHostingAllowListEntry($hosting_id, $allow_list_id)
 ```
 
 Delete allow list entry
@@ -653,12 +587,11 @@ $apiInstance = new Shellrent\Sdk\Api\HostingApi(
     new GuzzleHttp\Client(),
     $config
 );
-$hosting_id = 56; // int
-$allow_list_id = 56; // int
+$hosting_id = 56; // int | ID of the hosting
+$allow_list_id = 56; // int | ID of the allow list entry
 
 try {
-    $result = $apiInstance->deleteHostingAllowListEntry($hosting_id, $allow_list_id);
-    print_r($result);
+    $apiInstance->deleteHostingAllowListEntry($hosting_id, $allow_list_id);
 } catch (Exception $e) {
     echo 'Exception when calling HostingApi->deleteHostingAllowListEntry: ', $e->getMessage(), PHP_EOL;
 }
@@ -668,12 +601,12 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **hosting_id** | **int**|  | |
-| **allow_list_id** | **int**|  | |
+| **hosting_id** | **int**| ID of the hosting | |
+| **allow_list_id** | **int**| ID of the allow list entry | |
 
 ### Return type
 
-[**\Shellrent\Sdk\Model\EmptyResponse**](../Model/EmptyResponse.md)
+void (empty response body)
 
 ### Authorization
 
@@ -691,7 +624,7 @@ try {
 ## `deleteHostingBlockListEntry()`
 
 ```php
-deleteHostingBlockListEntry($hosting_id, $block_list_id): \Shellrent\Sdk\Model\EmptyResponse
+deleteHostingBlockListEntry($hosting_id, $block_list_id)
 ```
 
 Delete block list entry
@@ -715,12 +648,11 @@ $apiInstance = new Shellrent\Sdk\Api\HostingApi(
     new GuzzleHttp\Client(),
     $config
 );
-$hosting_id = 56; // int
-$block_list_id = 56; // int
+$hosting_id = 56; // int | ID of the hosting
+$block_list_id = 56; // int | ID of the block list entry
 
 try {
-    $result = $apiInstance->deleteHostingBlockListEntry($hosting_id, $block_list_id);
-    print_r($result);
+    $apiInstance->deleteHostingBlockListEntry($hosting_id, $block_list_id);
 } catch (Exception $e) {
     echo 'Exception when calling HostingApi->deleteHostingBlockListEntry: ', $e->getMessage(), PHP_EOL;
 }
@@ -730,12 +662,12 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **hosting_id** | **int**|  | |
-| **block_list_id** | **int**|  | |
+| **hosting_id** | **int**| ID of the hosting | |
+| **block_list_id** | **int**| ID of the block list entry | |
 
 ### Return type
 
-[**\Shellrent\Sdk\Model\EmptyResponse**](../Model/EmptyResponse.md)
+void (empty response body)
 
 ### Authorization
 
@@ -753,7 +685,7 @@ try {
 ## `deleteHostingCatchAll()`
 
 ```php
-deleteHostingCatchAll($hosting_id): \Shellrent\Sdk\Model\EmptyResponse
+deleteHostingCatchAll($hosting_id)
 ```
 
 Delete catch-all alias
@@ -777,11 +709,10 @@ $apiInstance = new Shellrent\Sdk\Api\HostingApi(
     new GuzzleHttp\Client(),
     $config
 );
-$hosting_id = 56; // int
+$hosting_id = 56; // int | ID of the hosting
 
 try {
-    $result = $apiInstance->deleteHostingCatchAll($hosting_id);
-    print_r($result);
+    $apiInstance->deleteHostingCatchAll($hosting_id);
 } catch (Exception $e) {
     echo 'Exception when calling HostingApi->deleteHostingCatchAll: ', $e->getMessage(), PHP_EOL;
 }
@@ -791,11 +722,11 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **hosting_id** | **int**|  | |
+| **hosting_id** | **int**| ID of the hosting | |
 
 ### Return type
 
-[**\Shellrent\Sdk\Model\EmptyResponse**](../Model/EmptyResponse.md)
+void (empty response body)
 
 ### Authorization
 
@@ -813,7 +744,7 @@ try {
 ## `deleteHostingCronjob()`
 
 ```php
-deleteHostingCronjob($hosting_id, $cronjob_id): \Shellrent\Sdk\Model\EmptyResponse
+deleteHostingCronjob($hosting_id, $cron_job_id)
 ```
 
 Delete hosting cronjob
@@ -837,12 +768,11 @@ $apiInstance = new Shellrent\Sdk\Api\HostingApi(
     new GuzzleHttp\Client(),
     $config
 );
-$hosting_id = 56; // int
-$cronjob_id = 56; // int
+$hosting_id = 56; // int | ID of the hosting
+$cron_job_id = 56; // int | ID of the cron job
 
 try {
-    $result = $apiInstance->deleteHostingCronjob($hosting_id, $cronjob_id);
-    print_r($result);
+    $apiInstance->deleteHostingCronjob($hosting_id, $cron_job_id);
 } catch (Exception $e) {
     echo 'Exception when calling HostingApi->deleteHostingCronjob: ', $e->getMessage(), PHP_EOL;
 }
@@ -852,12 +782,12 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **hosting_id** | **int**|  | |
-| **cronjob_id** | **int**|  | |
+| **hosting_id** | **int**| ID of the hosting | |
+| **cron_job_id** | **int**| ID of the cron job | |
 
 ### Return type
 
-[**\Shellrent\Sdk\Model\EmptyResponse**](../Model/EmptyResponse.md)
+void (empty response body)
 
 ### Authorization
 
@@ -875,7 +805,7 @@ try {
 ## `deleteHostingEmailAlias()`
 
 ```php
-deleteHostingEmailAlias($hosting_id, $alias_id): \Shellrent\Sdk\Model\EmptyResponse
+deleteHostingEmailAlias($hosting_id, $alias_id)
 ```
 
 Delete hosting email alias
@@ -899,12 +829,11 @@ $apiInstance = new Shellrent\Sdk\Api\HostingApi(
     new GuzzleHttp\Client(),
     $config
 );
-$hosting_id = 56; // int
-$alias_id = 'alias_id_example'; // string
+$hosting_id = 56; // int | ID of the hosting
+$alias_id = 'alias_id_example'; // string | Email alias: the `alias_id` field of the aliases list, that is the address of the alias
 
 try {
-    $result = $apiInstance->deleteHostingEmailAlias($hosting_id, $alias_id);
-    print_r($result);
+    $apiInstance->deleteHostingEmailAlias($hosting_id, $alias_id);
 } catch (Exception $e) {
     echo 'Exception when calling HostingApi->deleteHostingEmailAlias: ', $e->getMessage(), PHP_EOL;
 }
@@ -914,12 +843,12 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **hosting_id** | **int**|  | |
-| **alias_id** | **string**|  | |
+| **hosting_id** | **int**| ID of the hosting | |
+| **alias_id** | **string**| Email alias: the &#x60;alias_id&#x60; field of the aliases list, that is the address of the alias | |
 
 ### Return type
 
-[**\Shellrent\Sdk\Model\EmptyResponse**](../Model/EmptyResponse.md)
+void (empty response body)
 
 ### Authorization
 
@@ -961,8 +890,8 @@ $apiInstance = new Shellrent\Sdk\Api\HostingApi(
     new GuzzleHttp\Client(),
     $config
 );
-$hosting_id = 56; // int
-$hosting_backup_id = 56; // int
+$hosting_id = 56; // int | ID of the hosting
+$hosting_backup_id = 56; // int | ID of the hosting backup
 
 try {
     $result = $apiInstance->deleteHostingExposedBackup($hosting_id, $hosting_backup_id);
@@ -976,8 +905,8 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **hosting_id** | **int**|  | |
-| **hosting_backup_id** | **int**|  | |
+| **hosting_id** | **int**| ID of the hosting | |
+| **hosting_backup_id** | **int**| ID of the hosting backup | |
 
 ### Return type
 
@@ -999,12 +928,12 @@ try {
 ## `deleteHostingModSecurityRule()`
 
 ```php
-deleteHostingModSecurityRule($hosting_id, $rule_id): \Shellrent\Sdk\Model\EmptyResponse
+deleteHostingModSecurityRule($hosting_id, $rule_id)
 ```
 
 Delete ModSecurity rule
 
-Disable a ModSecurity rule by id
+Enables again the ModSecurity rule `rule_id` on the hosting: ModSecurity applies it again and its `included` becomes false. The rule stays in the list
 
 ### Example
 
@@ -1023,12 +952,11 @@ $apiInstance = new Shellrent\Sdk\Api\HostingApi(
     new GuzzleHttp\Client(),
     $config
 );
-$hosting_id = 56; // int
-$rule_id = 56; // int
+$hosting_id = 56; // int | ID of the hosting
+$rule_id = 56; // int | ID of the ModSecurity rule
 
 try {
-    $result = $apiInstance->deleteHostingModSecurityRule($hosting_id, $rule_id);
-    print_r($result);
+    $apiInstance->deleteHostingModSecurityRule($hosting_id, $rule_id);
 } catch (Exception $e) {
     echo 'Exception when calling HostingApi->deleteHostingModSecurityRule: ', $e->getMessage(), PHP_EOL;
 }
@@ -1038,12 +966,12 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **hosting_id** | **int**|  | |
-| **rule_id** | **int**|  | |
+| **hosting_id** | **int**| ID of the hosting | |
+| **rule_id** | **int**| ID of the ModSecurity rule | |
 
 ### Return type
 
-[**\Shellrent\Sdk\Model\EmptyResponse**](../Model/EmptyResponse.md)
+void (empty response body)
 
 ### Authorization
 
@@ -1061,12 +989,12 @@ try {
 ## `deleteHostingSubdomain()`
 
 ```php
-deleteHostingSubdomain($hosting_id): \Shellrent\Sdk\Model\EmptyResponse
+deleteHostingSubdomain($hosting_id)
 ```
 
 Delete subdomain
 
-Delete subdomain
+Deletes a subdomain: it removes it from the web server, uninstalls its SSL certificates and, when the DNS of the domain is a purchase of the same account, deletes its DNS record. Not available (403) when the plan does not include subdomains; 409 on a main hosting
 
 ### Example
 
@@ -1085,11 +1013,10 @@ $apiInstance = new Shellrent\Sdk\Api\HostingApi(
     new GuzzleHttp\Client(),
     $config
 );
-$hosting_id = 56; // int
+$hosting_id = 56; // int | ID of the hosting
 
 try {
-    $result = $apiInstance->deleteHostingSubdomain($hosting_id);
-    print_r($result);
+    $apiInstance->deleteHostingSubdomain($hosting_id);
 } catch (Exception $e) {
     echo 'Exception when calling HostingApi->deleteHostingSubdomain: ', $e->getMessage(), PHP_EOL;
 }
@@ -1099,11 +1026,11 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **hosting_id** | **int**|  | |
+| **hosting_id** | **int**| ID of the hosting | |
 
 ### Return type
 
-[**\Shellrent\Sdk\Model\EmptyResponse**](../Model/EmptyResponse.md)
+void (empty response body)
 
 ### Authorization
 
@@ -1126,7 +1053,7 @@ enableHostingModSecurityRules($hosting_id, $hosting_mod_security_rule_bulk_reque
 
 Enable ModSecurity rules
 
-Enable multiple ModSecurity rules by id
+Disables on the hosting the ModSecurity rules with the given ids (`rule_id`), so that ModSecurity no longer applies them, and returns them with `included` true
 
 ### Example
 
@@ -1145,7 +1072,7 @@ $apiInstance = new Shellrent\Sdk\Api\HostingApi(
     new GuzzleHttp\Client(),
     $config
 );
-$hosting_id = 56; // int
+$hosting_id = 56; // int | ID of the hosting
 $hosting_mod_security_rule_bulk_request = new \Shellrent\Sdk\Model\HostingModSecurityRuleBulkRequest(); // \Shellrent\Sdk\Model\HostingModSecurityRuleBulkRequest
 
 try {
@@ -1160,7 +1087,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **hosting_id** | **int**|  | |
+| **hosting_id** | **int**| ID of the hosting | |
 | **hosting_mod_security_rule_bulk_request** | [**\Shellrent\Sdk\Model\HostingModSecurityRuleBulkRequest**](../Model/HostingModSecurityRuleBulkRequest.md)|  | |
 
 ### Return type
@@ -1188,7 +1115,7 @@ exposeHostingBackups($hosting_id, $hosting_backup_expose_request): \Shellrent\Sd
 
 Expose hosting backups
 
-Expose backups for hosting
+Exposes a web backup, a database backup or both, chosen among those of the backup list by `backup_id` and `category`. The exposure is asynchronous and is returned as a Task.
 
 ### Example
 
@@ -1207,7 +1134,7 @@ $apiInstance = new Shellrent\Sdk\Api\HostingApi(
     new GuzzleHttp\Client(),
     $config
 );
-$hosting_id = 56; // int
+$hosting_id = 56; // int | ID of the hosting
 $hosting_backup_expose_request = new \Shellrent\Sdk\Model\HostingBackupExposeRequest(); // \Shellrent\Sdk\Model\HostingBackupExposeRequest
 
 try {
@@ -1222,7 +1149,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **hosting_id** | **int**|  | |
+| **hosting_id** | **int**| ID of the hosting | |
 | **hosting_backup_expose_request** | [**\Shellrent\Sdk\Model\HostingBackupExposeRequest**](../Model/HostingBackupExposeRequest.md)|  | |
 
 ### Return type
@@ -1269,7 +1196,7 @@ $apiInstance = new Shellrent\Sdk\Api\HostingApi(
     new GuzzleHttp\Client(),
     $config
 );
-$hosting_id = 56; // int
+$hosting_id = 56; // int | ID of the hosting
 
 try {
     $result = $apiInstance->getHosting($hosting_id);
@@ -1283,7 +1210,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **hosting_id** | **int**|  | |
+| **hosting_id** | **int**| ID of the hosting | |
 
 ### Return type
 
@@ -1329,8 +1256,8 @@ $apiInstance = new Shellrent\Sdk\Api\HostingApi(
     new GuzzleHttp\Client(),
     $config
 );
-$hosting_id = 56; // int
-$allow_list_id = 56; // int
+$hosting_id = 56; // int | ID of the hosting
+$allow_list_id = 56; // int | ID of the allow list entry
 
 try {
     $result = $apiInstance->getHostingAllowListEntry($hosting_id, $allow_list_id);
@@ -1344,8 +1271,8 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **hosting_id** | **int**|  | |
-| **allow_list_id** | **int**|  | |
+| **hosting_id** | **int**| ID of the hosting | |
+| **allow_list_id** | **int**| ID of the allow list entry | |
 
 ### Return type
 
@@ -1367,7 +1294,7 @@ try {
 ## `getHostingAntivirus()`
 
 ```php
-getHostingAntivirus($hosting_id): \Shellrent\Sdk\Model\GetHostingAntivirus200Response
+getHostingAntivirus($hosting_id): \Shellrent\Sdk\Model\HostingAntivirusNullableResponse
 ```
 
 Get antivirus status
@@ -1391,7 +1318,7 @@ $apiInstance = new Shellrent\Sdk\Api\HostingApi(
     new GuzzleHttp\Client(),
     $config
 );
-$hosting_id = 56; // int
+$hosting_id = 56; // int | ID of the hosting
 
 try {
     $result = $apiInstance->getHostingAntivirus($hosting_id);
@@ -1405,11 +1332,11 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **hosting_id** | **int**|  | |
+| **hosting_id** | **int**| ID of the hosting | |
 
 ### Return type
 
-[**\Shellrent\Sdk\Model\GetHostingAntivirus200Response**](../Model/GetHostingAntivirus200Response.md)
+[**\Shellrent\Sdk\Model\HostingAntivirusNullableResponse**](../Model/HostingAntivirusNullableResponse.md)
 
 ### Authorization
 
@@ -1451,8 +1378,8 @@ $apiInstance = new Shellrent\Sdk\Api\HostingApi(
     new GuzzleHttp\Client(),
     $config
 );
-$hosting_id = 56; // int
-$removal_scan_id = 56; // int
+$hosting_id = 56; // int | ID of the hosting
+$removal_scan_id = 56; // int | ID of the antivirus removal scan
 
 try {
     $result = $apiInstance->getHostingAntivirusRemovalScan($hosting_id, $removal_scan_id);
@@ -1466,8 +1393,8 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **hosting_id** | **int**|  | |
-| **removal_scan_id** | **int**|  | |
+| **hosting_id** | **int**| ID of the hosting | |
+| **removal_scan_id** | **int**| ID of the antivirus removal scan | |
 
 ### Return type
 
@@ -1513,8 +1440,8 @@ $apiInstance = new Shellrent\Sdk\Api\HostingApi(
     new GuzzleHttp\Client(),
     $config
 );
-$hosting_id = 56; // int
-$antivirus_id = 56; // int
+$hosting_id = 56; // int | ID of the hosting
+$antivirus_id = 56; // int | ID of the antivirus scan
 
 try {
     $result = $apiInstance->getHostingAntivirusScan($hosting_id, $antivirus_id);
@@ -1528,8 +1455,8 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **hosting_id** | **int**|  | |
-| **antivirus_id** | **int**|  | |
+| **hosting_id** | **int**| ID of the hosting | |
+| **antivirus_id** | **int**| ID of the antivirus scan | |
 
 ### Return type
 
@@ -1556,7 +1483,7 @@ getHostingBackup($hosting_id, $hosting_backup_id): \Shellrent\Sdk\Model\HostingB
 
 Get hosting backup
 
-Get details of a hosting backup
+Returns a backup among those of the backup list (active, successful and completed backups); any other backup responds 404.
 
 ### Example
 
@@ -1575,8 +1502,8 @@ $apiInstance = new Shellrent\Sdk\Api\HostingApi(
     new GuzzleHttp\Client(),
     $config
 );
-$hosting_id = 56; // int
-$hosting_backup_id = 56; // int
+$hosting_id = 56; // int | ID of the hosting
+$hosting_backup_id = 56; // int | ID of the hosting backup
 
 try {
     $result = $apiInstance->getHostingBackup($hosting_id, $hosting_backup_id);
@@ -1590,8 +1517,8 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **hosting_id** | **int**|  | |
-| **hosting_backup_id** | **int**|  | |
+| **hosting_id** | **int**| ID of the hosting | |
+| **hosting_backup_id** | **int**| ID of the hosting backup | |
 
 ### Return type
 
@@ -1613,7 +1540,7 @@ try {
 ## `getHostingBlockListEntry()`
 
 ```php
-getHostingBlockListEntry($hosting_id, $block_list_id): \Shellrent\Sdk\Model\HostingEmailBlocListResponse
+getHostingBlockListEntry($hosting_id, $block_list_id): \Shellrent\Sdk\Model\HostingEmailBlockListResponse
 ```
 
 Get hosting block list entry
@@ -1637,8 +1564,8 @@ $apiInstance = new Shellrent\Sdk\Api\HostingApi(
     new GuzzleHttp\Client(),
     $config
 );
-$hosting_id = 56; // int
-$block_list_id = 56; // int
+$hosting_id = 56; // int | ID of the hosting
+$block_list_id = 56; // int | ID of the block list entry
 
 try {
     $result = $apiInstance->getHostingBlockListEntry($hosting_id, $block_list_id);
@@ -1652,12 +1579,12 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **hosting_id** | **int**|  | |
-| **block_list_id** | **int**|  | |
+| **hosting_id** | **int**| ID of the hosting | |
+| **block_list_id** | **int**| ID of the block list entry | |
 
 ### Return type
 
-[**\Shellrent\Sdk\Model\HostingEmailBlocListResponse**](../Model/HostingEmailBlocListResponse.md)
+[**\Shellrent\Sdk\Model\HostingEmailBlockListResponse**](../Model/HostingEmailBlockListResponse.md)
 
 ### Authorization
 
@@ -1699,7 +1626,7 @@ $apiInstance = new Shellrent\Sdk\Api\HostingApi(
     new GuzzleHttp\Client(),
     $config
 );
-$hosting_id = 56; // int
+$hosting_id = 56; // int | ID of the hosting
 
 try {
     $result = $apiInstance->getHostingCatchAll($hosting_id);
@@ -1713,7 +1640,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **hosting_id** | **int**|  | |
+| **hosting_id** | **int**| ID of the hosting | |
 
 ### Return type
 
@@ -1740,7 +1667,7 @@ getHostingCredentials($hosting_id): \Shellrent\Sdk\Model\HostingCredentialListRe
 
 Get hosting credentials
 
-Get hosting credentials
+Lists the active FTP, secondary FTP, MySQL and MSSQL accounts of the hosting, with their passwords. The accounts belong to the purchase: a subdomain returns those of its main hosting
 
 ### Example
 
@@ -1759,7 +1686,7 @@ $apiInstance = new Shellrent\Sdk\Api\HostingApi(
     new GuzzleHttp\Client(),
     $config
 );
-$hosting_id = 56; // int
+$hosting_id = 56; // int | ID of the hosting
 
 try {
     $result = $apiInstance->getHostingCredentials($hosting_id);
@@ -1773,7 +1700,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **hosting_id** | **int**|  | |
+| **hosting_id** | **int**| ID of the hosting | |
 
 ### Return type
 
@@ -1795,7 +1722,7 @@ try {
 ## `getHostingCronjob()`
 
 ```php
-getHostingCronjob($hosting_id, $cronjob_id): \Shellrent\Sdk\Model\HostingCronjobResponse
+getHostingCronjob($hosting_id, $cron_job_id): \Shellrent\Sdk\Model\HostingCronjobResponse
 ```
 
 Get hosting cronjob
@@ -1819,11 +1746,11 @@ $apiInstance = new Shellrent\Sdk\Api\HostingApi(
     new GuzzleHttp\Client(),
     $config
 );
-$hosting_id = 56; // int
-$cronjob_id = 56; // int
+$hosting_id = 56; // int | ID of the hosting
+$cron_job_id = 56; // int | ID of the cron job
 
 try {
-    $result = $apiInstance->getHostingCronjob($hosting_id, $cronjob_id);
+    $result = $apiInstance->getHostingCronjob($hosting_id, $cron_job_id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling HostingApi->getHostingCronjob: ', $e->getMessage(), PHP_EOL;
@@ -1834,8 +1761,8 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **hosting_id** | **int**|  | |
-| **cronjob_id** | **int**|  | |
+| **hosting_id** | **int**| ID of the hosting | |
+| **cron_job_id** | **int**| ID of the cron job | |
 
 ### Return type
 
@@ -1862,7 +1789,7 @@ getHostingDatabase($hosting_id, $database_id): \Shellrent\Sdk\Model\HostingDatab
 
 Get hosting database
 
-Get hosting database
+Returns a database of the hosting, read from the database servers: `database_id` is the name of the database. 404 when the hosting has no database with that name
 
 ### Example
 
@@ -1881,8 +1808,8 @@ $apiInstance = new Shellrent\Sdk\Api\HostingApi(
     new GuzzleHttp\Client(),
     $config
 );
-$hosting_id = 56; // int
-$database_id = 'database_id_example'; // string
+$hosting_id = 56; // int | ID of the hosting
+$database_id = 'database_id_example'; // string | Database of the hosting: the `database_id` field of the databases list, that is the name of the database
 
 try {
     $result = $apiInstance->getHostingDatabase($hosting_id, $database_id);
@@ -1896,8 +1823,8 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **hosting_id** | **int**|  | |
-| **database_id** | **string**|  | |
+| **hosting_id** | **int**| ID of the hosting | |
+| **database_id** | **string**| Database of the hosting: the &#x60;database_id&#x60; field of the databases list, that is the name of the database | |
 
 ### Return type
 
@@ -1943,8 +1870,8 @@ $apiInstance = new Shellrent\Sdk\Api\HostingApi(
     new GuzzleHttp\Client(),
     $config
 );
-$hosting_id = 56; // int
-$alias_id = 'alias_id_example'; // string
+$hosting_id = 56; // int | ID of the hosting
+$alias_id = 'alias_id_example'; // string | Email alias: the `alias_id` field of the aliases list, that is the address of the alias
 
 try {
     $result = $apiInstance->getHostingEmailAlias($hosting_id, $alias_id);
@@ -1958,8 +1885,8 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **hosting_id** | **int**|  | |
-| **alias_id** | **string**|  | |
+| **hosting_id** | **int**| ID of the hosting | |
+| **alias_id** | **string**| Email alias: the &#x60;alias_id&#x60; field of the aliases list, that is the address of the alias | |
 
 ### Return type
 
@@ -2005,7 +1932,7 @@ $apiInstance = new Shellrent\Sdk\Api\HostingApi(
     new GuzzleHttp\Client(),
     $config
 );
-$hosting_id = 56; // int
+$hosting_id = 56; // int | ID of the hosting
 
 try {
     $result = $apiInstance->getHostingModSecurity($hosting_id);
@@ -2019,7 +1946,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **hosting_id** | **int**|  | |
+| **hosting_id** | **int**| ID of the hosting | |
 
 ### Return type
 
@@ -2065,8 +1992,8 @@ $apiInstance = new Shellrent\Sdk\Api\HostingApi(
     new GuzzleHttp\Client(),
     $config
 );
-$hosting_id = 56; // int
-$rule_id = 56; // int
+$hosting_id = 56; // int | ID of the hosting
+$rule_id = 56; // int | ID of the ModSecurity rule
 
 try {
     $result = $apiInstance->getHostingModSecurityRule($hosting_id, $rule_id);
@@ -2080,8 +2007,8 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **hosting_id** | **int**|  | |
-| **rule_id** | **int**|  | |
+| **hosting_id** | **int**| ID of the hosting | |
+| **rule_id** | **int**| ID of the ModSecurity rule | |
 
 ### Return type
 
@@ -2127,8 +2054,8 @@ $apiInstance = new Shellrent\Sdk\Api\HostingApi(
     new GuzzleHttp\Client(),
     $config
 );
-$hosting_id = 56; // int
-$scan_id = 56; // int
+$hosting_id = 56; // int | ID of the hosting
+$scan_id = 56; // int | ID of the ModSecurity scan
 
 try {
     $result = $apiInstance->getHostingModSecurityScan($hosting_id, $scan_id);
@@ -2142,8 +2069,8 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **hosting_id** | **int**|  | |
-| **scan_id** | **int**|  | |
+| **hosting_id** | **int**| ID of the hosting | |
+| **scan_id** | **int**| ID of the ModSecurity scan | |
 
 ### Return type
 
@@ -2189,8 +2116,8 @@ $apiInstance = new Shellrent\Sdk\Api\HostingApi(
     new GuzzleHttp\Client(),
     $config
 );
-$hosting_id = 56; // int
-$hosting_ssl_certificate_id = 56; // int
+$hosting_id = 56; // int | ID of the hosting
+$hosting_ssl_certificate_id = 56; // int | ID of the SSL certificate of the hosting
 
 try {
     $result = $apiInstance->getHostingSslCertificate($hosting_id, $hosting_ssl_certificate_id);
@@ -2204,8 +2131,8 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **hosting_id** | **int**|  | |
-| **hosting_ssl_certificate_id** | **int**|  | |
+| **hosting_id** | **int**| ID of the hosting | |
+| **hosting_ssl_certificate_id** | **int**| ID of the SSL certificate of the hosting | |
 
 ### Return type
 
@@ -2251,7 +2178,7 @@ $apiInstance = new Shellrent\Sdk\Api\HostingApi(
     new GuzzleHttp\Client(),
     $config
 );
-$hosting_id = 56; // int
+$hosting_id = 56; // int | ID of the hosting
 $hosting_ssl_certificate_install_request = new \Shellrent\Sdk\Model\HostingSslCertificateInstallRequest(); // \Shellrent\Sdk\Model\HostingSslCertificateInstallRequest
 
 try {
@@ -2266,7 +2193,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **hosting_id** | **int**|  | |
+| **hosting_id** | **int**| ID of the hosting | |
 | **hosting_ssl_certificate_install_request** | [**\Shellrent\Sdk\Model\HostingSslCertificateInstallRequest**](../Model/HostingSslCertificateInstallRequest.md)|  | [optional] |
 
 ### Return type
@@ -2313,9 +2240,9 @@ $apiInstance = new Shellrent\Sdk\Api\HostingApi(
     new GuzzleHttp\Client(),
     $config
 );
-$hosting_id = 56; // int
-$page = 1; // int
-$per_page = 20; // int
+$hosting_id = 56; // int | ID of the hosting
+$page = 1; // int | Page number, starting from 1. A page beyond the last one returns an empty `data` list (with the requested `page` in `meta`).
+$per_page = 20; // int | Number of items per page. Values outside the allowed range are rejected with a validation error.
 
 try {
     $result = $apiInstance->listHostingAllowListEntries($hosting_id, $page, $per_page);
@@ -2329,9 +2256,9 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **hosting_id** | **int**|  | |
-| **page** | **int**|  | [optional] [default to 1] |
-| **per_page** | **int**|  | [optional] [default to 20] |
+| **hosting_id** | **int**| ID of the hosting | |
+| **page** | **int**| Page number, starting from 1. A page beyond the last one returns an empty &#x60;data&#x60; list (with the requested &#x60;page&#x60; in &#x60;meta&#x60;). | [optional] [default to 1] |
+| **per_page** | **int**| Number of items per page. Values outside the allowed range are rejected with a validation error. | [optional] [default to 20] |
 
 ### Return type
 
@@ -2377,9 +2304,9 @@ $apiInstance = new Shellrent\Sdk\Api\HostingApi(
     new GuzzleHttp\Client(),
     $config
 );
-$hosting_id = 56; // int
-$page = 1; // int
-$per_page = 20; // int
+$hosting_id = 56; // int | ID of the hosting
+$page = 1; // int | Page number, starting from 1. A page beyond the last one returns an empty `data` list (with the requested `page` in `meta`).
+$per_page = 20; // int | Number of items per page. Values outside the allowed range are rejected with a validation error.
 
 try {
     $result = $apiInstance->listHostingAntivirusRemovalScans($hosting_id, $page, $per_page);
@@ -2393,9 +2320,9 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **hosting_id** | **int**|  | |
-| **page** | **int**|  | [optional] [default to 1] |
-| **per_page** | **int**|  | [optional] [default to 20] |
+| **hosting_id** | **int**| ID of the hosting | |
+| **page** | **int**| Page number, starting from 1. A page beyond the last one returns an empty &#x60;data&#x60; list (with the requested &#x60;page&#x60; in &#x60;meta&#x60;). | [optional] [default to 1] |
+| **per_page** | **int**| Number of items per page. Values outside the allowed range are rejected with a validation error. | [optional] [default to 20] |
 
 ### Return type
 
@@ -2441,9 +2368,9 @@ $apiInstance = new Shellrent\Sdk\Api\HostingApi(
     new GuzzleHttp\Client(),
     $config
 );
-$hosting_id = 56; // int
-$page = 1; // int
-$per_page = 20; // int
+$hosting_id = 56; // int | ID of the hosting
+$page = 1; // int | Page number, starting from 1. A page beyond the last one returns an empty `data` list (with the requested `page` in `meta`).
+$per_page = 20; // int | Number of items per page. Values outside the allowed range are rejected with a validation error.
 
 try {
     $result = $apiInstance->listHostingAntivirusScans($hosting_id, $page, $per_page);
@@ -2457,9 +2384,9 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **hosting_id** | **int**|  | |
-| **page** | **int**|  | [optional] [default to 1] |
-| **per_page** | **int**|  | [optional] [default to 20] |
+| **hosting_id** | **int**| ID of the hosting | |
+| **page** | **int**| Page number, starting from 1. A page beyond the last one returns an empty &#x60;data&#x60; list (with the requested &#x60;page&#x60; in &#x60;meta&#x60;). | [optional] [default to 1] |
+| **per_page** | **int**| Number of items per page. Values outside the allowed range are rejected with a validation error. | [optional] [default to 20] |
 
 ### Return type
 
@@ -2505,7 +2432,7 @@ $apiInstance = new Shellrent\Sdk\Api\HostingApi(
     new GuzzleHttp\Client(),
     $config
 );
-$hosting_id = 56; // int
+$hosting_id = 56; // int | ID of the hosting
 
 try {
     $result = $apiInstance->listHostingBackups($hosting_id);
@@ -2519,7 +2446,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **hosting_id** | **int**|  | |
+| **hosting_id** | **int**| ID of the hosting | |
 
 ### Return type
 
@@ -2541,7 +2468,7 @@ try {
 ## `listHostingBlockListEntries()`
 
 ```php
-listHostingBlockListEntries($hosting_id, $page, $per_page): \Shellrent\Sdk\Model\HostingEmailBlocListPaginatedListResponse
+listHostingBlockListEntries($hosting_id, $page, $per_page): \Shellrent\Sdk\Model\HostingEmailBlockListPaginatedListResponse
 ```
 
 List hosting block list
@@ -2565,9 +2492,9 @@ $apiInstance = new Shellrent\Sdk\Api\HostingApi(
     new GuzzleHttp\Client(),
     $config
 );
-$hosting_id = 56; // int
-$page = 1; // int
-$per_page = 20; // int
+$hosting_id = 56; // int | ID of the hosting
+$page = 1; // int | Page number, starting from 1. A page beyond the last one returns an empty `data` list (with the requested `page` in `meta`).
+$per_page = 20; // int | Number of items per page. Values outside the allowed range are rejected with a validation error.
 
 try {
     $result = $apiInstance->listHostingBlockListEntries($hosting_id, $page, $per_page);
@@ -2581,13 +2508,13 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **hosting_id** | **int**|  | |
-| **page** | **int**|  | [optional] [default to 1] |
-| **per_page** | **int**|  | [optional] [default to 20] |
+| **hosting_id** | **int**| ID of the hosting | |
+| **page** | **int**| Page number, starting from 1. A page beyond the last one returns an empty &#x60;data&#x60; list (with the requested &#x60;page&#x60; in &#x60;meta&#x60;). | [optional] [default to 1] |
+| **per_page** | **int**| Number of items per page. Values outside the allowed range are rejected with a validation error. | [optional] [default to 20] |
 
 ### Return type
 
-[**\Shellrent\Sdk\Model\HostingEmailBlocListPaginatedListResponse**](../Model/HostingEmailBlocListPaginatedListResponse.md)
+[**\Shellrent\Sdk\Model\HostingEmailBlockListPaginatedListResponse**](../Model/HostingEmailBlockListPaginatedListResponse.md)
 
 ### Authorization
 
@@ -2629,9 +2556,9 @@ $apiInstance = new Shellrent\Sdk\Api\HostingApi(
     new GuzzleHttp\Client(),
     $config
 );
-$hosting_id = 56; // int
-$page = 1; // int
-$per_page = 20; // int
+$hosting_id = 56; // int | ID of the hosting
+$page = 1; // int | Page number, starting from 1. A page beyond the last one returns an empty `data` list (with the requested `page` in `meta`).
+$per_page = 20; // int | Number of items per page. Values outside the allowed range are rejected with a validation error.
 
 try {
     $result = $apiInstance->listHostingCronjobs($hosting_id, $page, $per_page);
@@ -2645,9 +2572,9 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **hosting_id** | **int**|  | |
-| **page** | **int**|  | [optional] [default to 1] |
-| **per_page** | **int**|  | [optional] [default to 20] |
+| **hosting_id** | **int**| ID of the hosting | |
+| **page** | **int**| Page number, starting from 1. A page beyond the last one returns an empty &#x60;data&#x60; list (with the requested &#x60;page&#x60; in &#x60;meta&#x60;). | [optional] [default to 1] |
+| **per_page** | **int**| Number of items per page. Values outside the allowed range are rejected with a validation error. | [optional] [default to 20] |
 
 ### Return type
 
@@ -2674,7 +2601,7 @@ listHostingDatabases($hosting_id): \Shellrent\Sdk\Model\HostingDatabaseListRespo
 
 Get hosting databases
 
-Get hosting databases
+Lists the MySQL and MSSQL databases of the hosting, read from the database servers, with the account that owns them. The databases belong to the purchase: a subdomain returns those of its main hosting
 
 ### Example
 
@@ -2693,7 +2620,7 @@ $apiInstance = new Shellrent\Sdk\Api\HostingApi(
     new GuzzleHttp\Client(),
     $config
 );
-$hosting_id = 56; // int
+$hosting_id = 56; // int | ID of the hosting
 
 try {
     $result = $apiInstance->listHostingDatabases($hosting_id);
@@ -2707,7 +2634,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **hosting_id** | **int**|  | |
+| **hosting_id** | **int**| ID of the hosting | |
 
 ### Return type
 
@@ -2734,7 +2661,7 @@ listHostingDnsRecords($hosting_id): \Shellrent\Sdk\Model\HostingDnsRecordListRes
 
 Get hosting DNS records
 
-Get hosting DNS records
+Lists the default DNS records of the hosting: those of its web server and of its mail server, which point the domain to the hosting. They are not read from the DNS zone of the domain; a subdomain returns those of its main hosting
 
 ### Example
 
@@ -2753,7 +2680,7 @@ $apiInstance = new Shellrent\Sdk\Api\HostingApi(
     new GuzzleHttp\Client(),
     $config
 );
-$hosting_id = 56; // int
+$hosting_id = 56; // int | ID of the hosting
 
 try {
     $result = $apiInstance->listHostingDnsRecords($hosting_id);
@@ -2767,7 +2694,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **hosting_id** | **int**|  | |
+| **hosting_id** | **int**| ID of the hosting | |
 
 ### Return type
 
@@ -2813,7 +2740,7 @@ $apiInstance = new Shellrent\Sdk\Api\HostingApi(
     new GuzzleHttp\Client(),
     $config
 );
-$hosting_id = 56; // int
+$hosting_id = 56; // int | ID of the hosting
 
 try {
     $result = $apiInstance->listHostingEmailAliases($hosting_id);
@@ -2827,7 +2754,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **hosting_id** | **int**|  | |
+| **hosting_id** | **int**| ID of the hosting | |
 
 ### Return type
 
@@ -2873,7 +2800,7 @@ $apiInstance = new Shellrent\Sdk\Api\HostingApi(
     new GuzzleHttp\Client(),
     $config
 );
-$hosting_id = 56; // int
+$hosting_id = 56; // int | ID of the hosting
 
 try {
     $result = $apiInstance->listHostingExposedBackups($hosting_id);
@@ -2887,7 +2814,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **hosting_id** | **int**|  | |
+| **hosting_id** | **int**| ID of the hosting | |
 
 ### Return type
 
@@ -2914,7 +2841,7 @@ listHostingModSecurityRules($hosting_id): \Shellrent\Sdk\Model\HostingModSecurit
 
 List ModSecurity rules
 
-Get ModSecurity rules for a hosting
+Lists the ModSecurity rules of the hosting, found by the scans or added by hand. A rule with `included` true is disabled on the hosting: ModSecurity does not apply it
 
 ### Example
 
@@ -2933,7 +2860,7 @@ $apiInstance = new Shellrent\Sdk\Api\HostingApi(
     new GuzzleHttp\Client(),
     $config
 );
-$hosting_id = 56; // int
+$hosting_id = 56; // int | ID of the hosting
 
 try {
     $result = $apiInstance->listHostingModSecurityRules($hosting_id);
@@ -2947,7 +2874,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **hosting_id** | **int**|  | |
+| **hosting_id** | **int**| ID of the hosting | |
 
 ### Return type
 
@@ -2993,9 +2920,9 @@ $apiInstance = new Shellrent\Sdk\Api\HostingApi(
     new GuzzleHttp\Client(),
     $config
 );
-$hosting_id = 56; // int
-$page = 1; // int
-$per_page = 20; // int
+$hosting_id = 56; // int | ID of the hosting
+$page = 1; // int | Page number, starting from 1. A page beyond the last one returns an empty `data` list (with the requested `page` in `meta`).
+$per_page = 20; // int | Number of items per page. Values outside the allowed range are rejected with a validation error.
 
 try {
     $result = $apiInstance->listHostingModSecurityScans($hosting_id, $page, $per_page);
@@ -3009,9 +2936,9 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **hosting_id** | **int**|  | |
-| **page** | **int**|  | [optional] [default to 1] |
-| **per_page** | **int**|  | [optional] [default to 20] |
+| **hosting_id** | **int**| ID of the hosting | |
+| **page** | **int**| Page number, starting from 1. A page beyond the last one returns an empty &#x60;data&#x60; list (with the requested &#x60;page&#x60; in &#x60;meta&#x60;). | [optional] [default to 1] |
+| **per_page** | **int**| Number of items per page. Values outside the allowed range are rejected with a validation error. | [optional] [default to 20] |
 
 ### Return type
 
@@ -3057,7 +2984,7 @@ $apiInstance = new Shellrent\Sdk\Api\HostingApi(
     new GuzzleHttp\Client(),
     $config
 );
-$hosting_id = 56; // int
+$hosting_id = 56; // int | ID of the hosting
 
 try {
     $result = $apiInstance->listHostingPhpVersions($hosting_id);
@@ -3071,7 +2998,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **hosting_id** | **int**|  | |
+| **hosting_id** | **int**| ID of the hosting | |
 
 ### Return type
 
@@ -3117,7 +3044,7 @@ $apiInstance = new Shellrent\Sdk\Api\HostingApi(
     new GuzzleHttp\Client(),
     $config
 );
-$hosting_id = 56; // int
+$hosting_id = 56; // int | ID of the hosting
 
 try {
     $result = $apiInstance->listHostingSslCertificates($hosting_id);
@@ -3131,7 +3058,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **hosting_id** | **int**|  | |
+| **hosting_id** | **int**| ID of the hosting | |
 
 ### Return type
 
@@ -3158,7 +3085,7 @@ listHostings($page, $per_page): \Shellrent\Sdk\Model\HostingPaginatedListRespons
 
 List all hostings
 
-Get a list of all hostings
+Lists the active main hostings of the account, one for each hosting purchase; their subdomains are not included
 
 ### Example
 
@@ -3177,8 +3104,8 @@ $apiInstance = new Shellrent\Sdk\Api\HostingApi(
     new GuzzleHttp\Client(),
     $config
 );
-$page = 1; // int
-$per_page = 20; // int
+$page = 1; // int | Page number, starting from 1. A page beyond the last one returns an empty `data` list (with the requested `page` in `meta`).
+$per_page = 20; // int | Number of items per page. Values outside the allowed range are rejected with a validation error.
 
 try {
     $result = $apiInstance->listHostings($page, $per_page);
@@ -3192,8 +3119,8 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **page** | **int**|  | [optional] [default to 1] |
-| **per_page** | **int**|  | [optional] [default to 20] |
+| **page** | **int**| Page number, starting from 1. A page beyond the last one returns an empty &#x60;data&#x60; list (with the requested &#x60;page&#x60; in &#x60;meta&#x60;). | [optional] [default to 1] |
+| **per_page** | **int**| Number of items per page. Values outside the allowed range are rejected with a validation error. | [optional] [default to 20] |
 
 ### Return type
 
@@ -3239,8 +3166,8 @@ $apiInstance = new Shellrent\Sdk\Api\HostingApi(
     new GuzzleHttp\Client(),
     $config
 );
-$hosting_id = 56; // int
-$hosting_ssl_certificate_id = 56; // int
+$hosting_id = 56; // int | ID of the hosting
+$hosting_ssl_certificate_id = 56; // int | ID of the SSL certificate of the hosting
 
 try {
     $result = $apiInstance->removeHostingSslCertificate($hosting_id, $hosting_ssl_certificate_id);
@@ -3254,8 +3181,8 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **hosting_id** | **int**|  | |
-| **hosting_ssl_certificate_id** | **int**|  | |
+| **hosting_id** | **int**| ID of the hosting | |
+| **hosting_ssl_certificate_id** | **int**| ID of the SSL certificate of the hosting | |
 
 ### Return type
 
@@ -3282,7 +3209,7 @@ restoreHostingBackup($hosting_id, $hosting_backup_id): \Shellrent\Sdk\Model\Task
 
 Restore hosting backup
 
-Start a restore of a hosting backup (web contents)
+Starts the restore of the web contents of a backup among those of the backup list. The restore is asynchronous and is returned as a Task.
 
 ### Example
 
@@ -3301,8 +3228,8 @@ $apiInstance = new Shellrent\Sdk\Api\HostingApi(
     new GuzzleHttp\Client(),
     $config
 );
-$hosting_id = 56; // int
-$hosting_backup_id = 56; // int
+$hosting_id = 56; // int | ID of the hosting
+$hosting_backup_id = 56; // int | ID of the hosting backup
 
 try {
     $result = $apiInstance->restoreHostingBackup($hosting_id, $hosting_backup_id);
@@ -3316,8 +3243,8 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **hosting_id** | **int**|  | |
-| **hosting_backup_id** | **int**|  | |
+| **hosting_id** | **int**| ID of the hosting | |
+| **hosting_backup_id** | **int**| ID of the hosting backup | |
 
 ### Return type
 
@@ -3363,7 +3290,7 @@ $apiInstance = new Shellrent\Sdk\Api\HostingApi(
     new GuzzleHttp\Client(),
     $config
 );
-$hosting_id = 56; // int
+$hosting_id = 56; // int | ID of the hosting
 
 try {
     $result = $apiInstance->startHostingAntivirusRemovalScan($hosting_id);
@@ -3377,7 +3304,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **hosting_id** | **int**|  | |
+| **hosting_id** | **int**| ID of the hosting | |
 
 ### Return type
 
@@ -3423,7 +3350,7 @@ $apiInstance = new Shellrent\Sdk\Api\HostingApi(
     new GuzzleHttp\Client(),
     $config
 );
-$hosting_id = 56; // int
+$hosting_id = 56; // int | ID of the hosting
 
 try {
     $result = $apiInstance->startHostingAntivirusScan($hosting_id);
@@ -3437,7 +3364,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **hosting_id** | **int**|  | |
+| **hosting_id** | **int**| ID of the hosting | |
 
 ### Return type
 
@@ -3483,7 +3410,7 @@ $apiInstance = new Shellrent\Sdk\Api\HostingApi(
     new GuzzleHttp\Client(),
     $config
 );
-$hosting_id = 56; // int
+$hosting_id = 56; // int | ID of the hosting
 
 try {
     $result = $apiInstance->startHostingFirstBackup($hosting_id);
@@ -3497,7 +3424,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **hosting_id** | **int**|  | |
+| **hosting_id** | **int**| ID of the hosting | |
 
 ### Return type
 
@@ -3522,9 +3449,9 @@ try {
 updateHostingCatchAll($hosting_id, $hosting_email_catch_all_request): \Shellrent\Sdk\Model\HostingEmailCatchAllResponse
 ```
 
-Update catch-all alias
+Create or replace catch-all alias
 
-Update a catch-all alias destinations
+Sets the destinations of the catch-all alias: the response is 201 when the alias is created, 200 when it replaces the current one
 
 ### Example
 
@@ -3543,7 +3470,7 @@ $apiInstance = new Shellrent\Sdk\Api\HostingApi(
     new GuzzleHttp\Client(),
     $config
 );
-$hosting_id = 56; // int
+$hosting_id = 56; // int | ID of the hosting
 $hosting_email_catch_all_request = new \Shellrent\Sdk\Model\HostingEmailCatchAllRequest(); // \Shellrent\Sdk\Model\HostingEmailCatchAllRequest
 
 try {
@@ -3558,7 +3485,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **hosting_id** | **int**|  | |
+| **hosting_id** | **int**| ID of the hosting | |
 | **hosting_email_catch_all_request** | [**\Shellrent\Sdk\Model\HostingEmailCatchAllRequest**](../Model/HostingEmailCatchAllRequest.md)|  | |
 
 ### Return type
@@ -3586,7 +3513,7 @@ updateHostingFileProtection($hosting_id, $hosting_file_protection_update_request
 
 Update file protection status
 
-Enable or disable file protection
+Enable or disable file protection. Returns the updated hosting, with `file_protection_enabled`
 
 ### Example
 
@@ -3605,7 +3532,7 @@ $apiInstance = new Shellrent\Sdk\Api\HostingApi(
     new GuzzleHttp\Client(),
     $config
 );
-$hosting_id = 56; // int
+$hosting_id = 56; // int | ID of the hosting
 $hosting_file_protection_update_request = new \Shellrent\Sdk\Model\HostingFileProtectionUpdateRequest(); // \Shellrent\Sdk\Model\HostingFileProtectionUpdateRequest
 
 try {
@@ -3620,7 +3547,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **hosting_id** | **int**|  | |
+| **hosting_id** | **int**| ID of the hosting | |
 | **hosting_file_protection_update_request** | [**\Shellrent\Sdk\Model\HostingFileProtectionUpdateRequest**](../Model/HostingFileProtectionUpdateRequest.md)|  | |
 
 ### Return type
@@ -3648,7 +3575,7 @@ updateHostingHttpVersion($hosting_id, $hosting_http_version_update_request): \Sh
 
 Update HTTP version
 
-Change HTTP version for hosting
+Change HTTP version for hosting. Returns the updated hosting, with `http_version`. Not available (403) on a dedicated web server, on a non-Linux hosting or without multi-PHP; 409 while the purchase is suspended or the hosting is under maintenance
 
 ### Example
 
@@ -3667,7 +3594,7 @@ $apiInstance = new Shellrent\Sdk\Api\HostingApi(
     new GuzzleHttp\Client(),
     $config
 );
-$hosting_id = 56; // int
+$hosting_id = 56; // int | ID of the hosting
 $hosting_http_version_update_request = new \Shellrent\Sdk\Model\HostingHttpVersionUpdateRequest(); // \Shellrent\Sdk\Model\HostingHttpVersionUpdateRequest
 
 try {
@@ -3682,7 +3609,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **hosting_id** | **int**|  | |
+| **hosting_id** | **int**| ID of the hosting | |
 | **hosting_http_version_update_request** | [**\Shellrent\Sdk\Model\HostingHttpVersionUpdateRequest**](../Model/HostingHttpVersionUpdateRequest.md)|  | |
 
 ### Return type
@@ -3729,7 +3656,7 @@ $apiInstance = new Shellrent\Sdk\Api\HostingApi(
     new GuzzleHttp\Client(),
     $config
 );
-$hosting_id = 56; // int
+$hosting_id = 56; // int | ID of the hosting
 $hosting_mod_security_update_request = new \Shellrent\Sdk\Model\HostingModSecurityUpdateRequest(); // \Shellrent\Sdk\Model\HostingModSecurityUpdateRequest
 
 try {
@@ -3744,7 +3671,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **hosting_id** | **int**|  | |
+| **hosting_id** | **int**| ID of the hosting | |
 | **hosting_mod_security_update_request** | [**\Shellrent\Sdk\Model\HostingModSecurityUpdateRequest**](../Model/HostingModSecurityUpdateRequest.md)|  | |
 
 ### Return type
@@ -3772,7 +3699,7 @@ updateHostingPhpSettings($hosting_id, $hosting_php_settings_update_request): \Sh
 
 Update PHP settings
 
-Update a PHP setting for hosting
+Update a PHP setting for hosting. Returns the updated hosting: `php_settings` lists the directives changed from the default value of the web server. Not available (403) on a dedicated web server, on a non-Linux hosting or without multi-PHP; 409 while the purchase is suspended or the hosting is under maintenance
 
 ### Example
 
@@ -3791,7 +3718,7 @@ $apiInstance = new Shellrent\Sdk\Api\HostingApi(
     new GuzzleHttp\Client(),
     $config
 );
-$hosting_id = 56; // int
+$hosting_id = 56; // int | ID of the hosting
 $hosting_php_settings_update_request = new \Shellrent\Sdk\Model\HostingPhpSettingsUpdateRequest(); // \Shellrent\Sdk\Model\HostingPhpSettingsUpdateRequest
 
 try {
@@ -3806,7 +3733,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **hosting_id** | **int**|  | |
+| **hosting_id** | **int**| ID of the hosting | |
 | **hosting_php_settings_update_request** | [**\Shellrent\Sdk\Model\HostingPhpSettingsUpdateRequest**](../Model/HostingPhpSettingsUpdateRequest.md)|  | |
 
 ### Return type
@@ -3834,7 +3761,7 @@ updateHostingPhpVersion($hosting_id, $hosting_php_version_update_request): \Shel
 
 Update PHP version
 
-Change PHP version for hosting
+Change PHP version for hosting. Returns the updated hosting, with `php_version`. Not available (403) on a dedicated web server, on a non-Linux hosting or without multi-PHP; 409 while the purchase is suspended or the hosting is under maintenance
 
 ### Example
 
@@ -3853,7 +3780,7 @@ $apiInstance = new Shellrent\Sdk\Api\HostingApi(
     new GuzzleHttp\Client(),
     $config
 );
-$hosting_id = 56; // int
+$hosting_id = 56; // int | ID of the hosting
 $hosting_php_version_update_request = new \Shellrent\Sdk\Model\HostingPhpVersionUpdateRequest(); // \Shellrent\Sdk\Model\HostingPhpVersionUpdateRequest
 
 try {
@@ -3868,7 +3795,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **hosting_id** | **int**|  | |
+| **hosting_id** | **int**| ID of the hosting | |
 | **hosting_php_version_update_request** | [**\Shellrent\Sdk\Model\HostingPhpVersionUpdateRequest**](../Model/HostingPhpVersionUpdateRequest.md)|  | |
 
 ### Return type

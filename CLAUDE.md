@@ -24,11 +24,15 @@ da `spec/openapi.yaml`; a mano si scrivono solo autenticazione, punto di ingress
   rivedi il diff, confronta `composer.json` con quello che produrrebbe il generatore, lancia i test.
 - `spec/openapi.yaml` è una copia della spec dell'applicazione: non si modifica, i problemi si correggono lì.
 - La spec è OpenAPI 3.1, che nel generatore è in beta: nel diff controlla `openAPINullables` e i default
-  dei parametri. Limiti noti della 7.25.0:
-  - le proprietà prese da un `$ref` in `allOf` o `oneOf` perdono la nullabilità. Per `allOf` c'è la regola
-    `REF_AS_PARENT_IN_ALLOF` (il modello estende il padre, es. `ServiceServer extends Service`), ma in
-    `docs/` i campi ereditati compaiono solo nella pagina del padre. Per `oneOf` non c'è rimedio: evitarlo;
+  dei parametri. Limiti noti della 7.25.0, da correggere nella spec:
+  - le proprietà prese da un `$ref` in `allOf` o `oneOf` perdono la nullabilità: evitarli. Un riferimento
+    nullable si scrive `anyOf: [{$ref: ...}, {type: 'null'}]`, che diventa una proprietà nullable del modello;
+  - `type: 'null'` da solo genera una proprietà non nullable di tipo `Null`: usare `const: null`;
+  - il `default` di un enum intero genera un costruttore che fallisce (`FOO::NUMBER_1`, classe inesistente):
+    toglierlo dalla spec. `tests/Unit/ModelsTest` istanzia tutti i modelli per accorgersene;
   - un `default: null` diventa la stringa `'null'`, che l'SDK invia come valore: va tolto dalla spec.
+- Il warning `Failed to get the schema name: null` del generatore viene da `additionalProperties: false` e
+  non cambia il codice generato.
 
 ## Versionamento
 

@@ -8,11 +8,11 @@ All URIs are relative to https://api.shellrent.com, except if the operation defi
 | ------------- | ------------- | ------------- |
 | [**canAddPurchaseAdditional()**](PurchasesApi.md#canAddPurchaseAdditional) | **GET** /api/v3/purchases/{purchase_id}/can-add-additional | Can add additional purchase |
 | [**canCancelPurchase()**](PurchasesApi.md#canCancelPurchase) | **GET** /api/v3/purchases/{purchase_id}/can-cancel | Can cancel |
-| [**canChangePurchaseRecurrence()**](PurchasesApi.md#canChangePurchaseRecurrence) | **GET** /api/v3/purchases/{purchase_id}/can-change-recurrence/{recurrence_id} | Can change recurrence |
-| [**canChangePurchaseRenewStatus()**](PurchasesApi.md#canChangePurchaseRenewStatus) | **GET** /api/v3/purchases/{purchase_id}/can-change-renew-status/{status} | Can change \&quot;to renew\&quot; status |
+| [**canChangePurchaseRecurrence()**](PurchasesApi.md#canChangePurchaseRecurrence) | **GET** /api/v3/purchases/{purchase_id}/can-change-recurrence | Can change recurrence |
+| [**canChangePurchaseRenewStatus()**](PurchasesApi.md#canChangePurchaseRenewStatus) | **GET** /api/v3/purchases/{purchase_id}/can-change-renew-status | Can change \&quot;to renew\&quot; status |
 | [**canChangePurchaseService()**](PurchasesApi.md#canChangePurchaseService) | **GET** /api/v3/purchases/{purchase_id}/can-change-service | Can change Service |
 | [**canRenewPurchase()**](PurchasesApi.md#canRenewPurchase) | **GET** /api/v3/purchases/{purchase_id}/can-renew | Can renew |
-| [**cancelPurchase()**](PurchasesApi.md#cancelPurchase) | **DELETE** /api/v3/purchases/{purchase_id}/cancel | Cancel purchase |
+| [**cancelPurchase()**](PurchasesApi.md#cancelPurchase) | **DELETE** /api/v3/purchases/{purchase_id} | Cancel purchase |
 | [**changePurchaseRecurrence()**](PurchasesApi.md#changePurchaseRecurrence) | **PATCH** /api/v3/purchases/{purchase_id}/recurrence | Change recurrence |
 | [**changePurchaseRenewStatus()**](PurchasesApi.md#changePurchaseRenewStatus) | **PATCH** /api/v3/purchases/{purchase_id}/renew-status | Change \&quot;to renew\&quot; status |
 | [**completeTaskData()**](PurchasesApi.md#completeTaskData) | **POST** /api/v3/tasks/{task_id}/data | Complete task data |
@@ -22,7 +22,7 @@ All URIs are relative to https://api.shellrent.com, except if the operation defi
 | [**getTask()**](PurchasesApi.md#getTask) | **GET** /api/v3/tasks/{task_id} | Get task |
 | [**listPurchases()**](PurchasesApi.md#listPurchases) | **GET** /api/v3/purchases | List purchases |
 | [**listTasks()**](PurchasesApi.md#listTasks) | **GET** /api/v3/tasks | List purchases tasks |
-| [**renewPurchase()**](PurchasesApi.md#renewPurchase) | **POST** /api/v3/purchases/{purchase_id}/renew | Renew |
+| [**renewPurchase()**](PurchasesApi.md#renewPurchase) | **POST** /api/v3/purchases/{purchase_id}/renewals | Renew |
 | [**updatePurchaseBillingInfo()**](PurchasesApi.md#updatePurchaseBillingInfo) | **PATCH** /api/v3/purchases/{purchase_id}/billing-info | Change billing info |
 | [**updatePurchaseComment()**](PurchasesApi.md#updatePurchaseComment) | **PATCH** /api/v3/purchases/{purchase_id}/comment | Change comment |
 
@@ -35,7 +35,7 @@ canAddPurchaseAdditional($purchase_id): \Shellrent\Sdk\Model\PurchaseCanAddAddit
 
 Can add additional purchase
 
-Know if it's possible to buy an additional purchase for the purchase.
+Know if it's possible to buy an additional purchase for the purchase.  Not available to sub-accounts: the response is 403 (error 1601).
 
 ### Example
 
@@ -54,7 +54,7 @@ $apiInstance = new Shellrent\Sdk\Api\PurchasesApi(
     new GuzzleHttp\Client(),
     $config
 );
-$purchase_id = 56; // int
+$purchase_id = 56; // int | ID of the purchase
 
 try {
     $result = $apiInstance->canAddPurchaseAdditional($purchase_id);
@@ -68,7 +68,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **purchase_id** | **int**|  | |
+| **purchase_id** | **int**| ID of the purchase | |
 
 ### Return type
 
@@ -114,7 +114,7 @@ $apiInstance = new Shellrent\Sdk\Api\PurchasesApi(
     new GuzzleHttp\Client(),
     $config
 );
-$purchase_id = 56; // int
+$purchase_id = 56; // int | ID of the purchase
 
 try {
     $result = $apiInstance->canCancelPurchase($purchase_id);
@@ -128,7 +128,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **purchase_id** | **int**|  | |
+| **purchase_id** | **int**| ID of the purchase | |
 
 ### Return type
 
@@ -155,7 +155,7 @@ canChangePurchaseRecurrence($purchase_id, $recurrence_id): \Shellrent\Sdk\Model\
 
 Can change recurrence
 
-Know if it's possible to change the recurrence on purchase
+Know if it's possible to change the recurrence on purchase  Not available to sub-accounts: the response is 403 (error 1601).
 
 ### Example
 
@@ -174,8 +174,8 @@ $apiInstance = new Shellrent\Sdk\Api\PurchasesApi(
     new GuzzleHttp\Client(),
     $config
 );
-$purchase_id = 56; // int
-$recurrence_id = 56; // int
+$purchase_id = 56; // int | ID of the purchase
+$recurrence_id = 56; // int | ID of the recurrence to check
 
 try {
     $result = $apiInstance->canChangePurchaseRecurrence($purchase_id, $recurrence_id);
@@ -189,8 +189,8 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **purchase_id** | **int**|  | |
-| **recurrence_id** | **int**|  | |
+| **purchase_id** | **int**| ID of the purchase | |
+| **recurrence_id** | **int**| ID of the recurrence to check | |
 
 ### Return type
 
@@ -236,8 +236,8 @@ $apiInstance = new Shellrent\Sdk\Api\PurchasesApi(
     new GuzzleHttp\Client(),
     $config
 );
-$purchase_id = 56; // int
-$status = 'status_example'; // string
+$purchase_id = 56; // int | ID of the purchase
+$status = True; // bool | Renew status to check: `true` to renew the purchase at expiry, `false` not to renew it (1/0, yes/no and on/off are accepted too)
 
 try {
     $result = $apiInstance->canChangePurchaseRenewStatus($purchase_id, $status);
@@ -251,8 +251,8 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **purchase_id** | **int**|  | |
-| **status** | **string**|  | |
+| **purchase_id** | **int**| ID of the purchase | |
+| **status** | **bool**| Renew status to check: &#x60;true&#x60; to renew the purchase at expiry, &#x60;false&#x60; not to renew it (1/0, yes/no and on/off are accepted too) | |
 
 ### Return type
 
@@ -279,7 +279,7 @@ canChangePurchaseService($purchase_id): \Shellrent\Sdk\Model\PurchaseCanChangeSe
 
 Can change Service
 
-Know if it's possible to change the service of the purchase. It also returns the collection of Services to which it is possible to make the change.
+Know if it's possible to change the service of the purchase. It also returns the collection of Services to which it is possible to make the change.  Not available to sub-accounts: the response is 403 (error 1601).
 
 ### Example
 
@@ -298,7 +298,7 @@ $apiInstance = new Shellrent\Sdk\Api\PurchasesApi(
     new GuzzleHttp\Client(),
     $config
 );
-$purchase_id = 56; // int
+$purchase_id = 56; // int | ID of the purchase
 
 try {
     $result = $apiInstance->canChangePurchaseService($purchase_id);
@@ -312,7 +312,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **purchase_id** | **int**|  | |
+| **purchase_id** | **int**| ID of the purchase | |
 
 ### Return type
 
@@ -339,7 +339,7 @@ canRenewPurchase($purchase_id): \Shellrent\Sdk\Model\PurchaseCanRenewResponse
 
 Can renew
 
-Know if it's possible to renew a purchase
+Know if it's possible to renew a purchase  Not available to sub-accounts: the response is 403 (error 1601).
 
 ### Example
 
@@ -358,7 +358,7 @@ $apiInstance = new Shellrent\Sdk\Api\PurchasesApi(
     new GuzzleHttp\Client(),
     $config
 );
-$purchase_id = 56; // int
+$purchase_id = 56; // int | ID of the purchase
 
 try {
     $result = $apiInstance->canRenewPurchase($purchase_id);
@@ -372,7 +372,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **purchase_id** | **int**|  | |
+| **purchase_id** | **int**| ID of the purchase | |
 
 ### Return type
 
@@ -394,7 +394,7 @@ try {
 ## `cancelPurchase()`
 
 ```php
-cancelPurchase($purchase_id): \Shellrent\Sdk\Model\EmptyResponse
+cancelPurchase($purchase_id)
 ```
 
 Cancel purchase
@@ -418,11 +418,10 @@ $apiInstance = new Shellrent\Sdk\Api\PurchasesApi(
     new GuzzleHttp\Client(),
     $config
 );
-$purchase_id = 56; // int
+$purchase_id = 56; // int | ID of the purchase
 
 try {
-    $result = $apiInstance->cancelPurchase($purchase_id);
-    print_r($result);
+    $apiInstance->cancelPurchase($purchase_id);
 } catch (Exception $e) {
     echo 'Exception when calling PurchasesApi->cancelPurchase: ', $e->getMessage(), PHP_EOL;
 }
@@ -432,11 +431,11 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **purchase_id** | **int**|  | |
+| **purchase_id** | **int**| ID of the purchase | |
 
 ### Return type
 
-[**\Shellrent\Sdk\Model\EmptyResponse**](../Model/EmptyResponse.md)
+void (empty response body)
 
 ### Authorization
 
@@ -459,7 +458,7 @@ changePurchaseRecurrence($purchase_id, $purchase_recurrence_change_request): \Sh
 
 Change recurrence
 
-Change the recurrence on purchase
+Change the recurrence on purchase  Not available to sub-accounts: the response is 403 (error 1601).
 
 ### Example
 
@@ -478,7 +477,7 @@ $apiInstance = new Shellrent\Sdk\Api\PurchasesApi(
     new GuzzleHttp\Client(),
     $config
 );
-$purchase_id = 56; // int
+$purchase_id = 56; // int | ID of the purchase
 $purchase_recurrence_change_request = new \Shellrent\Sdk\Model\PurchaseRecurrenceChangeRequest(); // \Shellrent\Sdk\Model\PurchaseRecurrenceChangeRequest
 
 try {
@@ -493,7 +492,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **purchase_id** | **int**|  | |
+| **purchase_id** | **int**| ID of the purchase | |
 | **purchase_recurrence_change_request** | [**\Shellrent\Sdk\Model\PurchaseRecurrenceChangeRequest**](../Model/PurchaseRecurrenceChangeRequest.md)|  | |
 
 ### Return type
@@ -540,7 +539,7 @@ $apiInstance = new Shellrent\Sdk\Api\PurchasesApi(
     new GuzzleHttp\Client(),
     $config
 );
-$purchase_id = 56; // int
+$purchase_id = 56; // int | ID of the purchase
 $purchase_renew_status_change_request = new \Shellrent\Sdk\Model\PurchaseRenewStatusChangeRequest(); // \Shellrent\Sdk\Model\PurchaseRenewStatusChangeRequest
 
 try {
@@ -555,7 +554,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **purchase_id** | **int**|  | |
+| **purchase_id** | **int**| ID of the purchase | |
 | **purchase_renew_status_change_request** | [**\Shellrent\Sdk\Model\PurchaseRenewStatusChangeRequest**](../Model/PurchaseRenewStatusChangeRequest.md)|  | |
 
 ### Return type
@@ -602,7 +601,7 @@ $apiInstance = new Shellrent\Sdk\Api\PurchasesApi(
     new GuzzleHttp\Client(),
     $config
 );
-$task_id = 56; // int
+$task_id = 56; // int | ID of the task
 $complete_task_data_request = new \Shellrent\Sdk\Model\CompleteTaskDataRequest(); // \Shellrent\Sdk\Model\CompleteTaskDataRequest
 
 try {
@@ -617,7 +616,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **task_id** | **int**|  | |
+| **task_id** | **int**| ID of the task | |
 | **complete_task_data_request** | [**\Shellrent\Sdk\Model\CompleteTaskDataRequest**](../Model/CompleteTaskDataRequest.md)|  | |
 
 ### Return type
@@ -645,7 +644,7 @@ deletePurchaseBillingInfo($purchase_id): \Shellrent\Sdk\Model\PurchaseResponse
 
 Delete billing info
 
-Deletes all billing infos from purchase (ODA, CIG, CUP).
+Deletes all billing infos from purchase (ODA, CIG, CUP).  Not available to sub-accounts: the response is 403 (error 1601).
 
 ### Example
 
@@ -664,7 +663,7 @@ $apiInstance = new Shellrent\Sdk\Api\PurchasesApi(
     new GuzzleHttp\Client(),
     $config
 );
-$purchase_id = 56; // int
+$purchase_id = 56; // int | ID of the purchase
 
 try {
     $result = $apiInstance->deletePurchaseBillingInfo($purchase_id);
@@ -678,7 +677,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **purchase_id** | **int**|  | |
+| **purchase_id** | **int**| ID of the purchase | |
 
 ### Return type
 
@@ -724,7 +723,7 @@ $apiInstance = new Shellrent\Sdk\Api\PurchasesApi(
     new GuzzleHttp\Client(),
     $config
 );
-$purchase_id = 56; // int
+$purchase_id = 56; // int | ID of the purchase
 
 try {
     $result = $apiInstance->deletePurchaseComment($purchase_id);
@@ -738,7 +737,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **purchase_id** | **int**|  | |
+| **purchase_id** | **int**| ID of the purchase | |
 
 ### Return type
 
@@ -784,7 +783,7 @@ $apiInstance = new Shellrent\Sdk\Api\PurchasesApi(
     new GuzzleHttp\Client(),
     $config
 );
-$purchase_id = 56; // int
+$purchase_id = 56; // int | ID of the purchase
 
 try {
     $result = $apiInstance->getPurchase($purchase_id);
@@ -798,7 +797,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **purchase_id** | **int**|  | |
+| **purchase_id** | **int**| ID of the purchase | |
 
 ### Return type
 
@@ -844,7 +843,7 @@ $apiInstance = new Shellrent\Sdk\Api\PurchasesApi(
     new GuzzleHttp\Client(),
     $config
 );
-$task_id = 56; // int
+$task_id = 56; // int | ID of the task
 
 try {
     $result = $apiInstance->getTask($task_id);
@@ -858,7 +857,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **task_id** | **int**|  | |
+| **task_id** | **int**| ID of the task | |
 
 ### Return type
 
@@ -904,20 +903,20 @@ $apiInstance = new Shellrent\Sdk\Api\PurchasesApi(
     new GuzzleHttp\Client(),
     $config
 );
-$alive_only = true; // bool
-$suspended = True; // bool
-$do_not_renew = True; // bool
-$purchase_id_primary = 56; // int
-$activation_date_from = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
-$activation_date_to = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
-$expire_date_from = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
-$expire_date_to = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
-$purchase_ids = array(56); // int[]
-$service_code = 'service_code_example'; // string
-$service_category_code = 'service_category_code_example'; // string
-$search = 'search_example'; // string
-$page = 1; // int
-$per_page = 20; // int
+$alive_only = true; // bool | Only the alive purchases, not cancelled or terminated (default); false lists every purchase
+$suspended = True; // bool | true: only the suspended purchases; false: only those not suspended
+$do_not_renew = True; // bool | true: only the purchases that will not renew at expiry; false: only those that will
+$purchase_id_primary = 56; // int | Only the secondary purchases of the primary purchase with this ID
+$activation_date_from = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | Only the purchases activated on or after this date (YYYY-MM-DD)
+$activation_date_to = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | Only the purchases activated on or before this date (YYYY-MM-DD)
+$expire_date_from = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | Only the purchases expiring on or after this date (YYYY-MM-DD)
+$expire_date_to = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | Only the purchases expiring on or before this date (YYYY-MM-DD)
+$purchase_ids = array(56); // int[] | Comma-separated list of purchase IDs (e.g. `purchase_ids=1,2,3`)
+$service_code = 'service_code_example'; // string | Only the purchases of the service with this code; 404 if the service does not exist
+$service_category_code = 'service_category_code_example'; // string | Only the purchases of the services in the category with this code; 404 if the category does not exist
+$search = 'search_example'; // string | Text to look for, also partially, in the name of the purchase, in the customer note and in the name of the service
+$page = 1; // int | Page number, starting from 1. A page beyond the last one returns an empty `data` list (with the requested `page` in `meta`).
+$per_page = 20; // int | Number of items per page. Values outside the allowed range are rejected with a validation error.
 
 try {
     $result = $apiInstance->listPurchases($alive_only, $suspended, $do_not_renew, $purchase_id_primary, $activation_date_from, $activation_date_to, $expire_date_from, $expire_date_to, $purchase_ids, $service_code, $service_category_code, $search, $page, $per_page);
@@ -931,20 +930,20 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **alive_only** | **bool**|  | [optional] [default to true] |
-| **suspended** | **bool**|  | [optional] |
-| **do_not_renew** | **bool**|  | [optional] |
-| **purchase_id_primary** | **int**|  | [optional] |
-| **activation_date_from** | **\DateTime**|  | [optional] |
-| **activation_date_to** | **\DateTime**|  | [optional] |
-| **expire_date_from** | **\DateTime**|  | [optional] |
-| **expire_date_to** | **\DateTime**|  | [optional] |
-| **purchase_ids** | [**int[]**](../Model/int.md)|  | [optional] |
-| **service_code** | **string**|  | [optional] |
-| **service_category_code** | **string**|  | [optional] |
-| **search** | **string**|  | [optional] |
-| **page** | **int**|  | [optional] [default to 1] |
-| **per_page** | **int**|  | [optional] [default to 20] |
+| **alive_only** | **bool**| Only the alive purchases, not cancelled or terminated (default); false lists every purchase | [optional] [default to true] |
+| **suspended** | **bool**| true: only the suspended purchases; false: only those not suspended | [optional] |
+| **do_not_renew** | **bool**| true: only the purchases that will not renew at expiry; false: only those that will | [optional] |
+| **purchase_id_primary** | **int**| Only the secondary purchases of the primary purchase with this ID | [optional] |
+| **activation_date_from** | **\DateTime**| Only the purchases activated on or after this date (YYYY-MM-DD) | [optional] |
+| **activation_date_to** | **\DateTime**| Only the purchases activated on or before this date (YYYY-MM-DD) | [optional] |
+| **expire_date_from** | **\DateTime**| Only the purchases expiring on or after this date (YYYY-MM-DD) | [optional] |
+| **expire_date_to** | **\DateTime**| Only the purchases expiring on or before this date (YYYY-MM-DD) | [optional] |
+| **purchase_ids** | [**int[]**](../Model/int.md)| Comma-separated list of purchase IDs (e.g. &#x60;purchase_ids&#x3D;1,2,3&#x60;) | [optional] |
+| **service_code** | **string**| Only the purchases of the service with this code; 404 if the service does not exist | [optional] |
+| **service_category_code** | **string**| Only the purchases of the services in the category with this code; 404 if the category does not exist | [optional] |
+| **search** | **string**| Text to look for, also partially, in the name of the purchase, in the customer note and in the name of the service | [optional] |
+| **page** | **int**| Page number, starting from 1. A page beyond the last one returns an empty &#x60;data&#x60; list (with the requested &#x60;page&#x60; in &#x60;meta&#x60;). | [optional] [default to 1] |
+| **per_page** | **int**| Number of items per page. Values outside the allowed range are rejected with a validation error. | [optional] [default to 20] |
 
 ### Return type
 
@@ -990,11 +989,11 @@ $apiInstance = new Shellrent\Sdk\Api\PurchasesApi(
     new GuzzleHttp\Client(),
     $config
 );
-$alive_only = true; // bool
-$ask_user_error = 'ask_user_error_example'; // string
-$purchase_id = 56; // int
-$page = 1; // int
-$per_page = 20; // int
+$alive_only = true; // bool | Only the tasks of alive purchases, not cancelled or terminated (default); false includes the tasks of every purchase
+$ask_user_error = 'ask_user_error_example'; // string | Only the tasks whose `ask_user_error` is exactly this text: the error found in the data provided by the customer
+$purchase_id = 56; // int | Only the tasks of the purchase with this ID
+$page = 1; // int | Page number, starting from 1. A page beyond the last one returns an empty `data` list (with the requested `page` in `meta`).
+$per_page = 20; // int | Number of items per page. Values outside the allowed range are rejected with a validation error.
 
 try {
     $result = $apiInstance->listTasks($alive_only, $ask_user_error, $purchase_id, $page, $per_page);
@@ -1008,11 +1007,11 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **alive_only** | **bool**|  | [optional] [default to true] |
-| **ask_user_error** | **string**|  | [optional] |
-| **purchase_id** | **int**|  | [optional] |
-| **page** | **int**|  | [optional] [default to 1] |
-| **per_page** | **int**|  | [optional] [default to 20] |
+| **alive_only** | **bool**| Only the tasks of alive purchases, not cancelled or terminated (default); false includes the tasks of every purchase | [optional] [default to true] |
+| **ask_user_error** | **string**| Only the tasks whose &#x60;ask_user_error&#x60; is exactly this text: the error found in the data provided by the customer | [optional] |
+| **purchase_id** | **int**| Only the tasks of the purchase with this ID | [optional] |
+| **page** | **int**| Page number, starting from 1. A page beyond the last one returns an empty &#x60;data&#x60; list (with the requested &#x60;page&#x60; in &#x60;meta&#x60;). | [optional] [default to 1] |
+| **per_page** | **int**| Number of items per page. Values outside the allowed range are rejected with a validation error. | [optional] [default to 20] |
 
 ### Return type
 
@@ -1039,7 +1038,7 @@ renewPurchase($purchase_id): \Shellrent\Sdk\Model\OrderListResponse
 
 Renew
 
-Renew a purchase. It returns the orders created to renew the purchase (usually one order).
+Renew a purchase. It returns the orders created to renew the purchase (usually one order).  Not available to sub-accounts: the response is 403 (error 1601).
 
 ### Example
 
@@ -1058,7 +1057,7 @@ $apiInstance = new Shellrent\Sdk\Api\PurchasesApi(
     new GuzzleHttp\Client(),
     $config
 );
-$purchase_id = 56; // int
+$purchase_id = 56; // int | ID of the purchase
 
 try {
     $result = $apiInstance->renewPurchase($purchase_id);
@@ -1072,7 +1071,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **purchase_id** | **int**|  | |
+| **purchase_id** | **int**| ID of the purchase | |
 
 ### Return type
 
@@ -1099,7 +1098,7 @@ updatePurchaseBillingInfo($purchase_id, $purchase_billing_info_change_request): 
 
 Change billing info
 
-Changes the billing info on purchase (ODA, CIG, CUP, ...)
+Changes the billing info on purchase (ODA, CIG, CUP, ...)  Not available to sub-accounts: the response is 403 (error 1601).
 
 ### Example
 
@@ -1118,7 +1117,7 @@ $apiInstance = new Shellrent\Sdk\Api\PurchasesApi(
     new GuzzleHttp\Client(),
     $config
 );
-$purchase_id = 56; // int
+$purchase_id = 56; // int | ID of the purchase
 $purchase_billing_info_change_request = new \Shellrent\Sdk\Model\PurchaseBillingInfoChangeRequest(); // \Shellrent\Sdk\Model\PurchaseBillingInfoChangeRequest
 
 try {
@@ -1133,7 +1132,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **purchase_id** | **int**|  | |
+| **purchase_id** | **int**| ID of the purchase | |
 | **purchase_billing_info_change_request** | [**\Shellrent\Sdk\Model\PurchaseBillingInfoChangeRequest**](../Model/PurchaseBillingInfoChangeRequest.md)|  | |
 
 ### Return type
@@ -1180,7 +1179,7 @@ $apiInstance = new Shellrent\Sdk\Api\PurchasesApi(
     new GuzzleHttp\Client(),
     $config
 );
-$purchase_id = 56; // int
+$purchase_id = 56; // int | ID of the purchase
 $purchase_comment_change_request = new \Shellrent\Sdk\Model\PurchaseCommentChangeRequest(); // \Shellrent\Sdk\Model\PurchaseCommentChangeRequest
 
 try {
@@ -1195,7 +1194,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **purchase_id** | **int**|  | |
+| **purchase_id** | **int**| ID of the purchase | |
 | **purchase_comment_change_request** | [**\Shellrent\Sdk\Model\PurchaseCommentChangeRequest**](../Model/PurchaseCommentChangeRequest.md)|  | |
 
 ### Return type

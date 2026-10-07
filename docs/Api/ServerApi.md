@@ -11,42 +11,38 @@ All URIs are relative to https://api.shellrent.com, except if the operation defi
 | [**canRebootServer()**](ServerApi.md#canRebootServer) | **GET** /api/v3/servers/{server_id}/can-reboot | Check if server can reboot |
 | [**canStartServer()**](ServerApi.md#canStartServer) | **GET** /api/v3/servers/{server_id}/can-start | Check if server can start |
 | [**canStopServer()**](ServerApi.md#canStopServer) | **GET** /api/v3/servers/{server_id}/can-stop | Check if server can stop |
-| [**createPrivateCloudVirtualMachine()**](ServerApi.md#createPrivateCloudVirtualMachine) | **POST** /api/v3/servers/{server_id}/private_cloud/virtual-machines | Create private cloud VM |
-| [**createServerAutomaticSnapshot()**](ServerApi.md#createServerAutomaticSnapshot) | **POST** /api/v3/servers/{server_id}/snapshots/automatic-snapshot | Create automatic snapshot settings |
+| [**createPrivateCloudVirtualMachine()**](ServerApi.md#createPrivateCloudVirtualMachine) | **POST** /api/v3/servers/{server_id}/private-cloud/virtual-machines | Create private cloud VM |
+| [**createServerAutomaticSnapshot()**](ServerApi.md#createServerAutomaticSnapshot) | **POST** /api/v3/servers/{server_id}/snapshot-schedule | Create automatic snapshot settings |
 | [**createServerNetworkInterface()**](ServerApi.md#createServerNetworkInterface) | **POST** /api/v3/servers/{server_id}/network-interfaces | Create server network interface |
-| [**deletePrivateCloudVirtualMachine()**](ServerApi.md#deletePrivateCloudVirtualMachine) | **DELETE** /api/v3/servers/{server_id}/private_cloud/virtual-machines/{vm_id} | Delete private cloud VM |
-| [**deleteServerAutomaticSnapshot()**](ServerApi.md#deleteServerAutomaticSnapshot) | **DELETE** /api/v3/servers/{server_id}/snapshots/automatic-snapshot | Delete automatic snapshot settings |
+| [**createServerPowerAction()**](ServerApi.md#createServerPowerAction) | **POST** /api/v3/servers/{server_id}/power-actions | Start, stop or reboot a server |
+| [**deletePrivateCloudVirtualMachine()**](ServerApi.md#deletePrivateCloudVirtualMachine) | **DELETE** /api/v3/servers/{server_id}/private-cloud/virtual-machines/{vm_id} | Delete private cloud VM |
+| [**deleteServerAutomaticSnapshot()**](ServerApi.md#deleteServerAutomaticSnapshot) | **DELETE** /api/v3/servers/{server_id}/snapshot-schedule | Delete automatic snapshot settings |
 | [**deleteServerExposedBackups()**](ServerApi.md#deleteServerExposedBackups) | **DELETE** /api/v3/servers/{server_id}/backups/exhibitions | Delete exposed backups |
-| [**deleteServerIpAddressReverseDns()**](ServerApi.md#deleteServerIpAddressReverseDns) | **DELETE** /api/v3/servers/{server_id}/ip_addresses/{ip_address_id}/rdns | Delete IP reverse DNS |
+| [**deleteServerIpAddressReverseDns()**](ServerApi.md#deleteServerIpAddressReverseDns) | **DELETE** /api/v3/servers/{server_id}/ip-addresses/{ip_address_id}/rdns | Delete IP reverse DNS |
 | [**deleteServerNetworkInterface()**](ServerApi.md#deleteServerNetworkInterface) | **DELETE** /api/v3/servers/{server_id}/network-interfaces/{network_interface_id} | Delete server network interface |
 | [**deleteServerSnapshot()**](ServerApi.md#deleteServerSnapshot) | **DELETE** /api/v3/servers/{server_id}/snapshots/{snapshot_id} | Delete server snapshot |
-| [**exposeServerBackup()**](ServerApi.md#exposeServerBackup) | **POST** /api/v3/servers/{server_id}/backups/exhibit | Expose a server backup |
+| [**exposeServerBackup()**](ServerApi.md#exposeServerBackup) | **POST** /api/v3/servers/{server_id}/backups/exhibitions | Expose a server backup |
 | [**getServer()**](ServerApi.md#getServer) | **GET** /api/v3/servers/{server_id} | Get server |
-| [**getServerAutomaticSnapshot()**](ServerApi.md#getServerAutomaticSnapshot) | **GET** /api/v3/servers/{server_id}/snapshots/automatic-snapshot | Get automatic snapshot settings |
+| [**getServerAutomaticSnapshot()**](ServerApi.md#getServerAutomaticSnapshot) | **GET** /api/v3/servers/{server_id}/snapshot-schedule | Get automatic snapshot settings |
 | [**getServerBackup()**](ServerApi.md#getServerBackup) | **GET** /api/v3/servers/{server_id}/backups/{server_backup_id} | Get server backup |
-| [**getServerIpAddress()**](ServerApi.md#getServerIpAddress) | **GET** /api/v3/servers/{server_id}/ip_addresses/{ip_address_id} | Get server IP address |
+| [**getServerIpAddress()**](ServerApi.md#getServerIpAddress) | **GET** /api/v3/servers/{server_id}/ip-addresses/{ip_address_id} | Get server IP address |
 | [**getServerNetworkInterface()**](ServerApi.md#getServerNetworkInterface) | **GET** /api/v3/servers/{server_id}/network-interfaces/{network_interface_id} | Get server network interface |
-| [**getServerPrivateCloud()**](ServerApi.md#getServerPrivateCloud) | **GET** /api/v3/servers/{server_id}/private_cloud | Get private cloud info |
+| [**getServerPrivateCloud()**](ServerApi.md#getServerPrivateCloud) | **GET** /api/v3/servers/{server_id}/private-cloud | Get private cloud info |
 | [**getServerSnapshot()**](ServerApi.md#getServerSnapshot) | **GET** /api/v3/servers/{server_id}/snapshots/{snapshot_id} | Get server snapshot |
-| [**hardRebootServer()**](ServerApi.md#hardRebootServer) | **POST** /api/v3/servers/{server_id}/hard-reboot | Hard reboot server |
-| [**hardStopServer()**](ServerApi.md#hardStopServer) | **POST** /api/v3/servers/{server_id}/hard-stop | Hard stop server |
+| [**listPrivateCloudAvailableIpAddresses()**](ServerApi.md#listPrivateCloudAvailableIpAddresses) | **GET** /api/v3/servers/{server_id}/private-cloud/available-ip-addresses | List free IP addresses of a private cloud |
 | [**listServerBackups()**](ServerApi.md#listServerBackups) | **GET** /api/v3/servers/{server_id}/backups | List server backups |
 | [**listServerCredentials()**](ServerApi.md#listServerCredentials) | **GET** /api/v3/servers/{server_id}/credentials | List server credentials |
-| [**listServerExposedBackups()**](ServerApi.md#listServerExposedBackups) | **GET** /api/v3/servers/{server_id}/backups/exhibitions | List exposed server backups |
-| [**listServerIpAddresses()**](ServerApi.md#listServerIpAddresses) | **GET** /api/v3/servers/{server_id}/ip_addresses | List server IP addresses |
+| [**listServerExposedBackups()**](ServerApi.md#listServerExposedBackups) | **GET** /api/v3/servers/{server_id}/backups/exhibitions | List exposable server backups |
+| [**listServerIpAddresses()**](ServerApi.md#listServerIpAddresses) | **GET** /api/v3/servers/{server_id}/ip-addresses | List server IP addresses |
 | [**listServerNetworkInterfaces()**](ServerApi.md#listServerNetworkInterfaces) | **GET** /api/v3/servers/{server_id}/network-interfaces | List server network interfaces |
 | [**listServerSnapshots()**](ServerApi.md#listServerSnapshots) | **GET** /api/v3/servers/{server_id}/snapshots | List server snapshots |
 | [**listServers()**](ServerApi.md#listServers) | **GET** /api/v3/servers | List servers |
-| [**rebootServer()**](ServerApi.md#rebootServer) | **POST** /api/v3/servers/{server_id}/reboot | Reboot server |
-| [**reinstallServer()**](ServerApi.md#reinstallServer) | **POST** /api/v3/servers/{server_id}/reinstall | Reinstall server |
-| [**restoreServerBackup()**](ServerApi.md#restoreServerBackup) | **POST** /api/v3/servers/{server_id}/backups/{server_backup_id}/restore | Restore server backup |
-| [**restoreServerSnapshot()**](ServerApi.md#restoreServerSnapshot) | **POST** /api/v3/servers/{server_id}/snapshots/{snapshot_id}/restore | Restore server snapshot |
-| [**startServer()**](ServerApi.md#startServer) | **POST** /api/v3/servers/{server_id}/start | Start server |
-| [**startServerFirstBackup()**](ServerApi.md#startServerFirstBackup) | **POST** /api/v3/servers/{server_id}/backups/first-save | Start first backup save |
-| [**stopServer()**](ServerApi.md#stopServer) | **POST** /api/v3/servers/{server_id}/stop | Stop server |
-| [**updatePrivateCloudVirtualMachine()**](ServerApi.md#updatePrivateCloudVirtualMachine) | **PATCH** /api/v3/servers/{server_id}/private_cloud/virtual-machines/{vm_id} | Update private cloud VM |
-| [**updateServerAutomaticSnapshot()**](ServerApi.md#updateServerAutomaticSnapshot) | **PATCH** /api/v3/servers/{server_id}/snapshots/automatic-snapshot | Update automatic snapshot settings |
-| [**updateServerIpAddressReverseDns()**](ServerApi.md#updateServerIpAddressReverseDns) | **PATCH** /api/v3/servers/{server_id}/ip_addresses/{ip_address_id}/rdns | Update IP reverse DNS |
+| [**reinstallServer()**](ServerApi.md#reinstallServer) | **POST** /api/v3/servers/{server_id}/reinstallations | Reinstall server |
+| [**restoreServerBackup()**](ServerApi.md#restoreServerBackup) | **POST** /api/v3/servers/{server_id}/backups/{server_backup_id}/restores | Restore server backup |
+| [**restoreServerSnapshot()**](ServerApi.md#restoreServerSnapshot) | **POST** /api/v3/servers/{server_id}/snapshots/{snapshot_id}/restores | Restore server snapshot |
+| [**updatePrivateCloudVirtualMachine()**](ServerApi.md#updatePrivateCloudVirtualMachine) | **PATCH** /api/v3/servers/{server_id}/private-cloud/virtual-machines/{vm_id} | Update private cloud VM |
+| [**updateServerAutomaticSnapshot()**](ServerApi.md#updateServerAutomaticSnapshot) | **PATCH** /api/v3/servers/{server_id}/snapshot-schedule | Update automatic snapshot settings |
+| [**updateServerIpAddressReverseDns()**](ServerApi.md#updateServerIpAddressReverseDns) | **PATCH** /api/v3/servers/{server_id}/ip-addresses/{ip_address_id}/rdns | Update IP reverse DNS |
 
 
 ## `canHardRebootServer()`
@@ -57,7 +53,7 @@ canHardRebootServer($server_id): \Shellrent\Sdk\Model\ServerCanActionResponse
 
 Check if server can hard reboot
 
-Check if server can hard reboot
+Whether the server can be forcibly rebooted now with `POST /api/v3/servers/{server_id}/power-actions` and `action` `hard_reboot`. `can_action` is false for a physical server, which only has `reboot`, and for the server of a private cloud; also while the server is not ready, its service is not active or is under maintenance, another operation does not allow the action, or the virtual machine is not running
 
 ### Example
 
@@ -76,7 +72,7 @@ $apiInstance = new Shellrent\Sdk\Api\ServerApi(
     new GuzzleHttp\Client(),
     $config
 );
-$server_id = 56; // int
+$server_id = 56; // int | ID of the server
 
 try {
     $result = $apiInstance->canHardRebootServer($server_id);
@@ -90,7 +86,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **server_id** | **int**|  | |
+| **server_id** | **int**| ID of the server | |
 
 ### Return type
 
@@ -117,7 +113,7 @@ canHardStopServer($server_id): \Shellrent\Sdk\Model\ServerCanActionResponse
 
 Check if server can hard stop
 
-Check if server can hard stop
+Whether the server can be forcibly stopped now with `POST /api/v3/servers/{server_id}/power-actions` and `action` `hard_stop`. `can_action` is false for a physical server, which only has `reboot`, and for the server of a private cloud; also while the server is not ready, its service is not active or is under maintenance, another operation does not allow the action, or the virtual machine is already stopped
 
 ### Example
 
@@ -136,7 +132,7 @@ $apiInstance = new Shellrent\Sdk\Api\ServerApi(
     new GuzzleHttp\Client(),
     $config
 );
-$server_id = 56; // int
+$server_id = 56; // int | ID of the server
 
 try {
     $result = $apiInstance->canHardStopServer($server_id);
@@ -150,7 +146,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **server_id** | **int**|  | |
+| **server_id** | **int**| ID of the server | |
 
 ### Return type
 
@@ -177,7 +173,7 @@ canRebootServer($server_id): \Shellrent\Sdk\Model\ServerCanActionResponse
 
 Check if server can reboot
 
-Check if server can reboot
+Whether the server can be rebooted now with `POST /api/v3/servers/{server_id}/power-actions` and `action` `reboot`, the only power action of the physical servers. `can_action` is false for the server of a private cloud, and while the server is not ready, its service is not active or is under maintenance, another operation does not allow the action, the virtual machine is not running, or the physical server cannot be managed at its supplier
 
 ### Example
 
@@ -196,7 +192,7 @@ $apiInstance = new Shellrent\Sdk\Api\ServerApi(
     new GuzzleHttp\Client(),
     $config
 );
-$server_id = 56; // int
+$server_id = 56; // int | ID of the server
 
 try {
     $result = $apiInstance->canRebootServer($server_id);
@@ -210,7 +206,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **server_id** | **int**|  | |
+| **server_id** | **int**| ID of the server | |
 
 ### Return type
 
@@ -237,7 +233,7 @@ canStartServer($server_id): \Shellrent\Sdk\Model\ServerCanActionResponse
 
 Check if server can start
 
-Check if server can start
+Whether the server can be started now with `POST /api/v3/servers/{server_id}/power-actions` and `action` `start`. `can_action` is false for a physical server, which only has `reboot`, and for the server of a private cloud; also while the server is not ready, its service is not active or is under maintenance, another operation does not allow the action, or the virtual machine is already running
 
 ### Example
 
@@ -256,7 +252,7 @@ $apiInstance = new Shellrent\Sdk\Api\ServerApi(
     new GuzzleHttp\Client(),
     $config
 );
-$server_id = 56; // int
+$server_id = 56; // int | ID of the server
 
 try {
     $result = $apiInstance->canStartServer($server_id);
@@ -270,7 +266,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **server_id** | **int**|  | |
+| **server_id** | **int**| ID of the server | |
 
 ### Return type
 
@@ -297,7 +293,7 @@ canStopServer($server_id): \Shellrent\Sdk\Model\ServerCanActionResponse
 
 Check if server can stop
 
-Check if server can stop
+Whether the server can be stopped now with `POST /api/v3/servers/{server_id}/power-actions` and `action` `stop`. `can_action` is false for a physical server, which only has `reboot`, and for the server of a private cloud; also while the server is not ready, its service is not active or is under maintenance, another operation does not allow the action, or the virtual machine is already stopped
 
 ### Example
 
@@ -316,7 +312,7 @@ $apiInstance = new Shellrent\Sdk\Api\ServerApi(
     new GuzzleHttp\Client(),
     $config
 );
-$server_id = 56; // int
+$server_id = 56; // int | ID of the server
 
 try {
     $result = $apiInstance->canStopServer($server_id);
@@ -330,7 +326,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **server_id** | **int**|  | |
+| **server_id** | **int**| ID of the server | |
 
 ### Return type
 
@@ -357,7 +353,7 @@ createPrivateCloudVirtualMachine($server_id, $private_cloud_vm_create_request): 
 
 Create private cloud VM
 
-Create private cloud VM
+Create private cloud VM. The response is 409 when the private cloud already has the maximum number of virtual machines, its daily backup space is already in use, it has no licences left for the template, or another operation is in progress.
 
 ### Example
 
@@ -376,7 +372,7 @@ $apiInstance = new Shellrent\Sdk\Api\ServerApi(
     new GuzzleHttp\Client(),
     $config
 );
-$server_id = 56; // int
+$server_id = 56; // int | ID of the server
 $private_cloud_vm_create_request = new \Shellrent\Sdk\Model\PrivateCloudVmCreateRequest(); // \Shellrent\Sdk\Model\PrivateCloudVmCreateRequest
 
 try {
@@ -391,7 +387,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **server_id** | **int**|  | |
+| **server_id** | **int**| ID of the server | |
 | **private_cloud_vm_create_request** | [**\Shellrent\Sdk\Model\PrivateCloudVmCreateRequest**](../Model/PrivateCloudVmCreateRequest.md)|  | |
 
 ### Return type
@@ -419,7 +415,7 @@ createServerAutomaticSnapshot($server_id, $server_automatic_snapshot_request): \
 
 Create automatic snapshot settings
 
-Create automatic snapshot settings
+Configures the automatic snapshot of the server. A server has at most one automatic snapshot: if one is already configured the response is 409 and the configuration is changed with PATCH. Automatic snapshots must be included in the service plan, otherwise the response is 403.
 
 ### Example
 
@@ -438,7 +434,7 @@ $apiInstance = new Shellrent\Sdk\Api\ServerApi(
     new GuzzleHttp\Client(),
     $config
 );
-$server_id = 56; // int
+$server_id = 56; // int | ID of the server
 $server_automatic_snapshot_request = new \Shellrent\Sdk\Model\ServerAutomaticSnapshotRequest(); // \Shellrent\Sdk\Model\ServerAutomaticSnapshotRequest
 
 try {
@@ -453,7 +449,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **server_id** | **int**|  | |
+| **server_id** | **int**| ID of the server | |
 | **server_automatic_snapshot_request** | [**\Shellrent\Sdk\Model\ServerAutomaticSnapshotRequest**](../Model/ServerAutomaticSnapshotRequest.md)|  | |
 
 ### Return type
@@ -476,12 +472,12 @@ try {
 ## `createServerNetworkInterface()`
 
 ```php
-createServerNetworkInterface($server_id, $server_network_interface_create_request): \Shellrent\Sdk\Model\ServerNetworkInterfaceResponse
+createServerNetworkInterface($server_id, $server_network_interface_create_request): \Shellrent\Sdk\Model\TaskResponse
 ```
 
 Create server network interface
 
-Create server network interface
+Starts the creation of a network interface: local, on an active local network of the cluster where the server resides, or public, on an IP address. The creation is asynchronous and is returned as a Task.
 
 ### Example
 
@@ -500,7 +496,7 @@ $apiInstance = new Shellrent\Sdk\Api\ServerApi(
     new GuzzleHttp\Client(),
     $config
 );
-$server_id = 56; // int
+$server_id = 56; // int | ID of the server
 $server_network_interface_create_request = new \Shellrent\Sdk\Model\ServerNetworkInterfaceCreateRequest(); // \Shellrent\Sdk\Model\ServerNetworkInterfaceCreateRequest
 
 try {
@@ -515,12 +511,74 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **server_id** | **int**|  | |
+| **server_id** | **int**| ID of the server | |
 | **server_network_interface_create_request** | [**\Shellrent\Sdk\Model\ServerNetworkInterfaceCreateRequest**](../Model/ServerNetworkInterfaceCreateRequest.md)|  | |
 
 ### Return type
 
-[**\Shellrent\Sdk\Model\ServerNetworkInterfaceResponse**](../Model/ServerNetworkInterfaceResponse.md)
+[**\Shellrent\Sdk\Model\TaskResponse**](../Model/TaskResponse.md)
+
+### Authorization
+
+[oauth2](../../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `createServerPowerAction()`
+
+```php
+createServerPowerAction($server_id, $server_power_action_request): \Shellrent\Sdk\Model\TaskResponse
+```
+
+Start, stop or reboot a server
+
+Starts a power action on the server, chosen with `action`; the operation goes on in the background as the returned Task. 403 for an action that the server does not have (physical servers only have `reboot`); 409 while the server is not ready, its service is not active or is under maintenance, or another operation does not allow the action. Before, each action had its own path (`…/start`, `…/reboot`, `…/stop`, `…/hard-reboot`, `…/hard-stop`)
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure OAuth2 access token for authorization: oauth2
+$config = Shellrent\Sdk\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Shellrent\Sdk\Api\ServerApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$server_id = 56; // int | ID of the server
+$server_power_action_request = new \Shellrent\Sdk\Model\ServerPowerActionRequest(); // \Shellrent\Sdk\Model\ServerPowerActionRequest
+
+try {
+    $result = $apiInstance->createServerPowerAction($server_id, $server_power_action_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ServerApi->createServerPowerAction: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **server_id** | **int**| ID of the server | |
+| **server_power_action_request** | [**\Shellrent\Sdk\Model\ServerPowerActionRequest**](../Model/ServerPowerActionRequest.md)|  | |
+
+### Return type
+
+[**\Shellrent\Sdk\Model\TaskResponse**](../Model/TaskResponse.md)
 
 ### Authorization
 
@@ -543,7 +601,7 @@ deletePrivateCloudVirtualMachine($server_id, $vm_id): \Shellrent\Sdk\Model\TaskR
 
 Delete private cloud VM
 
-Delete private cloud VM
+Deletes a virtual machine of the private cloud `server_id`, dismissing its purchase; the operation goes on in the background as the returned Task. 404 when the virtual machine is not on the private cloud; 409 when `server_id` is not a private cloud, while the private cloud is not active or is suspended, or while the purchase of the virtual machine cannot be dismissed or another operation does not allow it
 
 ### Example
 
@@ -562,8 +620,8 @@ $apiInstance = new Shellrent\Sdk\Api\ServerApi(
     new GuzzleHttp\Client(),
     $config
 );
-$server_id = 56; // int
-$vm_id = 56; // int
+$server_id = 56; // int | ID of the server
+$vm_id = 56; // int | ID of the virtual machine
 
 try {
     $result = $apiInstance->deletePrivateCloudVirtualMachine($server_id, $vm_id);
@@ -577,8 +635,8 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **server_id** | **int**|  | |
-| **vm_id** | **int**|  | |
+| **server_id** | **int**| ID of the server | |
+| **vm_id** | **int**| ID of the virtual machine | |
 
 ### Return type
 
@@ -600,12 +658,12 @@ try {
 ## `deleteServerAutomaticSnapshot()`
 
 ```php
-deleteServerAutomaticSnapshot($server_id): \Shellrent\Sdk\Model\EmptyResponse
+deleteServerAutomaticSnapshot($server_id)
 ```
 
 Delete automatic snapshot settings
 
-Delete automatic snapshot settings
+Removes the automatic snapshot of the server (404 if none is configured). The snapshots it created that have no expiry date receive the default expiry of the plan.
 
 ### Example
 
@@ -624,11 +682,10 @@ $apiInstance = new Shellrent\Sdk\Api\ServerApi(
     new GuzzleHttp\Client(),
     $config
 );
-$server_id = 56; // int
+$server_id = 56; // int | ID of the server
 
 try {
-    $result = $apiInstance->deleteServerAutomaticSnapshot($server_id);
-    print_r($result);
+    $apiInstance->deleteServerAutomaticSnapshot($server_id);
 } catch (Exception $e) {
     echo 'Exception when calling ServerApi->deleteServerAutomaticSnapshot: ', $e->getMessage(), PHP_EOL;
 }
@@ -638,11 +695,11 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **server_id** | **int**|  | |
+| **server_id** | **int**| ID of the server | |
 
 ### Return type
 
-[**\Shellrent\Sdk\Model\EmptyResponse**](../Model/EmptyResponse.md)
+void (empty response body)
 
 ### Authorization
 
@@ -665,7 +722,7 @@ deleteServerExposedBackups($server_id): \Shellrent\Sdk\Model\TaskResponse
 
 Delete exposed backups
 
-Delete exposed backups
+Removes the backups exposed on the virtual machine with `POST /api/v3/servers/{server_id}/backups/exhibitions`; the operation goes on in the background as the returned Task. 409 while a backup is being exposed, for a physical server or a virtual machine that is not on oVirt, while the server is not ready, its service is not active or is under maintenance, or another operation does not allow it
 
 ### Example
 
@@ -684,7 +741,7 @@ $apiInstance = new Shellrent\Sdk\Api\ServerApi(
     new GuzzleHttp\Client(),
     $config
 );
-$server_id = 56; // int
+$server_id = 56; // int | ID of the server
 
 try {
     $result = $apiInstance->deleteServerExposedBackups($server_id);
@@ -698,7 +755,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **server_id** | **int**|  | |
+| **server_id** | **int**| ID of the server | |
 
 ### Return type
 
@@ -744,8 +801,8 @@ $apiInstance = new Shellrent\Sdk\Api\ServerApi(
     new GuzzleHttp\Client(),
     $config
 );
-$server_id = 56; // int
-$ip_address_id = 56; // int
+$server_id = 56; // int | ID of the server
+$ip_address_id = 56; // int | ID of the IP address of the server
 
 try {
     $result = $apiInstance->deleteServerIpAddressReverseDns($server_id, $ip_address_id);
@@ -759,8 +816,8 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **server_id** | **int**|  | |
-| **ip_address_id** | **int**|  | |
+| **server_id** | **int**| ID of the server | |
+| **ip_address_id** | **int**| ID of the IP address of the server | |
 
 ### Return type
 
@@ -782,12 +839,12 @@ try {
 ## `deleteServerNetworkInterface()`
 
 ```php
-deleteServerNetworkInterface($server_id, $network_interface_id): \Shellrent\Sdk\Model\EmptyResponse
+deleteServerNetworkInterface($server_id, $network_interface_id): \Shellrent\Sdk\Model\TaskResponse
 ```
 
 Delete server network interface
 
-Delete server network interface
+Starts the deletion of an active network interface, returned as a Task. The default interface and the one of the primary IP address cannot be deleted.
 
 ### Example
 
@@ -806,8 +863,8 @@ $apiInstance = new Shellrent\Sdk\Api\ServerApi(
     new GuzzleHttp\Client(),
     $config
 );
-$server_id = 56; // int
-$network_interface_id = 56; // int
+$server_id = 56; // int | ID of the server
+$network_interface_id = 56; // int | ID of the network interface
 
 try {
     $result = $apiInstance->deleteServerNetworkInterface($server_id, $network_interface_id);
@@ -821,12 +878,12 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **server_id** | **int**|  | |
-| **network_interface_id** | **int**|  | |
+| **server_id** | **int**| ID of the server | |
+| **network_interface_id** | **int**| ID of the network interface | |
 
 ### Return type
 
-[**\Shellrent\Sdk\Model\EmptyResponse**](../Model/EmptyResponse.md)
+[**\Shellrent\Sdk\Model\TaskResponse**](../Model/TaskResponse.md)
 
 ### Authorization
 
@@ -868,8 +925,8 @@ $apiInstance = new Shellrent\Sdk\Api\ServerApi(
     new GuzzleHttp\Client(),
     $config
 );
-$server_id = 56; // int
-$snapshot_id = 56; // int
+$server_id = 56; // int | ID of the server
+$snapshot_id = 56; // int | ID of the snapshot
 
 try {
     $result = $apiInstance->deleteServerSnapshot($server_id, $snapshot_id);
@@ -883,8 +940,8 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **server_id** | **int**|  | |
-| **snapshot_id** | **int**|  | |
+| **server_id** | **int**| ID of the server | |
+| **snapshot_id** | **int**| ID of the snapshot | |
 
 ### Return type
 
@@ -911,7 +968,7 @@ exposeServerBackup($server_id, $server_backup_exhibit_request): \Shellrent\Sdk\M
 
 Expose a server backup
 
-Expose a server backup
+Exposes a backup of the virtual machine (`backup_id`, one of `GET /api/v3/servers/{server_id}/backups/exhibitions`) as an additional disk, to read its files without restoring it: it replaces the backup exposed before, the server may restart, and the operation goes on in the background as the returned Task. Exposed backups are removed after a few days, or with `DELETE /api/v3/servers/{server_id}/backups/exhibitions`. 409 for a physical server or a virtual machine that is not on oVirt, while the exposed backups are being deleted, while the server is not ready, its service is not active or is under maintenance, or another operation does not allow it
 
 ### Example
 
@@ -930,7 +987,7 @@ $apiInstance = new Shellrent\Sdk\Api\ServerApi(
     new GuzzleHttp\Client(),
     $config
 );
-$server_id = 56; // int
+$server_id = 56; // int | ID of the server
 $server_backup_exhibit_request = new \Shellrent\Sdk\Model\ServerBackupExhibitRequest(); // \Shellrent\Sdk\Model\ServerBackupExhibitRequest
 
 try {
@@ -945,7 +1002,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **server_id** | **int**|  | |
+| **server_id** | **int**| ID of the server | |
 | **server_backup_exhibit_request** | [**\Shellrent\Sdk\Model\ServerBackupExhibitRequest**](../Model/ServerBackupExhibitRequest.md)|  | |
 
 ### Return type
@@ -992,7 +1049,7 @@ $apiInstance = new Shellrent\Sdk\Api\ServerApi(
     new GuzzleHttp\Client(),
     $config
 );
-$server_id = 56; // int
+$server_id = 56; // int | ID of the server
 
 try {
     $result = $apiInstance->getServer($server_id);
@@ -1006,7 +1063,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **server_id** | **int**|  | |
+| **server_id** | **int**| ID of the server | |
 
 ### Return type
 
@@ -1033,7 +1090,7 @@ getServerAutomaticSnapshot($server_id): \Shellrent\Sdk\Model\ServerAutomaticSnap
 
 Get automatic snapshot settings
 
-Get automatic snapshot settings
+Returns the automatic snapshot of the server (404 if none is configured). Automatic snapshots must be included in the service plan (for a private cloud VM, in the plan of the private cloud), otherwise the response is 403.
 
 ### Example
 
@@ -1052,7 +1109,7 @@ $apiInstance = new Shellrent\Sdk\Api\ServerApi(
     new GuzzleHttp\Client(),
     $config
 );
-$server_id = 56; // int
+$server_id = 56; // int | ID of the server
 
 try {
     $result = $apiInstance->getServerAutomaticSnapshot($server_id);
@@ -1066,7 +1123,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **server_id** | **int**|  | |
+| **server_id** | **int**| ID of the server | |
 
 ### Return type
 
@@ -1112,8 +1169,8 @@ $apiInstance = new Shellrent\Sdk\Api\ServerApi(
     new GuzzleHttp\Client(),
     $config
 );
-$server_id = 56; // int
-$server_backup_id = 56; // int
+$server_id = 56; // int | ID of the server
+$server_backup_id = 56; // int | ID of the server backup
 
 try {
     $result = $apiInstance->getServerBackup($server_id, $server_backup_id);
@@ -1127,8 +1184,8 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **server_id** | **int**|  | |
-| **server_backup_id** | **int**|  | |
+| **server_id** | **int**| ID of the server | |
+| **server_backup_id** | **int**| ID of the server backup | |
 
 ### Return type
 
@@ -1174,8 +1231,8 @@ $apiInstance = new Shellrent\Sdk\Api\ServerApi(
     new GuzzleHttp\Client(),
     $config
 );
-$server_id = 56; // int
-$ip_address_id = 56; // int
+$server_id = 56; // int | ID of the server
+$ip_address_id = 56; // int | ID of the IP address of the server
 
 try {
     $result = $apiInstance->getServerIpAddress($server_id, $ip_address_id);
@@ -1189,8 +1246,8 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **server_id** | **int**|  | |
-| **ip_address_id** | **int**|  | |
+| **server_id** | **int**| ID of the server | |
+| **ip_address_id** | **int**| ID of the IP address of the server | |
 
 ### Return type
 
@@ -1217,7 +1274,7 @@ getServerNetworkInterface($server_id, $network_interface_id): \Shellrent\Sdk\Mod
 
 Get server network interface
 
-Get server network interface
+Returns an active network interface (VIF) of the server; a deleted interface responds 404
 
 ### Example
 
@@ -1236,8 +1293,8 @@ $apiInstance = new Shellrent\Sdk\Api\ServerApi(
     new GuzzleHttp\Client(),
     $config
 );
-$server_id = 56; // int
-$network_interface_id = 56; // int
+$server_id = 56; // int | ID of the server
+$network_interface_id = 56; // int | ID of the network interface
 
 try {
     $result = $apiInstance->getServerNetworkInterface($server_id, $network_interface_id);
@@ -1251,8 +1308,8 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **server_id** | **int**|  | |
-| **network_interface_id** | **int**|  | |
+| **server_id** | **int**| ID of the server | |
+| **network_interface_id** | **int**| ID of the network interface | |
 
 ### Return type
 
@@ -1298,7 +1355,7 @@ $apiInstance = new Shellrent\Sdk\Api\ServerApi(
     new GuzzleHttp\Client(),
     $config
 );
-$server_id = 56; // int
+$server_id = 56; // int | ID of the server
 
 try {
     $result = $apiInstance->getServerPrivateCloud($server_id);
@@ -1312,7 +1369,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **server_id** | **int**|  | |
+| **server_id** | **int**| ID of the server | |
 
 ### Return type
 
@@ -1358,8 +1415,8 @@ $apiInstance = new Shellrent\Sdk\Api\ServerApi(
     new GuzzleHttp\Client(),
     $config
 );
-$server_id = 56; // int
-$snapshot_id = 56; // int
+$server_id = 56; // int | ID of the server
+$snapshot_id = 56; // int | ID of the snapshot
 
 try {
     $result = $apiInstance->getServerSnapshot($server_id, $snapshot_id);
@@ -1373,8 +1430,8 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **server_id** | **int**|  | |
-| **snapshot_id** | **int**|  | |
+| **server_id** | **int**| ID of the server | |
+| **snapshot_id** | **int**| ID of the snapshot | |
 
 ### Return type
 
@@ -1393,15 +1450,15 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `hardRebootServer()`
+## `listPrivateCloudAvailableIpAddresses()`
 
 ```php
-hardRebootServer($server_id): \Shellrent\Sdk\Model\TaskResponse
+listPrivateCloudAvailableIpAddresses($server_id, $page, $per_page): \Shellrent\Sdk\Model\IpAddressPaginatedListResponse
 ```
 
-Hard reboot server
+List free IP addresses of a private cloud
 
-Hard reboot a server
+Free and available IP addresses of the pool of the private cloud, the ones to use as `ip_address_id` to create a VM of the private cloud or a public network interface of one of its VMs. The server can be the private cloud or one of its VMs.
 
 ### Example
 
@@ -1420,13 +1477,15 @@ $apiInstance = new Shellrent\Sdk\Api\ServerApi(
     new GuzzleHttp\Client(),
     $config
 );
-$server_id = 56; // int
+$server_id = 56; // int | ID of the server
+$page = 1; // int | Page number, starting from 1. A page beyond the last one returns an empty `data` list (with the requested `page` in `meta`).
+$per_page = 20; // int | Number of items per page. Values outside the allowed range are rejected with a validation error.
 
 try {
-    $result = $apiInstance->hardRebootServer($server_id);
+    $result = $apiInstance->listPrivateCloudAvailableIpAddresses($server_id, $page, $per_page);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling ServerApi->hardRebootServer: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling ServerApi->listPrivateCloudAvailableIpAddresses: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -1434,71 +1493,13 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **server_id** | **int**|  | |
+| **server_id** | **int**| ID of the server | |
+| **page** | **int**| Page number, starting from 1. A page beyond the last one returns an empty &#x60;data&#x60; list (with the requested &#x60;page&#x60; in &#x60;meta&#x60;). | [optional] [default to 1] |
+| **per_page** | **int**| Number of items per page. Values outside the allowed range are rejected with a validation error. | [optional] [default to 20] |
 
 ### Return type
 
-[**\Shellrent\Sdk\Model\TaskResponse**](../Model/TaskResponse.md)
-
-### Authorization
-
-[oauth2](../../README.md#oauth2)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: `application/json`
-
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
-
-## `hardStopServer()`
-
-```php
-hardStopServer($server_id): \Shellrent\Sdk\Model\TaskResponse
-```
-
-Hard stop server
-
-Hard stop a server
-
-### Example
-
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-// Configure OAuth2 access token for authorization: oauth2
-$config = Shellrent\Sdk\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
-
-$apiInstance = new Shellrent\Sdk\Api\ServerApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$server_id = 56; // int
-
-try {
-    $result = $apiInstance->hardStopServer($server_id);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling ServerApi->hardStopServer: ', $e->getMessage(), PHP_EOL;
-}
-```
-
-### Parameters
-
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | ------------- |
-| **server_id** | **int**|  | |
-
-### Return type
-
-[**\Shellrent\Sdk\Model\TaskResponse**](../Model/TaskResponse.md)
+[**\Shellrent\Sdk\Model\IpAddressPaginatedListResponse**](../Model/IpAddressPaginatedListResponse.md)
 
 ### Authorization
 
@@ -1540,7 +1541,7 @@ $apiInstance = new Shellrent\Sdk\Api\ServerApi(
     new GuzzleHttp\Client(),
     $config
 );
-$server_id = 56; // int
+$server_id = 56; // int | ID of the server
 
 try {
     $result = $apiInstance->listServerBackups($server_id);
@@ -1554,7 +1555,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **server_id** | **int**|  | |
+| **server_id** | **int**| ID of the server | |
 
 ### Return type
 
@@ -1600,7 +1601,7 @@ $apiInstance = new Shellrent\Sdk\Api\ServerApi(
     new GuzzleHttp\Client(),
     $config
 );
-$server_id = 56; // int
+$server_id = 56; // int | ID of the server
 
 try {
     $result = $apiInstance->listServerCredentials($server_id);
@@ -1614,7 +1615,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **server_id** | **int**|  | |
+| **server_id** | **int**| ID of the server | |
 
 ### Return type
 
@@ -1639,9 +1640,9 @@ try {
 listServerExposedBackups($server_id): \Shellrent\Sdk\Model\ServerBackupListResponse
 ```
 
-List exposed server backups
+List exposable server backups
 
-List server backups
+Lists the backups of the server that can be exposed with `POST /api/v3/servers/{server_id}/backups/exhibitions`: the restorable backups visible to the customer, one-off backups included. It does not tell which backup is exposed now
 
 ### Example
 
@@ -1660,7 +1661,7 @@ $apiInstance = new Shellrent\Sdk\Api\ServerApi(
     new GuzzleHttp\Client(),
     $config
 );
-$server_id = 56; // int
+$server_id = 56; // int | ID of the server
 
 try {
     $result = $apiInstance->listServerExposedBackups($server_id);
@@ -1674,7 +1675,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **server_id** | **int**|  | |
+| **server_id** | **int**| ID of the server | |
 
 ### Return type
 
@@ -1720,7 +1721,7 @@ $apiInstance = new Shellrent\Sdk\Api\ServerApi(
     new GuzzleHttp\Client(),
     $config
 );
-$server_id = 56; // int
+$server_id = 56; // int | ID of the server
 
 try {
     $result = $apiInstance->listServerIpAddresses($server_id);
@@ -1734,7 +1735,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **server_id** | **int**|  | |
+| **server_id** | **int**| ID of the server | |
 
 ### Return type
 
@@ -1761,7 +1762,7 @@ listServerNetworkInterfaces($server_id): \Shellrent\Sdk\Model\ServerNetworkInter
 
 List server network interfaces
 
-List server network interfaces
+Lists the active network interfaces (VIF) of the server, on public and local networks; the deleted interfaces are not returned
 
 ### Example
 
@@ -1780,7 +1781,7 @@ $apiInstance = new Shellrent\Sdk\Api\ServerApi(
     new GuzzleHttp\Client(),
     $config
 );
-$server_id = 56; // int
+$server_id = 56; // int | ID of the server
 
 try {
     $result = $apiInstance->listServerNetworkInterfaces($server_id);
@@ -1794,7 +1795,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **server_id** | **int**|  | |
+| **server_id** | **int**| ID of the server | |
 
 ### Return type
 
@@ -1840,9 +1841,9 @@ $apiInstance = new Shellrent\Sdk\Api\ServerApi(
     new GuzzleHttp\Client(),
     $config
 );
-$server_id = 56; // int
-$page = 1; // int
-$per_page = 20; // int
+$server_id = 56; // int | ID of the server
+$page = 1; // int | Page number, starting from 1. A page beyond the last one returns an empty `data` list (with the requested `page` in `meta`).
+$per_page = 20; // int | Number of items per page. Values outside the allowed range are rejected with a validation error.
 
 try {
     $result = $apiInstance->listServerSnapshots($server_id, $page, $per_page);
@@ -1856,9 +1857,9 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **server_id** | **int**|  | |
-| **page** | **int**|  | [optional] [default to 1] |
-| **per_page** | **int**|  | [optional] [default to 20] |
+| **server_id** | **int**| ID of the server | |
+| **page** | **int**| Page number, starting from 1. A page beyond the last one returns an empty &#x60;data&#x60; list (with the requested &#x60;page&#x60; in &#x60;meta&#x60;). | [optional] [default to 1] |
+| **per_page** | **int**| Number of items per page. Values outside the allowed range are rejected with a validation error. | [optional] [default to 20] |
 
 ### Return type
 
@@ -1904,8 +1905,8 @@ $apiInstance = new Shellrent\Sdk\Api\ServerApi(
     new GuzzleHttp\Client(),
     $config
 );
-$page = 1; // int
-$per_page = 20; // int
+$page = 1; // int | Page number, starting from 1. A page beyond the last one returns an empty `data` list (with the requested `page` in `meta`).
+$per_page = 20; // int | Number of items per page. Values outside the allowed range are rejected with a validation error.
 
 try {
     $result = $apiInstance->listServers($page, $per_page);
@@ -1919,72 +1920,12 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **page** | **int**|  | [optional] [default to 1] |
-| **per_page** | **int**|  | [optional] [default to 20] |
+| **page** | **int**| Page number, starting from 1. A page beyond the last one returns an empty &#x60;data&#x60; list (with the requested &#x60;page&#x60; in &#x60;meta&#x60;). | [optional] [default to 1] |
+| **per_page** | **int**| Number of items per page. Values outside the allowed range are rejected with a validation error. | [optional] [default to 20] |
 
 ### Return type
 
 [**\Shellrent\Sdk\Model\ServerPaginatedListResponse**](../Model/ServerPaginatedListResponse.md)
-
-### Authorization
-
-[oauth2](../../README.md#oauth2)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: `application/json`
-
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
-
-## `rebootServer()`
-
-```php
-rebootServer($server_id): \Shellrent\Sdk\Model\TaskResponse
-```
-
-Reboot server
-
-Reboot a server
-
-### Example
-
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-// Configure OAuth2 access token for authorization: oauth2
-$config = Shellrent\Sdk\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
-
-$apiInstance = new Shellrent\Sdk\Api\ServerApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$server_id = 56; // int
-
-try {
-    $result = $apiInstance->rebootServer($server_id);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling ServerApi->rebootServer: ', $e->getMessage(), PHP_EOL;
-}
-```
-
-### Parameters
-
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | ------------- |
-| **server_id** | **int**|  | |
-
-### Return type
-
-[**\Shellrent\Sdk\Model\TaskResponse**](../Model/TaskResponse.md)
 
 ### Authorization
 
@@ -2007,7 +1948,7 @@ reinstallServer($server_id, $server_reinstall_request): \Shellrent\Sdk\Model\Tas
 
 Reinstall server
 
-Reinstall server
+Reinstalls the virtual machine with its current template and operating system: it deletes the virtual machine and its snapshots and creates it again, after a safety backup unless `safety_backup_enabled` is false. The operation goes on in the background as the returned Task. 409 for a physical server, while the server is not ready, its service is not active or is under maintenance, or another operation does not allow it
 
 ### Example
 
@@ -2026,7 +1967,7 @@ $apiInstance = new Shellrent\Sdk\Api\ServerApi(
     new GuzzleHttp\Client(),
     $config
 );
-$server_id = 56; // int
+$server_id = 56; // int | ID of the server
 $server_reinstall_request = new \Shellrent\Sdk\Model\ServerReinstallRequest(); // \Shellrent\Sdk\Model\ServerReinstallRequest
 
 try {
@@ -2041,7 +1982,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **server_id** | **int**|  | |
+| **server_id** | **int**| ID of the server | |
 | **server_reinstall_request** | [**\Shellrent\Sdk\Model\ServerReinstallRequest**](../Model/ServerReinstallRequest.md)|  | [optional] |
 
 ### Return type
@@ -2088,8 +2029,8 @@ $apiInstance = new Shellrent\Sdk\Api\ServerApi(
     new GuzzleHttp\Client(),
     $config
 );
-$server_id = 56; // int
-$server_backup_id = 56; // int
+$server_id = 56; // int | ID of the server
+$server_backup_id = 56; // int | ID of the server backup
 
 try {
     $result = $apiInstance->restoreServerBackup($server_id, $server_backup_id);
@@ -2103,8 +2044,8 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **server_id** | **int**|  | |
-| **server_backup_id** | **int**|  | |
+| **server_id** | **int**| ID of the server | |
+| **server_backup_id** | **int**| ID of the server backup | |
 
 ### Return type
 
@@ -2150,8 +2091,8 @@ $apiInstance = new Shellrent\Sdk\Api\ServerApi(
     new GuzzleHttp\Client(),
     $config
 );
-$server_id = 56; // int
-$snapshot_id = 56; // int
+$server_id = 56; // int | ID of the server
+$snapshot_id = 56; // int | ID of the snapshot
 
 try {
     $result = $apiInstance->restoreServerSnapshot($server_id, $snapshot_id);
@@ -2165,188 +2106,8 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **server_id** | **int**|  | |
-| **snapshot_id** | **int**|  | |
-
-### Return type
-
-[**\Shellrent\Sdk\Model\TaskResponse**](../Model/TaskResponse.md)
-
-### Authorization
-
-[oauth2](../../README.md#oauth2)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: `application/json`
-
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
-
-## `startServer()`
-
-```php
-startServer($server_id): \Shellrent\Sdk\Model\TaskResponse
-```
-
-Start server
-
-Start a server
-
-### Example
-
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-// Configure OAuth2 access token for authorization: oauth2
-$config = Shellrent\Sdk\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
-
-$apiInstance = new Shellrent\Sdk\Api\ServerApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$server_id = 56; // int
-
-try {
-    $result = $apiInstance->startServer($server_id);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling ServerApi->startServer: ', $e->getMessage(), PHP_EOL;
-}
-```
-
-### Parameters
-
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | ------------- |
-| **server_id** | **int**|  | |
-
-### Return type
-
-[**\Shellrent\Sdk\Model\TaskResponse**](../Model/TaskResponse.md)
-
-### Authorization
-
-[oauth2](../../README.md#oauth2)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: `application/json`
-
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
-
-## `startServerFirstBackup()`
-
-```php
-startServerFirstBackup($server_id): \Shellrent\Sdk\Model\TaskResponse
-```
-
-Start first backup save
-
-Start first backup save
-
-### Example
-
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-// Configure OAuth2 access token for authorization: oauth2
-$config = Shellrent\Sdk\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
-
-$apiInstance = new Shellrent\Sdk\Api\ServerApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$server_id = 56; // int
-
-try {
-    $result = $apiInstance->startServerFirstBackup($server_id);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling ServerApi->startServerFirstBackup: ', $e->getMessage(), PHP_EOL;
-}
-```
-
-### Parameters
-
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | ------------- |
-| **server_id** | **int**|  | |
-
-### Return type
-
-[**\Shellrent\Sdk\Model\TaskResponse**](../Model/TaskResponse.md)
-
-### Authorization
-
-[oauth2](../../README.md#oauth2)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: `application/json`
-
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
-
-## `stopServer()`
-
-```php
-stopServer($server_id): \Shellrent\Sdk\Model\TaskResponse
-```
-
-Stop server
-
-Stop a server
-
-### Example
-
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-// Configure OAuth2 access token for authorization: oauth2
-$config = Shellrent\Sdk\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
-
-$apiInstance = new Shellrent\Sdk\Api\ServerApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$server_id = 56; // int
-
-try {
-    $result = $apiInstance->stopServer($server_id);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling ServerApi->stopServer: ', $e->getMessage(), PHP_EOL;
-}
-```
-
-### Parameters
-
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | ------------- |
-| **server_id** | **int**|  | |
+| **server_id** | **int**| ID of the server | |
+| **snapshot_id** | **int**| ID of the snapshot | |
 
 ### Return type
 
@@ -2368,12 +2129,12 @@ try {
 ## `updatePrivateCloudVirtualMachine()`
 
 ```php
-updatePrivateCloudVirtualMachine($server_id, $vm_id, $private_cloud_vm_update_request): \Shellrent\Sdk\Model\TaskResponse
+updatePrivateCloudVirtualMachine($server_id, $vm_id, $private_cloud_vm_update_request): \Shellrent\Sdk\Model\EmptyResponse
 ```
 
 Update private cloud VM
 
-Update private cloud VM
+Updates the note and the resources of a private cloud VM. The change of cpu, ram or disk starts an asynchronous operation, returned as a Task; when none of them differs from the current value no operation starts and `data` is null.
 
 ### Example
 
@@ -2392,8 +2153,8 @@ $apiInstance = new Shellrent\Sdk\Api\ServerApi(
     new GuzzleHttp\Client(),
     $config
 );
-$server_id = 56; // int
-$vm_id = 56; // int
+$server_id = 56; // int | ID of the server
+$vm_id = 56; // int | ID of the virtual machine
 $private_cloud_vm_update_request = new \Shellrent\Sdk\Model\PrivateCloudVmUpdateRequest(); // \Shellrent\Sdk\Model\PrivateCloudVmUpdateRequest
 
 try {
@@ -2408,13 +2169,13 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **server_id** | **int**|  | |
-| **vm_id** | **int**|  | |
+| **server_id** | **int**| ID of the server | |
+| **vm_id** | **int**| ID of the virtual machine | |
 | **private_cloud_vm_update_request** | [**\Shellrent\Sdk\Model\PrivateCloudVmUpdateRequest**](../Model/PrivateCloudVmUpdateRequest.md)|  | |
 
 ### Return type
 
-[**\Shellrent\Sdk\Model\TaskResponse**](../Model/TaskResponse.md)
+[**\Shellrent\Sdk\Model\EmptyResponse**](../Model/EmptyResponse.md)
 
 ### Authorization
 
@@ -2437,7 +2198,7 @@ updateServerAutomaticSnapshot($server_id, $server_automatic_snapshot_request): \
 
 Update automatic snapshot settings
 
-Update automatic snapshot settings
+Replaces the configuration of the automatic snapshot of the server (404 if none is configured). Automatic snapshots must be included in the service plan, otherwise the response is 403.
 
 ### Example
 
@@ -2456,7 +2217,7 @@ $apiInstance = new Shellrent\Sdk\Api\ServerApi(
     new GuzzleHttp\Client(),
     $config
 );
-$server_id = 56; // int
+$server_id = 56; // int | ID of the server
 $server_automatic_snapshot_request = new \Shellrent\Sdk\Model\ServerAutomaticSnapshotRequest(); // \Shellrent\Sdk\Model\ServerAutomaticSnapshotRequest
 
 try {
@@ -2471,7 +2232,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **server_id** | **int**|  | |
+| **server_id** | **int**| ID of the server | |
 | **server_automatic_snapshot_request** | [**\Shellrent\Sdk\Model\ServerAutomaticSnapshotRequest**](../Model/ServerAutomaticSnapshotRequest.md)|  | |
 
 ### Return type
@@ -2518,8 +2279,8 @@ $apiInstance = new Shellrent\Sdk\Api\ServerApi(
     new GuzzleHttp\Client(),
     $config
 );
-$server_id = 56; // int
-$ip_address_id = 56; // int
+$server_id = 56; // int | ID of the server
+$ip_address_id = 56; // int | ID of the IP address of the server
 $server_ip_address_reverse_update_request = new \Shellrent\Sdk\Model\ServerIpAddressReverseUpdateRequest(); // \Shellrent\Sdk\Model\ServerIpAddressReverseUpdateRequest
 
 try {
@@ -2534,8 +2295,8 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **server_id** | **int**|  | |
-| **ip_address_id** | **int**|  | |
+| **server_id** | **int**| ID of the server | |
+| **ip_address_id** | **int**| ID of the IP address of the server | |
 | **server_ip_address_reverse_update_request** | [**\Shellrent\Sdk\Model\ServerIpAddressReverseUpdateRequest**](../Model/ServerIpAddressReverseUpdateRequest.md)|  | |
 
 ### Return type

@@ -18,16 +18,13 @@ All URIs are relative to https://api.shellrent.com, except if the operation defi
 | [**buyPecDomain()**](ShopApi.md#buyPecDomain) | **POST** /api/v3/shop/pec-domain | Buy PEC Domain |
 | [**buyPleskLicense()**](ShopApi.md#buyPleskLicense) | **POST** /api/v3/shop/plesk-license | Buy Plesk license |
 | [**buyPrivateCloudSv()**](ShopApi.md#buyPrivateCloudSv) | **POST** /api/v3/shop/private-cloud-sv | Buy Private Cloud SV |
-| [**buySecureMail()**](ShopApi.md#buySecureMail) | **POST** /api/v3/shop/securemail-by-libraesva | Buy SecureMail by LibraESVA |
-| [**buySecureMailForGoogleWorkspace()**](ShopApi.md#buySecureMailForGoogleWorkspace) | **POST** /api/v3/shop/securemail-by-libraesva-for-google-workspace | Buy SecureMail by LibraESVA for Google Workspace |
-| [**buySecureMailForMicrosoft365()**](ShopApi.md#buySecureMailForMicrosoft365) | **POST** /api/v3/shop/securemail-by-libraesva-for-microsoft365 | Buy SecureMail by LibraESVA for Microsoft 365 |
-| [**buySmsTopup()**](ShopApi.md#buySmsTopup) | **POST** /api/v3/shop/sms-topup | Buy SMS topup |
+| [**buySmsTopup()**](ShopApi.md#buySmsTopup) | **POST** /api/v3/shop/sms-top-up | Buy SMS topup |
 | [**buySslCertificate()**](ShopApi.md#buySslCertificate) | **POST** /api/v3/shop/ssl-certificate | Buy SSL/TLS Certificate |
 | [**buyVeeamBaas()**](ShopApi.md#buyVeeamBaas) | **POST** /api/v3/shop/veeam-baas | Buy Veeam BaaS |
 | [**canCancelOrder()**](ShopApi.md#canCancelOrder) | **GET** /api/v3/orders/{order_id}/can-cancel | Can cancel order |
 | [**canPayOrder()**](ShopApi.md#canPayOrder) | **GET** /api/v3/orders/{order_id}/can-pay | Can pay Order |
 | [**cancelOrder()**](ShopApi.md#cancelOrder) | **DELETE** /api/v3/orders/{order_id} | Cancel order |
-| [**checkMicrosoft365DomainAvailability()**](ShopApi.md#checkMicrosoft365DomainAvailability) | **GET** /api/v3/shop/microsoft-365/domain-available | Check Microsoft 365 domain availability |
+| [**checkMicrosoft365DomainAvailability()**](ShopApi.md#checkMicrosoft365DomainAvailability) | **GET** /api/v3/shop/microsoft-365/domain-availability | Check Microsoft 365 domain availability |
 | [**getOrder()**](ShopApi.md#getOrder) | **GET** /api/v3/orders/{order_id} | Get an order |
 | [**getOrderRow()**](ShopApi.md#getOrderRow) | **GET** /api/v3/orders/{order_id}/rows/{row_id} | Get an order row |
 | [**getTld()**](ShopApi.md#getTld) | **GET** /api/v3/tlds/{tld_id} | Get a TLD |
@@ -43,10 +40,9 @@ All URIs are relative to https://api.shellrent.com, except if the operation defi
 | [**listPleskLicenseProducts()**](ShopApi.md#listPleskLicenseProducts) | **GET** /api/v3/shop/plesk-license | Plesk licenses products |
 | [**listPrivateCloudSvProducts()**](ShopApi.md#listPrivateCloudSvProducts) | **GET** /api/v3/shop/private-cloud-sv | Private Cloud SV products |
 | [**listShopMicrosoft365Tenants()**](ShopApi.md#listShopMicrosoft365Tenants) | **GET** /api/v3/shop/microsoft-365/tenants | Microsoft 365 tenants |
-| [**listSmsTopupProducts()**](ShopApi.md#listSmsTopupProducts) | **GET** /api/v3/shop/sms-topup | SMS topups products |
+| [**listSmsTopupProducts()**](ShopApi.md#listSmsTopupProducts) | **GET** /api/v3/shop/sms-top-up | SMS topups products |
 | [**listSslCertificateProducts()**](ShopApi.md#listSslCertificateProducts) | **GET** /api/v3/shop/ssl-certificate | SSL/TLS Certificates products |
 | [**listTlds()**](ShopApi.md#listTlds) | **GET** /api/v3/tlds | List all TLDs |
-| [**payOrders()**](ShopApi.md#payOrders) | **POST** /api/v3/orders/pay | Pay Orders |
 
 
 ## `buyActiveMonitoring()`
@@ -57,7 +53,7 @@ buyActiveMonitoring($buy_service_active_monitoring_request): \Shellrent\Sdk\Mode
 
 Buy Active Monitoring
 
-Buy a new Active Monitoring product
+Buy a new Active Monitoring product  Not available to sub-accounts: the response is 403 (error 1601).
 
 ### Example
 
@@ -117,7 +113,7 @@ buyCloudStorage($buy_service_cloud_storage_request): \Shellrent\Sdk\Model\OrderL
 
 Buy Cloud Storage
 
-Buy a new Cloud Storage product
+Buy a new Cloud Storage product  Not available to sub-accounts: the response is 403 (error 1601).
 
 ### Example
 
@@ -177,7 +173,7 @@ buyCloudVps($buy_service_cloud_vps_request): \Shellrent\Sdk\Model\OrderListRespo
 
 Buy Cloud VPS
 
-Buy a new Cloud VPS product
+Buy a new Cloud VPS product  Not available to sub-accounts: the response is 403 (error 1601).
 
 ### Example
 
@@ -237,7 +233,7 @@ buyCpanelLicense($buy_service_cpanel_license_request): \Shellrent\Sdk\Model\Orde
 
 Buy cPanel license
 
-Buy a new cPanel license product
+Buy a new cPanel license product  Not available to sub-accounts: the response is 403 (error 1601).
 
 ### Example
 
@@ -297,7 +293,7 @@ buyDedicatedServer($buy_service_dedicated_server_request): \Shellrent\Sdk\Model\
 
 Buy Dedicated Server
 
-Buy a new Dedicated Server product
+Buy a new Dedicated Server product  Not available to sub-accounts: the response is 403 (error 1601).
 
 ### Example
 
@@ -357,7 +353,7 @@ buyDomain($buy_service_domain_request): \Shellrent\Sdk\Model\OrderListResponse
 
 Buy Domain
 
-Buy a new Domain
+Buy a new Domain. A premium domain is ordered at the prices given by `GET /api/v3/domains/availability`; when the registry gives no price, it cannot be bought (409)  Not available to sub-accounts: the response is 403 (error 1601).
 
 ### Example
 
@@ -417,7 +413,7 @@ buyMicrosoft365Subscription($buy_service_microsoft365_request): \Shellrent\Sdk\M
 
 Buy Microsoft 365 subscription
 
-Buy a new Microsoft 365 subscription
+Buy a new Microsoft 365 subscription. The tenant data is checked before the order is created: a tenant chosen with \"select\" that is not one of the account is 404, a choice that cannot be applied (too many subscriptions of the service on the tenant, domain prefix of an existing tenant, domain to transfer that does not exist or new domain already registered at Microsoft) is 409.  Not available to sub-accounts: the response is 403 (error 1601).
 
 ### Example
 
@@ -477,7 +473,7 @@ buyObjectStorage($buy_service_object_storage_request): \Shellrent\Sdk\Model\Orde
 
 Buy Object Storage
 
-Buy a new Object Storage product
+Buy a new Object Storage product  Not available to sub-accounts: the response is 403 (error 1601).
 
 ### Example
 
@@ -537,7 +533,7 @@ buyPec($buy_service_pec_request): \Shellrent\Sdk\Model\OrderListResponse
 
 Buy PEC
 
-Buy a new PEC product
+Buy a new PEC product  Not available to sub-accounts: the response is 403 (error 1601).
 
 ### Example
 
@@ -597,7 +593,7 @@ buyPecDomain($buy_service_pec_domain_request): \Shellrent\Sdk\Model\OrderListRes
 
 Buy PEC Domain
 
-Buy a new PEC Domain product
+Buy a new PEC Domain product  Not available to sub-accounts: the response is 403 (error 1601).
 
 ### Example
 
@@ -657,7 +653,7 @@ buyPleskLicense($buy_service_plesk_license_request): \Shellrent\Sdk\Model\OrderL
 
 Buy Plesk license
 
-Buy a new Plesk license product
+Buy a new Plesk license product  Not available to sub-accounts: the response is 403 (error 1601).
 
 ### Example
 
@@ -717,7 +713,7 @@ buyPrivateCloudSv($buy_service_private_cloud_sv_request): \Shellrent\Sdk\Model\O
 
 Buy Private Cloud SV
 
-Buy a new Private Cloud SV product
+Buy a new Private Cloud SV product  Not available to sub-accounts: the response is 403 (error 1601).
 
 ### Example
 
@@ -769,186 +765,6 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `buySecureMail()`
-
-```php
-buySecureMail($buy_service_securemail_request): \Shellrent\Sdk\Model\OrderListResponse
-```
-
-Buy SecureMail by LibraESVA
-
-Buy a new SecureMail by LibraESVA product
-
-### Example
-
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-// Configure OAuth2 access token for authorization: oauth2
-$config = Shellrent\Sdk\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
-
-$apiInstance = new Shellrent\Sdk\Api\ShopApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$buy_service_securemail_request = new \Shellrent\Sdk\Model\BuyServiceSecuremailRequest(); // \Shellrent\Sdk\Model\BuyServiceSecuremailRequest
-
-try {
-    $result = $apiInstance->buySecureMail($buy_service_securemail_request);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling ShopApi->buySecureMail: ', $e->getMessage(), PHP_EOL;
-}
-```
-
-### Parameters
-
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | ------------- |
-| **buy_service_securemail_request** | [**\Shellrent\Sdk\Model\BuyServiceSecuremailRequest**](../Model/BuyServiceSecuremailRequest.md)|  | |
-
-### Return type
-
-[**\Shellrent\Sdk\Model\OrderListResponse**](../Model/OrderListResponse.md)
-
-### Authorization
-
-[oauth2](../../README.md#oauth2)
-
-### HTTP request headers
-
-- **Content-Type**: `application/json`
-- **Accept**: `application/json`
-
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
-
-## `buySecureMailForGoogleWorkspace()`
-
-```php
-buySecureMailForGoogleWorkspace($buy_service_securemail_for_google_workspace_request): \Shellrent\Sdk\Model\OrderListResponse
-```
-
-Buy SecureMail by LibraESVA for Google Workspace
-
-Buy a new SecureMail by LibraESVA for Google Workspace product
-
-### Example
-
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-// Configure OAuth2 access token for authorization: oauth2
-$config = Shellrent\Sdk\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
-
-$apiInstance = new Shellrent\Sdk\Api\ShopApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$buy_service_securemail_for_google_workspace_request = new \Shellrent\Sdk\Model\BuyServiceSecuremailForGoogleWorkspaceRequest(); // \Shellrent\Sdk\Model\BuyServiceSecuremailForGoogleWorkspaceRequest
-
-try {
-    $result = $apiInstance->buySecureMailForGoogleWorkspace($buy_service_securemail_for_google_workspace_request);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling ShopApi->buySecureMailForGoogleWorkspace: ', $e->getMessage(), PHP_EOL;
-}
-```
-
-### Parameters
-
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | ------------- |
-| **buy_service_securemail_for_google_workspace_request** | [**\Shellrent\Sdk\Model\BuyServiceSecuremailForGoogleWorkspaceRequest**](../Model/BuyServiceSecuremailForGoogleWorkspaceRequest.md)|  | |
-
-### Return type
-
-[**\Shellrent\Sdk\Model\OrderListResponse**](../Model/OrderListResponse.md)
-
-### Authorization
-
-[oauth2](../../README.md#oauth2)
-
-### HTTP request headers
-
-- **Content-Type**: `application/json`
-- **Accept**: `application/json`
-
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
-
-## `buySecureMailForMicrosoft365()`
-
-```php
-buySecureMailForMicrosoft365($buy_service_securemail_for_microsoft365_request): \Shellrent\Sdk\Model\OrderListResponse
-```
-
-Buy SecureMail by LibraESVA for Microsoft 365
-
-Buy a new SecureMail by LibraESVA for Microsoft 365 product
-
-### Example
-
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-// Configure OAuth2 access token for authorization: oauth2
-$config = Shellrent\Sdk\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
-
-$apiInstance = new Shellrent\Sdk\Api\ShopApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$buy_service_securemail_for_microsoft365_request = new \Shellrent\Sdk\Model\BuyServiceSecuremailForMicrosoft365Request(); // \Shellrent\Sdk\Model\BuyServiceSecuremailForMicrosoft365Request
-
-try {
-    $result = $apiInstance->buySecureMailForMicrosoft365($buy_service_securemail_for_microsoft365_request);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling ShopApi->buySecureMailForMicrosoft365: ', $e->getMessage(), PHP_EOL;
-}
-```
-
-### Parameters
-
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | ------------- |
-| **buy_service_securemail_for_microsoft365_request** | [**\Shellrent\Sdk\Model\BuyServiceSecuremailForMicrosoft365Request**](../Model/BuyServiceSecuremailForMicrosoft365Request.md)|  | |
-
-### Return type
-
-[**\Shellrent\Sdk\Model\OrderListResponse**](../Model/OrderListResponse.md)
-
-### Authorization
-
-[oauth2](../../README.md#oauth2)
-
-### HTTP request headers
-
-- **Content-Type**: `application/json`
-- **Accept**: `application/json`
-
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
-
 ## `buySmsTopup()`
 
 ```php
@@ -957,7 +773,7 @@ buySmsTopup($buy_service_sms_request): \Shellrent\Sdk\Model\OrderListResponse
 
 Buy SMS topup
 
-Buy a new SMS topup product
+Buy a new SMS topup product  Not available to sub-accounts: the response is 403 (error 1601).
 
 ### Example
 
@@ -1017,7 +833,7 @@ buySslCertificate($buy_service_ssl_certificate_request): \Shellrent\Sdk\Model\Or
 
 Buy SSL/TLS Certificate
 
-Buy a new SSL/TLS Certificate product
+Buy a new SSL/TLS Certificate product  Not available to sub-accounts: the response is 403 (error 1601).
 
 ### Example
 
@@ -1077,7 +893,7 @@ buyVeeamBaas($buy_service_veeam_baas_request): \Shellrent\Sdk\Model\OrderListRes
 
 Buy Veeam BaaS
 
-Buy a new Veeam Backup as a Service product
+Buy a new Veeam Backup as a Service product  Not available to sub-accounts: the response is 403 (error 1601).
 
 ### Example
 
@@ -1137,7 +953,7 @@ canCancelOrder($order_id): \Shellrent\Sdk\Model\OrderCanCancelResponse
 
 Can cancel order
 
-Know if it's possible to cancel an Order
+Know if it's possible to cancel an Order  Not available to sub-accounts: the response is 403 (error 1601).
 
 ### Example
 
@@ -1156,7 +972,7 @@ $apiInstance = new Shellrent\Sdk\Api\ShopApi(
     new GuzzleHttp\Client(),
     $config
 );
-$order_id = 56; // int
+$order_id = 56; // int | ID of the order
 
 try {
     $result = $apiInstance->canCancelOrder($order_id);
@@ -1170,7 +986,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **order_id** | **int**|  | |
+| **order_id** | **int**| ID of the order | |
 
 ### Return type
 
@@ -1192,12 +1008,12 @@ try {
 ## `canPayOrder()`
 
 ```php
-canPayOrder($order_id): \Shellrent\Sdk\Model\OrderCanPayResponse
+canPayOrder($order_id, $one_click_id, $prepaid_credit): \Shellrent\Sdk\Model\OrderCanPayResponse
 ```
 
 Can pay Order
 
-Know if it's possible to complete the payment for an Order
+Whether the order can be paid now with a payment method, with the amount to pay, commission of the method included, and the orders paid together with it. Send either `one_click_id` or `prepaid_credit=true` (400 otherwise). `can_pay` is false when the order cannot be paid now, when the One-Click method is not active or has expired, or when the prepaid credit cannot be used for these orders or is not enough. 404 when the One-Click method does not exist or belongs to another account  Not available to sub-accounts: the response is 403 (error 1601).
 
 ### Example
 
@@ -1216,10 +1032,12 @@ $apiInstance = new Shellrent\Sdk\Api\ShopApi(
     new GuzzleHttp\Client(),
     $config
 );
-$order_id = 56; // int
+$order_id = 56; // int | ID of the order
+$one_click_id = 56; // int | Id of the One-Click payment method to pay with (`GET /api/v3/one-clicks`); send it or `prepaid_credit`, not both
+$prepaid_credit = True; // bool | `true` to pay with the prepaid credit; send it or `one_click_id`, not both
 
 try {
-    $result = $apiInstance->canPayOrder($order_id);
+    $result = $apiInstance->canPayOrder($order_id, $one_click_id, $prepaid_credit);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ShopApi->canPayOrder: ', $e->getMessage(), PHP_EOL;
@@ -1230,7 +1048,9 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **order_id** | **int**|  | |
+| **order_id** | **int**| ID of the order | |
+| **one_click_id** | **int**| Id of the One-Click payment method to pay with (&#x60;GET /api/v3/one-clicks&#x60;); send it or &#x60;prepaid_credit&#x60;, not both | [optional] |
+| **prepaid_credit** | **bool**| &#x60;true&#x60; to pay with the prepaid credit; send it or &#x60;one_click_id&#x60;, not both | [optional] |
 
 ### Return type
 
@@ -1252,12 +1072,12 @@ try {
 ## `cancelOrder()`
 
 ```php
-cancelOrder($order_id): \Shellrent\Sdk\Model\EmptyResponse
+cancelOrder($order_id)
 ```
 
 Cancel order
 
-Cancel an Order
+Cancel an Order  Not available to sub-accounts: the response is 403 (error 1601).
 
 ### Example
 
@@ -1276,11 +1096,10 @@ $apiInstance = new Shellrent\Sdk\Api\ShopApi(
     new GuzzleHttp\Client(),
     $config
 );
-$order_id = 56; // int
+$order_id = 56; // int | ID of the order
 
 try {
-    $result = $apiInstance->cancelOrder($order_id);
-    print_r($result);
+    $apiInstance->cancelOrder($order_id);
 } catch (Exception $e) {
     echo 'Exception when calling ShopApi->cancelOrder: ', $e->getMessage(), PHP_EOL;
 }
@@ -1290,11 +1109,11 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **order_id** | **int**|  | |
+| **order_id** | **int**| ID of the order | |
 
 ### Return type
 
-[**\Shellrent\Sdk\Model\EmptyResponse**](../Model/EmptyResponse.md)
+void (empty response body)
 
 ### Authorization
 
@@ -1317,7 +1136,7 @@ checkMicrosoft365DomainAvailability($domain_prefix): \Shellrent\Sdk\Model\Micros
 
 Check Microsoft 365 domain availability
 
-Check if a new Microsoft 365 tenant domain is available
+Check if a new Microsoft 365 tenant domain is available  Not available to sub-accounts: the response is 403 (error 1601).
 
 ### Example
 
@@ -1336,7 +1155,7 @@ $apiInstance = new Shellrent\Sdk\Api\ShopApi(
     new GuzzleHttp\Client(),
     $config
 );
-$domain_prefix = 'domain_prefix_example'; // string
+$domain_prefix = mycompany; // string | Prefix to search for (for \".onmicrosoft.com\" tenant domains): lowercase letters and digits, at most 27 characters
 
 try {
     $result = $apiInstance->checkMicrosoft365DomainAvailability($domain_prefix);
@@ -1350,7 +1169,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **domain_prefix** | **string**|  | |
+| **domain_prefix** | **string**| Prefix to search for (for \&quot;.onmicrosoft.com\&quot; tenant domains): lowercase letters and digits, at most 27 characters | |
 
 ### Return type
 
@@ -1377,7 +1196,7 @@ getOrder($order_id): \Shellrent\Sdk\Model\OrderResponse
 
 Get an order
 
-Get details of an order
+Get details of an order  Not available to sub-accounts: the response is 403 (error 1601).
 
 ### Example
 
@@ -1396,7 +1215,7 @@ $apiInstance = new Shellrent\Sdk\Api\ShopApi(
     new GuzzleHttp\Client(),
     $config
 );
-$order_id = 56; // int
+$order_id = 56; // int | ID of the order
 
 try {
     $result = $apiInstance->getOrder($order_id);
@@ -1410,7 +1229,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **order_id** | **int**|  | |
+| **order_id** | **int**| ID of the order | |
 
 ### Return type
 
@@ -1437,7 +1256,7 @@ getOrderRow($order_id, $row_id): \Shellrent\Sdk\Model\OrderRowResponse
 
 Get an order row
 
-Get details of an Order row
+Get details of an Order row  Not available to sub-accounts: the response is 403 (error 1601).
 
 ### Example
 
@@ -1456,8 +1275,8 @@ $apiInstance = new Shellrent\Sdk\Api\ShopApi(
     new GuzzleHttp\Client(),
     $config
 );
-$order_id = 56; // int
-$row_id = 56; // int
+$order_id = 56; // int | ID of the order
+$row_id = 56; // int | ID of the row
 
 try {
     $result = $apiInstance->getOrderRow($order_id, $row_id);
@@ -1471,8 +1290,8 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **order_id** | **int**|  | |
-| **row_id** | **int**|  | |
+| **order_id** | **int**| ID of the order | |
+| **row_id** | **int**| ID of the row | |
 
 ### Return type
 
@@ -1499,7 +1318,7 @@ getTld($tld_id): \Shellrent\Sdk\Model\TldResponse
 
 Get a TLD
 
-Get details of a TLD extension
+Get details of a TLD extension  Not available to sub-accounts: the response is 403 (error 1601).
 
 ### Example
 
@@ -1518,7 +1337,7 @@ $apiInstance = new Shellrent\Sdk\Api\ShopApi(
     new GuzzleHttp\Client(),
     $config
 );
-$tld_id = 56; // int
+$tld_id = 56; // int | ID of the TLD
 
 try {
     $result = $apiInstance->getTld($tld_id);
@@ -1532,7 +1351,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **tld_id** | **int**|  | |
+| **tld_id** | **int**| ID of the TLD | |
 
 ### Return type
 
@@ -1554,12 +1373,12 @@ try {
 ## `listActiveMonitoringProducts()`
 
 ```php
-listActiveMonitoringProducts($page, $per_page): \Shellrent\Sdk\Model\ServiceListResponse
+listActiveMonitoringProducts($page, $per_page): \Shellrent\Sdk\Model\ServicePaginatedListResponse
 ```
 
 Active Monitoring products
 
-Get a list of all Active Monitoring products that can be ordered
+Get a list of all Active Monitoring products that can be ordered  Not available to sub-accounts: the response is 403 (error 1601).
 
 ### Example
 
@@ -1578,8 +1397,8 @@ $apiInstance = new Shellrent\Sdk\Api\ShopApi(
     new GuzzleHttp\Client(),
     $config
 );
-$page = 1; // int
-$per_page = 20; // int
+$page = 1; // int | Page number, starting from 1. A page beyond the last one returns an empty `data` list (with the requested `page` in `meta`).
+$per_page = 20; // int | Number of items per page. Values outside the allowed range are rejected with a validation error.
 
 try {
     $result = $apiInstance->listActiveMonitoringProducts($page, $per_page);
@@ -1593,12 +1412,12 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **page** | **int**|  | [optional] [default to 1] |
-| **per_page** | **int**|  | [optional] [default to 20] |
+| **page** | **int**| Page number, starting from 1. A page beyond the last one returns an empty &#x60;data&#x60; list (with the requested &#x60;page&#x60; in &#x60;meta&#x60;). | [optional] [default to 1] |
+| **per_page** | **int**| Number of items per page. Values outside the allowed range are rejected with a validation error. | [optional] [default to 20] |
 
 ### Return type
 
-[**\Shellrent\Sdk\Model\ServiceListResponse**](../Model/ServiceListResponse.md)
+[**\Shellrent\Sdk\Model\ServicePaginatedListResponse**](../Model/ServicePaginatedListResponse.md)
 
 ### Authorization
 
@@ -1621,7 +1440,7 @@ listCloudStorageProducts($page, $per_page): \Shellrent\Sdk\Model\ServicePaginate
 
 Cloud Storage products
 
-Get a list of all Cloud Storage products that can be ordered
+Get a list of all Cloud Storage products that can be ordered  Not available to sub-accounts: the response is 403 (error 1601).
 
 ### Example
 
@@ -1640,8 +1459,8 @@ $apiInstance = new Shellrent\Sdk\Api\ShopApi(
     new GuzzleHttp\Client(),
     $config
 );
-$page = 1; // int
-$per_page = 20; // int
+$page = 1; // int | Page number, starting from 1. A page beyond the last one returns an empty `data` list (with the requested `page` in `meta`).
+$per_page = 20; // int | Number of items per page. Values outside the allowed range are rejected with a validation error.
 
 try {
     $result = $apiInstance->listCloudStorageProducts($page, $per_page);
@@ -1655,8 +1474,8 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **page** | **int**|  | [optional] [default to 1] |
-| **per_page** | **int**|  | [optional] [default to 20] |
+| **page** | **int**| Page number, starting from 1. A page beyond the last one returns an empty &#x60;data&#x60; list (with the requested &#x60;page&#x60; in &#x60;meta&#x60;). | [optional] [default to 1] |
+| **per_page** | **int**| Number of items per page. Values outside the allowed range are rejected with a validation error. | [optional] [default to 20] |
 
 ### Return type
 
@@ -1678,12 +1497,12 @@ try {
 ## `listCloudVpsProducts()`
 
 ```php
-listCloudVpsProducts($page, $per_page): \Shellrent\Sdk\Model\ServiceServerListResponse
+listCloudVpsProducts($page, $per_page): \Shellrent\Sdk\Model\ServiceServerPaginatedListResponse
 ```
 
 Cloud VPS products
 
-Get a list of all Cloud VPS products that can be ordered
+Get a list of all Cloud VPS products that can be ordered  Not available to sub-accounts: the response is 403 (error 1601).
 
 ### Example
 
@@ -1702,8 +1521,8 @@ $apiInstance = new Shellrent\Sdk\Api\ShopApi(
     new GuzzleHttp\Client(),
     $config
 );
-$page = 1; // int
-$per_page = 20; // int
+$page = 1; // int | Page number, starting from 1. A page beyond the last one returns an empty `data` list (with the requested `page` in `meta`).
+$per_page = 20; // int | Number of items per page. Values outside the allowed range are rejected with a validation error.
 
 try {
     $result = $apiInstance->listCloudVpsProducts($page, $per_page);
@@ -1717,12 +1536,12 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **page** | **int**|  | [optional] [default to 1] |
-| **per_page** | **int**|  | [optional] [default to 20] |
+| **page** | **int**| Page number, starting from 1. A page beyond the last one returns an empty &#x60;data&#x60; list (with the requested &#x60;page&#x60; in &#x60;meta&#x60;). | [optional] [default to 1] |
+| **per_page** | **int**| Number of items per page. Values outside the allowed range are rejected with a validation error. | [optional] [default to 20] |
 
 ### Return type
 
-[**\Shellrent\Sdk\Model\ServiceServerListResponse**](../Model/ServiceServerListResponse.md)
+[**\Shellrent\Sdk\Model\ServiceServerPaginatedListResponse**](../Model/ServiceServerPaginatedListResponse.md)
 
 ### Authorization
 
@@ -1745,7 +1564,7 @@ listCpanelLicenseProducts($page, $per_page): \Shellrent\Sdk\Model\ServicePaginat
 
 cPanel licenses products
 
-Get a list of all cPanel license products that can be ordered
+Get a list of all cPanel license products that can be ordered  Not available to sub-accounts: the response is 403 (error 1601).
 
 ### Example
 
@@ -1764,8 +1583,8 @@ $apiInstance = new Shellrent\Sdk\Api\ShopApi(
     new GuzzleHttp\Client(),
     $config
 );
-$page = 1; // int
-$per_page = 20; // int
+$page = 1; // int | Page number, starting from 1. A page beyond the last one returns an empty `data` list (with the requested `page` in `meta`).
+$per_page = 20; // int | Number of items per page. Values outside the allowed range are rejected with a validation error.
 
 try {
     $result = $apiInstance->listCpanelLicenseProducts($page, $per_page);
@@ -1779,8 +1598,8 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **page** | **int**|  | [optional] [default to 1] |
-| **per_page** | **int**|  | [optional] [default to 20] |
+| **page** | **int**| Page number, starting from 1. A page beyond the last one returns an empty &#x60;data&#x60; list (with the requested &#x60;page&#x60; in &#x60;meta&#x60;). | [optional] [default to 1] |
+| **per_page** | **int**| Number of items per page. Values outside the allowed range are rejected with a validation error. | [optional] [default to 20] |
 
 ### Return type
 
@@ -1802,12 +1621,12 @@ try {
 ## `listDedicatedServerProducts()`
 
 ```php
-listDedicatedServerProducts($page, $per_page): \Shellrent\Sdk\Model\ServiceServerListResponse
+listDedicatedServerProducts($page, $per_page): \Shellrent\Sdk\Model\ServiceServerPaginatedListResponse
 ```
 
 Dedicated Servers products
 
-Get a list of all Dedicated Server products that can be ordered
+Get a list of all Dedicated Server products that can be ordered  Not available to sub-accounts: the response is 403 (error 1601).
 
 ### Example
 
@@ -1826,8 +1645,8 @@ $apiInstance = new Shellrent\Sdk\Api\ShopApi(
     new GuzzleHttp\Client(),
     $config
 );
-$page = 1; // int
-$per_page = 20; // int
+$page = 1; // int | Page number, starting from 1. A page beyond the last one returns an empty `data` list (with the requested `page` in `meta`).
+$per_page = 20; // int | Number of items per page. Values outside the allowed range are rejected with a validation error.
 
 try {
     $result = $apiInstance->listDedicatedServerProducts($page, $per_page);
@@ -1841,12 +1660,12 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **page** | **int**|  | [optional] [default to 1] |
-| **per_page** | **int**|  | [optional] [default to 20] |
+| **page** | **int**| Page number, starting from 1. A page beyond the last one returns an empty &#x60;data&#x60; list (with the requested &#x60;page&#x60; in &#x60;meta&#x60;). | [optional] [default to 1] |
+| **per_page** | **int**| Number of items per page. Values outside the allowed range are rejected with a validation error. | [optional] [default to 20] |
 
 ### Return type
 
-[**\Shellrent\Sdk\Model\ServiceServerListResponse**](../Model/ServiceServerListResponse.md)
+[**\Shellrent\Sdk\Model\ServiceServerPaginatedListResponse**](../Model/ServiceServerPaginatedListResponse.md)
 
 ### Authorization
 
@@ -1869,7 +1688,7 @@ listMicrosoft365Products($page, $per_page): \Shellrent\Sdk\Model\ServicePaginate
 
 Microsoft 365 subscriptions
 
-Get a list of all Microsoft 365 subscriptions that can be ordered
+Get a list of all Microsoft 365 subscriptions that can be ordered  Not available to sub-accounts: the response is 403 (error 1601).
 
 ### Example
 
@@ -1888,8 +1707,8 @@ $apiInstance = new Shellrent\Sdk\Api\ShopApi(
     new GuzzleHttp\Client(),
     $config
 );
-$page = 1; // int
-$per_page = 20; // int
+$page = 1; // int | Page number, starting from 1. A page beyond the last one returns an empty `data` list (with the requested `page` in `meta`).
+$per_page = 20; // int | Number of items per page. Values outside the allowed range are rejected with a validation error.
 
 try {
     $result = $apiInstance->listMicrosoft365Products($page, $per_page);
@@ -1903,8 +1722,8 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **page** | **int**|  | [optional] [default to 1] |
-| **per_page** | **int**|  | [optional] [default to 20] |
+| **page** | **int**| Page number, starting from 1. A page beyond the last one returns an empty &#x60;data&#x60; list (with the requested &#x60;page&#x60; in &#x60;meta&#x60;). | [optional] [default to 1] |
+| **per_page** | **int**| Number of items per page. Values outside the allowed range are rejected with a validation error. | [optional] [default to 20] |
 
 ### Return type
 
@@ -1931,7 +1750,7 @@ listOrderRows($order_id): \Shellrent\Sdk\Model\OrderRowListResponse
 
 List all Order rows
 
-Get the list of all the rows of an Order
+Get the list of all the rows of an Order  Not available to sub-accounts: the response is 403 (error 1601).
 
 ### Example
 
@@ -1950,7 +1769,7 @@ $apiInstance = new Shellrent\Sdk\Api\ShopApi(
     new GuzzleHttp\Client(),
     $config
 );
-$order_id = 56; // int
+$order_id = 56; // int | ID of the order
 
 try {
     $result = $apiInstance->listOrderRows($order_id);
@@ -1964,7 +1783,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **order_id** | **int**|  | |
+| **order_id** | **int**| ID of the order | |
 
 ### Return type
 
@@ -1991,7 +1810,7 @@ listOrders($order_status, $type, $invoice_id, $purchase_id, $payed, $date_create
 
 List all Orders
 
-Get a list of all Orders
+Get a list of all Orders  Not available to sub-accounts: the response is 403 (error 1601).
 
 ### Example
 
@@ -2012,13 +1831,13 @@ $apiInstance = new Shellrent\Sdk\Api\ShopApi(
 );
 $order_status = 'order_status_example'; // string | Filter by order status (status_code)
 $type = 'type_example'; // string | Filter by order type (\"P\" - purchase or \"R\" - renew)
-$invoice_id = 56; // int
-$purchase_id = 56; // int
-$payed = True; // bool
-$date_created_from = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
-$date_created_to = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
-$page = 1; // int
-$per_page = 20; // int
+$invoice_id = 56; // int | Only the orders of the invoice with this ID
+$purchase_id = 56; // int | Only the orders that include the purchase with this ID
+$payed = True; // bool | true: only the paid orders; false: only those not paid yet
+$date_created_from = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | Only the orders created at or after this time (ISO 8601 UTC: YYYY-MM-DDTHH:MM:SSZ)
+$date_created_to = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | Only the orders created at or before this time (ISO 8601 UTC: YYYY-MM-DDTHH:MM:SSZ)
+$page = 1; // int | Page number, starting from 1. A page beyond the last one returns an empty `data` list (with the requested `page` in `meta`).
+$per_page = 20; // int | Number of items per page. Values outside the allowed range are rejected with a validation error.
 
 try {
     $result = $apiInstance->listOrders($order_status, $type, $invoice_id, $purchase_id, $payed, $date_created_from, $date_created_to, $page, $per_page);
@@ -2034,13 +1853,13 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **order_status** | **string**| Filter by order status (status_code) | [optional] |
 | **type** | **string**| Filter by order type (\&quot;P\&quot; - purchase or \&quot;R\&quot; - renew) | [optional] |
-| **invoice_id** | **int**|  | [optional] |
-| **purchase_id** | **int**|  | [optional] |
-| **payed** | **bool**|  | [optional] |
-| **date_created_from** | **\DateTime**|  | [optional] |
-| **date_created_to** | **\DateTime**|  | [optional] |
-| **page** | **int**|  | [optional] [default to 1] |
-| **per_page** | **int**|  | [optional] [default to 20] |
+| **invoice_id** | **int**| Only the orders of the invoice with this ID | [optional] |
+| **purchase_id** | **int**| Only the orders that include the purchase with this ID | [optional] |
+| **payed** | **bool**| true: only the paid orders; false: only those not paid yet | [optional] |
+| **date_created_from** | **\DateTime**| Only the orders created at or after this time (ISO 8601 UTC: YYYY-MM-DDTHH:MM:SSZ) | [optional] |
+| **date_created_to** | **\DateTime**| Only the orders created at or before this time (ISO 8601 UTC: YYYY-MM-DDTHH:MM:SSZ) | [optional] |
+| **page** | **int**| Page number, starting from 1. A page beyond the last one returns an empty &#x60;data&#x60; list (with the requested &#x60;page&#x60; in &#x60;meta&#x60;). | [optional] [default to 1] |
+| **per_page** | **int**| Number of items per page. Values outside the allowed range are rejected with a validation error. | [optional] [default to 20] |
 
 ### Return type
 
@@ -2067,7 +1886,7 @@ listPecProducts($page, $per_page): \Shellrent\Sdk\Model\ServicePaginatedListResp
 
 PEC products
 
-Get a list of all PEC products that can be ordered
+Get a list of all PEC products that can be ordered  Not available to sub-accounts: the response is 403 (error 1601).
 
 ### Example
 
@@ -2086,8 +1905,8 @@ $apiInstance = new Shellrent\Sdk\Api\ShopApi(
     new GuzzleHttp\Client(),
     $config
 );
-$page = 1; // int
-$per_page = 20; // int
+$page = 1; // int | Page number, starting from 1. A page beyond the last one returns an empty `data` list (with the requested `page` in `meta`).
+$per_page = 20; // int | Number of items per page. Values outside the allowed range are rejected with a validation error.
 
 try {
     $result = $apiInstance->listPecProducts($page, $per_page);
@@ -2101,8 +1920,8 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **page** | **int**|  | [optional] [default to 1] |
-| **per_page** | **int**|  | [optional] [default to 20] |
+| **page** | **int**| Page number, starting from 1. A page beyond the last one returns an empty &#x60;data&#x60; list (with the requested &#x60;page&#x60; in &#x60;meta&#x60;). | [optional] [default to 1] |
+| **per_page** | **int**| Number of items per page. Values outside the allowed range are rejected with a validation error. | [optional] [default to 20] |
 
 ### Return type
 
@@ -2129,7 +1948,7 @@ listPleskLicenseProducts($page, $per_page): \Shellrent\Sdk\Model\ServicePaginate
 
 Plesk licenses products
 
-Get a list of all Plesk license products that can be ordered
+Get a list of all Plesk license products that can be ordered  Not available to sub-accounts: the response is 403 (error 1601).
 
 ### Example
 
@@ -2148,8 +1967,8 @@ $apiInstance = new Shellrent\Sdk\Api\ShopApi(
     new GuzzleHttp\Client(),
     $config
 );
-$page = 1; // int
-$per_page = 20; // int
+$page = 1; // int | Page number, starting from 1. A page beyond the last one returns an empty `data` list (with the requested `page` in `meta`).
+$per_page = 20; // int | Number of items per page. Values outside the allowed range are rejected with a validation error.
 
 try {
     $result = $apiInstance->listPleskLicenseProducts($page, $per_page);
@@ -2163,8 +1982,8 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **page** | **int**|  | [optional] [default to 1] |
-| **per_page** | **int**|  | [optional] [default to 20] |
+| **page** | **int**| Page number, starting from 1. A page beyond the last one returns an empty &#x60;data&#x60; list (with the requested &#x60;page&#x60; in &#x60;meta&#x60;). | [optional] [default to 1] |
+| **per_page** | **int**| Number of items per page. Values outside the allowed range are rejected with a validation error. | [optional] [default to 20] |
 
 ### Return type
 
@@ -2186,12 +2005,12 @@ try {
 ## `listPrivateCloudSvProducts()`
 
 ```php
-listPrivateCloudSvProducts($page, $per_page): \Shellrent\Sdk\Model\ServiceListResponse
+listPrivateCloudSvProducts($page, $per_page): \Shellrent\Sdk\Model\ServicePaginatedListResponse
 ```
 
 Private Cloud SV products
 
-Get a list of all Private Cloud SV products that can be ordered
+Get a list of all Private Cloud SV products that can be ordered  Not available to sub-accounts: the response is 403 (error 1601).
 
 ### Example
 
@@ -2210,8 +2029,8 @@ $apiInstance = new Shellrent\Sdk\Api\ShopApi(
     new GuzzleHttp\Client(),
     $config
 );
-$page = 1; // int
-$per_page = 20; // int
+$page = 1; // int | Page number, starting from 1. A page beyond the last one returns an empty `data` list (with the requested `page` in `meta`).
+$per_page = 20; // int | Number of items per page. Values outside the allowed range are rejected with a validation error.
 
 try {
     $result = $apiInstance->listPrivateCloudSvProducts($page, $per_page);
@@ -2225,12 +2044,12 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **page** | **int**|  | [optional] [default to 1] |
-| **per_page** | **int**|  | [optional] [default to 20] |
+| **page** | **int**| Page number, starting from 1. A page beyond the last one returns an empty &#x60;data&#x60; list (with the requested &#x60;page&#x60; in &#x60;meta&#x60;). | [optional] [default to 1] |
+| **per_page** | **int**| Number of items per page. Values outside the allowed range are rejected with a validation error. | [optional] [default to 20] |
 
 ### Return type
 
-[**\Shellrent\Sdk\Model\ServiceListResponse**](../Model/ServiceListResponse.md)
+[**\Shellrent\Sdk\Model\ServicePaginatedListResponse**](../Model/ServicePaginatedListResponse.md)
 
 ### Authorization
 
@@ -2253,7 +2072,7 @@ listShopMicrosoft365Tenants($account_id, $page, $per_page): \Shellrent\Sdk\Model
 
 Microsoft 365 tenants
 
-Get a list of all Microsoft 365 already existing tenants
+Get a list of all Microsoft 365 already existing tenants  Not available to sub-accounts: the response is 403 (error 1601).
 
 ### Example
 
@@ -2272,9 +2091,9 @@ $apiInstance = new Shellrent\Sdk\Api\ShopApi(
     new GuzzleHttp\Client(),
     $config
 );
-$account_id = 56; // int
-$page = 1; // int
-$per_page = 20; // int
+$account_id = 56; // int | ID of the account owner of the Microsoft 365 subscription used to search for existing tenants. Available to Resellers only.
+$page = 1; // int | Page number, starting from 1. A page beyond the last one returns an empty `data` list (with the requested `page` in `meta`).
+$per_page = 20; // int | Number of items per page. Values outside the allowed range are rejected with a validation error.
 
 try {
     $result = $apiInstance->listShopMicrosoft365Tenants($account_id, $page, $per_page);
@@ -2288,9 +2107,9 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **account_id** | **int**|  | [optional] |
-| **page** | **int**|  | [optional] [default to 1] |
-| **per_page** | **int**|  | [optional] [default to 20] |
+| **account_id** | **int**| ID of the account owner of the Microsoft 365 subscription used to search for existing tenants. Available to Resellers only. | [optional] |
+| **page** | **int**| Page number, starting from 1. A page beyond the last one returns an empty &#x60;data&#x60; list (with the requested &#x60;page&#x60; in &#x60;meta&#x60;). | [optional] [default to 1] |
+| **per_page** | **int**| Number of items per page. Values outside the allowed range are rejected with a validation error. | [optional] [default to 20] |
 
 ### Return type
 
@@ -2317,7 +2136,7 @@ listSmsTopupProducts($page, $per_page): \Shellrent\Sdk\Model\ServicePaginatedLis
 
 SMS topups products
 
-Get a list of all SMS topup products that can be ordered
+Get a list of all SMS topup products that can be ordered  Not available to sub-accounts: the response is 403 (error 1601).
 
 ### Example
 
@@ -2336,8 +2155,8 @@ $apiInstance = new Shellrent\Sdk\Api\ShopApi(
     new GuzzleHttp\Client(),
     $config
 );
-$page = 1; // int
-$per_page = 20; // int
+$page = 1; // int | Page number, starting from 1. A page beyond the last one returns an empty `data` list (with the requested `page` in `meta`).
+$per_page = 20; // int | Number of items per page. Values outside the allowed range are rejected with a validation error.
 
 try {
     $result = $apiInstance->listSmsTopupProducts($page, $per_page);
@@ -2351,8 +2170,8 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **page** | **int**|  | [optional] [default to 1] |
-| **per_page** | **int**|  | [optional] [default to 20] |
+| **page** | **int**| Page number, starting from 1. A page beyond the last one returns an empty &#x60;data&#x60; list (with the requested &#x60;page&#x60; in &#x60;meta&#x60;). | [optional] [default to 1] |
+| **per_page** | **int**| Number of items per page. Values outside the allowed range are rejected with a validation error. | [optional] [default to 20] |
 
 ### Return type
 
@@ -2379,7 +2198,7 @@ listSslCertificateProducts($page, $per_page): \Shellrent\Sdk\Model\ServicePagina
 
 SSL/TLS Certificates products
 
-Get a list of all SSL/TLS Certificate products that can be ordered
+Get a list of all SSL/TLS Certificate products that can be ordered  Not available to sub-accounts: the response is 403 (error 1601).
 
 ### Example
 
@@ -2398,8 +2217,8 @@ $apiInstance = new Shellrent\Sdk\Api\ShopApi(
     new GuzzleHttp\Client(),
     $config
 );
-$page = 1; // int
-$per_page = 20; // int
+$page = 1; // int | Page number, starting from 1. A page beyond the last one returns an empty `data` list (with the requested `page` in `meta`).
+$per_page = 20; // int | Number of items per page. Values outside the allowed range are rejected with a validation error.
 
 try {
     $result = $apiInstance->listSslCertificateProducts($page, $per_page);
@@ -2413,8 +2232,8 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **page** | **int**|  | [optional] [default to 1] |
-| **per_page** | **int**|  | [optional] [default to 20] |
+| **page** | **int**| Page number, starting from 1. A page beyond the last one returns an empty &#x60;data&#x60; list (with the requested &#x60;page&#x60; in &#x60;meta&#x60;). | [optional] [default to 1] |
+| **per_page** | **int**| Number of items per page. Values outside the allowed range are rejected with a validation error. | [optional] [default to 20] |
 
 ### Return type
 
@@ -2441,7 +2260,7 @@ listTlds($extension, $extension_exact, $is_it, $country, $page, $per_page): \She
 
 List all TLDs
 
-Get a list of all TLD extensions for domains
+Get a list of all TLD extensions for domains  Not available to sub-accounts: the response is 403 (error 1601).
 
 ### Example
 
@@ -2464,8 +2283,8 @@ $extension = 'extension_example'; // string | TLD extension (partial match); ie.
 $extension_exact = 'extension_exact_example'; // string | TLD extension (exact match)
 $is_it = True; // bool | Returns \"it\" TLD extensions only (IT Register)
 $country = 'country_example'; // string | ISO country code with 2 letters to extract Country Code TLDs (ccTLD); ie. \"IT\" for Italy, \"ES\" for Spain
-$page = 1; // int
-$per_page = 20; // int
+$page = 1; // int | Page number, starting from 1. A page beyond the last one returns an empty `data` list (with the requested `page` in `meta`).
+$per_page = 20; // int | Number of items per page. Values outside the allowed range are rejected with a validation error.
 
 try {
     $result = $apiInstance->listTlds($extension, $extension_exact, $is_it, $country, $page, $per_page);
@@ -2483,8 +2302,8 @@ try {
 | **extension_exact** | **string**| TLD extension (exact match) | [optional] |
 | **is_it** | **bool**| Returns \&quot;it\&quot; TLD extensions only (IT Register) | [optional] |
 | **country** | **string**| ISO country code with 2 letters to extract Country Code TLDs (ccTLD); ie. \&quot;IT\&quot; for Italy, \&quot;ES\&quot; for Spain | [optional] |
-| **page** | **int**|  | [optional] [default to 1] |
-| **per_page** | **int**|  | [optional] [default to 20] |
+| **page** | **int**| Page number, starting from 1. A page beyond the last one returns an empty &#x60;data&#x60; list (with the requested &#x60;page&#x60; in &#x60;meta&#x60;). | [optional] [default to 1] |
+| **per_page** | **int**| Number of items per page. Values outside the allowed range are rejected with a validation error. | [optional] [default to 20] |
 
 ### Return type
 
@@ -2497,66 +2316,6 @@ try {
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: `application/json`
-
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
-
-## `payOrders()`
-
-```php
-payOrders($order_pay_request): \Shellrent\Sdk\Model\PayOrders200Response
-```
-
-Pay Orders
-
-Pay one or more Orders. The response data is the payment, or null when there is nothing to pay (total amount to pay = 0.00).
-
-### Example
-
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-// Configure OAuth2 access token for authorization: oauth2
-$config = Shellrent\Sdk\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
-
-$apiInstance = new Shellrent\Sdk\Api\ShopApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$order_pay_request = new \Shellrent\Sdk\Model\OrderPayRequest(); // \Shellrent\Sdk\Model\OrderPayRequest
-
-try {
-    $result = $apiInstance->payOrders($order_pay_request);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling ShopApi->payOrders: ', $e->getMessage(), PHP_EOL;
-}
-```
-
-### Parameters
-
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | ------------- |
-| **order_pay_request** | [**\Shellrent\Sdk\Model\OrderPayRequest**](../Model/OrderPayRequest.md)|  | |
-
-### Return type
-
-[**\Shellrent\Sdk\Model\PayOrders200Response**](../Model/PayOrders200Response.md)
-
-### Authorization
-
-[oauth2](../../README.md#oauth2)
-
-### HTTP request headers
-
-- **Content-Type**: `application/json`
 - **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
