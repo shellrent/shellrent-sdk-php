@@ -61,7 +61,7 @@ class DomainDnssecCanActivateResponse implements ModelInterface, ArrayAccess, \J
         'error' => 'int',
         'message' => 'string',
         'data' => '\Shellrent\Sdk\Model\DomainDnssecCanActivate',
-        'meta' => 'object'
+        'meta' => 'mixed'
     ];
 
     /**
@@ -446,7 +446,7 @@ class DomainDnssecCanActivateResponse implements ModelInterface, ArrayAccess, \J
     /**
      * Gets meta
      *
-     * @return object|null
+     * @return mixed|null
      */
     public function getMeta()
     {
@@ -456,7 +456,7 @@ class DomainDnssecCanActivateResponse implements ModelInterface, ArrayAccess, \J
     /**
      * Sets meta
      *
-     * @param object|null $meta Always null: only the paginated lists have a `meta`
+     * @param mixed|null $meta Always null: only the paginated lists have a `meta`
      *
      * @return self
      */

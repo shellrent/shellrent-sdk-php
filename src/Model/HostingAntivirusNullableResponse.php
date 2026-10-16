@@ -61,7 +61,7 @@ class HostingAntivirusNullableResponse implements ModelInterface, ArrayAccess, \
         'error' => 'int',
         'message' => 'string',
         'data' => '\Shellrent\Sdk\Model\HostingAntivirus',
-        'meta' => 'object'
+        'meta' => 'mixed'
     ];
 
     /**
@@ -453,7 +453,7 @@ class HostingAntivirusNullableResponse implements ModelInterface, ArrayAccess, \
     /**
      * Gets meta
      *
-     * @return object|null
+     * @return mixed|null
      */
     public function getMeta()
     {
@@ -463,7 +463,7 @@ class HostingAntivirusNullableResponse implements ModelInterface, ArrayAccess, \
     /**
      * Sets meta
      *
-     * @param object|null $meta Always null: only the paginated lists have a `meta`
+     * @param mixed|null $meta Always null: only the paginated lists have a `meta`
      *
      * @return self
      */

@@ -61,7 +61,7 @@ class ServerMonitoringResponse implements ModelInterface, ArrayAccess, \JsonSeri
         'error' => 'int',
         'message' => 'string',
         'data' => '\Shellrent\Sdk\Model\ServerMonitoring',
-        'meta' => 'object'
+        'meta' => 'mixed'
     ];
 
     /**
@@ -446,7 +446,7 @@ class ServerMonitoringResponse implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Gets meta
      *
-     * @return object|null
+     * @return mixed|null
      */
     public function getMeta()
     {
@@ -456,7 +456,7 @@ class ServerMonitoringResponse implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets meta
      *
-     * @param object|null $meta Always null: only the paginated lists have a `meta`
+     * @param mixed|null $meta Always null: only the paginated lists have a `meta`
      *
      * @return self
      */

@@ -61,7 +61,7 @@ class OrderResponse implements ModelInterface, ArrayAccess, \JsonSerializable
         'error' => 'int',
         'message' => 'string',
         'data' => '\Shellrent\Sdk\Model\Order',
-        'meta' => 'object'
+        'meta' => 'mixed'
     ];
 
     /**
@@ -446,7 +446,7 @@ class OrderResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets meta
      *
-     * @return object|null
+     * @return mixed|null
      */
     public function getMeta()
     {
@@ -456,7 +456,7 @@ class OrderResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets meta
      *
-     * @param object|null $meta Always null: only the paginated lists have a `meta`
+     * @param mixed|null $meta Always null: only the paginated lists have a `meta`
      *
      * @return self
      */

@@ -60,8 +60,8 @@ class EmptyResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $openAPITypes = [
         'error' => 'int',
         'message' => 'string',
-        'data' => 'object',
-        'meta' => 'object'
+        'data' => 'mixed',
+        'meta' => 'mixed'
     ];
 
     /**
@@ -419,7 +419,7 @@ class EmptyResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets data
      *
-     * @return object|null
+     * @return mixed|null
      */
     public function getData()
     {
@@ -429,7 +429,7 @@ class EmptyResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets data
      *
-     * @param object|null $data Always null: the operation returns no data
+     * @param mixed|null $data Always null: the operation returns no data
      *
      * @return self
      */
@@ -453,7 +453,7 @@ class EmptyResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets meta
      *
-     * @return object|null
+     * @return mixed|null
      */
     public function getMeta()
     {
@@ -463,7 +463,7 @@ class EmptyResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets meta
      *
-     * @param object|null $meta Always null: only the paginated lists have a `meta`
+     * @param mixed|null $meta Always null: only the paginated lists have a `meta`
      *
      * @return self
      */

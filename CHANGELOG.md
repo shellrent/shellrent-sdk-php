@@ -34,6 +34,8 @@ Breaking changes for the code that uses the operations and the models renamed or
   `$cron_job_id`, `$microsoft365_id` to `$microsoft_365_subscription_id`, `$topup_id` to `$top_up_id`.
 - `exportSslCertificate()` takes an `SslCertificateExportRequest` instead of `$format`, `uploadFile()` takes
   `$file` (multipart) instead of `$body`, and `createHostingDatabase()` has no request body.
+- `meta` of the responses that are not paginated lists and `data` of `EmptyResponse` are always null
+  (`const: null` in the specification): their type is `mixed` instead of `object`.
 - The URLs of many operations follow the new paths of the API (for example `/api/v3/credit-notes`), and
   some properties are now nullable, for example `Service::$activation_price`.
 

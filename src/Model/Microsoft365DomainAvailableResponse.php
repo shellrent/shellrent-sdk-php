@@ -61,7 +61,7 @@ class Microsoft365DomainAvailableResponse implements ModelInterface, ArrayAccess
         'error' => 'int',
         'message' => 'string',
         'data' => '\Shellrent\Sdk\Model\Microsoft365DomainAvailable',
-        'meta' => 'object'
+        'meta' => 'mixed'
     ];
 
     /**
@@ -446,7 +446,7 @@ class Microsoft365DomainAvailableResponse implements ModelInterface, ArrayAccess
     /**
      * Gets meta
      *
-     * @return object|null
+     * @return mixed|null
      */
     public function getMeta()
     {
@@ -456,7 +456,7 @@ class Microsoft365DomainAvailableResponse implements ModelInterface, ArrayAccess
     /**
      * Sets meta
      *
-     * @param object|null $meta Always null: only the paginated lists have a `meta`
+     * @param mixed|null $meta Always null: only the paginated lists have a `meta`
      *
      * @return self
      */

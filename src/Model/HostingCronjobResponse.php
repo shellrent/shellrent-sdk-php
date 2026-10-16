@@ -61,7 +61,7 @@ class HostingCronjobResponse implements ModelInterface, ArrayAccess, \JsonSerial
         'error' => 'int',
         'message' => 'string',
         'data' => '\Shellrent\Sdk\Model\HostingCronjob',
-        'meta' => 'object'
+        'meta' => 'mixed'
     ];
 
     /**
@@ -446,7 +446,7 @@ class HostingCronjobResponse implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets meta
      *
-     * @return object|null
+     * @return mixed|null
      */
     public function getMeta()
     {
@@ -456,7 +456,7 @@ class HostingCronjobResponse implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets meta
      *
-     * @param object|null $meta Always null: only the paginated lists have a `meta`
+     * @param mixed|null $meta Always null: only the paginated lists have a `meta`
      *
      * @return self
      */

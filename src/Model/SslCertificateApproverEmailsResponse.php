@@ -61,7 +61,7 @@ class SslCertificateApproverEmailsResponse implements ModelInterface, ArrayAcces
         'error' => 'int',
         'message' => 'string',
         'data' => '\Shellrent\Sdk\Model\SslCertificateApproverEmails',
-        'meta' => 'object'
+        'meta' => 'mixed'
     ];
 
     /**
@@ -446,7 +446,7 @@ class SslCertificateApproverEmailsResponse implements ModelInterface, ArrayAcces
     /**
      * Gets meta
      *
-     * @return object|null
+     * @return mixed|null
      */
     public function getMeta()
     {
@@ -456,7 +456,7 @@ class SslCertificateApproverEmailsResponse implements ModelInterface, ArrayAcces
     /**
      * Sets meta
      *
-     * @param object|null $meta Always null: only the paginated lists have a `meta`
+     * @param mixed|null $meta Always null: only the paginated lists have a `meta`
      *
      * @return self
      */
