@@ -42,12 +42,31 @@ jobs:
       - uses: ramsey/composer-install@v4
         with:
           dependency-versions: ${{ matrix.dependencies }}
-      - run: vendor/bin/phpunit
+      - run: vendor/bin/phpunit --testsuite unit
+
+  integration:
+    name: Integration tests (not blocking)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.5'
+          extensions: curl, json, mbstring
+          coverage: none
+      - uses: ramsey/composer-install@v4
+      # The abuse IP check of the API can reject the Azure addresses of the GitHub runners, which are not
+      # fixed: a failure is reported as a warning and does not fail the workflow.
+      - id: phpunit
+        run: vendor/bin/phpunit --testsuite integration
+        continue-on-error: true
         env:
-          # The integration test is skipped unless these secrets are set.
+          # The tests are skipped unless these secrets are set.
           SHELLRENT_CLIENT_ID: ${{ secrets.SHELLRENT_CLIENT_ID }}
           SHELLRENT_CLIENT_SECRET: ${{ secrets.SHELLRENT_CLIENT_SECRET }}
           SHELLRENT_API_URL: ${{ vars.SHELLRENT_API_URL }}
+      - if: steps.phpunit.outcome == 'failure'
+        run: echo "::warning title=Integration tests::The integration tests failed, see the log of the PHPUnit step (the API may have rejected the IP address of the runner)."
 
   generated-code:
     name: Generated code is up to date

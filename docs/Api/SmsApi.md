@@ -6,28 +6,28 @@ All URIs are relative to https://api.shellrent.com, except if the operation defi
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**addSmsPhonebookContacts()**](SmsApi.md#addSmsPhonebookContacts) | **POST** /api/v3/sms/phonebooks/{phonebook_id}/contacts | Add contacts to Phonebook |
+| [**addSmsPhonebookContacts()**](SmsApi.md#addSmsPhonebookContacts) | **POST** /api/v3/sms-phonebooks/{phonebook_id}/contacts | Add contacts to Phonebook |
 | [**canCancelSms()**](SmsApi.md#canCancelSms) | **GET** /api/v3/sms/{sms_id}/can-cancel | Can cancel SMS |
 | [**canDeleteSms()**](SmsApi.md#canDeleteSms) | **GET** /api/v3/sms/{sms_id}/can-delete | Can delete SMS |
-| [**cancelSms()**](SmsApi.md#cancelSms) | **PATCH** /api/v3/sms/{sms_id}/cancel | Cancel SMS sending |
-| [**createSmsPhonebook()**](SmsApi.md#createSmsPhonebook) | **POST** /api/v3/sms/phonebooks | Create a Phonebook |
-| [**deleteAllSmsPhonebookContacts()**](SmsApi.md#deleteAllSmsPhonebookContacts) | **DELETE** /api/v3/sms/phonebooks/{phonebook_id}/contacts | Remove all Contacts from Phonebook |
+| [**cancelSms()**](SmsApi.md#cancelSms) | **POST** /api/v3/sms/{sms_id}/cancellation | Cancel SMS sending |
+| [**createSmsPhonebook()**](SmsApi.md#createSmsPhonebook) | **POST** /api/v3/sms-phonebooks | Create a Phonebook |
+| [**deleteAllSmsPhonebookContacts()**](SmsApi.md#deleteAllSmsPhonebookContacts) | **DELETE** /api/v3/sms-phonebooks/{phonebook_id}/contacts | Remove all Contacts from Phonebook |
 | [**deleteSms()**](SmsApi.md#deleteSms) | **DELETE** /api/v3/sms/{sms_id} | Delete SMS |
-| [**deleteSmsPhonebook()**](SmsApi.md#deleteSmsPhonebook) | **DELETE** /api/v3/sms/phonebooks/{phonebook_id} | Delete a Phonebook |
-| [**deleteSmsPhonebookContact()**](SmsApi.md#deleteSmsPhonebookContact) | **DELETE** /api/v3/sms/phonebooks/{phonebook_id}/contacts/{contact_id} | Remove a Contact from a Phonebook |
+| [**deleteSmsPhonebook()**](SmsApi.md#deleteSmsPhonebook) | **DELETE** /api/v3/sms-phonebooks/{phonebook_id} | Delete a Phonebook |
+| [**deleteSmsPhonebookContact()**](SmsApi.md#deleteSmsPhonebookContact) | **DELETE** /api/v3/sms-phonebooks/{phonebook_id}/contacts/{contact_id} | Remove a Contact from a Phonebook |
 | [**getSms()**](SmsApi.md#getSms) | **GET** /api/v3/sms/{sms_id} | Get an SMS |
-| [**getSmsCredit()**](SmsApi.md#getSmsCredit) | **GET** /api/v3/sms/account | SMS credit |
+| [**getSmsCredit()**](SmsApi.md#getSmsCredit) | **GET** /api/v3/sms-account | SMS credit |
 | [**getSmsMessage()**](SmsApi.md#getSmsMessage) | **GET** /api/v3/sms/{sms_id}/messages/{message_id} | Get an SMS message |
-| [**getSmsPhonebook()**](SmsApi.md#getSmsPhonebook) | **GET** /api/v3/sms/phonebooks/{phonebook_id} | Get a Phonebook |
-| [**getSmsPrice()**](SmsApi.md#getSmsPrice) | **GET** /api/v3/sms/countries/{country_code} | Get SMS price |
+| [**getSmsPhonebook()**](SmsApi.md#getSmsPhonebook) | **GET** /api/v3/sms-phonebooks/{phonebook_id} | Get a Phonebook |
+| [**getSmsPrice()**](SmsApi.md#getSmsPrice) | **GET** /api/v3/sms-prices/{country_code} | Get SMS price |
 | [**listSms()**](SmsApi.md#listSms) | **GET** /api/v3/sms | List all SMS |
 | [**listSmsMessages()**](SmsApi.md#listSmsMessages) | **GET** /api/v3/sms/{sms_id}/messages | List all messages of an SMS |
-| [**listSmsPhonebookContacts()**](SmsApi.md#listSmsPhonebookContacts) | **GET** /api/v3/sms/phonebooks/{phonebook_id}/contacts | Phonebook Contacts |
-| [**listSmsPhonebooks()**](SmsApi.md#listSmsPhonebooks) | **GET** /api/v3/sms/phonebooks | List all Phonebooks |
-| [**listSmsPrices()**](SmsApi.md#listSmsPrices) | **GET** /api/v3/sms/countries | List SMS prices |
-| [**replaceSmsPhonebookContacts()**](SmsApi.md#replaceSmsPhonebookContacts) | **PUT** /api/v3/sms/phonebooks/{phonebook_id}/contacts | Replace all Contacts in Phonebook |
+| [**listSmsPhonebookContacts()**](SmsApi.md#listSmsPhonebookContacts) | **GET** /api/v3/sms-phonebooks/{phonebook_id}/contacts | Phonebook Contacts |
+| [**listSmsPhonebooks()**](SmsApi.md#listSmsPhonebooks) | **GET** /api/v3/sms-phonebooks | List all Phonebooks |
+| [**listSmsPrices()**](SmsApi.md#listSmsPrices) | **GET** /api/v3/sms-prices | List SMS prices |
+| [**replaceSmsPhonebookContacts()**](SmsApi.md#replaceSmsPhonebookContacts) | **PUT** /api/v3/sms-phonebooks/{phonebook_id}/contacts | Replace all Contacts in Phonebook |
 | [**sendSms()**](SmsApi.md#sendSms) | **POST** /api/v3/sms | Send an SMS |
-| [**updateSmsPhonebook()**](SmsApi.md#updateSmsPhonebook) | **PATCH** /api/v3/sms/phonebooks/{phonebook_id} | Edit a Phonebook |
+| [**updateSmsPhonebook()**](SmsApi.md#updateSmsPhonebook) | **PATCH** /api/v3/sms-phonebooks/{phonebook_id} | Edit a Phonebook |
 
 
 ## `addSmsPhonebookContacts()`
@@ -57,7 +57,7 @@ $apiInstance = new Shellrent\Sdk\Api\SmsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$phonebook_id = 56; // int
+$phonebook_id = 56; // int | ID of the phonebook
 $sms_phonebook_add_contacts_request = new \Shellrent\Sdk\Model\SmsPhonebookAddContactsRequest(); // \Shellrent\Sdk\Model\SmsPhonebookAddContactsRequest
 
 try {
@@ -72,7 +72,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **phonebook_id** | **int**|  | |
+| **phonebook_id** | **int**| ID of the phonebook | |
 | **sms_phonebook_add_contacts_request** | [**\Shellrent\Sdk\Model\SmsPhonebookAddContactsRequest**](../Model/SmsPhonebookAddContactsRequest.md)|  | |
 
 ### Return type
@@ -119,7 +119,7 @@ $apiInstance = new Shellrent\Sdk\Api\SmsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$sms_id = 56; // int
+$sms_id = 56; // int | ID of the SMS
 
 try {
     $result = $apiInstance->canCancelSms($sms_id);
@@ -133,7 +133,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **sms_id** | **int**|  | |
+| **sms_id** | **int**| ID of the SMS | |
 
 ### Return type
 
@@ -179,7 +179,7 @@ $apiInstance = new Shellrent\Sdk\Api\SmsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$sms_id = 56; // int
+$sms_id = 56; // int | ID of the SMS
 
 try {
     $result = $apiInstance->canDeleteSms($sms_id);
@@ -193,7 +193,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **sms_id** | **int**|  | |
+| **sms_id** | **int**| ID of the SMS | |
 
 ### Return type
 
@@ -239,7 +239,7 @@ $apiInstance = new Shellrent\Sdk\Api\SmsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$sms_id = 56; // int
+$sms_id = 56; // int | ID of the SMS
 
 try {
     $result = $apiInstance->cancelSms($sms_id);
@@ -253,7 +253,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **sms_id** | **int**|  | |
+| **sms_id** | **int**| ID of the SMS | |
 
 ### Return type
 
@@ -335,7 +335,7 @@ try {
 ## `deleteAllSmsPhonebookContacts()`
 
 ```php
-deleteAllSmsPhonebookContacts($phonebook_id): \Shellrent\Sdk\Model\EmptyResponse
+deleteAllSmsPhonebookContacts($phonebook_id)
 ```
 
 Remove all Contacts from Phonebook
@@ -359,11 +359,10 @@ $apiInstance = new Shellrent\Sdk\Api\SmsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$phonebook_id = 56; // int
+$phonebook_id = 56; // int | ID of the phonebook
 
 try {
-    $result = $apiInstance->deleteAllSmsPhonebookContacts($phonebook_id);
-    print_r($result);
+    $apiInstance->deleteAllSmsPhonebookContacts($phonebook_id);
 } catch (Exception $e) {
     echo 'Exception when calling SmsApi->deleteAllSmsPhonebookContacts: ', $e->getMessage(), PHP_EOL;
 }
@@ -373,11 +372,11 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **phonebook_id** | **int**|  | |
+| **phonebook_id** | **int**| ID of the phonebook | |
 
 ### Return type
 
-[**\Shellrent\Sdk\Model\EmptyResponse**](../Model/EmptyResponse.md)
+void (empty response body)
 
 ### Authorization
 
@@ -395,7 +394,7 @@ try {
 ## `deleteSms()`
 
 ```php
-deleteSms($sms_id): \Shellrent\Sdk\Model\EmptyResponse
+deleteSms($sms_id)
 ```
 
 Delete SMS
@@ -419,11 +418,10 @@ $apiInstance = new Shellrent\Sdk\Api\SmsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$sms_id = 56; // int
+$sms_id = 56; // int | ID of the SMS
 
 try {
-    $result = $apiInstance->deleteSms($sms_id);
-    print_r($result);
+    $apiInstance->deleteSms($sms_id);
 } catch (Exception $e) {
     echo 'Exception when calling SmsApi->deleteSms: ', $e->getMessage(), PHP_EOL;
 }
@@ -433,11 +431,11 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **sms_id** | **int**|  | |
+| **sms_id** | **int**| ID of the SMS | |
 
 ### Return type
 
-[**\Shellrent\Sdk\Model\EmptyResponse**](../Model/EmptyResponse.md)
+void (empty response body)
 
 ### Authorization
 
@@ -455,12 +453,12 @@ try {
 ## `deleteSmsPhonebook()`
 
 ```php
-deleteSmsPhonebook($phonebook_id): \Shellrent\Sdk\Model\EmptyResponse
+deleteSmsPhonebook($phonebook_id)
 ```
 
 Delete a Phonebook
 
-Delete a Phonebook
+Deletes the phonebook, which can no longer be used as recipients of an SMS. Its contacts are not deleted and stay in the other phonebooks that contain them
 
 ### Example
 
@@ -479,11 +477,10 @@ $apiInstance = new Shellrent\Sdk\Api\SmsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$phonebook_id = 56; // int
+$phonebook_id = 56; // int | ID of the phonebook
 
 try {
-    $result = $apiInstance->deleteSmsPhonebook($phonebook_id);
-    print_r($result);
+    $apiInstance->deleteSmsPhonebook($phonebook_id);
 } catch (Exception $e) {
     echo 'Exception when calling SmsApi->deleteSmsPhonebook: ', $e->getMessage(), PHP_EOL;
 }
@@ -493,11 +490,11 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **phonebook_id** | **int**|  | |
+| **phonebook_id** | **int**| ID of the phonebook | |
 
 ### Return type
 
-[**\Shellrent\Sdk\Model\EmptyResponse**](../Model/EmptyResponse.md)
+void (empty response body)
 
 ### Authorization
 
@@ -515,12 +512,12 @@ try {
 ## `deleteSmsPhonebookContact()`
 
 ```php
-deleteSmsPhonebookContact($phonebook_id, $contact_id): \Shellrent\Sdk\Model\EmptyResponse
+deleteSmsPhonebookContact($phonebook_id, $contact_id)
 ```
 
 Remove a Contact from a Phonebook
 
-Remove a Contact from a Phonebook
+Removes the contact from the phonebook (404 if the phonebook does not contain it). The contact is not deleted and stays in the other phonebooks that contain it
 
 ### Example
 
@@ -539,12 +536,11 @@ $apiInstance = new Shellrent\Sdk\Api\SmsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$phonebook_id = 56; // int
-$contact_id = 56; // int
+$phonebook_id = 56; // int | ID of the phonebook
+$contact_id = 56; // int | ID of the phonebook contact
 
 try {
-    $result = $apiInstance->deleteSmsPhonebookContact($phonebook_id, $contact_id);
-    print_r($result);
+    $apiInstance->deleteSmsPhonebookContact($phonebook_id, $contact_id);
 } catch (Exception $e) {
     echo 'Exception when calling SmsApi->deleteSmsPhonebookContact: ', $e->getMessage(), PHP_EOL;
 }
@@ -554,12 +550,12 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **phonebook_id** | **int**|  | |
-| **contact_id** | **int**|  | |
+| **phonebook_id** | **int**| ID of the phonebook | |
+| **contact_id** | **int**| ID of the phonebook contact | |
 
 ### Return type
 
-[**\Shellrent\Sdk\Model\EmptyResponse**](../Model/EmptyResponse.md)
+void (empty response body)
 
 ### Authorization
 
@@ -601,7 +597,7 @@ $apiInstance = new Shellrent\Sdk\Api\SmsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$sms_id = 56; // int
+$sms_id = 56; // int | ID of the SMS
 
 try {
     $result = $apiInstance->getSms($sms_id);
@@ -615,7 +611,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **sms_id** | **int**|  | |
+| **sms_id** | **int**| ID of the SMS | |
 
 ### Return type
 
@@ -718,8 +714,8 @@ $apiInstance = new Shellrent\Sdk\Api\SmsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$sms_id = 56; // int
-$message_id = 56; // int
+$sms_id = 56; // int | ID of the SMS
+$message_id = 56; // int | ID of the message of the SMS
 
 try {
     $result = $apiInstance->getSmsMessage($sms_id, $message_id);
@@ -733,8 +729,8 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **sms_id** | **int**|  | |
-| **message_id** | **int**|  | |
+| **sms_id** | **int**| ID of the SMS | |
+| **message_id** | **int**| ID of the message of the SMS | |
 
 ### Return type
 
@@ -780,7 +776,7 @@ $apiInstance = new Shellrent\Sdk\Api\SmsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$phonebook_id = 56; // int
+$phonebook_id = 56; // int | ID of the phonebook
 
 try {
     $result = $apiInstance->getSmsPhonebook($phonebook_id);
@@ -794,7 +790,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **phonebook_id** | **int**|  | |
+| **phonebook_id** | **int**| ID of the phonebook | |
 
 ### Return type
 
@@ -821,7 +817,7 @@ getSmsPrice($country_code): \Shellrent\Sdk\Model\SmsPriceResponse
 
 Get SMS price
 
-Get the SMS price for a specific Country
+Get the SMS price for a specific Country  Not available to sub-accounts: the response is 403 (error 1601).
 
 ### Example
 
@@ -901,10 +897,10 @@ $apiInstance = new Shellrent\Sdk\Api\SmsApi(
     $config
 );
 $sms_status = 'sms_status_example'; // string | Filter by SMS status
-$date_created_from = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
-$date_created_to = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
-$page = 1; // int
-$per_page = 20; // int
+$date_created_from = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | Only the SMS created at or after this time (ISO 8601 UTC: YYYY-MM-DDTHH:MM:SSZ)
+$date_created_to = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | Only the SMS created at or before this time (ISO 8601 UTC: YYYY-MM-DDTHH:MM:SSZ)
+$page = 1; // int | Page number, starting from 1. A page beyond the last one returns an empty `data` list (with the requested `page` in `meta`).
+$per_page = 20; // int | Number of items per page. Values outside the allowed range are rejected with a validation error.
 
 try {
     $result = $apiInstance->listSms($sms_status, $date_created_from, $date_created_to, $page, $per_page);
@@ -919,10 +915,10 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **sms_status** | **string**| Filter by SMS status | [optional] |
-| **date_created_from** | **\DateTime**|  | [optional] |
-| **date_created_to** | **\DateTime**|  | [optional] |
-| **page** | **int**|  | [optional] [default to 1] |
-| **per_page** | **int**|  | [optional] [default to 20] |
+| **date_created_from** | **\DateTime**| Only the SMS created at or after this time (ISO 8601 UTC: YYYY-MM-DDTHH:MM:SSZ) | [optional] |
+| **date_created_to** | **\DateTime**| Only the SMS created at or before this time (ISO 8601 UTC: YYYY-MM-DDTHH:MM:SSZ) | [optional] |
+| **page** | **int**| Page number, starting from 1. A page beyond the last one returns an empty &#x60;data&#x60; list (with the requested &#x60;page&#x60; in &#x60;meta&#x60;). | [optional] [default to 1] |
+| **per_page** | **int**| Number of items per page. Values outside the allowed range are rejected with a validation error. | [optional] [default to 20] |
 
 ### Return type
 
@@ -944,7 +940,7 @@ try {
 ## `listSmsMessages()`
 
 ```php
-listSmsMessages($sms_id): \Shellrent\Sdk\Model\SmsMessagePaginatedListResponse
+listSmsMessages($sms_id, $page, $per_page): \Shellrent\Sdk\Model\SmsMessagePaginatedListResponse
 ```
 
 List all messages of an SMS
@@ -968,10 +964,12 @@ $apiInstance = new Shellrent\Sdk\Api\SmsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$sms_id = 56; // int
+$sms_id = 56; // int | ID of the SMS
+$page = 1; // int | Page number, starting from 1. A page beyond the last one returns an empty `data` list (with the requested `page` in `meta`).
+$per_page = 20; // int | Number of items per page. Values outside the allowed range are rejected with a validation error.
 
 try {
-    $result = $apiInstance->listSmsMessages($sms_id);
+    $result = $apiInstance->listSmsMessages($sms_id, $page, $per_page);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling SmsApi->listSmsMessages: ', $e->getMessage(), PHP_EOL;
@@ -982,7 +980,9 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **sms_id** | **int**|  | |
+| **sms_id** | **int**| ID of the SMS | |
+| **page** | **int**| Page number, starting from 1. A page beyond the last one returns an empty &#x60;data&#x60; list (with the requested &#x60;page&#x60; in &#x60;meta&#x60;). | [optional] [default to 1] |
+| **per_page** | **int**| Number of items per page. Values outside the allowed range are rejected with a validation error. | [optional] [default to 20] |
 
 ### Return type
 
@@ -1028,9 +1028,9 @@ $apiInstance = new Shellrent\Sdk\Api\SmsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$phonebook_id = 56; // int
-$page = 1; // int
-$per_page = 20; // int
+$phonebook_id = 56; // int | ID of the phonebook
+$page = 1; // int | Page number, starting from 1. A page beyond the last one returns an empty `data` list (with the requested `page` in `meta`).
+$per_page = 20; // int | Number of items per page. Values outside the allowed range are rejected with a validation error.
 
 try {
     $result = $apiInstance->listSmsPhonebookContacts($phonebook_id, $page, $per_page);
@@ -1044,9 +1044,9 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **phonebook_id** | **int**|  | |
-| **page** | **int**|  | [optional] [default to 1] |
-| **per_page** | **int**|  | [optional] [default to 20] |
+| **phonebook_id** | **int**| ID of the phonebook | |
+| **page** | **int**| Page number, starting from 1. A page beyond the last one returns an empty &#x60;data&#x60; list (with the requested &#x60;page&#x60; in &#x60;meta&#x60;). | [optional] [default to 1] |
+| **per_page** | **int**| Number of items per page. Values outside the allowed range are rejected with a validation error. | [optional] [default to 20] |
 
 ### Return type
 
@@ -1092,8 +1092,8 @@ $apiInstance = new Shellrent\Sdk\Api\SmsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$page = 1; // int
-$per_page = 20; // int
+$page = 1; // int | Page number, starting from 1. A page beyond the last one returns an empty `data` list (with the requested `page` in `meta`).
+$per_page = 20; // int | Number of items per page. Values outside the allowed range are rejected with a validation error.
 
 try {
     $result = $apiInstance->listSmsPhonebooks($page, $per_page);
@@ -1107,8 +1107,8 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **page** | **int**|  | [optional] [default to 1] |
-| **per_page** | **int**|  | [optional] [default to 20] |
+| **page** | **int**| Page number, starting from 1. A page beyond the last one returns an empty &#x60;data&#x60; list (with the requested &#x60;page&#x60; in &#x60;meta&#x60;). | [optional] [default to 1] |
+| **per_page** | **int**| Number of items per page. Values outside the allowed range are rejected with a validation error. | [optional] [default to 20] |
 
 ### Return type
 
@@ -1130,12 +1130,12 @@ try {
 ## `listSmsPrices()`
 
 ```php
-listSmsPrices(): \Shellrent\Sdk\Model\SmsPricePaginatedListResponse
+listSmsPrices($page, $per_page): \Shellrent\Sdk\Model\SmsPricePaginatedListResponse
 ```
 
 List SMS prices
 
-Get a list of all SMS prices for all supported Countries
+Get a list of all SMS prices for all supported Countries  Not available to sub-accounts: the response is 403 (error 1601).
 
 ### Example
 
@@ -1154,9 +1154,11 @@ $apiInstance = new Shellrent\Sdk\Api\SmsApi(
     new GuzzleHttp\Client(),
     $config
 );
+$page = 1; // int | Page number, starting from 1. A page beyond the last one returns an empty `data` list (with the requested `page` in `meta`).
+$per_page = 20; // int | Number of items per page. Values outside the allowed range are rejected with a validation error.
 
 try {
-    $result = $apiInstance->listSmsPrices();
+    $result = $apiInstance->listSmsPrices($page, $per_page);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling SmsApi->listSmsPrices: ', $e->getMessage(), PHP_EOL;
@@ -1165,7 +1167,10 @@ try {
 
 ### Parameters
 
-This endpoint does not need any parameter.
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **page** | **int**| Page number, starting from 1. A page beyond the last one returns an empty &#x60;data&#x60; list (with the requested &#x60;page&#x60; in &#x60;meta&#x60;). | [optional] [default to 1] |
+| **per_page** | **int**| Number of items per page. Values outside the allowed range are rejected with a validation error. | [optional] [default to 20] |
 
 ### Return type
 
@@ -1211,7 +1216,7 @@ $apiInstance = new Shellrent\Sdk\Api\SmsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$phonebook_id = 56; // int
+$phonebook_id = 56; // int | ID of the phonebook
 $sms_phonebook_add_contacts_request = new \Shellrent\Sdk\Model\SmsPhonebookAddContactsRequest(); // \Shellrent\Sdk\Model\SmsPhonebookAddContactsRequest
 
 try {
@@ -1226,7 +1231,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **phonebook_id** | **int**|  | |
+| **phonebook_id** | **int**| ID of the phonebook | |
 | **sms_phonebook_add_contacts_request** | [**\Shellrent\Sdk\Model\SmsPhonebookAddContactsRequest**](../Model/SmsPhonebookAddContactsRequest.md)|  | |
 
 ### Return type
@@ -1333,7 +1338,7 @@ $apiInstance = new Shellrent\Sdk\Api\SmsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$phonebook_id = 56; // int
+$phonebook_id = 56; // int | ID of the phonebook
 $sms_phonebook_edit_request = new \Shellrent\Sdk\Model\SmsPhonebookEditRequest(); // \Shellrent\Sdk\Model\SmsPhonebookEditRequest
 
 try {
@@ -1348,7 +1353,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **phonebook_id** | **int**|  | |
+| **phonebook_id** | **int**| ID of the phonebook | |
 | **sms_phonebook_edit_request** | [**\Shellrent\Sdk\Model\SmsPhonebookEditRequest**](../Model/SmsPhonebookEditRequest.md)|  | |
 
 ### Return type

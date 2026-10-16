@@ -6,13 +6,12 @@ namespace Shellrent\Sdk\Tests\Unit;
 
 use PHPUnit\Framework\TestCase;
 use Shellrent\Sdk\Model\Amount;
-use Shellrent\Sdk\Model\Service;
 use Shellrent\Sdk\Model\ServiceServer;
 use Shellrent\Sdk\ObjectSerializer;
 
 /**
- * ServiceServer is an allOf of Service: the normalizer rule REF_AS_PARENT_IN_ALLOF makes it a subclass,
- * so that the inherited properties keep the nullability that OpenAPI 3.1 would otherwise lose.
+ * ServiceServer has nullable properties of every kind: a type with 'null' (tld_id) and an anyOf of a
+ * $ref and null (renew_price), which OpenAPI Generator turns into a nullable property of the model.
  */
 final class ServiceServerTest extends TestCase
 {
@@ -61,12 +60,7 @@ final class ServiceServerTest extends TestCase
         }
         JSON;
 
-    public function testExtendsService(): void
-    {
-        self::assertInstanceOf(Service::class, new ServiceServer());
-    }
-
-    public function testDeserializesTheInheritedAndTheOwnProperties(): void
+    public function testDeserializesAResponse(): void
     {
         $server = ObjectSerializer::deserialize(self::RESPONSE, ServiceServer::class, []);
 
@@ -80,8 +74,9 @@ final class ServiceServerTest extends TestCase
         self::assertSame([], $server->listInvalidProperties());
     }
 
-    public function testKeepsTheNullabilityOfTheInheritedProperties(): void
+    public function testKeepsTheNullabilityOfTheProperties(): void
     {
+        self::assertSame('\\' . Amount::class, ServiceServer::openAPITypes()['renew_price']);
         foreach (['tld_id', 'renew_price', 'is_primary', 'quantity_max'] as $property) {
             self::assertTrue(ServiceServer::isNullable($property), $property);
         }

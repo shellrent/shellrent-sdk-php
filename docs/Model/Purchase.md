@@ -16,9 +16,9 @@ Name | Type | Description | Notes
 **purchase_name** | [**\Shellrent\Sdk\Model\PurchaseName**](PurchaseName.md) | Name of the purchase. |
 **activation_quantity** | **int** | Quantity (instances) purchased. |
 **quantity** | **int** | Current purchase quantity (instances). |
-**activation_price** | [**\Shellrent\Sdk\Model\Amount**](Amount.md) | Purchase price. |
-**renew_price** | [**\Shellrent\Sdk\Model\Amount**](Amount.md) | Renew price (applied on recurring purchases only). |
-**restore_price** | [**\Shellrent\Sdk\Model\Amount**](Amount.md) | Restore/reactivation price (applied on domains only). |
+**activation_price** | [**\Shellrent\Sdk\Model\Amount**](Amount.md) | Purchase price; null for sub-accounts. |
+**renew_price** | [**\Shellrent\Sdk\Model\Amount**](Amount.md) | Renew price (applied on recurring purchases only); null for sub-accounts. |
+**restore_price** | [**\Shellrent\Sdk\Model\Amount**](Amount.md) | Restore/reactivation price (applied on domains only); null for sub-accounts. |
 **date_activation** | **\DateTime** | Purchase date. |
 **date_activation_start** | **\DateTime** | Date when the activation started. |
 **date_expiry** | **\DateTime** | Purchase expiration date (applied on recurring purchases only). |
@@ -38,7 +38,6 @@ Name | Type | Description | Notes
 **monitoring_id** | **int** | ID of the monitoring service associated with this purchase. |
 **license_id** | **int** | ID of the license associated with this purchase. |
 **microsoft365_id** | **int** | ID of the Microsoft 365 subscription associated with this purchase. |
-**securemail_id** | **int** | ID of the SecureMail by LibraESVA associated with this purchase. |
 **cloud_storage_id** | **int** | ID of the cloud storage associated with this purchase. |
 **object_storage_id** | **int** | ID of the object storage associated with this purchase. |
 **veeam_baas_id** | **int** | ID of the Veeam Backup as a Service associated with this purchase. |

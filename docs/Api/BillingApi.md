@@ -6,16 +6,16 @@ All URIs are relative to https://api.shellrent.com, except if the operation defi
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**downloadCreditNotePdf()**](BillingApi.md#downloadCreditNotePdf) | **GET** /api/v3/creditnotes/{creditnote_id}/download/pdf | Download credit note PDF |
-| [**downloadCreditNoteXml()**](BillingApi.md#downloadCreditNoteXml) | **GET** /api/v3/creditnotes/{creditnote_id}/download | Download credit note XML |
-| [**downloadInvoicePdf()**](BillingApi.md#downloadInvoicePdf) | **GET** /api/v3/invoices/{invoice_id}/download/pdf | Download invoice PDF |
-| [**downloadInvoiceXml()**](BillingApi.md#downloadInvoiceXml) | **GET** /api/v3/invoices/{invoice_id}/download | Download invoice XML |
-| [**getCreditNote()**](BillingApi.md#getCreditNote) | **GET** /api/v3/creditnotes/{creditnote_id} | Get a Credit note |
-| [**getCreditNoteRow()**](BillingApi.md#getCreditNoteRow) | **GET** /api/v3/creditnotes/{creditnote_id}/rows/{row_id} | Get a credit note row |
+| [**downloadCreditNotePdf()**](BillingApi.md#downloadCreditNotePdf) | **GET** /api/v3/credit-notes/{credit_note_id}/pdf | Download credit note PDF |
+| [**downloadCreditNoteXml()**](BillingApi.md#downloadCreditNoteXml) | **GET** /api/v3/credit-notes/{credit_note_id}/xml | Download credit note XML |
+| [**downloadInvoicePdf()**](BillingApi.md#downloadInvoicePdf) | **GET** /api/v3/invoices/{invoice_id}/pdf | Download invoice PDF |
+| [**downloadInvoiceXml()**](BillingApi.md#downloadInvoiceXml) | **GET** /api/v3/invoices/{invoice_id}/xml | Download invoice XML |
+| [**getCreditNote()**](BillingApi.md#getCreditNote) | **GET** /api/v3/credit-notes/{credit_note_id} | Get a Credit note |
+| [**getCreditNoteRow()**](BillingApi.md#getCreditNoteRow) | **GET** /api/v3/credit-notes/{credit_note_id}/rows/{row_id} | Get a credit note row |
 | [**getInvoice()**](BillingApi.md#getInvoice) | **GET** /api/v3/invoices/{invoice_id} | Get an invoice |
 | [**getInvoiceRow()**](BillingApi.md#getInvoiceRow) | **GET** /api/v3/invoices/{invoice_id}/rows/{row_id} | Get an invoice row |
-| [**listCreditNoteRows()**](BillingApi.md#listCreditNoteRows) | **GET** /api/v3/creditnotes/{creditnote_id}/rows | List all credit note rows |
-| [**listCreditNotes()**](BillingApi.md#listCreditNotes) | **GET** /api/v3/creditnotes | List all Credit notes |
+| [**listCreditNoteRows()**](BillingApi.md#listCreditNoteRows) | **GET** /api/v3/credit-notes/{credit_note_id}/rows | List all credit note rows |
+| [**listCreditNotes()**](BillingApi.md#listCreditNotes) | **GET** /api/v3/credit-notes | List all Credit notes |
 | [**listInvoiceRows()**](BillingApi.md#listInvoiceRows) | **GET** /api/v3/invoices/{invoice_id}/rows | List all invoice rows |
 | [**listInvoices()**](BillingApi.md#listInvoices) | **GET** /api/v3/invoices | List all Invoices |
 
@@ -23,12 +23,12 @@ All URIs are relative to https://api.shellrent.com, except if the operation defi
 ## `downloadCreditNotePdf()`
 
 ```php
-downloadCreditNotePdf($creditnote_id): \SplFileObject
+downloadCreditNotePdf($credit_note_id): \SplFileObject
 ```
 
 Download credit note PDF
 
-Download the courtesy PDF file of a Credit note
+Download the courtesy PDF file of a Credit note  Not available to sub-accounts: the response is 403 (error 1601).
 
 ### Example
 
@@ -47,10 +47,10 @@ $apiInstance = new Shellrent\Sdk\Api\BillingApi(
     new GuzzleHttp\Client(),
     $config
 );
-$creditnote_id = 56; // int
+$credit_note_id = 56; // int | ID of the credit note
 
 try {
-    $result = $apiInstance->downloadCreditNotePdf($creditnote_id);
+    $result = $apiInstance->downloadCreditNotePdf($credit_note_id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling BillingApi->downloadCreditNotePdf: ', $e->getMessage(), PHP_EOL;
@@ -61,7 +61,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **creditnote_id** | **int**|  | |
+| **credit_note_id** | **int**| ID of the credit note | |
 
 ### Return type
 
@@ -83,12 +83,12 @@ try {
 ## `downloadCreditNoteXml()`
 
 ```php
-downloadCreditNoteXml($creditnote_id, $prefer_xml): \SplFileObject
+downloadCreditNoteXml($credit_note_id, $prefer_xml): \SplFileObject
 ```
 
 Download credit note XML
 
-Download the XML file of a Credit note
+Download the XML file of a Credit note  Not available to sub-accounts: the response is 403 (error 1601).
 
 ### Example
 
@@ -107,11 +107,11 @@ $apiInstance = new Shellrent\Sdk\Api\BillingApi(
     new GuzzleHttp\Client(),
     $config
 );
-$creditnote_id = 56; // int
+$credit_note_id = 56; // int | ID of the credit note
 $prefer_xml = True; // bool | If the credit note is signed, the original p7m file is returned; to force the download of the XML version, set this parameter to true
 
 try {
-    $result = $apiInstance->downloadCreditNoteXml($creditnote_id, $prefer_xml);
+    $result = $apiInstance->downloadCreditNoteXml($credit_note_id, $prefer_xml);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling BillingApi->downloadCreditNoteXml: ', $e->getMessage(), PHP_EOL;
@@ -122,7 +122,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **creditnote_id** | **int**|  | |
+| **credit_note_id** | **int**| ID of the credit note | |
 | **prefer_xml** | **bool**| If the credit note is signed, the original p7m file is returned; to force the download of the XML version, set this parameter to true | [optional] |
 
 ### Return type
@@ -150,7 +150,7 @@ downloadInvoicePdf($invoice_id): \SplFileObject
 
 Download invoice PDF
 
-Download the courtesy PDF file of an Invoice
+Download the courtesy PDF file of an Invoice  Not available to sub-accounts: the response is 403 (error 1601).
 
 ### Example
 
@@ -169,7 +169,7 @@ $apiInstance = new Shellrent\Sdk\Api\BillingApi(
     new GuzzleHttp\Client(),
     $config
 );
-$invoice_id = 56; // int
+$invoice_id = 56; // int | ID of the invoice
 
 try {
     $result = $apiInstance->downloadInvoicePdf($invoice_id);
@@ -183,7 +183,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **invoice_id** | **int**|  | |
+| **invoice_id** | **int**| ID of the invoice | |
 
 ### Return type
 
@@ -210,7 +210,7 @@ downloadInvoiceXml($invoice_id, $prefer_xml): \SplFileObject
 
 Download invoice XML
 
-Download the XML file of an Invoice
+Download the XML file of an Invoice  Not available to sub-accounts: the response is 403 (error 1601).
 
 ### Example
 
@@ -229,7 +229,7 @@ $apiInstance = new Shellrent\Sdk\Api\BillingApi(
     new GuzzleHttp\Client(),
     $config
 );
-$invoice_id = 56; // int
+$invoice_id = 56; // int | ID of the invoice
 $prefer_xml = True; // bool | If the invoice is signed, the original p7m file is returned; to force the download of the XML version, set this parameter to true
 
 try {
@@ -244,7 +244,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **invoice_id** | **int**|  | |
+| **invoice_id** | **int**| ID of the invoice | |
 | **prefer_xml** | **bool**| If the invoice is signed, the original p7m file is returned; to force the download of the XML version, set this parameter to true | [optional] |
 
 ### Return type
@@ -267,12 +267,12 @@ try {
 ## `getCreditNote()`
 
 ```php
-getCreditNote($creditnote_id): \Shellrent\Sdk\Model\CreditnoteResponse
+getCreditNote($credit_note_id): \Shellrent\Sdk\Model\CreditnoteResponse
 ```
 
 Get a Credit note
 
-Get details of a credit note
+Get details of a credit note  Not available to sub-accounts: the response is 403 (error 1601).
 
 ### Example
 
@@ -291,10 +291,10 @@ $apiInstance = new Shellrent\Sdk\Api\BillingApi(
     new GuzzleHttp\Client(),
     $config
 );
-$creditnote_id = 56; // int
+$credit_note_id = 56; // int | ID of the credit note
 
 try {
-    $result = $apiInstance->getCreditNote($creditnote_id);
+    $result = $apiInstance->getCreditNote($credit_note_id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling BillingApi->getCreditNote: ', $e->getMessage(), PHP_EOL;
@@ -305,7 +305,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **creditnote_id** | **int**|  | |
+| **credit_note_id** | **int**| ID of the credit note | |
 
 ### Return type
 
@@ -327,12 +327,12 @@ try {
 ## `getCreditNoteRow()`
 
 ```php
-getCreditNoteRow($creditnote_id, $row_id): \Shellrent\Sdk\Model\CreditnoteRowResponse
+getCreditNoteRow($credit_note_id, $row_id): \Shellrent\Sdk\Model\CreditnoteRowResponse
 ```
 
 Get a credit note row
 
-Get details of a Credit note row
+Get details of a Credit note row  Not available to sub-accounts: the response is 403 (error 1601).
 
 ### Example
 
@@ -351,11 +351,11 @@ $apiInstance = new Shellrent\Sdk\Api\BillingApi(
     new GuzzleHttp\Client(),
     $config
 );
-$creditnote_id = 56; // int
-$row_id = 56; // int
+$credit_note_id = 56; // int | ID of the credit note
+$row_id = 56; // int | ID of the row
 
 try {
-    $result = $apiInstance->getCreditNoteRow($creditnote_id, $row_id);
+    $result = $apiInstance->getCreditNoteRow($credit_note_id, $row_id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling BillingApi->getCreditNoteRow: ', $e->getMessage(), PHP_EOL;
@@ -366,8 +366,8 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **creditnote_id** | **int**|  | |
-| **row_id** | **int**|  | |
+| **credit_note_id** | **int**| ID of the credit note | |
+| **row_id** | **int**| ID of the row | |
 
 ### Return type
 
@@ -394,7 +394,7 @@ getInvoice($invoice_id): \Shellrent\Sdk\Model\InvoiceResponse
 
 Get an invoice
 
-Get details of an invoice
+Get details of an invoice  Not available to sub-accounts: the response is 403 (error 1601).
 
 ### Example
 
@@ -413,7 +413,7 @@ $apiInstance = new Shellrent\Sdk\Api\BillingApi(
     new GuzzleHttp\Client(),
     $config
 );
-$invoice_id = 56; // int
+$invoice_id = 56; // int | ID of the invoice
 
 try {
     $result = $apiInstance->getInvoice($invoice_id);
@@ -427,7 +427,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **invoice_id** | **int**|  | |
+| **invoice_id** | **int**| ID of the invoice | |
 
 ### Return type
 
@@ -454,7 +454,7 @@ getInvoiceRow($invoice_id, $row_id): \Shellrent\Sdk\Model\InvoiceRowResponse
 
 Get an invoice row
 
-Get details of an Invoice row
+Get details of an Invoice row  Not available to sub-accounts: the response is 403 (error 1601).
 
 ### Example
 
@@ -473,8 +473,8 @@ $apiInstance = new Shellrent\Sdk\Api\BillingApi(
     new GuzzleHttp\Client(),
     $config
 );
-$invoice_id = 56; // int
-$row_id = 56; // int
+$invoice_id = 56; // int | ID of the invoice
+$row_id = 56; // int | ID of the row
 
 try {
     $result = $apiInstance->getInvoiceRow($invoice_id, $row_id);
@@ -488,8 +488,8 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **invoice_id** | **int**|  | |
-| **row_id** | **int**|  | |
+| **invoice_id** | **int**| ID of the invoice | |
+| **row_id** | **int**| ID of the row | |
 
 ### Return type
 
@@ -511,12 +511,12 @@ try {
 ## `listCreditNoteRows()`
 
 ```php
-listCreditNoteRows($creditnote_id): \Shellrent\Sdk\Model\CreditnoteRowListResponse
+listCreditNoteRows($credit_note_id): \Shellrent\Sdk\Model\CreditnoteRowListResponse
 ```
 
 List all credit note rows
 
-Get the list of all the rows of a Credit Note
+Get the list of all the rows of a Credit Note  Not available to sub-accounts: the response is 403 (error 1601).
 
 ### Example
 
@@ -535,10 +535,10 @@ $apiInstance = new Shellrent\Sdk\Api\BillingApi(
     new GuzzleHttp\Client(),
     $config
 );
-$creditnote_id = 56; // int
+$credit_note_id = 56; // int | ID of the credit note
 
 try {
-    $result = $apiInstance->listCreditNoteRows($creditnote_id);
+    $result = $apiInstance->listCreditNoteRows($credit_note_id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling BillingApi->listCreditNoteRows: ', $e->getMessage(), PHP_EOL;
@@ -549,7 +549,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **creditnote_id** | **int**|  | |
+| **credit_note_id** | **int**| ID of the credit note | |
 
 ### Return type
 
@@ -576,7 +576,7 @@ listCreditNotes($date_emission_from, $date_emission_to, $page, $per_page): \Shel
 
 List all Credit notes
 
-Get a list of all Credit notes
+Get a list of all Credit notes  Not available to sub-accounts: the response is 403 (error 1601).
 
 ### Example
 
@@ -595,10 +595,10 @@ $apiInstance = new Shellrent\Sdk\Api\BillingApi(
     new GuzzleHttp\Client(),
     $config
 );
-$date_emission_from = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
-$date_emission_to = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
-$page = 1; // int
-$per_page = 20; // int
+$date_emission_from = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | Only the credit notes issued on or after this date (YYYY-MM-DD)
+$date_emission_to = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | Only the credit notes issued on or before this date (YYYY-MM-DD)
+$page = 1; // int | Page number, starting from 1. A page beyond the last one returns an empty `data` list (with the requested `page` in `meta`).
+$per_page = 20; // int | Number of items per page. Values outside the allowed range are rejected with a validation error.
 
 try {
     $result = $apiInstance->listCreditNotes($date_emission_from, $date_emission_to, $page, $per_page);
@@ -612,10 +612,10 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **date_emission_from** | **\DateTime**|  | [optional] |
-| **date_emission_to** | **\DateTime**|  | [optional] |
-| **page** | **int**|  | [optional] [default to 1] |
-| **per_page** | **int**|  | [optional] [default to 20] |
+| **date_emission_from** | **\DateTime**| Only the credit notes issued on or after this date (YYYY-MM-DD) | [optional] |
+| **date_emission_to** | **\DateTime**| Only the credit notes issued on or before this date (YYYY-MM-DD) | [optional] |
+| **page** | **int**| Page number, starting from 1. A page beyond the last one returns an empty &#x60;data&#x60; list (with the requested &#x60;page&#x60; in &#x60;meta&#x60;). | [optional] [default to 1] |
+| **per_page** | **int**| Number of items per page. Values outside the allowed range are rejected with a validation error. | [optional] [default to 20] |
 
 ### Return type
 
@@ -642,7 +642,7 @@ listInvoiceRows($invoice_id): \Shellrent\Sdk\Model\InvoiceRowListResponse
 
 List all invoice rows
 
-Get the list of all the rows of an Invoice
+Get the list of all the rows of an Invoice  Not available to sub-accounts: the response is 403 (error 1601).
 
 ### Example
 
@@ -661,7 +661,7 @@ $apiInstance = new Shellrent\Sdk\Api\BillingApi(
     new GuzzleHttp\Client(),
     $config
 );
-$invoice_id = 56; // int
+$invoice_id = 56; // int | ID of the invoice
 
 try {
     $result = $apiInstance->listInvoiceRows($invoice_id);
@@ -675,7 +675,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **invoice_id** | **int**|  | |
+| **invoice_id** | **int**| ID of the invoice | |
 
 ### Return type
 
@@ -702,7 +702,7 @@ listInvoices($date_emission_from, $date_emission_to, $payed, $page, $per_page): 
 
 List all Invoices
 
-Get a list of all Invoices
+Get a list of all Invoices  Not available to sub-accounts: the response is 403 (error 1601).
 
 ### Example
 
@@ -721,11 +721,11 @@ $apiInstance = new Shellrent\Sdk\Api\BillingApi(
     new GuzzleHttp\Client(),
     $config
 );
-$date_emission_from = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
-$date_emission_to = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
-$payed = True; // bool
-$page = 1; // int
-$per_page = 20; // int
+$date_emission_from = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | Only the invoices issued on or after this date (YYYY-MM-DD)
+$date_emission_to = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | Only the invoices issued on or before this date (YYYY-MM-DD)
+$payed = True; // bool | true: only the paid invoices; false: only the unpaid ones
+$page = 1; // int | Page number, starting from 1. A page beyond the last one returns an empty `data` list (with the requested `page` in `meta`).
+$per_page = 20; // int | Number of items per page. Values outside the allowed range are rejected with a validation error.
 
 try {
     $result = $apiInstance->listInvoices($date_emission_from, $date_emission_to, $payed, $page, $per_page);
@@ -739,11 +739,11 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **date_emission_from** | **\DateTime**|  | [optional] |
-| **date_emission_to** | **\DateTime**|  | [optional] |
-| **payed** | **bool**|  | [optional] |
-| **page** | **int**|  | [optional] [default to 1] |
-| **per_page** | **int**|  | [optional] [default to 20] |
+| **date_emission_from** | **\DateTime**| Only the invoices issued on or after this date (YYYY-MM-DD) | [optional] |
+| **date_emission_to** | **\DateTime**| Only the invoices issued on or before this date (YYYY-MM-DD) | [optional] |
+| **payed** | **bool**| true: only the paid invoices; false: only the unpaid ones | [optional] |
+| **page** | **int**| Page number, starting from 1. A page beyond the last one returns an empty &#x60;data&#x60; list (with the requested &#x60;page&#x60; in &#x60;meta&#x60;). | [optional] [default to 1] |
+| **per_page** | **int**| Number of items per page. Values outside the allowed range are rejected with a validation error. | [optional] [default to 20] |
 
 ### Return type
 

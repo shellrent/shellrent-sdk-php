@@ -7,7 +7,7 @@ All URIs are relative to https://api.shellrent.com, except if the operation defi
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
 | [**activateDomainDnssec()**](DomainsApi.md#activateDomainDnssec) | **POST** /api/v3/domains/{domain_id}/dnssec | Activate DNSSEC |
-| [**applyDomainContactChanges()**](DomainsApi.md#applyDomainContactChanges) | **POST** /api/v3/domains/{domain_id}/contacts/apply | Apply contacts changes |
+| [**applyDomainContactChanges()**](DomainsApi.md#applyDomainContactChanges) | **POST** /api/v3/domains/{domain_id}/contacts/synchronizations | Apply contacts changes |
 | [**canActivateDomainDnssec()**](DomainsApi.md#canActivateDomainDnssec) | **GET** /api/v3/domains/{domain_id}/dnssec/can-activate | Can activate DNSSEC |
 | [**canChangeDomainNameservers()**](DomainsApi.md#canChangeDomainNameservers) | **GET** /api/v3/domains/{domain_id}/dns/can-change-nameservers | Can change Nameservers |
 | [**canDeactivateDomainDnssec()**](DomainsApi.md#canDeactivateDomainDnssec) | **GET** /api/v3/domains/{domain_id}/dnssec/can-deactivate | Can deactivate DNSSEC |
@@ -24,7 +24,7 @@ All URIs are relative to https://api.shellrent.com, except if the operation defi
 | [**listDomainDnsRecords()**](DomainsApi.md#listDomainDnsRecords) | **GET** /api/v3/domains/{domain_id}/dns/records | List DNS records |
 | [**listDomains()**](DomainsApi.md#listDomains) | **GET** /api/v3/domains | List domains |
 | [**setDomainCloudflareNameservers()**](DomainsApi.md#setDomainCloudflareNameservers) | **PUT** /api/v3/domains/{domain_id}/dns/cloudflare | Nameservers: Cloudflare |
-| [**setDomainExternalNameservers()**](DomainsApi.md#setDomainExternalNameservers) | **PATCH** /api/v3/domains/{domain_id}/dns/change-nameservers | Nameservers: external |
+| [**setDomainExternalNameservers()**](DomainsApi.md#setDomainExternalNameservers) | **PUT** /api/v3/domains/{domain_id}/dns/external | Nameservers: external |
 | [**setDomainStandardNameservers()**](DomainsApi.md#setDomainStandardNameservers) | **PUT** /api/v3/domains/{domain_id}/dns/standard | Nameservers: standard |
 | [**updateDomainContact()**](DomainsApi.md#updateDomainContact) | **PATCH** /api/v3/domains/{domain_id}/contacts/{domain_contact_id} | Modify contact |
 | [**updateDomainDnsRecord()**](DomainsApi.md#updateDomainDnsRecord) | **PATCH** /api/v3/domains/{domain_id}/dns/records/{record_id} | Modify DNS record |
@@ -40,7 +40,7 @@ activateDomainDnssec($domain_id): \Shellrent\Sdk\Model\TaskResponse
 
 Activate DNSSEC
 
-Activate DNSSEC (for domains with \"standard\" nameservers only)
+Activate DNSSEC (for domains with \"standard\" nameservers only). When the purchase of the domain is suspended, the request is rejected with 409
 
 ### Example
 
@@ -59,7 +59,7 @@ $apiInstance = new Shellrent\Sdk\Api\DomainsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$domain_id = 56; // int
+$domain_id = 56; // int | ID of the domain
 
 try {
     $result = $apiInstance->activateDomainDnssec($domain_id);
@@ -73,7 +73,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **domain_id** | **int**|  | |
+| **domain_id** | **int**| ID of the domain | |
 
 ### Return type
 
@@ -95,7 +95,7 @@ try {
 ## `applyDomainContactChanges()`
 
 ```php
-applyDomainContactChanges($domain_id): \Shellrent\Sdk\Model\EmptyResponse
+applyDomainContactChanges($domain_id)
 ```
 
 Apply contacts changes
@@ -119,11 +119,10 @@ $apiInstance = new Shellrent\Sdk\Api\DomainsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$domain_id = 56; // int
+$domain_id = 56; // int | ID of the domain
 
 try {
-    $result = $apiInstance->applyDomainContactChanges($domain_id);
-    print_r($result);
+    $apiInstance->applyDomainContactChanges($domain_id);
 } catch (Exception $e) {
     echo 'Exception when calling DomainsApi->applyDomainContactChanges: ', $e->getMessage(), PHP_EOL;
 }
@@ -133,11 +132,11 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **domain_id** | **int**|  | |
+| **domain_id** | **int**| ID of the domain | |
 
 ### Return type
 
-[**\Shellrent\Sdk\Model\EmptyResponse**](../Model/EmptyResponse.md)
+void (empty response body)
 
 ### Authorization
 
@@ -179,7 +178,7 @@ $apiInstance = new Shellrent\Sdk\Api\DomainsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$domain_id = 56; // int
+$domain_id = 56; // int | ID of the domain
 
 try {
     $result = $apiInstance->canActivateDomainDnssec($domain_id);
@@ -193,7 +192,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **domain_id** | **int**|  | |
+| **domain_id** | **int**| ID of the domain | |
 
 ### Return type
 
@@ -239,7 +238,7 @@ $apiInstance = new Shellrent\Sdk\Api\DomainsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$domain_id = 56; // int
+$domain_id = 56; // int | ID of the domain
 
 try {
     $result = $apiInstance->canChangeDomainNameservers($domain_id);
@@ -253,7 +252,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **domain_id** | **int**|  | |
+| **domain_id** | **int**| ID of the domain | |
 
 ### Return type
 
@@ -299,7 +298,7 @@ $apiInstance = new Shellrent\Sdk\Api\DomainsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$domain_id = 56; // int
+$domain_id = 56; // int | ID of the domain
 
 try {
     $result = $apiInstance->canDeactivateDomainDnssec($domain_id);
@@ -313,7 +312,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **domain_id** | **int**|  | |
+| **domain_id** | **int**| ID of the domain | |
 
 ### Return type
 
@@ -340,7 +339,7 @@ checkDomainAvailability($domain_full_name): \Shellrent\Sdk\Model\DomainAvailabil
 
 Domain whois
 
-Search availability status for a domain (whois)
+Search availability status for a domain (whois). A premium domain, sold at a price set by the registry, comes with our prices, which its order (`POST /api/v3/shop/domain`) uses; sub-accounts get no prices
 
 ### Example
 
@@ -400,7 +399,7 @@ createDomainDnsRecord($domain_id, $domain_dns_record_request): \Shellrent\Sdk\Mo
 
 Create DNS record
 
-Create a new DNS record
+Creates a record in the DNS zone of the domain. `NS` and `PTR` records cannot be created, as in the control panel (400)
 
 ### Example
 
@@ -419,7 +418,7 @@ $apiInstance = new Shellrent\Sdk\Api\DomainsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$domain_id = 56; // int
+$domain_id = 56; // int | ID of the domain
 $domain_dns_record_request = new \Shellrent\Sdk\Model\DomainDnsRecordRequest(); // \Shellrent\Sdk\Model\DomainDnsRecordRequest
 
 try {
@@ -434,7 +433,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **domain_id** | **int**|  | |
+| **domain_id** | **int**| ID of the domain | |
 | **domain_dns_record_request** | [**\Shellrent\Sdk\Model\DomainDnsRecordRequest**](../Model/DomainDnsRecordRequest.md)|  | |
 
 ### Return type
@@ -462,7 +461,7 @@ deactivateDomainDnssec($domain_id): \Shellrent\Sdk\Model\TaskResponse
 
 Deactivate DNSSEC
 
-Deactivate DNSSEC (for domains with \"standard\" nameservers) or remove all DNSSEC data records (for domains with \"external\" nameservers)
+Deactivate DNSSEC (for domains with \"standard\" nameservers) or remove all DNSSEC data records (for domains with \"external\" nameservers). When the purchase of the domain is suspended, the request is rejected with 409
 
 ### Example
 
@@ -481,7 +480,7 @@ $apiInstance = new Shellrent\Sdk\Api\DomainsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$domain_id = 56; // int
+$domain_id = 56; // int | ID of the domain
 
 try {
     $result = $apiInstance->deactivateDomainDnssec($domain_id);
@@ -495,7 +494,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **domain_id** | **int**|  | |
+| **domain_id** | **int**| ID of the domain | |
 
 ### Return type
 
@@ -517,12 +516,12 @@ try {
 ## `deleteDomainDnsRecord()`
 
 ```php
-deleteDomainDnsRecord($domain_id, $record_id): \Shellrent\Sdk\Model\EmptyResponse
+deleteDomainDnsRecord($domain_id, $record_id)
 ```
 
 Delete DNS record
 
-Delete an existing DNS record
+Deletes a record of the DNS zone of the domain. `NS` and `PTR` records cannot be deleted, as in the control panel (403)
 
 ### Example
 
@@ -541,12 +540,11 @@ $apiInstance = new Shellrent\Sdk\Api\DomainsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$domain_id = 56; // int
-$record_id = 'record_id_example'; // string
+$domain_id = 56; // int | ID of the domain
+$record_id = 'record_id_example'; // string | DNS record: the `record_id` field of the records list
 
 try {
-    $result = $apiInstance->deleteDomainDnsRecord($domain_id, $record_id);
-    print_r($result);
+    $apiInstance->deleteDomainDnsRecord($domain_id, $record_id);
 } catch (Exception $e) {
     echo 'Exception when calling DomainsApi->deleteDomainDnsRecord: ', $e->getMessage(), PHP_EOL;
 }
@@ -556,12 +554,12 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **domain_id** | **int**|  | |
-| **record_id** | **string**|  | |
+| **domain_id** | **int**| ID of the domain | |
+| **record_id** | **string**| DNS record: the &#x60;record_id&#x60; field of the records list | |
 
 ### Return type
 
-[**\Shellrent\Sdk\Model\EmptyResponse**](../Model/EmptyResponse.md)
+void (empty response body)
 
 ### Authorization
 
@@ -579,12 +577,12 @@ try {
 ## `getDomain()`
 
 ```php
-getDomain($domain_id): \Shellrent\Sdk\Model\DomainResponse
+getDomain($domain_id): \Shellrent\Sdk\Model\DomainDetailResponse
 ```
 
 Get domain
 
-Get a domain
+Get a domain. Unlike the list, it has dnssec_enabled, which needs the DNS zone of the domain
 
 ### Example
 
@@ -603,7 +601,7 @@ $apiInstance = new Shellrent\Sdk\Api\DomainsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$domain_id = 56; // int
+$domain_id = 56; // int | ID of the domain
 
 try {
     $result = $apiInstance->getDomain($domain_id);
@@ -617,11 +615,11 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **domain_id** | **int**|  | |
+| **domain_id** | **int**| ID of the domain | |
 
 ### Return type
 
-[**\Shellrent\Sdk\Model\DomainResponse**](../Model/DomainResponse.md)
+[**\Shellrent\Sdk\Model\DomainDetailResponse**](../Model/DomainDetailResponse.md)
 
 ### Authorization
 
@@ -663,8 +661,8 @@ $apiInstance = new Shellrent\Sdk\Api\DomainsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$domain_id = 56; // int
-$domain_contact_id = 56; // int
+$domain_id = 56; // int | ID of the domain
+$domain_contact_id = 56; // int | ID of the domain contact
 
 try {
     $result = $apiInstance->getDomainContact($domain_id, $domain_contact_id);
@@ -678,8 +676,8 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **domain_id** | **int**|  | |
-| **domain_contact_id** | **int**|  | |
+| **domain_id** | **int**| ID of the domain | |
+| **domain_contact_id** | **int**| ID of the domain contact | |
 
 ### Return type
 
@@ -725,8 +723,8 @@ $apiInstance = new Shellrent\Sdk\Api\DomainsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$domain_id = 56; // int
-$record_id = 'record_id_example'; // string
+$domain_id = 56; // int | ID of the domain
+$record_id = 'record_id_example'; // string | DNS record: the `record_id` field of the records list
 
 try {
     $result = $apiInstance->getDomainDnsRecord($domain_id, $record_id);
@@ -740,8 +738,8 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **domain_id** | **int**|  | |
-| **record_id** | **string**|  | |
+| **domain_id** | **int**| ID of the domain | |
+| **record_id** | **string**| DNS record: the &#x60;record_id&#x60; field of the records list | |
 
 ### Return type
 
@@ -787,7 +785,7 @@ $apiInstance = new Shellrent\Sdk\Api\DomainsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$domain_id = 56; // int
+$domain_id = 56; // int | ID of the domain
 
 try {
     $result = $apiInstance->getDomainDnsZone($domain_id);
@@ -801,7 +799,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **domain_id** | **int**|  | |
+| **domain_id** | **int**| ID of the domain | |
 
 ### Return type
 
@@ -847,7 +845,7 @@ $apiInstance = new Shellrent\Sdk\Api\DomainsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$domain_id = 56; // int
+$domain_id = 56; // int | ID of the domain
 
 try {
     $result = $apiInstance->getDomainDnssec($domain_id);
@@ -861,7 +859,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **domain_id** | **int**|  | |
+| **domain_id** | **int**| ID of the domain | |
 
 ### Return type
 
@@ -907,7 +905,7 @@ $apiInstance = new Shellrent\Sdk\Api\DomainsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$domain_id = 56; // int
+$domain_id = 56; // int | ID of the domain
 
 try {
     $result = $apiInstance->listDomainContacts($domain_id);
@@ -921,7 +919,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **domain_id** | **int**|  | |
+| **domain_id** | **int**| ID of the domain | |
 
 ### Return type
 
@@ -967,12 +965,12 @@ $apiInstance = new Shellrent\Sdk\Api\DomainsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$domain_id = 56; // int
+$domain_id = 56; // int | ID of the domain
 $type = 'type_example'; // string | Search by record type
 $host = 'host_example'; // string | Search by record host (partial match)
 $destination = 'destination_example'; // string | Search by record destination (partial match)
-$page = 1; // int
-$per_page = 20; // int
+$page = 1; // int | Page number, starting from 1. A page beyond the last one returns an empty `data` list (with the requested `page` in `meta`).
+$per_page = 20; // int | Number of items per page. Values outside the allowed range are rejected with a validation error.
 
 try {
     $result = $apiInstance->listDomainDnsRecords($domain_id, $type, $host, $destination, $page, $per_page);
@@ -986,12 +984,12 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **domain_id** | **int**|  | |
+| **domain_id** | **int**| ID of the domain | |
 | **type** | **string**| Search by record type | [optional] |
 | **host** | **string**| Search by record host (partial match) | [optional] |
 | **destination** | **string**| Search by record destination (partial match) | [optional] |
-| **page** | **int**|  | [optional] [default to 1] |
-| **per_page** | **int**|  | [optional] [default to 20] |
+| **page** | **int**| Page number, starting from 1. A page beyond the last one returns an empty &#x60;data&#x60; list (with the requested &#x60;page&#x60; in &#x60;meta&#x60;). | [optional] [default to 1] |
+| **per_page** | **int**| Number of items per page. Values outside the allowed range are rejected with a validation error. | [optional] [default to 20] |
 
 ### Return type
 
@@ -1041,8 +1039,8 @@ $domain_full_name = 'domain_full_name_example'; // string | Search by punycode d
 $domain_name = 'domain_name_example'; // string | Search by punycode domain name (partial)
 $tld_id = 56; // int | Obtain all domains by ID of TLD
 $tld_extension = 'tld_extension_example'; // string | Obtain all domains by TLD extension (punycode)
-$page = 1; // int
-$per_page = 20; // int
+$page = 1; // int | Page number, starting from 1. A page beyond the last one returns an empty `data` list (with the requested `page` in `meta`).
+$per_page = 20; // int | Number of items per page. Values outside the allowed range are rejected with a validation error.
 
 try {
     $result = $apiInstance->listDomains($domain_full_name, $domain_name, $tld_id, $tld_extension, $page, $per_page);
@@ -1060,8 +1058,8 @@ try {
 | **domain_name** | **string**| Search by punycode domain name (partial) | [optional] |
 | **tld_id** | **int**| Obtain all domains by ID of TLD | [optional] |
 | **tld_extension** | **string**| Obtain all domains by TLD extension (punycode) | [optional] |
-| **page** | **int**|  | [optional] [default to 1] |
-| **per_page** | **int**|  | [optional] [default to 20] |
+| **page** | **int**| Page number, starting from 1. A page beyond the last one returns an empty &#x60;data&#x60; list (with the requested &#x60;page&#x60; in &#x60;meta&#x60;). | [optional] [default to 1] |
+| **per_page** | **int**| Number of items per page. Values outside the allowed range are rejected with a validation error. | [optional] [default to 20] |
 
 ### Return type
 
@@ -1107,7 +1105,7 @@ $apiInstance = new Shellrent\Sdk\Api\DomainsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$domain_id = 56; // int
+$domain_id = 56; // int | ID of the domain
 $domain_dns_nameservers_cloudflare_request = new \Shellrent\Sdk\Model\DomainDnsNameserversCloudflareRequest(); // \Shellrent\Sdk\Model\DomainDnsNameserversCloudflareRequest
 
 try {
@@ -1122,7 +1120,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **domain_id** | **int**|  | |
+| **domain_id** | **int**| ID of the domain | |
 | **domain_dns_nameservers_cloudflare_request** | [**\Shellrent\Sdk\Model\DomainDnsNameserversCloudflareRequest**](../Model/DomainDnsNameserversCloudflareRequest.md)|  | |
 
 ### Return type
@@ -1169,7 +1167,7 @@ $apiInstance = new Shellrent\Sdk\Api\DomainsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$domain_id = 56; // int
+$domain_id = 56; // int | ID of the domain
 $domain_dns_nameservers_change_request = new \Shellrent\Sdk\Model\DomainDnsNameserversChangeRequest(); // \Shellrent\Sdk\Model\DomainDnsNameserversChangeRequest
 
 try {
@@ -1184,7 +1182,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **domain_id** | **int**|  | |
+| **domain_id** | **int**| ID of the domain | |
 | **domain_dns_nameservers_change_request** | [**\Shellrent\Sdk\Model\DomainDnsNameserversChangeRequest**](../Model/DomainDnsNameserversChangeRequest.md)|  | |
 
 ### Return type
@@ -1231,7 +1229,7 @@ $apiInstance = new Shellrent\Sdk\Api\DomainsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$domain_id = 56; // int
+$domain_id = 56; // int | ID of the domain
 
 try {
     $result = $apiInstance->setDomainStandardNameservers($domain_id);
@@ -1245,7 +1243,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **domain_id** | **int**|  | |
+| **domain_id** | **int**| ID of the domain | |
 
 ### Return type
 
@@ -1291,8 +1289,8 @@ $apiInstance = new Shellrent\Sdk\Api\DomainsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$domain_id = 56; // int
-$domain_contact_id = 56; // int
+$domain_id = 56; // int | ID of the domain
+$domain_contact_id = 56; // int | ID of the domain contact
 $domain_contact_request = new \Shellrent\Sdk\Model\DomainContactRequest(); // \Shellrent\Sdk\Model\DomainContactRequest
 
 try {
@@ -1307,8 +1305,8 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **domain_id** | **int**|  | |
-| **domain_contact_id** | **int**|  | |
+| **domain_id** | **int**| ID of the domain | |
+| **domain_contact_id** | **int**| ID of the domain contact | |
 | **domain_contact_request** | [**\Shellrent\Sdk\Model\DomainContactRequest**](../Model/DomainContactRequest.md)|  | |
 
 ### Return type
@@ -1336,7 +1334,7 @@ updateDomainDnsRecord($domain_id, $record_id, $domain_dns_record_change_request)
 
 Modify DNS record
 
-Modify an existing DNS record
+Changes a record of the DNS zone of the domain; its type cannot change. `NS` and `PTR` records cannot be changed, as in the control panel (403)
 
 ### Example
 
@@ -1355,8 +1353,8 @@ $apiInstance = new Shellrent\Sdk\Api\DomainsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$domain_id = 56; // int
-$record_id = 'record_id_example'; // string
+$domain_id = 56; // int | ID of the domain
+$record_id = 'record_id_example'; // string | DNS record: the `record_id` field of the records list
 $domain_dns_record_change_request = new \Shellrent\Sdk\Model\DomainDnsRecordChangeRequest(); // \Shellrent\Sdk\Model\DomainDnsRecordChangeRequest
 
 try {
@@ -1371,8 +1369,8 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **domain_id** | **int**|  | |
-| **record_id** | **string**|  | |
+| **domain_id** | **int**| ID of the domain | |
+| **record_id** | **string**| DNS record: the &#x60;record_id&#x60; field of the records list | |
 | **domain_dns_record_change_request** | [**\Shellrent\Sdk\Model\DomainDnsRecordChangeRequest**](../Model/DomainDnsRecordChangeRequest.md)|  | |
 
 ### Return type
@@ -1400,7 +1398,7 @@ updateDomainDnsZone($domain_id, $domain_dns_zone_request): \Shellrent\Sdk\Model\
 
 Change DNS Zone data
 
-Change DNS Zone data
+Changes the TTL of the DNS zone of the domain and returns the zone. Only the zones on our nameservers (standard and external types) have a TTL, which is also the TTL of all their records: with the Cloudflare nameservers the response is 409. 404 when the domain has no DNS zone
 
 ### Example
 
@@ -1419,7 +1417,7 @@ $apiInstance = new Shellrent\Sdk\Api\DomainsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$domain_id = 56; // int
+$domain_id = 56; // int | ID of the domain
 $domain_dns_zone_request = new \Shellrent\Sdk\Model\DomainDnsZoneRequest(); // \Shellrent\Sdk\Model\DomainDnsZoneRequest
 
 try {
@@ -1434,7 +1432,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **domain_id** | **int**|  | |
+| **domain_id** | **int**| ID of the domain | |
 | **domain_dns_zone_request** | [**\Shellrent\Sdk\Model\DomainDnsZoneRequest**](../Model/DomainDnsZoneRequest.md)|  | |
 
 ### Return type
@@ -1462,7 +1460,7 @@ updateDomainDnssec($domain_id, $domain_dnssec_request): \Shellrent\Sdk\Model\Tas
 
 Change DNSSEC data
 
-Add or change DNSSEC data records (for domains with \"external\" nameservers only)
+Add or change DNSSEC data records (for domains with \"external\" nameservers only). When the purchase of the domain is suspended, the request is rejected with 409
 
 ### Example
 
@@ -1481,7 +1479,7 @@ $apiInstance = new Shellrent\Sdk\Api\DomainsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$domain_id = 56; // int
+$domain_id = 56; // int | ID of the domain
 $domain_dnssec_request = new \Shellrent\Sdk\Model\DomainDnssecRequest(); // \Shellrent\Sdk\Model\DomainDnssecRequest
 
 try {
@@ -1496,7 +1494,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **domain_id** | **int**|  | |
+| **domain_id** | **int**| ID of the domain | |
 | **domain_dnssec_request** | [**\Shellrent\Sdk\Model\DomainDnssecRequest**](../Model/DomainDnssecRequest.md)|  | |
 
 ### Return type

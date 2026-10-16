@@ -6,34 +6,28 @@ All URIs are relative to https://api.shellrent.com, except if the operation defi
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**downgradeMicrosoft365SubscriptionQuantity()**](LicenseApi.md#downgradeMicrosoft365SubscriptionQuantity) | **PATCH** /api/v3/microsoft365-subscriptions/{microsoft365_id}/quantity-downgrade | Downgrade Microsoft 365 subscription quantity |
-| [**downgradeSecureMailQuantity()**](LicenseApi.md#downgradeSecureMailQuantity) | **PATCH** /api/v3/securemails/{securemail_id}/quantity-downgrade | Downgrade SecureMail quantity |
+| [**downgradeMicrosoft365SubscriptionQuantity()**](LicenseApi.md#downgradeMicrosoft365SubscriptionQuantity) | **POST** /api/v3/microsoft-365-subscriptions/{microsoft_365_subscription_id}/quantity-downgrades | Downgrade Microsoft 365 subscription quantity |
 | [**getCpanelLicense()**](LicenseApi.md#getCpanelLicense) | **GET** /api/v3/licenses/cpanel/{license_id} | Get cPanel license |
-| [**getMicrosoft365PartnerLink()**](LicenseApi.md#getMicrosoft365PartnerLink) | **GET** /api/v3/microsoft365-subscriptions/partner-link/{service_id} | Partner link |
-| [**getMicrosoft365Subscription()**](LicenseApi.md#getMicrosoft365Subscription) | **GET** /api/v3/microsoft365-subscriptions/{microsoft365_id} | Get Microsoft 365 subscription |
-| [**getMicrosoft365Tenant()**](LicenseApi.md#getMicrosoft365Tenant) | **GET** /api/v3/microsoft365-tenants/{microsoft_365_tenant_id} | Get Microsoft 365 tenant |
+| [**getMicrosoft365PartnerLink()**](LicenseApi.md#getMicrosoft365PartnerLink) | **GET** /api/v3/shop/microsoft-365/services/{service_id}/partner-link | Partner link |
+| [**getMicrosoft365Subscription()**](LicenseApi.md#getMicrosoft365Subscription) | **GET** /api/v3/microsoft-365-subscriptions/{microsoft_365_subscription_id} | Get Microsoft 365 subscription |
+| [**getMicrosoft365Tenant()**](LicenseApi.md#getMicrosoft365Tenant) | **GET** /api/v3/microsoft-365-tenants/{microsoft_365_tenant_id} | Get Microsoft 365 tenant |
 | [**getPleskLicense()**](LicenseApi.md#getPleskLicense) | **GET** /api/v3/licenses/plesk/{license_id} | Get Plesk license |
-| [**getSecureMail()**](LicenseApi.md#getSecureMail) | **GET** /api/v3/securemails/{securemail_id} | Get SecureMail subscription |
-| [**getSecureMailStatistics()**](LicenseApi.md#getSecureMailStatistics) | **GET** /api/v3/securemails/{securemail_id}/statistics | Get SecureMail statistics |
 | [**listCpanelLicenses()**](LicenseApi.md#listCpanelLicenses) | **GET** /api/v3/licenses/cpanel | List cPanel licenses |
-| [**listMicrosoft365Subscriptions()**](LicenseApi.md#listMicrosoft365Subscriptions) | **GET** /api/v3/microsoft365-subscriptions | List Microsoft 365 subscriptions |
-| [**listMicrosoft365Tenants()**](LicenseApi.md#listMicrosoft365Tenants) | **GET** /api/v3/microsoft365-tenants | List Microsoft 365 tenants |
+| [**listMicrosoft365Subscriptions()**](LicenseApi.md#listMicrosoft365Subscriptions) | **GET** /api/v3/microsoft-365-subscriptions | List Microsoft 365 subscriptions |
+| [**listMicrosoft365Tenants()**](LicenseApi.md#listMicrosoft365Tenants) | **GET** /api/v3/microsoft-365-tenants | List Microsoft 365 tenants |
 | [**listPleskLicenses()**](LicenseApi.md#listPleskLicenses) | **GET** /api/v3/licenses/plesk | List Plesk licenses |
-| [**listSecureMailMailboxes()**](LicenseApi.md#listSecureMailMailboxes) | **GET** /api/v3/securemails/{securemail_id}/mailboxes | List SecureMail mailboxes |
-| [**listSecureMails()**](LicenseApi.md#listSecureMails) | **GET** /api/v3/securemails | List SecureMail subscriptions |
-| [**upgradeMicrosoft365SubscriptionQuantity()**](LicenseApi.md#upgradeMicrosoft365SubscriptionQuantity) | **POST** /api/v3/microsoft365-subscriptions/{microsoft365_id}/quantity-upgrade | Upgrade Microsoft 365 subscription quantity |
-| [**upgradeSecureMailQuantity()**](LicenseApi.md#upgradeSecureMailQuantity) | **POST** /api/v3/securemails/{securemail_id}/quantity-upgrade | Upgrade SecureMail quantity |
+| [**upgradeMicrosoft365SubscriptionQuantity()**](LicenseApi.md#upgradeMicrosoft365SubscriptionQuantity) | **POST** /api/v3/microsoft-365-subscriptions/{microsoft_365_subscription_id}/quantity-upgrades | Upgrade Microsoft 365 subscription quantity |
 
 
 ## `downgradeMicrosoft365SubscriptionQuantity()`
 
 ```php
-downgradeMicrosoft365SubscriptionQuantity($microsoft365_id, $microsoft365_subscription_quantity_request): \Shellrent\Sdk\Model\TaskResponse
+downgradeMicrosoft365SubscriptionQuantity($microsoft_365_subscription_id, $microsoft365_subscription_quantity_request): \Shellrent\Sdk\Model\TaskResponse
 ```
 
 Downgrade Microsoft 365 subscription quantity
 
-Decrease the Microsoft 365 seats quantity. Returns the background Task created for seat removal.
+Decrease the Microsoft 365 seats quantity. Returns the background Task created for seat removal.  Not available to sub-accounts: the response is 403 (error 1601).
 
 ### Example
 
@@ -52,11 +46,11 @@ $apiInstance = new Shellrent\Sdk\Api\LicenseApi(
     new GuzzleHttp\Client(),
     $config
 );
-$microsoft365_id = 56; // int
+$microsoft_365_subscription_id = 56; // int | ID of the Microsoft 365 subscription
 $microsoft365_subscription_quantity_request = new \Shellrent\Sdk\Model\Microsoft365SubscriptionQuantityRequest(); // \Shellrent\Sdk\Model\Microsoft365SubscriptionQuantityRequest
 
 try {
-    $result = $apiInstance->downgradeMicrosoft365SubscriptionQuantity($microsoft365_id, $microsoft365_subscription_quantity_request);
+    $result = $apiInstance->downgradeMicrosoft365SubscriptionQuantity($microsoft_365_subscription_id, $microsoft365_subscription_quantity_request);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling LicenseApi->downgradeMicrosoft365SubscriptionQuantity: ', $e->getMessage(), PHP_EOL;
@@ -67,70 +61,8 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **microsoft365_id** | **int**|  | |
+| **microsoft_365_subscription_id** | **int**| ID of the Microsoft 365 subscription | |
 | **microsoft365_subscription_quantity_request** | [**\Shellrent\Sdk\Model\Microsoft365SubscriptionQuantityRequest**](../Model/Microsoft365SubscriptionQuantityRequest.md)|  | |
-
-### Return type
-
-[**\Shellrent\Sdk\Model\TaskResponse**](../Model/TaskResponse.md)
-
-### Authorization
-
-[oauth2](../../README.md#oauth2)
-
-### HTTP request headers
-
-- **Content-Type**: `application/json`
-- **Accept**: `application/json`
-
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
-
-## `downgradeSecureMailQuantity()`
-
-```php
-downgradeSecureMailQuantity($securemail_id, $securemail_quantity_request): \Shellrent\Sdk\Model\TaskResponse
-```
-
-Downgrade SecureMail quantity
-
-Decrease the SecureMail protected mailboxes quantity. Returns the background Task created for the alignment.
-
-### Example
-
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-// Configure OAuth2 access token for authorization: oauth2
-$config = Shellrent\Sdk\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
-
-$apiInstance = new Shellrent\Sdk\Api\LicenseApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$securemail_id = 56; // int
-$securemail_quantity_request = new \Shellrent\Sdk\Model\SecuremailQuantityRequest(); // \Shellrent\Sdk\Model\SecuremailQuantityRequest
-
-try {
-    $result = $apiInstance->downgradeSecureMailQuantity($securemail_id, $securemail_quantity_request);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling LicenseApi->downgradeSecureMailQuantity: ', $e->getMessage(), PHP_EOL;
-}
-```
-
-### Parameters
-
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | ------------- |
-| **securemail_id** | **int**|  | |
-| **securemail_quantity_request** | [**\Shellrent\Sdk\Model\SecuremailQuantityRequest**](../Model/SecuremailQuantityRequest.md)|  | |
 
 ### Return type
 
@@ -152,7 +84,7 @@ try {
 ## `getCpanelLicense()`
 
 ```php
-getCpanelLicense($license_id): \Shellrent\Sdk\Model\CpanelLicenseResponse
+getCpanelLicense($license_id): \Shellrent\Sdk\Model\LicenseResponse
 ```
 
 Get cPanel license
@@ -176,7 +108,7 @@ $apiInstance = new Shellrent\Sdk\Api\LicenseApi(
     new GuzzleHttp\Client(),
     $config
 );
-$license_id = 56; // int
+$license_id = 56; // int | ID of the license
 
 try {
     $result = $apiInstance->getCpanelLicense($license_id);
@@ -190,11 +122,11 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **license_id** | **int**|  | |
+| **license_id** | **int**| ID of the license | |
 
 ### Return type
 
-[**\Shellrent\Sdk\Model\CpanelLicenseResponse**](../Model/CpanelLicenseResponse.md)
+[**\Shellrent\Sdk\Model\LicenseResponse**](../Model/LicenseResponse.md)
 
 ### Authorization
 
@@ -217,7 +149,7 @@ getMicrosoft365PartnerLink($service_id): \Shellrent\Sdk\Model\Microsoft365Partne
 
 Partner link
 
-Get the partner authorization link for Microsoft 365 subscriptions
+Get the partner authorization link for Microsoft 365 subscriptions  Not available to sub-accounts: the response is 403 (error 1601).
 
 ### Example
 
@@ -236,7 +168,7 @@ $apiInstance = new Shellrent\Sdk\Api\LicenseApi(
     new GuzzleHttp\Client(),
     $config
 );
-$service_id = 56; // int
+$service_id = 56; // int | ID of the Microsoft 365 service of the catalog
 
 try {
     $result = $apiInstance->getMicrosoft365PartnerLink($service_id);
@@ -250,7 +182,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **service_id** | **int**|  | |
+| **service_id** | **int**| ID of the Microsoft 365 service of the catalog | |
 
 ### Return type
 
@@ -272,7 +204,7 @@ try {
 ## `getMicrosoft365Subscription()`
 
 ```php
-getMicrosoft365Subscription($microsoft365_id): \Shellrent\Sdk\Model\Microsoft365Response
+getMicrosoft365Subscription($microsoft_365_subscription_id): \Shellrent\Sdk\Model\Microsoft365Response
 ```
 
 Get Microsoft 365 subscription
@@ -296,10 +228,10 @@ $apiInstance = new Shellrent\Sdk\Api\LicenseApi(
     new GuzzleHttp\Client(),
     $config
 );
-$microsoft365_id = 56; // int
+$microsoft_365_subscription_id = 56; // int | ID of the Microsoft 365 subscription
 
 try {
-    $result = $apiInstance->getMicrosoft365Subscription($microsoft365_id);
+    $result = $apiInstance->getMicrosoft365Subscription($microsoft_365_subscription_id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling LicenseApi->getMicrosoft365Subscription: ', $e->getMessage(), PHP_EOL;
@@ -310,7 +242,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **microsoft365_id** | **int**|  | |
+| **microsoft_365_subscription_id** | **int**| ID of the Microsoft 365 subscription | |
 
 ### Return type
 
@@ -356,7 +288,7 @@ $apiInstance = new Shellrent\Sdk\Api\LicenseApi(
     new GuzzleHttp\Client(),
     $config
 );
-$microsoft_365_tenant_id = 56; // int
+$microsoft_365_tenant_id = 56; // int | ID of the Microsoft 365 tenant
 
 try {
     $result = $apiInstance->getMicrosoft365Tenant($microsoft_365_tenant_id);
@@ -370,7 +302,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **microsoft_365_tenant_id** | **int**|  | |
+| **microsoft_365_tenant_id** | **int**| ID of the Microsoft 365 tenant | |
 
 ### Return type
 
@@ -392,7 +324,7 @@ try {
 ## `getPleskLicense()`
 
 ```php
-getPleskLicense($license_id): \Shellrent\Sdk\Model\PleskLicenseResponse
+getPleskLicense($license_id): \Shellrent\Sdk\Model\LicenseResponse
 ```
 
 Get Plesk license
@@ -416,7 +348,7 @@ $apiInstance = new Shellrent\Sdk\Api\LicenseApi(
     new GuzzleHttp\Client(),
     $config
 );
-$license_id = 56; // int
+$license_id = 56; // int | ID of the license
 
 try {
     $result = $apiInstance->getPleskLicense($license_id);
@@ -430,131 +362,11 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **license_id** | **int**|  | |
+| **license_id** | **int**| ID of the license | |
 
 ### Return type
 
-[**\Shellrent\Sdk\Model\PleskLicenseResponse**](../Model/PleskLicenseResponse.md)
-
-### Authorization
-
-[oauth2](../../README.md#oauth2)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: `application/json`
-
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
-
-## `getSecureMail()`
-
-```php
-getSecureMail($securemail_id): \Shellrent\Sdk\Model\SecuremailResponse
-```
-
-Get SecureMail subscription
-
-Get details of a SecureMail by LibraESVA subscription
-
-### Example
-
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-// Configure OAuth2 access token for authorization: oauth2
-$config = Shellrent\Sdk\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
-
-$apiInstance = new Shellrent\Sdk\Api\LicenseApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$securemail_id = 56; // int
-
-try {
-    $result = $apiInstance->getSecureMail($securemail_id);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling LicenseApi->getSecureMail: ', $e->getMessage(), PHP_EOL;
-}
-```
-
-### Parameters
-
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | ------------- |
-| **securemail_id** | **int**|  | |
-
-### Return type
-
-[**\Shellrent\Sdk\Model\SecuremailResponse**](../Model/SecuremailResponse.md)
-
-### Authorization
-
-[oauth2](../../README.md#oauth2)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: `application/json`
-
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
-
-## `getSecureMailStatistics()`
-
-```php
-getSecureMailStatistics($securemail_id): \Shellrent\Sdk\Model\SecuremailStatisticsResponse
-```
-
-Get SecureMail statistics
-
-Get statistics for a SecureMail by LibraESVA subscription
-
-### Example
-
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-// Configure OAuth2 access token for authorization: oauth2
-$config = Shellrent\Sdk\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
-
-$apiInstance = new Shellrent\Sdk\Api\LicenseApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$securemail_id = 56; // int
-
-try {
-    $result = $apiInstance->getSecureMailStatistics($securemail_id);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling LicenseApi->getSecureMailStatistics: ', $e->getMessage(), PHP_EOL;
-}
-```
-
-### Parameters
-
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | ------------- |
-| **securemail_id** | **int**|  | |
-
-### Return type
-
-[**\Shellrent\Sdk\Model\SecuremailStatisticsResponse**](../Model/SecuremailStatisticsResponse.md)
+[**\Shellrent\Sdk\Model\LicenseResponse**](../Model/LicenseResponse.md)
 
 ### Authorization
 
@@ -572,7 +384,7 @@ try {
 ## `listCpanelLicenses()`
 
 ```php
-listCpanelLicenses($page, $per_page): \Shellrent\Sdk\Model\CpanelLicensePaginatedListResponse
+listCpanelLicenses($page, $per_page): \Shellrent\Sdk\Model\LicensePaginatedListResponse
 ```
 
 List cPanel licenses
@@ -596,8 +408,8 @@ $apiInstance = new Shellrent\Sdk\Api\LicenseApi(
     new GuzzleHttp\Client(),
     $config
 );
-$page = 1; // int
-$per_page = 20; // int
+$page = 1; // int | Page number, starting from 1. A page beyond the last one returns an empty `data` list (with the requested `page` in `meta`).
+$per_page = 20; // int | Number of items per page. Values outside the allowed range are rejected with a validation error.
 
 try {
     $result = $apiInstance->listCpanelLicenses($page, $per_page);
@@ -611,12 +423,12 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **page** | **int**|  | [optional] [default to 1] |
-| **per_page** | **int**|  | [optional] [default to 20] |
+| **page** | **int**| Page number, starting from 1. A page beyond the last one returns an empty &#x60;data&#x60; list (with the requested &#x60;page&#x60; in &#x60;meta&#x60;). | [optional] [default to 1] |
+| **per_page** | **int**| Number of items per page. Values outside the allowed range are rejected with a validation error. | [optional] [default to 20] |
 
 ### Return type
 
-[**\Shellrent\Sdk\Model\CpanelLicensePaginatedListResponse**](../Model/CpanelLicensePaginatedListResponse.md)
+[**\Shellrent\Sdk\Model\LicensePaginatedListResponse**](../Model/LicensePaginatedListResponse.md)
 
 ### Authorization
 
@@ -658,8 +470,8 @@ $apiInstance = new Shellrent\Sdk\Api\LicenseApi(
     new GuzzleHttp\Client(),
     $config
 );
-$page = 1; // int
-$per_page = 20; // int
+$page = 1; // int | Page number, starting from 1. A page beyond the last one returns an empty `data` list (with the requested `page` in `meta`).
+$per_page = 20; // int | Number of items per page. Values outside the allowed range are rejected with a validation error.
 
 try {
     $result = $apiInstance->listMicrosoft365Subscriptions($page, $per_page);
@@ -673,8 +485,8 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **page** | **int**|  | [optional] [default to 1] |
-| **per_page** | **int**|  | [optional] [default to 20] |
+| **page** | **int**| Page number, starting from 1. A page beyond the last one returns an empty &#x60;data&#x60; list (with the requested &#x60;page&#x60; in &#x60;meta&#x60;). | [optional] [default to 1] |
+| **per_page** | **int**| Number of items per page. Values outside the allowed range are rejected with a validation error. | [optional] [default to 20] |
 
 ### Return type
 
@@ -720,8 +532,8 @@ $apiInstance = new Shellrent\Sdk\Api\LicenseApi(
     new GuzzleHttp\Client(),
     $config
 );
-$page = 1; // int
-$per_page = 20; // int
+$page = 1; // int | Page number, starting from 1. A page beyond the last one returns an empty `data` list (with the requested `page` in `meta`).
+$per_page = 20; // int | Number of items per page. Values outside the allowed range are rejected with a validation error.
 
 try {
     $result = $apiInstance->listMicrosoft365Tenants($page, $per_page);
@@ -735,8 +547,8 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **page** | **int**|  | [optional] [default to 1] |
-| **per_page** | **int**|  | [optional] [default to 20] |
+| **page** | **int**| Page number, starting from 1. A page beyond the last one returns an empty &#x60;data&#x60; list (with the requested &#x60;page&#x60; in &#x60;meta&#x60;). | [optional] [default to 1] |
+| **per_page** | **int**| Number of items per page. Values outside the allowed range are rejected with a validation error. | [optional] [default to 20] |
 
 ### Return type
 
@@ -758,7 +570,7 @@ try {
 ## `listPleskLicenses()`
 
 ```php
-listPleskLicenses($page, $per_page): \Shellrent\Sdk\Model\PleskLicensePaginatedListResponse
+listPleskLicenses($page, $per_page): \Shellrent\Sdk\Model\LicensePaginatedListResponse
 ```
 
 List Plesk licenses
@@ -782,8 +594,8 @@ $apiInstance = new Shellrent\Sdk\Api\LicenseApi(
     new GuzzleHttp\Client(),
     $config
 );
-$page = 1; // int
-$per_page = 20; // int
+$page = 1; // int | Page number, starting from 1. A page beyond the last one returns an empty `data` list (with the requested `page` in `meta`).
+$per_page = 20; // int | Number of items per page. Values outside the allowed range are rejected with a validation error.
 
 try {
     $result = $apiInstance->listPleskLicenses($page, $per_page);
@@ -797,138 +609,12 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **page** | **int**|  | [optional] [default to 1] |
-| **per_page** | **int**|  | [optional] [default to 20] |
+| **page** | **int**| Page number, starting from 1. A page beyond the last one returns an empty &#x60;data&#x60; list (with the requested &#x60;page&#x60; in &#x60;meta&#x60;). | [optional] [default to 1] |
+| **per_page** | **int**| Number of items per page. Values outside the allowed range are rejected with a validation error. | [optional] [default to 20] |
 
 ### Return type
 
-[**\Shellrent\Sdk\Model\PleskLicensePaginatedListResponse**](../Model/PleskLicensePaginatedListResponse.md)
-
-### Authorization
-
-[oauth2](../../README.md#oauth2)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: `application/json`
-
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
-
-## `listSecureMailMailboxes()`
-
-```php
-listSecureMailMailboxes($securemail_id, $page, $per_page): \Shellrent\Sdk\Model\SecuremailMailboxPaginatedListResponse
-```
-
-List SecureMail mailboxes
-
-Get a paginated list of primary mailboxes for a SecureMail by LibraESVA subscription
-
-### Example
-
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-// Configure OAuth2 access token for authorization: oauth2
-$config = Shellrent\Sdk\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
-
-$apiInstance = new Shellrent\Sdk\Api\LicenseApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$securemail_id = 56; // int
-$page = 1; // int
-$per_page = 20; // int
-
-try {
-    $result = $apiInstance->listSecureMailMailboxes($securemail_id, $page, $per_page);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling LicenseApi->listSecureMailMailboxes: ', $e->getMessage(), PHP_EOL;
-}
-```
-
-### Parameters
-
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | ------------- |
-| **securemail_id** | **int**|  | |
-| **page** | **int**|  | [optional] [default to 1] |
-| **per_page** | **int**|  | [optional] [default to 20] |
-
-### Return type
-
-[**\Shellrent\Sdk\Model\SecuremailMailboxPaginatedListResponse**](../Model/SecuremailMailboxPaginatedListResponse.md)
-
-### Authorization
-
-[oauth2](../../README.md#oauth2)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: `application/json`
-
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
-
-## `listSecureMails()`
-
-```php
-listSecureMails($page, $per_page): \Shellrent\Sdk\Model\SecuremailPaginatedListResponse
-```
-
-List SecureMail subscriptions
-
-Get a paginated list of SecureMail by LibraESVA subscriptions for the authenticated account
-
-### Example
-
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-// Configure OAuth2 access token for authorization: oauth2
-$config = Shellrent\Sdk\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
-
-$apiInstance = new Shellrent\Sdk\Api\LicenseApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$page = 1; // int
-$per_page = 20; // int
-
-try {
-    $result = $apiInstance->listSecureMails($page, $per_page);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling LicenseApi->listSecureMails: ', $e->getMessage(), PHP_EOL;
-}
-```
-
-### Parameters
-
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | ------------- |
-| **page** | **int**|  | [optional] [default to 1] |
-| **per_page** | **int**|  | [optional] [default to 20] |
-
-### Return type
-
-[**\Shellrent\Sdk\Model\SecuremailPaginatedListResponse**](../Model/SecuremailPaginatedListResponse.md)
+[**\Shellrent\Sdk\Model\LicensePaginatedListResponse**](../Model/LicensePaginatedListResponse.md)
 
 ### Authorization
 
@@ -946,12 +632,12 @@ try {
 ## `upgradeMicrosoft365SubscriptionQuantity()`
 
 ```php
-upgradeMicrosoft365SubscriptionQuantity($microsoft365_id, $microsoft365_subscription_quantity_request): \Shellrent\Sdk\Model\OrderResponse
+upgradeMicrosoft365SubscriptionQuantity($microsoft_365_subscription_id, $microsoft365_subscription_quantity_request): \Shellrent\Sdk\Model\OrderResponse
 ```
 
 Upgrade Microsoft 365 subscription quantity
 
-Increase the Microsoft 365 seats quantity. Returns the generated Order to pay the additional seats.
+Increase the Microsoft 365 seats quantity. Returns the generated Order to pay the additional seats.  Not available to sub-accounts: the response is 403 (error 1601).
 
 ### Example
 
@@ -970,11 +656,11 @@ $apiInstance = new Shellrent\Sdk\Api\LicenseApi(
     new GuzzleHttp\Client(),
     $config
 );
-$microsoft365_id = 56; // int
+$microsoft_365_subscription_id = 56; // int | ID of the Microsoft 365 subscription
 $microsoft365_subscription_quantity_request = new \Shellrent\Sdk\Model\Microsoft365SubscriptionQuantityRequest(); // \Shellrent\Sdk\Model\Microsoft365SubscriptionQuantityRequest
 
 try {
-    $result = $apiInstance->upgradeMicrosoft365SubscriptionQuantity($microsoft365_id, $microsoft365_subscription_quantity_request);
+    $result = $apiInstance->upgradeMicrosoft365SubscriptionQuantity($microsoft_365_subscription_id, $microsoft365_subscription_quantity_request);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling LicenseApi->upgradeMicrosoft365SubscriptionQuantity: ', $e->getMessage(), PHP_EOL;
@@ -985,70 +671,8 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **microsoft365_id** | **int**|  | |
+| **microsoft_365_subscription_id** | **int**| ID of the Microsoft 365 subscription | |
 | **microsoft365_subscription_quantity_request** | [**\Shellrent\Sdk\Model\Microsoft365SubscriptionQuantityRequest**](../Model/Microsoft365SubscriptionQuantityRequest.md)|  | |
-
-### Return type
-
-[**\Shellrent\Sdk\Model\OrderResponse**](../Model/OrderResponse.md)
-
-### Authorization
-
-[oauth2](../../README.md#oauth2)
-
-### HTTP request headers
-
-- **Content-Type**: `application/json`
-- **Accept**: `application/json`
-
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
-
-## `upgradeSecureMailQuantity()`
-
-```php
-upgradeSecureMailQuantity($securemail_id, $securemail_quantity_request): \Shellrent\Sdk\Model\OrderResponse
-```
-
-Upgrade SecureMail quantity
-
-Increase the SecureMail protected mailboxes quantity. Returns the generated Order to pay the additional mailboxes.
-
-### Example
-
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-// Configure OAuth2 access token for authorization: oauth2
-$config = Shellrent\Sdk\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
-
-$apiInstance = new Shellrent\Sdk\Api\LicenseApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$securemail_id = 56; // int
-$securemail_quantity_request = new \Shellrent\Sdk\Model\SecuremailQuantityRequest(); // \Shellrent\Sdk\Model\SecuremailQuantityRequest
-
-try {
-    $result = $apiInstance->upgradeSecureMailQuantity($securemail_id, $securemail_quantity_request);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling LicenseApi->upgradeSecureMailQuantity: ', $e->getMessage(), PHP_EOL;
-}
-```
-
-### Parameters
-
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | ------------- |
-| **securemail_id** | **int**|  | |
-| **securemail_quantity_request** | [**\Shellrent\Sdk\Model\SecuremailQuantityRequest**](../Model/SecuremailQuantityRequest.md)|  | |
 
 ### Return type
 

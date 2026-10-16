@@ -50,7 +50,7 @@ $apiInstance = new Shellrent\Sdk\Api\MonitoringApi(
     new GuzzleHttp\Client(),
     $config
 );
-$server_monitoring_id = 56; // int
+$server_monitoring_id = 56; // int | ID of the server monitoring
 $server_monitoring_probe_create_request = new \Shellrent\Sdk\Model\ServerMonitoringProbeCreateRequest(); // \Shellrent\Sdk\Model\ServerMonitoringProbeCreateRequest
 
 try {
@@ -65,7 +65,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **server_monitoring_id** | **int**|  | |
+| **server_monitoring_id** | **int**| ID of the server monitoring | |
 | **server_monitoring_probe_create_request** | [**\Shellrent\Sdk\Model\ServerMonitoringProbeCreateRequest**](../Model/ServerMonitoringProbeCreateRequest.md)|  | |
 
 ### Return type
@@ -88,7 +88,7 @@ try {
 ## `deleteServerMonitoringProbe()`
 
 ```php
-deleteServerMonitoringProbe($server_monitoring_id, $probe_id): \Shellrent\Sdk\Model\EmptyResponse
+deleteServerMonitoringProbe($server_monitoring_id, $probe_id)
 ```
 
 Delete server monitoring probe
@@ -112,12 +112,11 @@ $apiInstance = new Shellrent\Sdk\Api\MonitoringApi(
     new GuzzleHttp\Client(),
     $config
 );
-$server_monitoring_id = 56; // int
-$probe_id = 56; // int
+$server_monitoring_id = 56; // int | ID of the server monitoring
+$probe_id = 56; // int | ID of the monitoring probe
 
 try {
-    $result = $apiInstance->deleteServerMonitoringProbe($server_monitoring_id, $probe_id);
-    print_r($result);
+    $apiInstance->deleteServerMonitoringProbe($server_monitoring_id, $probe_id);
 } catch (Exception $e) {
     echo 'Exception when calling MonitoringApi->deleteServerMonitoringProbe: ', $e->getMessage(), PHP_EOL;
 }
@@ -127,12 +126,12 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **server_monitoring_id** | **int**|  | |
-| **probe_id** | **int**|  | |
+| **server_monitoring_id** | **int**| ID of the server monitoring | |
+| **probe_id** | **int**| ID of the monitoring probe | |
 
 ### Return type
 
-[**\Shellrent\Sdk\Model\EmptyResponse**](../Model/EmptyResponse.md)
+void (empty response body)
 
 ### Authorization
 
@@ -174,7 +173,7 @@ $apiInstance = new Shellrent\Sdk\Api\MonitoringApi(
     new GuzzleHttp\Client(),
     $config
 );
-$server_monitoring_id = 56; // int
+$server_monitoring_id = 56; // int | ID of the server monitoring
 
 try {
     $result = $apiInstance->getServerMonitoring($server_monitoring_id);
@@ -188,7 +187,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **server_monitoring_id** | **int**|  | |
+| **server_monitoring_id** | **int**| ID of the server monitoring | |
 
 ### Return type
 
@@ -234,8 +233,8 @@ $apiInstance = new Shellrent\Sdk\Api\MonitoringApi(
     new GuzzleHttp\Client(),
     $config
 );
-$server_monitoring_id = 56; // int
-$probe_id = 56; // int
+$server_monitoring_id = 56; // int | ID of the server monitoring
+$probe_id = 56; // int | ID of the monitoring probe
 
 try {
     $result = $apiInstance->getServerMonitoringProbe($server_monitoring_id, $probe_id);
@@ -249,8 +248,8 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **server_monitoring_id** | **int**|  | |
-| **probe_id** | **int**|  | |
+| **server_monitoring_id** | **int**| ID of the server monitoring | |
+| **probe_id** | **int**| ID of the monitoring probe | |
 
 ### Return type
 
@@ -296,8 +295,8 @@ $apiInstance = new Shellrent\Sdk\Api\MonitoringApi(
     new GuzzleHttp\Client(),
     $config
 );
-$server_monitoring_id = 56; // int
-$probe_id = 56; // int
+$server_monitoring_id = 56; // int | ID of the server monitoring
+$probe_id = 56; // int | ID of the monitoring probe
 
 try {
     $result = $apiInstance->getServerMonitoringProbeChart($server_monitoring_id, $probe_id);
@@ -311,8 +310,8 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **server_monitoring_id** | **int**|  | |
-| **probe_id** | **int**|  | |
+| **server_monitoring_id** | **int**| ID of the server monitoring | |
+| **probe_id** | **int**| ID of the monitoring probe | |
 
 ### Return type
 
@@ -358,7 +357,7 @@ $apiInstance = new Shellrent\Sdk\Api\MonitoringApi(
     new GuzzleHttp\Client(),
     $config
 );
-$web_monitoring_id = 56; // int
+$web_monitoring_id = 56; // int | ID of the web monitoring
 
 try {
     $result = $apiInstance->getWebMonitoring($web_monitoring_id);
@@ -372,7 +371,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **web_monitoring_id** | **int**|  | |
+| **web_monitoring_id** | **int**| ID of the web monitoring | |
 
 ### Return type
 
@@ -418,7 +417,7 @@ $apiInstance = new Shellrent\Sdk\Api\MonitoringApi(
     new GuzzleHttp\Client(),
     $config
 );
-$web_monitoring_id = 56; // int
+$web_monitoring_id = 56; // int | ID of the web monitoring
 
 try {
     $result = $apiInstance->getWebMonitoringAvailabilityChart($web_monitoring_id);
@@ -432,7 +431,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **web_monitoring_id** | **int**|  | |
+| **web_monitoring_id** | **int**| ID of the web monitoring | |
 
 ### Return type
 
@@ -478,7 +477,7 @@ $apiInstance = new Shellrent\Sdk\Api\MonitoringApi(
     new GuzzleHttp\Client(),
     $config
 );
-$web_monitoring_id = 56; // int
+$web_monitoring_id = 56; // int | ID of the web monitoring
 
 try {
     $result = $apiInstance->getWebMonitoringDownloadSpeedChart($web_monitoring_id);
@@ -492,7 +491,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **web_monitoring_id** | **int**|  | |
+| **web_monitoring_id** | **int**| ID of the web monitoring | |
 
 ### Return type
 
@@ -538,7 +537,7 @@ $apiInstance = new Shellrent\Sdk\Api\MonitoringApi(
     new GuzzleHttp\Client(),
     $config
 );
-$web_monitoring_id = 56; // int
+$web_monitoring_id = 56; // int | ID of the web monitoring
 
 try {
     $result = $apiInstance->getWebMonitoringNotices($web_monitoring_id);
@@ -552,7 +551,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **web_monitoring_id** | **int**|  | |
+| **web_monitoring_id** | **int**| ID of the web monitoring | |
 
 ### Return type
 
@@ -598,7 +597,7 @@ $apiInstance = new Shellrent\Sdk\Api\MonitoringApi(
     new GuzzleHttp\Client(),
     $config
 );
-$web_monitoring_id = 56; // int
+$web_monitoring_id = 56; // int | ID of the web monitoring
 
 try {
     $result = $apiInstance->getWebMonitoringResponseTimeChart($web_monitoring_id);
@@ -612,7 +611,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **web_monitoring_id** | **int**|  | |
+| **web_monitoring_id** | **int**| ID of the web monitoring | |
 
 ### Return type
 
@@ -658,7 +657,7 @@ $apiInstance = new Shellrent\Sdk\Api\MonitoringApi(
     new GuzzleHttp\Client(),
     $config
 );
-$server_monitoring_id = 56; // int
+$server_monitoring_id = 56; // int | ID of the server monitoring
 
 try {
     $result = $apiInstance->listServerMonitoringProbes($server_monitoring_id);
@@ -672,7 +671,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **server_monitoring_id** | **int**|  | |
+| **server_monitoring_id** | **int**| ID of the server monitoring | |
 
 ### Return type
 
@@ -718,8 +717,8 @@ $apiInstance = new Shellrent\Sdk\Api\MonitoringApi(
     new GuzzleHttp\Client(),
     $config
 );
-$page = 1; // int
-$per_page = 20; // int
+$page = 1; // int | Page number, starting from 1. A page beyond the last one returns an empty `data` list (with the requested `page` in `meta`).
+$per_page = 20; // int | Number of items per page. Values outside the allowed range are rejected with a validation error.
 
 try {
     $result = $apiInstance->listServerMonitorings($page, $per_page);
@@ -733,8 +732,8 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **page** | **int**|  | [optional] [default to 1] |
-| **per_page** | **int**|  | [optional] [default to 20] |
+| **page** | **int**| Page number, starting from 1. A page beyond the last one returns an empty &#x60;data&#x60; list (with the requested &#x60;page&#x60; in &#x60;meta&#x60;). | [optional] [default to 1] |
+| **per_page** | **int**| Number of items per page. Values outside the allowed range are rejected with a validation error. | [optional] [default to 20] |
 
 ### Return type
 
@@ -780,8 +779,8 @@ $apiInstance = new Shellrent\Sdk\Api\MonitoringApi(
     new GuzzleHttp\Client(),
     $config
 );
-$page = 1; // int
-$per_page = 20; // int
+$page = 1; // int | Page number, starting from 1. A page beyond the last one returns an empty `data` list (with the requested `page` in `meta`).
+$per_page = 20; // int | Number of items per page. Values outside the allowed range are rejected with a validation error.
 
 try {
     $result = $apiInstance->listWebMonitorings($page, $per_page);
@@ -795,8 +794,8 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **page** | **int**|  | [optional] [default to 1] |
-| **per_page** | **int**|  | [optional] [default to 20] |
+| **page** | **int**| Page number, starting from 1. A page beyond the last one returns an empty &#x60;data&#x60; list (with the requested &#x60;page&#x60; in &#x60;meta&#x60;). | [optional] [default to 1] |
+| **per_page** | **int**| Number of items per page. Values outside the allowed range are rejected with a validation error. | [optional] [default to 20] |
 
 ### Return type
 
@@ -842,8 +841,8 @@ $apiInstance = new Shellrent\Sdk\Api\MonitoringApi(
     new GuzzleHttp\Client(),
     $config
 );
-$server_monitoring_id = 56; // int
-$probe_id = 56; // int
+$server_monitoring_id = 56; // int | ID of the server monitoring
+$probe_id = 56; // int | ID of the monitoring probe
 $server_monitoring_probe_update_request = new \Shellrent\Sdk\Model\ServerMonitoringProbeUpdateRequest(); // \Shellrent\Sdk\Model\ServerMonitoringProbeUpdateRequest
 
 try {
@@ -858,8 +857,8 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **server_monitoring_id** | **int**|  | |
-| **probe_id** | **int**|  | |
+| **server_monitoring_id** | **int**| ID of the server monitoring | |
+| **probe_id** | **int**| ID of the monitoring probe | |
 | **server_monitoring_probe_update_request** | [**\Shellrent\Sdk\Model\ServerMonitoringProbeUpdateRequest**](../Model/ServerMonitoringProbeUpdateRequest.md)|  | |
 
 ### Return type
@@ -906,7 +905,7 @@ $apiInstance = new Shellrent\Sdk\Api\MonitoringApi(
     new GuzzleHttp\Client(),
     $config
 );
-$web_monitoring_id = 56; // int
+$web_monitoring_id = 56; // int | ID of the web monitoring
 $web_monitoring_notices_update_request = new \Shellrent\Sdk\Model\WebMonitoringNoticesUpdateRequest(); // \Shellrent\Sdk\Model\WebMonitoringNoticesUpdateRequest
 
 try {
@@ -921,7 +920,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **web_monitoring_id** | **int**|  | |
+| **web_monitoring_id** | **int**| ID of the web monitoring | |
 | **web_monitoring_notices_update_request** | [**\Shellrent\Sdk\Model\WebMonitoringNoticesUpdateRequest**](../Model/WebMonitoringNoticesUpdateRequest.md)|  | |
 
 ### Return type

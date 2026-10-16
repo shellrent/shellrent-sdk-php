@@ -9,6 +9,6 @@ Name | Type | Description | Notes
 **message** | **string** | Text of the SMS you want to send. It can contain emojis, but keep in mind that emojis take up more characters. GSM-7: max 160 chars (153 per part if concatenated). Unicode (UCS-2): max 70 chars (67 per part if concatenated). |
 **quality** | **string** | SMS delivery quality. PREMIUM requires sender. |
 **sender** | **string** | Sender name, from 2 to 11 characters. Required when quality is PREMIUM, ignored when quality is STANDARD. | [optional]
-**send_date** | **\DateTime** | Date and time from which to send the SMS. If not specified, the SMS is sent immediately. | [optional]
+**send_date** | **\DateTime** | Date and time from which to send the SMS. If not specified, the SMS is sent immediately (ISO 8601 UTC: YYYY-MM-DDTHH:MM:SSZ) | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

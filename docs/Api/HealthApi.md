@@ -1,12 +1,12 @@
 # Shellrent\Sdk\HealthApi
 
-Stato del servizio
+Service status
 
 All URIs are relative to https://api.shellrent.com, except if the operation defines another base path.
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**getHealth()**](HealthApi.md#getHealth) | **GET** /api/health | Verifica lo stato del servizio |
+| [**getHealth()**](HealthApi.md#getHealth) | **GET** /api/health | Check the service status |
 
 
 ## `getHealth()`
@@ -15,9 +15,9 @@ All URIs are relative to https://api.shellrent.com, except if the operation defi
 getHealth(): \Shellrent\Sdk\Model\HealthStatusResponse
 ```
 
-Verifica lo stato del servizio
+Check the service status
 
-Restituisce lo stato corrente dell'API.
+Returns the current status of the API.
 
 ### Example
 

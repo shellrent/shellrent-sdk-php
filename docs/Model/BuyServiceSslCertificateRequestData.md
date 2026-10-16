@@ -6,12 +6,12 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **domain** | **string** | Main domain for the SSL Certificate |
 **approver_email** | **string** | One of the email addresses accepted as \&quot;approver\&quot; email for the SSL Certificate validation |
-**admin_role** | **string** |  |
-**admin_title** | **string** |  |
+**admin_role** | **string** | Role of the administrative contact of the certificate |
+**admin_title** | **string** | Title of the administrative contact |
 **admin_first_name** | **string** |  |
 **admin_last_name** | **string** |  |
 **admin_email** | **string** |  |
-**admin_organization** | **string** |  |
+**admin_organization** | **string** | Organization of the administrative contact |
 **admin_phone_cc** | **string** | Country code phone prefix without leading \&quot;0\&quot; and without leading \&quot;+\&quot; sign; ie. \&quot;44\&quot; for UK or \&quot;39\&quot; for Italy |
 **admin_phone_n** | **string** | Phone number without country code phone prefix |
 **admin_address** | **string** |  |
