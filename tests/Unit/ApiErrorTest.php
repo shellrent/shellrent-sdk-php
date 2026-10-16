@@ -14,14 +14,14 @@ use Shellrent\Sdk\ObjectSerializer;
  */
 final class ApiErrorTest extends TestCase
 {
-    private const RESPONSE = '{"error": 404, "message": "Purchase not found", "data": null, "meta": null}';
+    private const RESPONSE = '{"error": 1200, "message": "Purchase not found", "data": null, "meta": null}';
 
     public function testDeserializesAnErrorResponseOfTheApi(): void
     {
         $error = ObjectSerializer::deserialize(self::RESPONSE, ApiError::class, []);
 
         self::assertInstanceOf(ApiError::class, $error);
-        self::assertSame(404, $error->getError());
+        self::assertSame(1200, $error->getError());
         self::assertSame('Purchase not found', $error->getMessage());
         self::assertNull($error->getData());
         self::assertNull($error->getMeta());

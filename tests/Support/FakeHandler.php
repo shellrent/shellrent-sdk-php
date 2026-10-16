@@ -54,13 +54,16 @@ final class FakeHandler
     }
 
     /**
-     * Error of the API, which has "data" and "meta" set to null.
+     * Error of the API, which has "data" and "meta" set to null and in "error" the code of the API for the
+     * HTTP status (1100 for 401, 1200 for 404, 1300 for 429), not the status.
      *
      * @param array<string, string> $headers
      */
     public static function error(int $status, string $message, array $headers = []): Response
     {
-        return self::json($status, ['error' => $status, 'message' => $message, 'data' => null, 'meta' => null], $headers);
+        $error = [401 => 1100, 404 => 1200, 429 => 1300][$status] ?? 1;
+
+        return self::json($status, ['error' => $error, 'message' => $message, 'data' => null, 'meta' => null], $headers);
     }
 
     /**

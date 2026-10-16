@@ -23,7 +23,7 @@ final class NotFoundTest extends IntegrationTestCase
             self::assertSame(404, $e->getCode(), (string) $e->getResponseBody());
             $error = $e->getResponseObject();
             self::assertInstanceOf(ApiError::class, $error, (string) $e->getResponseBody());
-            self::assertSame(404, $error->getError());
+            self::assertSame(1200, $error->getError()); // not found
             self::assertNotEmpty($error->getMessage());
         }
     }
