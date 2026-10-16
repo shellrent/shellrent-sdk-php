@@ -47,8 +47,11 @@ da `spec/openapi.yaml`; a mano si scrivono solo autenticazione, punto di ingress
 - `composer test`: test unitari con il `MockHandler` di Guzzle (`tests/Support/FakeHandler` registra i
   delay dei retry senza dormire). I test in `tests/Integration` chiamano l'API reale solo con
   `SHELLRENT_CLIENT_ID` e `SHELLRENT_CLIENT_SECRET` (scope `purchases:read`), altrimenti sono saltati.
-- La CI esegue `composer validate --strict`, PHPUnit su PHP 8.1-8.5 e su 8.1 con le dipendenze minime, e
+- La CI esegue `composer validate --strict`, i test unitari su PHP 8.1-8.5 e su 8.1 con le dipendenze minime, e
   `bin/generate`, fallendo se il codice rigenerato differisce da quello committato.
+- I test di integrazione girano in CI in un job a parte, su PHP 8.5, e non bloccano: il controllo Abuse IP
+  dell'API può rifiutare gli IP Azure dei runner GitHub (401 `access_denied` sul token, 1601 sulle API), che
+  non possono essere dedicati. Un fallimento compare come warning: se ricorre, verifica a mano con le credenziali.
 
 ## Vincoli
 
