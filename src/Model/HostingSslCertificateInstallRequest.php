@@ -35,7 +35,7 @@ use \Shellrent\Sdk\ObjectSerializer;
  * HostingSslCertificateInstallRequest Class Doc Comment
  *
  * @category Class
- * @description SSL certificate to install on the hosting; with no body, a Let&#39;s Encrypt certificate for the website
+ * @description SSL certificate to install on the hosting; with no body, a wildcard Let&#39;s Encrypt certificate for the website and the mail of a main hosting, or for the website of a subdomain
  * @package  Shellrent\Sdk
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -290,8 +290,8 @@ class HostingSslCertificateInstallRequest implements ModelInterface, ArrayAccess
     public function __construct(?array $data = null)
     {
         $this->setIfExists('ssl_certificate_id', $data ?? [], null);
-        $this->setIfExists('destination_type', $data ?? [], 'web');
-        $this->setIfExists('cn_type', $data ?? [], 'NORMAL');
+        $this->setIfExists('destination_type', $data ?? [], null);
+        $this->setIfExists('cn_type', $data ?? [], 'WILDCARD');
     }
 
     /**
@@ -367,7 +367,7 @@ class HostingSslCertificateInstallRequest implements ModelInterface, ArrayAccess
     /**
      * Sets ssl_certificate_id
      *
-     * @param int|null $ssl_certificate_id Id of a purchased SSL certificate to install (`GET /api/v3/ssl-certificates/{ssl_certificate_id}`); omit it, or send null, to install a Let's Encrypt certificate, issued if the hosting has none
+     * @param int|null $ssl_certificate_id Id of a purchased SSL certificate to install (`GET /api/v3/ssl-certificates/{ssl_certificate_id}`): an active certificate of the owner of the hosting, a wildcard one or one with SAN to install it also on the mail servers. Omit it, or send null, to install a Let's Encrypt certificate, issued if the hosting has none: when the DNS of the domain are not on our nameservers, the issue requires the CNAME record that delegates the DNS validation (`GET /api/v3/hostings/{hosting_id}/ssl-certificates/can-install`)
      *
      * @return self
      */
@@ -401,7 +401,7 @@ class HostingSslCertificateInstallRequest implements ModelInterface, ArrayAccess
     /**
      * Sets destination_type
      *
-     * @param string|null $destination_type Where to install the certificate: `web` for the website, `mail` for the mail servers, `all` for both. `mail` and `all` require `cn_type` `WILDCARD`; on a subdomain only `web` is allowed
+     * @param string|null $destination_type Where to install the certificate: `web` for the website, `mail` for the mail servers, `all` for both. When omitted, `all` on a main hosting and `web` on a subdomain, where only `web` is allowed. `mail` and `all` require a Let's Encrypt `cn_type` `WILDCARD`
      *
      * @return self
      */
@@ -438,7 +438,7 @@ class HostingSslCertificateInstallRequest implements ModelInterface, ArrayAccess
     /**
      * Sets cn_type
      *
-     * @param string|null $cn_type Type of the certificate: `NORMAL`, or `WILDCARD` for a wildcard certificate. Without `ssl_certificate_id` it chooses the Let's Encrypt certificate to install
+     * @param string|null $cn_type Type of the certificate: `NORMAL`, or `WILDCARD` for a wildcard certificate. Without `ssl_certificate_id` it chooses the Let's Encrypt certificate to install. Omit this field if you're sending `ssl_certificate_id`.
      *
      * @return self
      */

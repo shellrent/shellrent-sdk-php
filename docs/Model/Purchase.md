@@ -18,6 +18,7 @@ Name | Type | Description | Notes
 **quantity** | **int** | Current purchase quantity (instances). |
 **activation_price** | [**\Shellrent\Sdk\Model\Amount**](Amount.md) | Purchase price; null for sub-accounts. |
 **renew_price** | [**\Shellrent\Sdk\Model\Amount**](Amount.md) | Renew price (applied on recurring purchases only); null for sub-accounts. |
+**renew_price_discounted** | [**\Shellrent\Sdk\Model\Amount**](Amount.md) | Renew price with the discount granted to the purchase by a discount promotion, for the same recurrence as &#x60;renew_price&#x60;; null when the purchase has no discount, and for sub-accounts. |
 **restore_price** | [**\Shellrent\Sdk\Model\Amount**](Amount.md) | Restore/reactivation price (applied on domains only); null for sub-accounts. |
 **date_activation** | **\DateTime** | Purchase date. |
 **date_activation_start** | **\DateTime** | Date when the activation started. |

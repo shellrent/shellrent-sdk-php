@@ -74,6 +74,9 @@ class HostingApi
 
     /** @var string[] $contentTypes **/
     public const contentTypes = [
+        'canInstallHostingSslCertificate' => [
+            'application/json',
+        ],
         'createHostingAllowListEntry' => [
             'application/json',
         ],
@@ -303,6 +306,411 @@ class HostingApi
     public function getConfig()
     {
         return $this->config;
+    }
+
+    /**
+     * Operation canInstallHostingSslCertificate
+     *
+     * Can install SSL certificate on hosting
+     *
+     * @param  int $hosting_id ID of the hosting (required)
+     * @param  int|null $ssl_certificate_id Id of the purchased SSL certificate to install (&#x60;GET /api/v3/ssl-certificates/{ssl_certificate_id}&#x60;); omit it for a Let&#39;s Encrypt certificate (optional)
+     * @param  string|null $destination_type Where to install the certificate: &#x60;web&#x60; for the website, &#x60;mail&#x60; for the mail servers, &#x60;all&#x60; for both. When omitted, &#x60;all&#x60; on a main hosting and &#x60;web&#x60; on a subdomain, where only &#x60;web&#x60; is allowed (optional)
+     * @param  string|null $cn_type Type of the Let&#39;s Encrypt certificate: &#x60;NORMAL&#x60;, or &#x60;WILDCARD&#x60; for a wildcard certificate. Omit this parameter if you&#39;re sending &#x60;ssl_certificate_id&#x60;. (optional, default to 'WILDCARD')
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['canInstallHostingSslCertificate'] to see the possible values for this operation
+     *
+     * @throws \Shellrent\Sdk\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Shellrent\Sdk\Model\HostingSslCertificateCanInstallResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError
+     */
+    public function canInstallHostingSslCertificate($hosting_id, $ssl_certificate_id = null, $destination_type = null, $cn_type = 'WILDCARD', string $contentType = self::contentTypes['canInstallHostingSslCertificate'][0])
+    {
+        list($response) = $this->canInstallHostingSslCertificateWithHttpInfo($hosting_id, $ssl_certificate_id, $destination_type, $cn_type, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation canInstallHostingSslCertificateWithHttpInfo
+     *
+     * Can install SSL certificate on hosting
+     *
+     * @param  int $hosting_id ID of the hosting (required)
+     * @param  int|null $ssl_certificate_id Id of the purchased SSL certificate to install (&#x60;GET /api/v3/ssl-certificates/{ssl_certificate_id}&#x60;); omit it for a Let&#39;s Encrypt certificate (optional)
+     * @param  string|null $destination_type Where to install the certificate: &#x60;web&#x60; for the website, &#x60;mail&#x60; for the mail servers, &#x60;all&#x60; for both. When omitted, &#x60;all&#x60; on a main hosting and &#x60;web&#x60; on a subdomain, where only &#x60;web&#x60; is allowed (optional)
+     * @param  string|null $cn_type Type of the Let&#39;s Encrypt certificate: &#x60;NORMAL&#x60;, or &#x60;WILDCARD&#x60; for a wildcard certificate. Omit this parameter if you&#39;re sending &#x60;ssl_certificate_id&#x60;. (optional, default to 'WILDCARD')
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['canInstallHostingSslCertificate'] to see the possible values for this operation
+     *
+     * @throws \Shellrent\Sdk\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Shellrent\Sdk\Model\HostingSslCertificateCanInstallResponse|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError|\Shellrent\Sdk\Model\ApiError, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function canInstallHostingSslCertificateWithHttpInfo($hosting_id, $ssl_certificate_id = null, $destination_type = null, $cn_type = 'WILDCARD', string $contentType = self::contentTypes['canInstallHostingSslCertificate'][0])
+    {
+        $request = $this->canInstallHostingSslCertificateRequest($hosting_id, $ssl_certificate_id, $destination_type, $cn_type, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Shellrent\Sdk\Model\HostingSslCertificateCanInstallResponse',
+                        $request,
+                        $response,
+                    );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $request,
+                        $response,
+                    );
+                case 403:
+                    return $this->handleResponseWithDataType(
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $request,
+                        $response,
+                    );
+                case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $request,
+                        $response,
+                    );
+                case 429:
+                    return $this->handleResponseWithDataType(
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $request,
+                        $response,
+                    );
+                case 500:
+                    return $this->handleResponseWithDataType(
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Shellrent\Sdk\Model\HostingSslCertificateCanInstallResponse',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Shellrent\Sdk\Model\HostingSslCertificateCanInstallResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 429:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 500:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Shellrent\Sdk\Model\ApiError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation canInstallHostingSslCertificateAsync
+     *
+     * Can install SSL certificate on hosting
+     *
+     * @param  int $hosting_id ID of the hosting (required)
+     * @param  int|null $ssl_certificate_id Id of the purchased SSL certificate to install (&#x60;GET /api/v3/ssl-certificates/{ssl_certificate_id}&#x60;); omit it for a Let&#39;s Encrypt certificate (optional)
+     * @param  string|null $destination_type Where to install the certificate: &#x60;web&#x60; for the website, &#x60;mail&#x60; for the mail servers, &#x60;all&#x60; for both. When omitted, &#x60;all&#x60; on a main hosting and &#x60;web&#x60; on a subdomain, where only &#x60;web&#x60; is allowed (optional)
+     * @param  string|null $cn_type Type of the Let&#39;s Encrypt certificate: &#x60;NORMAL&#x60;, or &#x60;WILDCARD&#x60; for a wildcard certificate. Omit this parameter if you&#39;re sending &#x60;ssl_certificate_id&#x60;. (optional, default to 'WILDCARD')
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['canInstallHostingSslCertificate'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function canInstallHostingSslCertificateAsync($hosting_id, $ssl_certificate_id = null, $destination_type = null, $cn_type = 'WILDCARD', string $contentType = self::contentTypes['canInstallHostingSslCertificate'][0])
+    {
+        return $this->canInstallHostingSslCertificateAsyncWithHttpInfo($hosting_id, $ssl_certificate_id, $destination_type, $cn_type, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation canInstallHostingSslCertificateAsyncWithHttpInfo
+     *
+     * Can install SSL certificate on hosting
+     *
+     * @param  int $hosting_id ID of the hosting (required)
+     * @param  int|null $ssl_certificate_id Id of the purchased SSL certificate to install (&#x60;GET /api/v3/ssl-certificates/{ssl_certificate_id}&#x60;); omit it for a Let&#39;s Encrypt certificate (optional)
+     * @param  string|null $destination_type Where to install the certificate: &#x60;web&#x60; for the website, &#x60;mail&#x60; for the mail servers, &#x60;all&#x60; for both. When omitted, &#x60;all&#x60; on a main hosting and &#x60;web&#x60; on a subdomain, where only &#x60;web&#x60; is allowed (optional)
+     * @param  string|null $cn_type Type of the Let&#39;s Encrypt certificate: &#x60;NORMAL&#x60;, or &#x60;WILDCARD&#x60; for a wildcard certificate. Omit this parameter if you&#39;re sending &#x60;ssl_certificate_id&#x60;. (optional, default to 'WILDCARD')
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['canInstallHostingSslCertificate'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function canInstallHostingSslCertificateAsyncWithHttpInfo($hosting_id, $ssl_certificate_id = null, $destination_type = null, $cn_type = 'WILDCARD', string $contentType = self::contentTypes['canInstallHostingSslCertificate'][0])
+    {
+        $returnType = '\Shellrent\Sdk\Model\HostingSslCertificateCanInstallResponse';
+        $request = $this->canInstallHostingSslCertificateRequest($hosting_id, $ssl_certificate_id, $destination_type, $cn_type, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'canInstallHostingSslCertificate'
+     *
+     * @param  int $hosting_id ID of the hosting (required)
+     * @param  int|null $ssl_certificate_id Id of the purchased SSL certificate to install (&#x60;GET /api/v3/ssl-certificates/{ssl_certificate_id}&#x60;); omit it for a Let&#39;s Encrypt certificate (optional)
+     * @param  string|null $destination_type Where to install the certificate: &#x60;web&#x60; for the website, &#x60;mail&#x60; for the mail servers, &#x60;all&#x60; for both. When omitted, &#x60;all&#x60; on a main hosting and &#x60;web&#x60; on a subdomain, where only &#x60;web&#x60; is allowed (optional)
+     * @param  string|null $cn_type Type of the Let&#39;s Encrypt certificate: &#x60;NORMAL&#x60;, or &#x60;WILDCARD&#x60; for a wildcard certificate. Omit this parameter if you&#39;re sending &#x60;ssl_certificate_id&#x60;. (optional, default to 'WILDCARD')
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['canInstallHostingSslCertificate'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function canInstallHostingSslCertificateRequest($hosting_id, $ssl_certificate_id = null, $destination_type = null, $cn_type = 'WILDCARD', string $contentType = self::contentTypes['canInstallHostingSslCertificate'][0])
+    {
+
+        // verify the required parameter 'hosting_id' is set
+        if ($hosting_id === null || (is_array($hosting_id) && count($hosting_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $hosting_id when calling canInstallHostingSslCertificate'
+            );
+        }
+
+
+
+
+
+        $resourcePath = '/api/v3/hostings/{hosting_id}/ssl-certificates/can-install';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $ssl_certificate_id,
+            'ssl_certificate_id', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $destination_type,
+            'destination_type', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $cn_type,
+            'cn_type', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+
+
+        // path params
+        if ($hosting_id !== null) {
+            $resourcePath = str_replace(
+                '{hosting_id}',
+                ObjectSerializer::toPathValue($hosting_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                try {
+                    $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
+                } catch (\JsonException $e) {
+                    throw new \InvalidArgumentException('json_encode error: ' . $e->getMessage(), 0, $e);
+                }
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
     }
 
     /**

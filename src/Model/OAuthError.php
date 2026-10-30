@@ -320,7 +320,7 @@ class OAuthError implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets error
      *
-     * @param string $error OAuth2 error code, for example `invalid_client`, `invalid_scope` or `rate_limited`
+     * @param string $error OAuth2 error code, for example `invalid_client`, `invalid_scope`, `unauthorized_client` or `rate_limited`
      *
      * @return self
      */

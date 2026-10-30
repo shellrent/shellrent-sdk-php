@@ -72,6 +72,7 @@ class Purchase implements ModelInterface, ArrayAccess, \JsonSerializable
         'quantity' => 'int',
         'activation_price' => '\Shellrent\Sdk\Model\Amount',
         'renew_price' => '\Shellrent\Sdk\Model\Amount',
+        'renew_price_discounted' => '\Shellrent\Sdk\Model\Amount',
         'restore_price' => '\Shellrent\Sdk\Model\Amount',
         'date_activation' => '\DateTime',
         'date_activation_start' => '\DateTime',
@@ -120,6 +121,7 @@ class Purchase implements ModelInterface, ArrayAccess, \JsonSerializable
         'quantity' => null,
         'activation_price' => null,
         'renew_price' => null,
+        'renew_price_discounted' => null,
         'restore_price' => null,
         'date_activation' => 'date',
         'date_activation_start' => 'date',
@@ -166,6 +168,7 @@ class Purchase implements ModelInterface, ArrayAccess, \JsonSerializable
         'quantity' => false,
         'activation_price' => true,
         'renew_price' => true,
+        'renew_price_discounted' => true,
         'restore_price' => true,
         'date_activation' => true,
         'date_activation_start' => true,
@@ -292,6 +295,7 @@ class Purchase implements ModelInterface, ArrayAccess, \JsonSerializable
         'quantity' => 'quantity',
         'activation_price' => 'activation_price',
         'renew_price' => 'renew_price',
+        'renew_price_discounted' => 'renew_price_discounted',
         'restore_price' => 'restore_price',
         'date_activation' => 'date_activation',
         'date_activation_start' => 'date_activation_start',
@@ -338,6 +342,7 @@ class Purchase implements ModelInterface, ArrayAccess, \JsonSerializable
         'quantity' => 'setQuantity',
         'activation_price' => 'setActivationPrice',
         'renew_price' => 'setRenewPrice',
+        'renew_price_discounted' => 'setRenewPriceDiscounted',
         'restore_price' => 'setRestorePrice',
         'date_activation' => 'setDateActivation',
         'date_activation_start' => 'setDateActivationStart',
@@ -384,6 +389,7 @@ class Purchase implements ModelInterface, ArrayAccess, \JsonSerializable
         'quantity' => 'getQuantity',
         'activation_price' => 'getActivationPrice',
         'renew_price' => 'getRenewPrice',
+        'renew_price_discounted' => 'getRenewPriceDiscounted',
         'restore_price' => 'getRestorePrice',
         'date_activation' => 'getDateActivation',
         'date_activation_start' => 'getDateActivationStart',
@@ -481,6 +487,7 @@ class Purchase implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('quantity', $data ?? [], null);
         $this->setIfExists('activation_price', $data ?? [], null);
         $this->setIfExists('renew_price', $data ?? [], null);
+        $this->setIfExists('renew_price_discounted', $data ?? [], null);
         $this->setIfExists('restore_price', $data ?? [], null);
         $this->setIfExists('date_activation', $data ?? [], null);
         $this->setIfExists('date_activation_start', $data ?? [], null);
@@ -575,6 +582,9 @@ class Purchase implements ModelInterface, ArrayAccess, \JsonSerializable
         }
         if ($this->container['renew_price'] === null && !$this->isNullableSetToNull('renew_price')) {
             $invalidProperties[] = "'renew_price' is required";
+        }
+        if ($this->container['renew_price_discounted'] === null && !$this->isNullableSetToNull('renew_price_discounted')) {
+            $invalidProperties[] = "'renew_price_discounted' is required";
         }
         if ($this->container['restore_price'] === null && !$this->isNullableSetToNull('restore_price')) {
             $invalidProperties[] = "'restore_price' is required";
@@ -1065,6 +1075,40 @@ class Purchase implements ModelInterface, ArrayAccess, \JsonSerializable
             }
         }
         $this->container['renew_price'] = $renew_price;
+
+        return $this;
+    }
+
+    /**
+     * Gets renew_price_discounted
+     *
+     * @return \Shellrent\Sdk\Model\Amount|null
+     */
+    public function getRenewPriceDiscounted()
+    {
+        return $this->container['renew_price_discounted'];
+    }
+
+    /**
+     * Sets renew_price_discounted
+     *
+     * @param \Shellrent\Sdk\Model\Amount|null $renew_price_discounted Renew price with the discount granted to the purchase by a discount promotion, for the same recurrence as `renew_price`; null when the purchase has no discount, and for sub-accounts.
+     *
+     * @return self
+     */
+    public function setRenewPriceDiscounted($renew_price_discounted)
+    {
+        if (is_null($renew_price_discounted)) {
+            array_push($this->openAPINullablesSetToNull, 'renew_price_discounted');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('renew_price_discounted', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['renew_price_discounted'] = $renew_price_discounted;
 
         return $this;
     }
