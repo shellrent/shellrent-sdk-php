@@ -6,6 +6,7 @@ All URIs are relative to https://api.shellrent.com, except if the operation defi
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
+| [**canInstallHostingSslCertificate()**](HostingApi.md#canInstallHostingSslCertificate) | **GET** /api/v3/hostings/{hosting_id}/ssl-certificates/can-install | Can install SSL certificate on hosting |
 | [**createHostingAllowListEntry()**](HostingApi.md#createHostingAllowListEntry) | **POST** /api/v3/hostings/{hosting_id}/allow-lists | Create allow list entry |
 | [**createHostingBlockListEntry()**](HostingApi.md#createHostingBlockListEntry) | **POST** /api/v3/hostings/{hosting_id}/block-lists | Create block list entry |
 | [**createHostingCronjob()**](HostingApi.md#createHostingCronjob) | **POST** /api/v3/hostings/{hosting_id}/cron-jobs | Create hosting cronjob |
@@ -68,6 +69,72 @@ All URIs are relative to https://api.shellrent.com, except if the operation defi
 | [**updateHostingPhpSettings()**](HostingApi.md#updateHostingPhpSettings) | **PATCH** /api/v3/hostings/{hosting_id}/php-settings | Update PHP settings |
 | [**updateHostingPhpVersion()**](HostingApi.md#updateHostingPhpVersion) | **PATCH** /api/v3/hostings/{hosting_id}/php-version | Update PHP version |
 
+
+## `canInstallHostingSslCertificate()`
+
+```php
+canInstallHostingSslCertificate($hosting_id, $ssl_certificate_id, $destination_type, $cn_type): \Shellrent\Sdk\Model\HostingSslCertificateCanInstallResponse
+```
+
+Can install SSL certificate on hosting
+
+Checks, with the rules of the installation (`POST /api/v3/hostings/{hosting_id}/ssl-certificates`) and its fields in the query, whether the SSL certificate can be installed on the hosting now, and why not: a certificate already installed, the CNAME record that delegates the validation of Let's Encrypt missing from DNS that are not on our nameservers (`dns_delegation` has the record to create), the limit of Let's Encrypt installations, an operation running. With DNS on our nameservers the installation creates the CNAME record by itself. Invalid fields respond 400, as in the installation
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure OAuth2 access token for authorization: oauth2
+$config = Shellrent\Sdk\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Shellrent\Sdk\Api\HostingApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$hosting_id = 56; // int | ID of the hosting
+$ssl_certificate_id = 56; // int | Id of the purchased SSL certificate to install (`GET /api/v3/ssl-certificates/{ssl_certificate_id}`); omit it for a Let's Encrypt certificate
+$destination_type = 'destination_type_example'; // string | Where to install the certificate: `web` for the website, `mail` for the mail servers, `all` for both. When omitted, `all` on a main hosting and `web` on a subdomain, where only `web` is allowed
+$cn_type = 'WILDCARD'; // string | Type of the Let's Encrypt certificate: `NORMAL`, or `WILDCARD` for a wildcard certificate. Omit this parameter if you're sending `ssl_certificate_id`.
+
+try {
+    $result = $apiInstance->canInstallHostingSslCertificate($hosting_id, $ssl_certificate_id, $destination_type, $cn_type);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling HostingApi->canInstallHostingSslCertificate: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **hosting_id** | **int**| ID of the hosting | |
+| **ssl_certificate_id** | **int**| Id of the purchased SSL certificate to install (&#x60;GET /api/v3/ssl-certificates/{ssl_certificate_id}&#x60;); omit it for a Let&#39;s Encrypt certificate | [optional] |
+| **destination_type** | **string**| Where to install the certificate: &#x60;web&#x60; for the website, &#x60;mail&#x60; for the mail servers, &#x60;all&#x60; for both. When omitted, &#x60;all&#x60; on a main hosting and &#x60;web&#x60; on a subdomain, where only &#x60;web&#x60; is allowed | [optional] |
+| **cn_type** | **string**| Type of the Let&#39;s Encrypt certificate: &#x60;NORMAL&#x60;, or &#x60;WILDCARD&#x60; for a wildcard certificate. Omit this parameter if you&#39;re sending &#x60;ssl_certificate_id&#x60;. | [optional] [default to &#39;WILDCARD&#39;] |
+
+### Return type
+
+[**\Shellrent\Sdk\Model\HostingSslCertificateCanInstallResponse**](../Model/HostingSslCertificateCanInstallResponse.md)
+
+### Authorization
+
+[oauth2](../../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
 
 ## `createHostingAllowListEntry()`
 
@@ -2159,7 +2226,7 @@ installHostingSslCertificate($hosting_id, $hosting_ssl_certificate_install_reque
 
 Install SSL certificate on hosting
 
-Install an SSL certificate on hosting or create and install Let's Encrypt
+Installs a purchased SSL certificate on the hosting, or issues and installs a Let's Encrypt certificate, with the rules of the control panel. With DNS that are not on our nameservers, Let's Encrypt requires the CNAME record that delegates its DNS validation: `GET /api/v3/hostings/{hosting_id}/ssl-certificates/can-install` tells whether the installation can start, and which record to create. 409 when a certificate is already installed on the destination, the CNAME record is missing, the limit of Let's Encrypt installations is reached or an operation is running; 403 when the mail server of the hosting does not accept certificates
 
 ### Example
 

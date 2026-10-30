@@ -180,9 +180,13 @@ docs/Model/HostingPhpVersionListResponse.md
 docs/Model/HostingPhpVersionUpdateRequest.md
 docs/Model/HostingResponse.md
 docs/Model/HostingSslCertificate.md
+docs/Model/HostingSslCertificateCanInstall.md
+docs/Model/HostingSslCertificateCanInstallReason.md
+docs/Model/HostingSslCertificateCanInstallResponse.md
 docs/Model/HostingSslCertificateInstallRequest.md
 docs/Model/HostingSslCertificateListResponse.md
 docs/Model/HostingSslCertificateResponse.md
+docs/Model/HostingSslDnsDelegation.md
 docs/Model/HostingSubdomainCreateRequest.md
 docs/Model/Invoice.md
 docs/Model/InvoicePaginatedListResponse.md
@@ -616,9 +620,13 @@ src/Model/HostingPhpVersionListResponse.php
 src/Model/HostingPhpVersionUpdateRequest.php
 src/Model/HostingResponse.php
 src/Model/HostingSslCertificate.php
+src/Model/HostingSslCertificateCanInstall.php
+src/Model/HostingSslCertificateCanInstallReason.php
+src/Model/HostingSslCertificateCanInstallResponse.php
 src/Model/HostingSslCertificateInstallRequest.php
 src/Model/HostingSslCertificateListResponse.php
 src/Model/HostingSslCertificateResponse.php
+src/Model/HostingSslDnsDelegation.php
 src/Model/HostingSubdomainCreateRequest.php
 src/Model/Invoice.php
 src/Model/InvoicePaginatedListResponse.php

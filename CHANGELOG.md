@@ -7,6 +7,37 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.1.0] - 2026-10-30
+
+Regenerated from the Shellrent API specification with the new SSL checks of the hosting and the discounted
+renew price of the purchases. No breaking changes in names or signatures.
+
+### Added
+
+- `HostingApi::canInstallHostingSslCertificate()` (`GET /api/v3/hostings/{hosting_id}/ssl-certificates/can-install`):
+  whether an SSL certificate can be installed on the hosting now, with the same fields of the installation, and
+  why not (`reason`: `ALREADY_INSTALLED`, `CNAME_MISSING`, `LIMIT_REACHED`, `MAIL_NOT_SUPPORTED`,
+  `OPERATION_RUNNING`). For a Let's Encrypt certificate, `dns_delegation` has the CNAME record that delegates its
+  DNS validation, which must be created when the DNS are not on the Shellrent nameservers.
+- Models `HostingSslCertificateCanInstall`, `HostingSslCertificateCanInstallReason` (enum of `reason`),
+  `HostingSslCertificateCanInstallResponse` and `HostingSslDnsDelegation`.
+- `Purchase::$renew_price_discounted` (`getRenewPriceDiscounted()`): the renew price with the discount of the
+  discount promotion applied to the purchase; null without a discount and for sub-accounts.
+
+### Changed
+
+- `HostingSslCertificateInstallRequest`: `destination_type` has no default and is not sent unless set. The API
+  then installs on the website and the mail of a main hosting (`all`), or on the website of a subdomain (`web`).
+  `cn_type` defaults to `WILDCARD` instead of `NORMAL`, and is ignored with `ssl_certificate_id`.
+- `installHostingSslCertificate()` follows the rules of the control panel. A Let's Encrypt certificate with DNS
+  that are not on the Shellrent nameservers requires the CNAME record of `dns_delegation` (409 without it).
+  `ssl_certificate_id` accepts only the active certificates of the owner of the hosting (404 otherwise), and on
+  the mail servers only wildcard certificates or certificates with SAN (400). A certificate already installed,
+  the limit of Let's Encrypt installations or an operation running respond 409 instead of 400, and a mail
+  server that does not accept certificates responds 403.
+- Descriptions of the OAuth2 errors updated with `unauthorized_client` (owner of the client without two-factor
+  authentication).
+
 ## [1.0.0]
 
 Regenerated from the new revision of the Shellrent API 3.0.0 specification, with English descriptions.
