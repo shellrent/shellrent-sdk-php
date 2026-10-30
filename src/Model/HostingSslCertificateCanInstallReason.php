@@ -49,6 +49,8 @@ class HostingSslCertificateCanInstallReason
 
     public const LIMIT_REACHED = 'LIMIT_REACHED';
 
+    public const HOSTING_NOT_ACTIVE = 'HOSTING_NOT_ACTIVE';
+
     public const MAIL_NOT_SUPPORTED = 'MAIL_NOT_SUPPORTED';
 
     public const OPERATION_RUNNING = 'OPERATION_RUNNING';
@@ -63,6 +65,7 @@ class HostingSslCertificateCanInstallReason
             self::ALREADY_INSTALLED,
             self::CNAME_MISSING,
             self::LIMIT_REACHED,
+            self::HOSTING_NOT_ACTIVE,
             self::MAIL_NOT_SUPPORTED,
             self::OPERATION_RUNNING
         ];

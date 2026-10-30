@@ -78,7 +78,7 @@ canInstallHostingSslCertificate($hosting_id, $ssl_certificate_id, $destination_t
 
 Can install SSL certificate on hosting
 
-Checks, with the rules of the installation (`POST /api/v3/hostings/{hosting_id}/ssl-certificates`) and its fields in the query, whether the SSL certificate can be installed on the hosting now, and why not: a certificate already installed, the CNAME record that delegates the validation of Let's Encrypt missing from DNS that are not on our nameservers (`dns_delegation` has the record to create), the limit of Let's Encrypt installations, an operation running. With DNS on our nameservers the installation creates the CNAME record by itself. Invalid fields respond 400, as in the installation
+Checks, with the rules of the installation (`POST /api/v3/hostings/{hosting_id}/ssl-certificates`) and its fields in the query, whether the SSL certificate can be installed on the hosting now, and why not: a certificate already installed, the CNAME record that delegates the validation of Let's Encrypt missing from DNS that are not on our nameservers (`dns_delegation` has the record to create), the limit of Let's Encrypt installations, the hosting not active yet, an operation running. With DNS on our nameservers the installation creates the CNAME record by itself. Invalid fields respond 400, as in the installation
 
 ### Example
 
@@ -2226,7 +2226,7 @@ installHostingSslCertificate($hosting_id, $hosting_ssl_certificate_install_reque
 
 Install SSL certificate on hosting
 
-Installs a purchased SSL certificate on the hosting, or issues and installs a Let's Encrypt certificate, with the rules of the control panel. With DNS that are not on our nameservers, Let's Encrypt requires the CNAME record that delegates its DNS validation: `GET /api/v3/hostings/{hosting_id}/ssl-certificates/can-install` tells whether the installation can start, and which record to create. 409 when a certificate is already installed on the destination, the CNAME record is missing, the limit of Let's Encrypt installations is reached or an operation is running; 403 when the mail server of the hosting does not accept certificates
+Installs a purchased SSL certificate on the hosting, or issues and installs a Let's Encrypt certificate, with the rules of the control panel. With DNS that are not on our nameservers, Let's Encrypt requires the CNAME record that delegates its DNS validation: `GET /api/v3/hostings/{hosting_id}/ssl-certificates/can-install` tells whether the installation can start, and which record to create. 409 when a certificate is already installed on the destination, the CNAME record is missing, the limit of Let's Encrypt installations is reached, the hosting is not active yet or an operation is running; 403 when the mail server of the hosting does not accept certificates
 
 ### Example
 

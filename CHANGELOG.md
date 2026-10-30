@@ -16,9 +16,9 @@ renew price of the purchases. No breaking changes in names or signatures.
 
 - `HostingApi::canInstallHostingSslCertificate()` (`GET /api/v3/hostings/{hosting_id}/ssl-certificates/can-install`):
   whether an SSL certificate can be installed on the hosting now, with the same fields of the installation, and
-  why not (`reason`: `ALREADY_INSTALLED`, `CNAME_MISSING`, `LIMIT_REACHED`, `MAIL_NOT_SUPPORTED`,
-  `OPERATION_RUNNING`). For a Let's Encrypt certificate, `dns_delegation` has the CNAME record that delegates its
-  DNS validation, which must be created when the DNS are not on the Shellrent nameservers.
+  why not (`reason`: `ALREADY_INSTALLED`, `CNAME_MISSING`, `LIMIT_REACHED`, `HOSTING_NOT_ACTIVE`,
+  `MAIL_NOT_SUPPORTED`, `OPERATION_RUNNING`). For a Let's Encrypt certificate, `dns_delegation` has the CNAME
+  record that delegates its DNS validation, which must be created when the DNS are not on the Shellrent nameservers.
 - Models `HostingSslCertificateCanInstall`, `HostingSslCertificateCanInstallReason` (enum of `reason`),
   `HostingSslCertificateCanInstallResponse` and `HostingSslDnsDelegation`.
 - `Purchase::$renew_price_discounted` (`getRenewPriceDiscounted()`): the renew price with the discount of the
