@@ -98,6 +98,7 @@ Breaking changes for the code that uses the operations and the models renamed or
 - Requires `guzzlehttp/guzzle` 7.15.2 and `guzzlehttp/psr7` 2.13 or later: earlier versions have published
   security advisories.
 
-[Unreleased]: https://github.com/shellrent/shellrent-sdk-php/compare/v1.0.0...HEAD
+[Unreleased]: https://github.com/shellrent/shellrent-sdk-php/compare/v1.1.0...HEAD
+[1.1.0]: https://github.com/shellrent/shellrent-sdk-php/releases/tag/v1.1.0
 [1.0.0]: https://github.com/shellrent/shellrent-sdk-php/releases/tag/v1.0.0
 [0.1.0]: https://github.com/shellrent/shellrent-sdk-php/releases/tag/v0.1.0
